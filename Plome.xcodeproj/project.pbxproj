@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF59EA4128ECCE260041B33B /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */; };
 		CFBF56AE28ECC5F000E4EC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */; };
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B228ECC5F000E4EC7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56B128ECC5F000E4EC7D /* ViewController.swift */; };
@@ -28,7 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CF59EA1928ECCD670041B33B /* Plome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Plome.app; path = "/Users/loicmazuc/Documents/OpenClassroom/P12/Plome/build/Debug-iphoneos/Plome.app"; sourceTree = "<absolute>"; };
+		CF59EA1A28ECCD810041B33B /* Plome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFBF56B128ECC5F000E4EC7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,16 +44,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF59EA4128ECCE260041B33B /* PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF59EA3F28ECCE260041B33B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CFBF56A128ECC5F000E4EC7D = {
 			isa = PBXGroup;
 			children = (
 				CFBF56AC28ECC5F000E4EC7D /* Plome */,
+				CF59EA1A28ECCD810041B33B /* Plome.app */,
+				CF59EA3F28ECCE260041B33B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,7 +101,7 @@
 			packageProductDependencies = (
 			);
 			productName = Plome;
-			productReference = CF59EA1928ECCD670041B33B /* Plome.app */;
+			productReference = CF59EA1A28ECCD810041B33B /* Plome.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
