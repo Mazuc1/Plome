@@ -11,6 +11,14 @@
 		CF59EAD428ECD6B30041B33B /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CF59EAD928ECD6B30041B33B /* PlomeCoreKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAD828ECD6B30041B33B /* PlomeCoreKitTests.swift */; };
 		CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF59EAEC28ECD6F20041B33B /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE328ECD6F10041B33B /* AppStyles.swift */; };
+		CF59EAED28ECD6F20041B33B /* UrbaneRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF59EAE528ECD6F10041B33B /* UrbaneRounded-Bold.ttf */; };
+		CF59EAEE28ECD6F20041B33B /* UrbaneRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF59EAE628ECD6F10041B33B /* UrbaneRounded-Light.ttf */; };
+		CF59EAEF28ECD6F20041B33B /* UrbaneRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF59EAE728ECD6F10041B33B /* UrbaneRounded-Medium.ttf */; };
+		CF59EAF028ECD6F20041B33B /* UrbaneRounded-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF59EAE828ECD6F10041B33B /* UrbaneRounded-DemiBold.ttf */; };
+		CF59EAF128ECD6F20041B33B /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE928ECD6F10041B33B /* Icons.swift */; };
+		CF59EAF228ECD6F20041B33B /* PlomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */; };
+		CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +37,14 @@
 		CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = PlomeCoreKit.docc; sourceTree = "<group>"; };
 		CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeCoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EAD828ECD6B30041B33B /* PlomeCoreKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlomeCoreKitTests.swift; sourceTree = "<group>"; };
+		CF59EAE328ECD6F10041B33B /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
+		CF59EAE528ECD6F10041B33B /* UrbaneRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Bold.ttf"; sourceTree = "<group>"; };
+		CF59EAE628ECD6F10041B33B /* UrbaneRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Light.ttf"; sourceTree = "<group>"; };
+		CF59EAE728ECD6F10041B33B /* UrbaneRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Medium.ttf"; sourceTree = "<group>"; };
+		CF59EAE828ECD6F10041B33B /* UrbaneRounded-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-DemiBold.ttf"; sourceTree = "<group>"; };
+		CF59EAE928ECD6F10041B33B /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlomeFont.swift; sourceTree = "<group>"; };
+		CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				CF59EACB28ECD6B30041B33B /* PlomeCoreKit */,
+				CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */,
+				CF59EAE328ECD6F10041B33B /* AppStyles.swift */,
+				CF59EAE428ECD6F10041B33B /* Fonts */,
+				CF59EAE928ECD6F10041B33B /* Icons.swift */,
+				CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */,
 				CF59EAD728ECD6B30041B33B /* PlomeCoreKitTests */,
 				CF59EACA28ECD6B30041B33B /* Products */,
 			);
@@ -83,6 +104,17 @@
 				CF59EAD828ECD6B30041B33B /* PlomeCoreKitTests.swift */,
 			);
 			path = PlomeCoreKitTests;
+			sourceTree = "<group>";
+		};
+		CF59EAE428ECD6F10041B33B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CF59EAE528ECD6F10041B33B /* UrbaneRounded-Bold.ttf */,
+				CF59EAE628ECD6F10041B33B /* UrbaneRounded-Light.ttf */,
+				CF59EAE728ECD6F10041B33B /* UrbaneRounded-Medium.ttf */,
+				CF59EAE828ECD6F10041B33B /* UrbaneRounded-DemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +209,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF59EAEE28ECD6F20041B33B /* UrbaneRounded-Light.ttf in Resources */,
+				CF59EAF028ECD6F20041B33B /* UrbaneRounded-DemiBold.ttf in Resources */,
+				CF59EAEF28ECD6F20041B33B /* UrbaneRounded-Medium.ttf in Resources */,
+				CF59EAED28ECD6F20041B33B /* UrbaneRounded-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +231,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */,
+				CF59EAEC28ECD6F20041B33B /* AppStyles.swift in Sources */,
+				CF59EAF228ECD6F20041B33B /* PlomeFont.swift in Sources */,
+				CF59EAF128ECD6F20041B33B /* Icons.swift in Sources */,
+				CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -325,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -350,6 +390,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,6 +419,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,6 +438,7 @@
 		CF59EAE128ECD6B30041B33B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L49G5QS6U;
@@ -412,6 +455,7 @@
 		CF59EAE228ECD6B30041B33B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L49G5QS6U;
