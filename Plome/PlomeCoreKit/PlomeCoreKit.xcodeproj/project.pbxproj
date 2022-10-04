@@ -70,11 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				CF59EACB28ECD6B30041B33B /* PlomeCoreKit */,
-				CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */,
-				CF59EAE328ECD6F10041B33B /* AppStyles.swift */,
-				CF59EAE428ECD6F10041B33B /* Fonts */,
-				CF59EAE928ECD6F10041B33B /* Icons.swift */,
-				CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */,
 				CF59EAD728ECD6B30041B33B /* PlomeCoreKitTests */,
 				CF59EACA28ECD6B30041B33B /* Products */,
 			);
@@ -94,6 +89,11 @@
 			children = (
 				CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */,
 				CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */,
+				CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */,
+				CF59EAE328ECD6F10041B33B /* AppStyles.swift */,
+				CF59EAE428ECD6F10041B33B /* Fonts */,
+				CF59EAE928ECD6F10041B33B /* Icons.swift */,
+				CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */,
 			);
 			path = PlomeCoreKit;
 			sourceTree = "<group>";
