@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../PlomeCoreKit/PlomeCoreKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:Plome.xcodeproj">
    </FileRef>
 </Workspace>
