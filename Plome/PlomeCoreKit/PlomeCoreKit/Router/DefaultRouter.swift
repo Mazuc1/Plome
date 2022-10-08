@@ -57,7 +57,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     public func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
-        alertController.view.tintColor = .init(color: .pineorange)
+        alertController.view.tintColor = .black
         rootViewController?.present(alertController, animated: true)
     }
 
@@ -67,7 +67,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         alertController.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
             completion()
         }))
-        alertController.view.tintColor = .init(color: .pineorange)
+        alertController.view.tintColor = .black
         rootViewController?.present(alertController, animated: true)
     }
 }
