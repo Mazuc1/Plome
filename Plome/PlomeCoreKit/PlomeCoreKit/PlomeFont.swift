@@ -49,9 +49,3 @@ public enum Font {
         }
     }
 }
-
-public extension UIFont {
-    class func urbaneRounded(size: CGFloat, weight: Font.Weight) -> UIFont {
-        UIFont(name: weight.fontSystemName, size: size) ?? UIFont.systemFont(ofSize: size)
-    }
-}
