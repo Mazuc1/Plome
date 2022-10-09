@@ -5,14 +5,29 @@
 //  Created by Loic Mazuc on 04/10/2022.
 //
 
+import PlomeCoreKit
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
+    private var context: ContextProtocol!
+    private var appRouter: AppRouter!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+
+        /// UI of application
+        AppAppearance.setAppearance()
+
+        /// Creation of Context, Screens and AppRouter
+        context = Context()
+        let screens = Screens(context: context)
+        appRouter = AppRouter(window: window!, context: context, screens: screens)
+
+        /// Starts app flow
+        appRouter.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
@@ -22,3 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {}
 }
 
+final class WrappedViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

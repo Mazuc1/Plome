@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum AppAppearance {
+public class AppAppearance {
     public static func setAppearance() {
         
     }
