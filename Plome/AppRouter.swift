@@ -18,8 +18,6 @@ final class AppRouter {
     // MARK: - UI
 
     let window: UIWindow
-    let wrappedViewController = WrappedViewController()
-
     let tabBarController = MainTabBarController()
 
     // MARK: - Initializer
@@ -29,7 +27,6 @@ final class AppRouter {
         self.context = context
         self.screens = screens
         
-        //window.rootViewController = wrappedViewController
         window.makeKeyAndVisible()
     }
 
