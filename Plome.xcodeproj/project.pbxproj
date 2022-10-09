@@ -44,7 +44,7 @@
 		CF3B9AA328F32AE900457A44 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CF3B9AA528F32B8C00457A44 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		CF3B9AA728F32BA600457A44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		CF59EA1A28ECCD810041B33B /* Plome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF59EA1A28ECCD810041B33B /* Plome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Plome.app; path = "/Users/loicmazuc/Documents/OpenClassroom/P12/Plome/build/Debug-iphoneos/Plome.app"; sourceTree = "<absolute>"; };
 		CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EABD28ECD3580041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				CFBF56AC28ECC5F000E4EC7D /* Plome */,
-				CF59EA1A28ECCD810041B33B /* Plome.app */,
 				CF59EA3F28ECCE260041B33B /* Frameworks */,
 			);
 			sourceTree = "<group>";

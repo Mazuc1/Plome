@@ -11,6 +11,6 @@ import UIKit
 final class HomeViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem = Tabs.home.item
+        
     }
 }

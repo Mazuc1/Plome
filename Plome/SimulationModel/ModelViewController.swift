@@ -11,6 +11,6 @@ import UIKit
 final class ModelViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem = Tabs.model.item
+        
     }
 }

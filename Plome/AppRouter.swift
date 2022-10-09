@@ -37,11 +37,12 @@ final class AppRouter {
 
     func start() {
         tabBarController.viewControllers = [
-            HomeViewController(),
-            ModelViewController(),
-            SettingsViewController()
+            HomeViewController().configure { $0.tabBarItem = Tabs.home.item },
+            ModelViewController().configure { $0.tabBarItem = Tabs.model.item },
+            SettingsViewController().configure { $0.tabBarItem = Tabs.settings.item }
         ]
 
+        tabBarController.selectedIndex = 0
         window.rootViewController = tabBarController
     }
 }
