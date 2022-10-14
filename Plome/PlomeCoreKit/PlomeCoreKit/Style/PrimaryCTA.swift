@@ -14,7 +14,7 @@ public class PrimaryCTA: UIButton {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         setTitleColor(.init(color: .lightViolet), for: .normal)
-        titleLabel?.font = PlomeFont.buttonDemiBold.font
+        titleLabel?.font = PlomeFont.demiBoldL.font
         backgroundColor = .init(color: .lightViolet, alpha: 0.2)
         layer.cornerRadius = AppStyles.defaultRadius
     }
