@@ -27,7 +27,7 @@ extension CDSimulation {
 
     @NSManaged public var date: Date?
     @NSManaged public var type: SimulationType
-    @NSManaged public var exams: NSSet?
+    @NSManaged public var exams: Set<CDExam>?
 
 }
 
