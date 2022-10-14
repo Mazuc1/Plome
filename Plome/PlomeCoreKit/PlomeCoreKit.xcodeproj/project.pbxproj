@@ -12,10 +12,6 @@
 		CF208F2328F94810001F83B1 /* CDExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1F28F94810001F83B1 /* CDExam.swift */; };
 		CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2428F94C3C001F83B1 /* StorageProvider.swift */; };
 		CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2628F95318001F83B1 /* PrimaryCTA.swift */; };
-		CF208F4928F95C55001F83B1 /* UrbaneRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4528F95C30001F83B1 /* UrbaneRounded-Light.ttf */; };
-		CF208F4A28F95C55001F83B1 /* UrbaneRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4628F95C30001F83B1 /* UrbaneRounded-Medium.ttf */; };
-		CF208F4B28F95C55001F83B1 /* UrbaneRounded-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4728F95C30001F83B1 /* UrbaneRounded-DemiBold.ttf */; };
-		CF208F4C28F95C55001F83B1 /* UrbaneRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4428F95C30001F83B1 /* UrbaneRounded-Bold.ttf */; };
 		CF3B9A8428F1DCBA00457A44 /* ModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A7E28F1DCBA00457A44 /* ModalTransition.swift */; };
 		CF3B9A8528F1DCBA00457A44 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A7F28F1DCBA00457A44 /* Transition.swift */; };
 		CF3B9A8628F1DCBA00457A44 /* EmptyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A8028F1DCBA00457A44 /* EmptyTransition.swift */; };
@@ -55,10 +51,6 @@
 		CF208F2428F94C3C001F83B1 /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		CF208F2628F95318001F83B1 /* PrimaryCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryCTA.swift; sourceTree = "<group>"; };
 		CF208F3E28F95BA2001F83B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CF208F4428F95C30001F83B1 /* UrbaneRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Bold.ttf"; sourceTree = "<group>"; };
-		CF208F4528F95C30001F83B1 /* UrbaneRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Light.ttf"; sourceTree = "<group>"; };
-		CF208F4628F95C30001F83B1 /* UrbaneRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Medium.ttf"; sourceTree = "<group>"; };
-		CF208F4728F95C30001F83B1 /* UrbaneRounded-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-DemiBold.ttf"; sourceTree = "<group>"; };
 		CF3B9A7E28F1DCBA00457A44 /* ModalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalTransition.swift; sourceTree = "<group>"; };
 		CF3B9A7F28F1DCBA00457A44 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		CF3B9A8028F1DCBA00457A44 /* EmptyTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTransition.swift; sourceTree = "<group>"; };
@@ -118,17 +110,6 @@
 				CF208F1E28F94810001F83B1 /* CDSimulation.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		CF208F4828F95C30001F83B1 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				CF208F4428F95C30001F83B1 /* UrbaneRounded-Bold.ttf */,
-				CF208F4528F95C30001F83B1 /* UrbaneRounded-Light.ttf */,
-				CF208F4628F95C30001F83B1 /* UrbaneRounded-Medium.ttf */,
-				CF208F4728F95C30001F83B1 /* UrbaneRounded-DemiBold.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CF3B9A7C28F1DCBA00457A44 /* Router */ = {
@@ -202,7 +183,6 @@
 				CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */,
 				CF3B9A9728F1E84100457A44 /* Configurable.swift */,
 				CF208F1728F9459A001F83B1 /* CoreData */,
-				CF208F4828F95C30001F83B1 /* Fonts */,
 				CF3B9A9928F1EB0B00457A44 /* Style */,
 				CF3B9A9028F1E00B00457A44 /* Extensions */,
 				CF3B9A7C28F1DCBA00457A44 /* Router */,
@@ -310,10 +290,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF208F4A28F95C55001F83B1 /* UrbaneRounded-Medium.ttf in Resources */,
-				CF208F4B28F95C55001F83B1 /* UrbaneRounded-DemiBold.ttf in Resources */,
-				CF208F4C28F95C55001F83B1 /* UrbaneRounded-Bold.ttf in Resources */,
-				CF208F4928F95C55001F83B1 /* UrbaneRounded-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
