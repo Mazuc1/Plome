@@ -8,10 +8,13 @@
 import UIKit
 
 public class PrimaryCTA: UIButton {
-    required init(title: String) {
+    public static let height: CGFloat = 54
+    
+    public required init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         setTitleColor(.init(color: .lightViolet), for: .normal)
+        titleLabel?.font = PlomeFont.buttonDemiBold.font
         backgroundColor = .init(color: .lightViolet, alpha: 0.2)
         layer.cornerRadius = AppStyles.defaultRadius
     }
