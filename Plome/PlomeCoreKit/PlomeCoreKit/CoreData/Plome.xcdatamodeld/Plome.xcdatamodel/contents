@@ -8,7 +8,7 @@
         <relationship name="simulation" maxCount="1" deletionRule="Nullify" destinationEntity="CDSimulation" inverseName="exams" inverseEntity="CDSimulation"/>
     </entity>
     <entity name="CDSimulation" representedClassName="CDSimulation" syncable="YES">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="exams" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDExam" inverseName="simulation" inverseEntity="CDExam"/>
     </entity>
