@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF208F1A28F945BB001F83B1 /* Plome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1828F945BB001F83B1 /* Plome.xcdatamodeld */; };
 		CF3B9A8428F1DCBA00457A44 /* ModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A7E28F1DCBA00457A44 /* ModalTransition.swift */; };
 		CF3B9A8528F1DCBA00457A44 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A7F28F1DCBA00457A44 /* Transition.swift */; };
 		CF3B9A8628F1DCBA00457A44 /* EmptyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A8028F1DCBA00457A44 /* EmptyTransition.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF208F1928F945BB001F83B1 /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
 		CF3B9A7E28F1DCBA00457A44 /* ModalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalTransition.swift; sourceTree = "<group>"; };
 		CF3B9A7F28F1DCBA00457A44 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		CF3B9A8028F1DCBA00457A44 /* EmptyTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTransition.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF208F1728F9459A001F83B1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CF208F1828F945BB001F83B1 /* Plome.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		CF3B9A7C28F1DCBA00457A44 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 				CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */,
 				CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */,
 				CF3B9A9728F1E84100457A44 /* Configurable.swift */,
+				CF208F1728F9459A001F83B1 /* CoreData */,
 				CF3B9A9928F1EB0B00457A44 /* Style */,
 				CF3B9A9028F1E00B00457A44 /* Extensions */,
 				CF59EAE428ECD6F10041B33B /* Fonts */,
@@ -307,6 +318,7 @@
 				CF3B9A8F28F1DFCB00457A44 /* PlomeColor.swift in Sources */,
 				CF3B9A8628F1DCBA00457A44 /* EmptyTransition.swift in Sources */,
 				CF3B9A8928F1DCBA00457A44 /* DefaultRouter.swift in Sources */,
+				CF208F1A28F945BB001F83B1 /* Plome.xcdatamodeld in Sources */,
 				CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */,
 				CF3B9A9B28F3280900457A44 /* AppViewController.swift in Sources */,
 				CF59EAEC28ECD6F20041B33B /* AppStyles.swift in Sources */,
@@ -580,6 +592,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CF208F1828F945BB001F83B1 /* Plome.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CF208F1928F945BB001F83B1 /* Plome.xcdatamodel */,
+			);
+			currentVersion = CF208F1928F945BB001F83B1 /* Plome.xcdatamodel */;
+			path = Plome.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CF59EAC028ECD6B30041B33B /* Project object */;
 }
