@@ -35,7 +35,7 @@ final class AppRouter {
     func start() {
         tabBarController.viewControllers = [
             HomeViewController().configure { $0.tabBarItem = Tabs.home.item },
-            ModelViewController().configure { $0.tabBarItem = Tabs.model.item },
+            SimulationModelViewController().configure { $0.tabBarItem = Tabs.model.item },
             SettingsViewController().configure { $0.tabBarItem = Tabs.settings.item }
         ]
 
