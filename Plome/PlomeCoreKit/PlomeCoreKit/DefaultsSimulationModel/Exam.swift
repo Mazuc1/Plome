@@ -8,8 +8,8 @@
 import Foundation
 
 public struct Exam: Hashable {
-    let name: String
-    let coefficient: Float?
-    let grade: Float?
-    let type: ExamType
+    public let name: String
+    public let coefficient: Float?
+    public let grade: Float?
+    public let type: ExamType
 }

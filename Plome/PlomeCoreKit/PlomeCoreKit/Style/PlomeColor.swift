@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public enum PlomeColor {
     // Text
@@ -48,6 +49,27 @@ public enum PlomeColor {
             
         case .success: return (0.19, 0.67, 0.04)
         case .fail: return (0.99, 0.117, 0.121)
+        }
+    }
+    
+    public var color: UIColor {
+        switch self {
+        case .black: return UIColor.init(color: .black)
+        case .darkGray: return UIColor.init(color: .darkGray)
+            
+        case .darkBlue: return UIColor.init(color: .darkBlue)
+        case .pink: return UIColor.init(color: .pink)
+        case .lightViolet: return UIColor.init(color: .lightViolet)
+            
+        case .background: return UIColor.init(color: .background)
+            
+        case .withoutMention: return UIColor.init(color: .withoutMention)
+        case .quiteWellMention: return UIColor.init(color: .quiteWellMention)
+        case .greatMention: return UIColor.init(color: .greatMention)
+        case .veryGreatMention: return UIColor.init(color: .veryGreatMention)
+            
+        case .success: return UIColor.init(color: .success)
+        case .fail: return UIColor.init(color: .fail)
         }
     }
 }

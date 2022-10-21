@@ -13,6 +13,7 @@
 		CF208F5528F960E0001F83B1 /* UrbaneRounded-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F5028F960D5001F83B1 /* UrbaneRounded-DemiBold.ttf */; };
 		CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBCB2902838300FA14C4 /* SimulationModelsRouter.swift */; };
 		CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBCD290286CB00FA14C4 /* SimulationModelsViewModel.swift */; };
+		CF2CCBD029028F2C00FA14C4 /* SimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBCF29028F2C00FA14C4 /* SimulationCell.swift */; };
 		CF3B9A8C28F1DD1400457A44 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A8A28F1DD1400457A44 /* Screens.swift */; };
 		CF3B9A8D28F1DD1400457A44 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A8B28F1DD1400457A44 /* Context.swift */; };
 		CF3B9A9E28F3287B00457A44 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A9C28F3287B00457A44 /* MainTabBarController.swift */; };
@@ -49,6 +50,7 @@
 		CF208F5028F960D5001F83B1 /* UrbaneRounded-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-DemiBold.ttf"; sourceTree = "<group>"; };
 		CF2CCBCB2902838300FA14C4 /* SimulationModelsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsRouter.swift; sourceTree = "<group>"; };
 		CF2CCBCD290286CB00FA14C4 /* SimulationModelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsViewModel.swift; sourceTree = "<group>"; };
+		CF2CCBCF29028F2C00FA14C4 /* SimulationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCell.swift; sourceTree = "<group>"; };
 		CF3B9A8A28F1DD1400457A44 /* Screens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		CF3B9A8B28F1DD1400457A44 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		CF3B9A9C28F3287B00457A44 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				CF3B9AA528F32B8C00457A44 /* SimulationModelsViewController.swift */,
 				CF2CCBCB2902838300FA14C4 /* SimulationModelsRouter.swift */,
 				CF2CCBCD290286CB00FA14C4 /* SimulationModelsViewModel.swift */,
+				CF2CCBCF29028F2C00FA14C4 /* SimulationCell.swift */,
 			);
 			path = SimulationModel;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
 				CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */,
 				CF3B9A8D28F1DD1400457A44 /* Context.swift in Sources */,
+				CF2CCBD029028F2C00FA14C4 /* SimulationCell.swift in Sources */,
 				CF3B9AA428F32AE900457A44 /* HomeViewController.swift in Sources */,
 				CF3B9A8C28F1DD1400457A44 /* Screens.swift in Sources */,
 				CF3B9AA828F32BA600457A44 /* SettingsViewController.swift in Sources */,
