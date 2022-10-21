@@ -9,13 +9,6 @@
 import Foundation
 import CoreData
 
-@objc public enum SimulationType: Int16 {
-    case brevet
-    case BAC
-    case CAP
-    case custom
-}
-
 @objc(CDSimulation)
 public class CDSimulation: NSManagedObject {}
 
@@ -25,8 +18,8 @@ extension CDSimulation {
         return NSFetchRequest<CDSimulation>(entityName: "CDSimulation")
     }
 
+    @NSManaged public var name: String
     @NSManaged public var date: Date?
-    @NSManaged public var type: SimulationType
     @NSManaged public var exams: Set<CDExam>?
 
 }

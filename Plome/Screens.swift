@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public final class Screens {
+final class Screens {
     // MARK: - Properties
 
     public let context: ContextProtocol
@@ -17,5 +17,16 @@ public final class Screens {
 
     public init(context: ContextProtocol) {
         self.context = context
+    }
+}
+
+// MARK: - Simulation Models
+
+extension Screens {
+    func createSimulationModelsTab(router: SimulationModelsRouter) -> UIViewController {
+        let simulationModelsViewModel = SimulationModelsViewModel(defaultSimulationModelsProvider: context.defaultSimulationModelsProvider)
+        let simulationModelsViewController = SimulationModelsViewController(viewModel: simulationModelsViewModel)
+        simulationModelsViewController.tabBarItem = Tabs.model.item
+        return simulationModelsViewController
     }
 }

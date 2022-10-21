@@ -1,5 +1,5 @@
 //
-//  SimulationModelViewController.swift
+//  SimulationModelsViewController.swift
 //  Plome
 //
 //  Created by Loic Mazuc on 09/10/2022.
@@ -7,19 +7,28 @@
 
 import PlomeCoreKit
 import UIKit
+import Combine
 
-final class SimulationModelViewController: AppViewController {
+final class SimulationModelsViewController: AppViewController {
     
     // MARK: - Properties
     
-    typealias DataSourceSnapshot = UITableViewDiffableDataSource<Int, String>
+    let viewModel: SimulationModelsViewModel
+    
+    typealias DataSourceSnapshot = UITableViewDiffableDataSource<Int, Simulation>
     private lazy var dataSource: DataSourceSnapshot = self.createDataSource()
+    
+    private var cancellables: Set<AnyCancellable> = []
     
     // MARK: - UI
     
     lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
         $0.delegate = self
-        $0.backgroundColor = .black
+//        $0.rowHeight = 110
+//        $0.estimatedRowHeight = UITableView.automaticDimension
+        $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
+        $0.backgroundColor = .clear
+        $0.separatorStyle = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -30,12 +39,24 @@ final class SimulationModelViewController: AppViewController {
     
     // MARK: - Init
     
+    required init(viewModel: SimulationModelsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupConstraint()
+        
+        bindSnapshot()
+        viewModel.bindDataSource()
     }
     
     // MARK: - Methods
@@ -60,12 +81,25 @@ final class SimulationModelViewController: AppViewController {
         ])
     }
     
+    private func bindSnapshot() {
+        viewModel.$snapshot
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                self?.dataSource.apply($0)
+            }
+            .store(in: &cancellables)
+    }
+    
     @objc private func userDidTapAddModel() {
         print("🏹")
     }
     
     private func createDataSource() -> DataSourceSnapshot {
         return .init(tableView: tableView) { tableView, indexPath, itemIdentifier in
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
+                cell.setup(with: itemIdentifier)
+                return cell
+            }
             return UITableViewCell()
         }
     }
@@ -73,6 +107,6 @@ final class SimulationModelViewController: AppViewController {
 
 // MARK: - Table View Delegate
 
-extension SimulationModelViewController: UITableViewDelegate {}
+extension SimulationModelsViewController: UITableViewDelegate {}
 
 
