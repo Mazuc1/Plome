@@ -26,8 +26,14 @@ public class PrimaryCTA: UIButton {
 public class SecondaryIconCTA: UIButton {
     public required init(icon: Icons) {
         super.init(frame: .zero)
-        setTitleColor(.init(color: .pink), for: .normal)
-        setImage(icon.uiImage, for: .normal)
+        let imageWeightConfiguration = UIImage.SymbolConfiguration(weight: .bold)
+        let imageColorConfiguration = UIImage.SymbolConfiguration(paletteColors: [PlomeColor.pink.color])
+        let imageSizeConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
+        
+        let imageWeightAndColorConfiguration = imageWeightConfiguration.applying(imageColorConfiguration)
+        let imageFinalConfiguration = imageWeightAndColorConfiguration.applying(imageSizeConfiguration)
+        
+        setImage(UIImage(systemName: icon.name, withConfiguration: imageFinalConfiguration), for: .normal)
         backgroundColor = .init(color: .pink, alpha: 0.2)
         layer.cornerRadius = AppStyles.defaultRadius
     }
