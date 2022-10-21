@@ -30,6 +30,7 @@
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
 		CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */; };
 		CFDC912A2902C7A0008B21B0 /* AddExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC91292902C7A0008B21B0 /* AddExamCell.swift */; };
+		CFDC912C2902D38C008B21B0 /* AddSimulationModelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +74,7 @@
 		CFBF56B928ECC5F000E4EC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFBF56BB28ECC5F000E4EC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFDC91292902C7A0008B21B0 /* AddExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExamCell.swift; sourceTree = "<group>"; };
+		CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */,
 				CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */,
 				CFDC91292902C7A0008B21B0 /* AddExamCell.swift */,
+				CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */,
 			);
 			path = AddSimulation;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDC912C2902D38C008B21B0 /* AddSimulationModelHeaderView.swift in Sources */,
 				CFBF56AE28ECC5F000E4EC7D /* AppDelegate.swift in Sources */,
 				CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */,
 				CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */,

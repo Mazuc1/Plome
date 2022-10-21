@@ -36,6 +36,7 @@ final class AddSimulationModelViewController: AppViewController {
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.register(AddExamCell.self, forCellReuseIdentifier: AddExamCell.reuseIdentifier)
+        $0.register(AddSimulationModelHeaderView.self, forHeaderFooterViewReuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -102,8 +103,9 @@ extension AddSimulationModelViewController: UITableViewDataSource {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        AddSimulationModelSection.init(rawValue: section)?.name
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionName = AddSimulationModelSection.init(rawValue: section)?.name else { return nil }
+        return AddSimulationModelHeaderView(text: sectionName, reuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
