@@ -22,7 +22,6 @@ final public class DefaultSimulationModelsProvider {
     
     private func buildBrevetSimluationModel() {
         let simulationModel = CDSimulation(context: storageProvider.context)
-        simulationModel.type = .brevet
         simulationModel.exams = toCoreData(exams: BrevetExamsProvider.allExams())
     }
     
