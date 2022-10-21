@@ -24,8 +24,6 @@ final class SimulationModelsViewController: AppViewController {
     
     lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
         $0.delegate = self
-//        $0.rowHeight = 110
-//        $0.estimatedRowHeight = UITableView.automaticDimension
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
