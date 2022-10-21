@@ -13,12 +13,27 @@ final class AddSimulationModelViewController: AppViewController {
     // MARK: - Properties
     
     let viewModel: AddSimulationModelViewModel
+    
+    private enum AddSimulationModelSection: Int, CaseIterable {
+        case trial = 0
+        case continuousControl = 1
+        case option = 2
+        
+        var name: String {
+            switch self {
+            case .trial: return "Épreuve(s)"
+            case .continuousControl: return "Contrôle(s) continue"
+            case .option: return "Option(s)"
+            }
+        }
+    }
 
     // MARK: - UI
     
     lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
         $0.delegate = self
-        $0.backgroundColor = .white
+        $0.dataSource = self
+        $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -72,6 +87,26 @@ final class AddSimulationModelViewController: AppViewController {
     
     @objc private func userDidTapRegisterModel() {
         print("🫑")
+    }
+}
+
+// MARK: - Table View Data Source
+
+extension AddSimulationModelViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        AddSimulationModelSection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        AddSimulationModelSection.init(rawValue: section)?.name
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
 
