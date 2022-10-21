@@ -66,7 +66,7 @@ final class SimulationModelsViewController: AppViewController {
             primaryCTAAddModel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTAAddModel.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             view.trailingAnchor.constraint(equalTo: primaryCTAAddModel.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
-            primaryCTAAddModel.heightAnchor.constraint(equalToConstant: PrimaryCTA.height),
+            primaryCTAAddModel.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
         ])
         
         view.addSubview(tableView)
