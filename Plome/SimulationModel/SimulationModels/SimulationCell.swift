@@ -77,16 +77,19 @@ final class SimulationCell: UITableViewCell {
     }
     
     private func setupLayout() {
-        stackView.stretchInView(parentView: contentView)
+        contentView.addSubview(stackView)
         stackView.addArrangedSubviews([labelSimulationName, labelTrials, labelContinuousControls, labelOptions])
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: AppStyles.defaultSpacing),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+        ])
         
         stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                         left: AppStyles.defaultSpacing,
                                         bottom: AppStyles.defaultSpacing,
                                         right: AppStyles.defaultSpacing)
-        
-        NSLayoutConstraint.activate([
-            contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: AppStyles.defaultSpacing),
-        ])
     }
 }
