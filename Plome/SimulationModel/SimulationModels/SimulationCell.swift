@@ -17,26 +17,26 @@ final class SimulationCell: UITableViewCell {
     // MARK: - UI
     
     private var labelSimulationName: UILabel = UILabel().configure {
-        $0.font = PlomeFont.demiBoldL.font
+        $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 1
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkBlue.color
     }
     
     private var labelTrials: UILabel = UILabel().configure {
-        $0.font = PlomeFont.bodyL.font
+        $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkGray.color
     }
     
     private var labelContinuousControls: UILabel = UILabel().configure {
-        $0.font = PlomeFont.bodyL.font
+        $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkGray.color
     }
     
     private var labelOptions: UILabel = UILabel().configure {
-        $0.font = PlomeFont.bodyL.font
+        $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkGray.color
     }
