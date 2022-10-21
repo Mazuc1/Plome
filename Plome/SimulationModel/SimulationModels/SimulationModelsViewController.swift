@@ -89,7 +89,7 @@ final class SimulationModelsViewController: AppViewController {
     }
     
     @objc private func userDidTapAddModel() {
-        print("🏹")
+        viewModel.userDidTapAddSimulationModel()
     }
     
     private func createDataSource() -> DataSourceSnapshot {

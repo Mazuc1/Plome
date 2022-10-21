@@ -12,6 +12,7 @@ import UIKit
 final class SimulationModelsViewModel: ObservableObject {
     
     // MARK: - Properties
+    let router: SimulationModelsRouter
     
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
@@ -20,7 +21,8 @@ final class SimulationModelsViewModel: ObservableObject {
     
     // MARK: - Init
     
-    init(defaultSimulationModelsProvider: DefaultSimulationModelsProvider) {
+    init(router: SimulationModelsRouter, defaultSimulationModelsProvider: DefaultSimulationModelsProvider) {
+        self.router = router
         self.defaultSimulationModelsProvider = defaultSimulationModelsProvider
     }
     
@@ -36,5 +38,9 @@ final class SimulationModelsViewModel: ObservableObject {
         snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: 1)
         
         return snapshot
+    }
+    
+    func userDidTapAddSimulationModel() {
+        router.openAddSimulationModel()
     }
 }
