@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Exam: Hashable {
+public struct Exam: Hashable {
     let name: String
     let coefficient: Float?
     let grade: Float?

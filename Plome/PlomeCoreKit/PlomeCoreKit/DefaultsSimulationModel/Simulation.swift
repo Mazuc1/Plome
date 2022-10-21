@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Simulation: Hashable {
-    let name: String
-    let date: Date
-    let exams: Set<Exam>?
+public struct Simulation: Hashable {
+    public let name: String
+    public let date: Date
+    public let exams: Set<Exam>?
 }

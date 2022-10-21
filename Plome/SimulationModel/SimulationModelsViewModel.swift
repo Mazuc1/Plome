@@ -7,12 +7,16 @@
 
 import Foundation
 import PlomeCoreKit
+import UIKit
 
-final class SimulationModelsViewModel {
+final class SimulationModelsViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
+    private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
+    
+    @Published var snapshot: TableViewSnapshot = .init()
     
     // MARK: - Init
     
@@ -21,4 +25,16 @@ final class SimulationModelsViewModel {
     }
     
     // MARK: - Methods
+    
+    func bindDataSource() {
+        snapshot = makeTableViewSnapshot()
+    }
+    
+    private func makeTableViewSnapshot() -> TableViewSnapshot {
+        var snapshot: TableViewSnapshot = .init()
+        snapshot.appendSections([1])
+        snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: 1)
+        
+        return snapshot
+    }
 }

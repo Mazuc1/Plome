@@ -7,6 +7,7 @@
 
 import PlomeCoreKit
 import UIKit
+import Combine
 
 final class SimulationModelsViewController: AppViewController {
     
@@ -14,14 +15,16 @@ final class SimulationModelsViewController: AppViewController {
     
     let viewModel: SimulationModelsViewModel
     
-    typealias DataSourceSnapshot = UITableViewDiffableDataSource<Int, String>
+    typealias DataSourceSnapshot = UITableViewDiffableDataSource<Int, Simulation>
     private lazy var dataSource: DataSourceSnapshot = self.createDataSource()
+    
+    private var cancellables: Set<AnyCancellable> = []
     
     // MARK: - UI
     
     lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
         $0.delegate = self
-        $0.backgroundColor = .black
+        $0.backgroundColor = .black.withAlphaComponent(0.1)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -47,6 +50,9 @@ final class SimulationModelsViewController: AppViewController {
         super.viewDidLoad()
         
         setupConstraint()
+        
+        bindSnapshot()
+        viewModel.bindDataSource()
     }
     
     // MARK: - Methods
@@ -71,13 +77,24 @@ final class SimulationModelsViewController: AppViewController {
         ])
     }
     
+    private func bindSnapshot() {
+        viewModel.$snapshot
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                self?.dataSource.apply($0)
+            }
+            .store(in: &cancellables)
+    }
+    
     @objc private func userDidTapAddModel() {
         print("🏹")
     }
     
     private func createDataSource() -> DataSourceSnapshot {
         return .init(tableView: tableView) { tableView, indexPath, itemIdentifier in
-            return UITableViewCell()
+            let cell = UITableViewCell()
+            cell.textLabel?.text = itemIdentifier.name
+            return cell
         }
     }
 }

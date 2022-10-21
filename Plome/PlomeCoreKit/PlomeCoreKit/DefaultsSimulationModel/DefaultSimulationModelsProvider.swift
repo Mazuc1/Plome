@@ -12,7 +12,7 @@ final public class DefaultSimulationModelsProvider {
     
     // MARK: - Properties
     
-    lazy var simulations: [Simulation] = {
+    public lazy var simulations: [Simulation] = {
        return [
         buildBrevetSimluationModel(),
         buildGeneralBACSimluationModel(),
