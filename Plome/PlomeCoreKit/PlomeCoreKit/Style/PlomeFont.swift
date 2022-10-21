@@ -24,7 +24,7 @@ public enum PlomeFont {
         switch self {
         case .buttonDemiBold: return UIFont.urbaneRounded(size: 20, weight: .demiBold)
         case .title: return UIFont.urbaneRounded(size: 30, weight: .bold)
-        case .subtitle: return UIFont.urbaneRounded(size: 25, weight: .bold)
+        case .subtitle: return UIFont.urbaneRounded(size: 20, weight: .bold)
         case .bodyL: return UIFont.urbaneRounded(size: 16, weight: .medium)
         case .bodyM: return UIFont.urbaneRounded(size: 14, weight: .medium)
         case .bodyS: return UIFont.urbaneRounded(size: 12, weight: .medium)
