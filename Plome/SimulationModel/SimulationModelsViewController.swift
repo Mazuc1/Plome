@@ -1,5 +1,5 @@
 //
-//  SimulationModelViewController.swift
+//  SimulationModelsViewController.swift
 //  Plome
 //
 //  Created by Loic Mazuc on 09/10/2022.
@@ -8,7 +8,7 @@
 import PlomeCoreKit
 import UIKit
 
-final class SimulationModelViewController: AppViewController {
+final class SimulationModelsViewController: AppViewController {
     
     // MARK: - Properties
     
@@ -73,6 +73,6 @@ final class SimulationModelViewController: AppViewController {
 
 // MARK: - Table View Delegate
 
-extension SimulationModelViewController: UITableViewDelegate {}
+extension SimulationModelsViewController: UITableViewDelegate {}
 
 
