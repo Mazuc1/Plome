@@ -12,6 +12,8 @@ final class SimulationModelsViewController: AppViewController {
     
     // MARK: - Properties
     
+    let viewModel: SimulationModelsViewModel
+    
     typealias DataSourceSnapshot = UITableViewDiffableDataSource<Int, String>
     private lazy var dataSource: DataSourceSnapshot = self.createDataSource()
     
@@ -29,6 +31,15 @@ final class SimulationModelsViewController: AppViewController {
     }
     
     // MARK: - Init
+    
+    required init(viewModel: SimulationModelsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life cycle
     
