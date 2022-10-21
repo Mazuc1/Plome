@@ -1,13 +1,13 @@
 //
-//  GeneralBACExamsProvider.swift
+//  TechnologicalBACExamsProvider.swift
 //  PlomeCoreKit
 //
-//  Created by Loic Mazuc on 14/10/2022.
+//  Created by Loic Mazuc on 21/10/2022.
 //
 
 import Foundation
 
-struct GeneralBACExamsProvider {
+struct TechnologicalBACExamsProvider {
     static func allExams() -> [Exam] {
         premiereTrials + premiereContinuousControls + terminaleTrials + terminaleContinuousControls
     }
@@ -19,7 +19,7 @@ struct GeneralBACExamsProvider {
     
     static private var premiereContinuousControls: [Exam] = [
         .init(name: "Spécialité abandonnée", coefficient: 8, grade: nil, type: .continuousControl),
-        .init(name: "Enseignement scientifique", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Mathématiques", coefficient: 3, grade: nil, type: .continuousControl),
         .init(name: "LVA", coefficient: 3, grade: nil, type: .continuousControl),
         .init(name: "LVB", coefficient: 3, grade: nil, type: .continuousControl),
         .init(name: "EPS", coefficient: 3, grade: nil, type: .continuousControl),
@@ -28,14 +28,14 @@ struct GeneralBACExamsProvider {
     ]
     
     static private var terminaleTrials: [Exam] = [
-        .init(name: "Grand oral", coefficient: 10, grade: nil, type: .trial),
-        .init(name: "Philosophie", coefficient: 8, grade: nil, type: .trial),
+        .init(name: "Grand oral", coefficient: 14, grade: nil, type: .trial),
+        .init(name: "Philosophie", coefficient: 4, grade: nil, type: .trial),
         .init(name: "Enseignement spécialité 1", coefficient: 16, grade: nil, type: .trial),
         .init(name: "Enseignement spécialité 2", coefficient: 16, grade: nil, type: .trial),
     ]
     
     static private var terminaleContinuousControls: [Exam] = [
-        .init(name: "Enseignement scientifique", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Mathématiques", coefficient: 3, grade: nil, type: .continuousControl),
         .init(name: "LVA", coefficient: 3, grade: nil, type: .continuousControl),
         .init(name: "LVB", coefficient: 3, grade: nil, type: .continuousControl),
         .init(name: "EPS", coefficient: 3, grade: nil, type: .continuousControl),
