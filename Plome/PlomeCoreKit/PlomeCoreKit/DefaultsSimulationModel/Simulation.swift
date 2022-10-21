@@ -10,5 +10,5 @@ import Foundation
 struct Simulation: Hashable {
     let name: String
     let date: Date
-    let exams: Set<CDExam>?
+    let exams: Set<Exam>?
 }

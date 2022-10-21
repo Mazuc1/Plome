@@ -12,29 +12,32 @@ final public class DefaultSimulationModelsProvider {
     
     // MARK: - Properties
     
-    private let storageProvider: StorageProvider
+    lazy var simulations: [Simulation] = {
+       return [
+        buildBrevetSimluationModel(),
+        buildGeneralBACSimluationModel(),
+        buildTechnologicalBACSimluationModel(),
+       ]
+    }()
     
     // MARK: - Init
     
-    public init(storageProvider: StorageProvider) {
-        self.storageProvider = storageProvider
+    public init() {}
+    
+    // MARK: - Methods
+    
+    private func buildBrevetSimluationModel() -> Simulation {
+        let examsSet = Set(BrevetExamsProvider.allExams().map { $0 })
+        return Simulation(name: "Brevet", date: Date(), exams: examsSet)
     }
     
-    private func buildBrevetSimluationModel() {
-        let simulationModel = CDSimulation(context: storageProvider.context)
-        simulationModel.exams = toCoreData(exams: BrevetExamsProvider.allExams())
+    private func buildGeneralBACSimluationModel() -> Simulation {
+        let examsSet = Set(GeneralBACExamsProvider.allExams().map { $0 })
+        return Simulation(name: "BAC Général", date: Date(), exams: examsSet)
     }
     
-    private func toCoreData(exams: [Exam]) -> Set<CDExam> {
-        var cdExams = Set<CDExam>.init()
-        
-        _ = exams.map {
-            let cdExam = CDExam(context: storageProvider.context)
-            cdExam.name = $0.name
-            cdExam.type = $0.type
-            cdExams.insert(cdExam)
-        }
-        
-        return cdExams
+    private func buildTechnologicalBACSimluationModel() -> Simulation {
+        let examsSet = Set(TechnologicalBACExamsProvider.allExams().map { $0 })
+        return Simulation(name: "BAC Technologique", date: Date(), exams: examsSet)
     }
 }
