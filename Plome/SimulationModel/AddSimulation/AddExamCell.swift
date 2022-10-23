@@ -13,19 +13,11 @@ final class AddExamCell: UITableViewCell {
     // MARK: - Properties
     
     static let reuseIdentifier: String = "AddExamCell"
-    private static let icon = Icons.add
     
     // MARK: - UI
     
     var iconImageView: UIImageView = UIImageView().configure {
-        let imageWeightConfiguration = UIImage.SymbolConfiguration(weight: .regular)
-        let imageColorConfiguration = UIImage.SymbolConfiguration(paletteColors: [PlomeColor.pink.color])
-        let imageSizeConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
-        
-        let imageWeightAndColorConfiguration = imageWeightConfiguration.applying(imageColorConfiguration)
-        let imageFinalConfiguration = imageWeightAndColorConfiguration.applying(imageSizeConfiguration)
-        
-        $0.image = UIImage(systemName: icon.name, withConfiguration: imageFinalConfiguration)
+        $0.image = Icons.add.configure(weight: .regular, color: .pink, size: 25)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
