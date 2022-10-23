@@ -83,7 +83,7 @@ final class SimulationModelsViewController: AppViewController {
         viewModel.$snapshot
             .receive(on: RunLoop.main)
             .sink { [weak self] in
-                self?.dataSource.apply($0)
+                self?.dataSource.apply($0, animatingDifferences: false, completion: nil)
             }
             .store(in: &cancellables)
     }
