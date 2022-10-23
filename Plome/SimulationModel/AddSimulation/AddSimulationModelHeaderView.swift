@@ -20,8 +20,6 @@ final class AddSimulationModelHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         
         textLabel?.text = text
-        textLabel?.font = PlomeFont.bodyS.font
-        textLabel?.textColor = PlomeColor.darkGray.color
     }
 
     required init?(coder _: NSCoder) {
@@ -33,7 +31,7 @@ final class AddSimulationModelHeaderView: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        textLabel?.font = PlomeFont.bodyS.font
+        textLabel?.font = PlomeFont.demiBoldS.font
         textLabel?.textColor = PlomeColor.darkGray.color
         textLabel?.sizeToFit()
     }
