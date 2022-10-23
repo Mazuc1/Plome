@@ -21,6 +21,7 @@ final class ModelExamCell: UITableViewCell {
         $0.font = PlomeFont.bodyL.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
+        $0.numberOfLines = 1
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
