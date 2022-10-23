@@ -52,4 +52,15 @@ public enum Icons {
         case .add: return "plus.rectangle"
         }
     }
+    
+    public func configure(weight: UIImage.SymbolWeight, color: PlomeColor, size: CGFloat) -> UIImage {
+        let imageWeightConfiguration = UIImage.SymbolConfiguration(weight: weight)
+        let imageColorConfiguration = UIImage.SymbolConfiguration(paletteColors: [color.color])
+        let imageSizeConfiguration = UIImage.SymbolConfiguration(pointSize: size)
+        
+        let imageWeightAndColorConfiguration = imageWeightConfiguration.applying(imageColorConfiguration)
+        let imageFinalConfiguration = imageWeightAndColorConfiguration.applying(imageSizeConfiguration)
+        
+        return UIImage(systemName: self.name, withConfiguration: imageFinalConfiguration) ?? UIImage()
+    }
 }

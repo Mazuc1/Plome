@@ -193,4 +193,35 @@ extension AddSimulationModelViewController: UITableViewDelegate {
             viewModel.userDidTapAddExam(in: section)
         }
     }
+    
+    // Disable edit for AddExamRow
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 { return false }
+        return true
+    }
+    
+    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
+    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
+    // indexPath will already be at 1, and skip the first item of arrays
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (_, _, completion) in
+            var section: AddSimulationModelSection = .option
+            
+            switch indexPath.section {
+            case 0: section = .trial
+            case 1: section = .continuousControl
+            case 2: section = .option
+            default: break
+            }
+            
+            self?.viewModel.userDidTapDeleteExam(at: indexPath.row - 1, in: section)
+            
+            completion(true)
+        }
+        
+        deleteAction.image = Icons.trash.configure(weight: .regular, color: .fail, size: 25)
+        deleteAction.backgroundColor = PlomeColor.background.color
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
 }

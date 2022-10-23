@@ -32,6 +32,14 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
     
+    func userDidTapDeleteExam(at index: Int, in section: AddSimulationModelViewController.AddSimulationModelSection) {
+        switch section {
+        case .trial: trials.remove(at: index)
+        case .continuousControl: continousControls.remove(at: index)
+        case .option: options.remove(at: index)
+        }
+    }
+    
     private func addExam(name: String, in section: AddSimulationModelViewController.AddSimulationModelSection) {
         switch section {
         case .trial: trials.append(.init(name: name, coefficient: nil, grade: nil, type: .trial))
