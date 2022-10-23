@@ -19,7 +19,7 @@ final class AddSimulationModelHeaderView: UITableViewHeaderFooterView {
     required init(text: String, reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        textLabel?.text = text.uppercased()
+        textLabel?.text = text
         textLabel?.font = PlomeFont.bodyS.font
         textLabel?.textColor = PlomeColor.darkGray.color
     }

@@ -17,7 +17,15 @@ final class AddExamCell: UITableViewCell {
     
     // MARK: - UI
     
-    var secondaryIconCTAAdd: SecondaryIconCTA = SecondaryIconCTA(icon: icon).configure {
+    var iconImageView: UIImageView = UIImageView().configure {
+        let imageWeightConfiguration = UIImage.SymbolConfiguration(weight: .regular)
+        let imageColorConfiguration = UIImage.SymbolConfiguration(paletteColors: [PlomeColor.pink.color])
+        let imageSizeConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
+        
+        let imageWeightAndColorConfiguration = imageWeightConfiguration.applying(imageColorConfiguration)
+        let imageFinalConfiguration = imageWeightAndColorConfiguration.applying(imageSizeConfiguration)
+        
+        $0.image = UIImage(systemName: icon.name, withConfiguration: imageFinalConfiguration)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -35,17 +43,20 @@ final class AddExamCell: UITableViewCell {
     
     func setup() {
         setupLayout()
+        contentView.backgroundColor = PlomeColor.pink.color.withAlphaComponent(0.2)
+        contentView.layer.cornerRadius = AppStyles.defaultRadius
         
         backgroundColor = .clear
         selectionStyle = .none
     }
     
     private func setupLayout() {
-        secondaryIconCTAAdd.stretchInView(parentView: contentView)
+        contentView.addSubview(iconImageView)
         
         NSLayoutConstraint.activate([
-            secondaryIconCTAAdd.heightAnchor.constraint(equalToConstant: AppStyles.secondaryIconCTAHeight),
+            contentView.heightAnchor.constraint(equalToConstant: AppStyles.secondaryIconCTAHeight),
+            iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
-
 }

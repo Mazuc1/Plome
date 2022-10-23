@@ -30,7 +30,7 @@ final class AddSimulationModelViewController: AppViewController {
 
     // MARK: - UI
     
-    lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
+    lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
         $0.dataSource = self
         $0.backgroundColor = .clear
