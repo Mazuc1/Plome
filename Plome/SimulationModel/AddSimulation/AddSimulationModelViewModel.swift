@@ -5,12 +5,18 @@
 //  Created by Loic Mazuc on 21/10/2022.
 //
 
+import Combine
 import Foundation
+import PlomeCoreKit
 
-final class AddSimulationModelViewModel {
+final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
     
     let router: SimulationModelsRouter
+    
+    @Published var trials: [Exam] = []
+    @Published var continousControls: [Exam] = []
+    @Published var options: [Exam] = []
     
     // MARK: - Init
     
@@ -21,8 +27,16 @@ final class AddSimulationModelViewModel {
     // MARK: - Methods
     
     func userDidTapAddExam(in section: AddSimulationModelViewController.AddSimulationModelSection) {
-        router.openAddExamAlert {
-            print("🫑", $0)
+        router.openAddExamAlert { [weak self] in
+            self?.addExam(name: $0, in: section)
+        }
+    }
+    
+    private func addExam(name: String, in section: AddSimulationModelViewController.AddSimulationModelSection) {
+        switch section {
+        case .trial: trials.append(.init(name: name, coefficient: nil, grade: nil, type: .trial))
+        case .continuousControl: continousControls.append(.init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
+        case .option: options.append(.init(name: name, coefficient: nil, grade: nil, type: .option))
         }
     }
 }

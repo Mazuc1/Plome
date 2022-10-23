@@ -7,12 +7,16 @@
 
 import UIKit
 import PlomeCoreKit
+import Combine
 
 final class AddSimulationModelViewController: AppViewController {
 
     // MARK: - Properties
     
     let viewModel: AddSimulationModelViewModel
+    var cancellables: Set<AnyCancellable> = .init()
+    
+    static let numberOfAddExamRowInSection: Int = 1
     
     enum AddSimulationModelSection: Int, CaseIterable {
         case trial = 0
@@ -35,6 +39,7 @@ final class AddSimulationModelViewController: AppViewController {
         $0.dataSource = self
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
         $0.register(AddExamCell.self, forCellReuseIdentifier: AddExamCell.reuseIdentifier)
         $0.register(AddSimulationModelHeaderView.self, forHeaderFooterViewReuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +68,7 @@ final class AddSimulationModelViewController: AppViewController {
         navigationItem.title = "Nouveau modèle"
         
         setupConstraint()
+        subscribeToExams()
     }
     
     // MARK: - Methods
@@ -87,6 +93,29 @@ final class AddSimulationModelViewController: AppViewController {
         ])
     }
     
+    private func subscribeToExams() {
+        viewModel.$trials
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$continousControls
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$options
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+    
     @objc private func userDidTapRegisterModel() {
         print("🫑")
     }
@@ -100,7 +129,16 @@ extension AddSimulationModelViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        var numberOfRows: Int = Self.numberOfAddExamRowInSection
+        
+        switch section {
+        case 0: numberOfRows += viewModel.trials.count
+        case 1: numberOfRows += viewModel.continousControls.count
+        case 2: numberOfRows += viewModel.options.count
+        default: return 0
+        }
+        
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -114,8 +152,27 @@ extension AddSimulationModelViewController: UITableViewDataSource {
                 cell.setup()
                 return cell
             }
+        } else {
+            return cellFor(indexPath: indexPath)
         }
+        
         return UITableViewCell()
+    }
+    
+    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
+    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
+    // indexPath will already be at 1, and skip the first item of arrays
+    private func cellFor(indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        switch indexPath.section {
+        case 0: cell.textLabel?.text = viewModel.trials[indexPath.row - 1].name
+        case 1: cell.textLabel?.text = viewModel.continousControls[indexPath.row - 1].name
+        case 2: cell.textLabel?.text = viewModel.options[indexPath.row - 1].name
+        default: return UITableViewCell()
+        }
+        
+        return cell
     }
 }
 
