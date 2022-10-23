@@ -16,7 +16,7 @@ final class AddExamCell: UITableViewCell {
     
     // MARK: - UI
     
-    var iconImageView: UIImageView = UIImageView().configure {
+    private var iconImageView: UIImageView = UIImageView().configure {
         $0.image = Icons.add.configure(weight: .regular, color: .pink, size: 25)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }

@@ -41,6 +41,7 @@ final class AddSimulationModelViewController: AppViewController {
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
         $0.register(AddExamCell.self, forCellReuseIdentifier: AddExamCell.reuseIdentifier)
+        $0.register(ModelExamCell.self, forCellReuseIdentifier: ModelExamCell.reuseIdentifier)
         $0.register(AddSimulationModelHeaderView.self, forHeaderFooterViewReuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -153,7 +154,11 @@ extension AddSimulationModelViewController: UITableViewDataSource {
                 return cell
             }
         } else {
-            return cellFor(indexPath: indexPath)
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ModelExamCell.reuseIdentifier) as? ModelExamCell,
+            let exam = exam(for: indexPath) {
+                cell.setup(exam: exam)
+                return cell
+            }
         }
         
         return UITableViewCell()
@@ -162,17 +167,13 @@ extension AddSimulationModelViewController: UITableViewDataSource {
     // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
     // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
     // indexPath will already be at 1, and skip the first item of arrays
-    private func cellFor(indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
+    private func exam(for indexPath: IndexPath) -> Exam? {
         switch indexPath.section {
-        case 0: cell.textLabel?.text = viewModel.trials[indexPath.row - 1].name
-        case 1: cell.textLabel?.text = viewModel.continousControls[indexPath.row - 1].name
-        case 2: cell.textLabel?.text = viewModel.options[indexPath.row - 1].name
-        default: return UITableViewCell()
+        case 0: return viewModel.trials[indexPath.row - 1]
+        case 1: return viewModel.continousControls[indexPath.row - 1]
+        case 2: return viewModel.options[indexPath.row - 1]
+        default: return nil
         }
-        
-        return cell
     }
 }
 
