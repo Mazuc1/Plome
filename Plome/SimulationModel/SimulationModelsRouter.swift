@@ -39,4 +39,19 @@ final class SimulationModelsRouter: DefaultRouter {
 
         route(to: addSimulationViewController, as: transition)
     }
+    
+    func openAddExamAlert(saveAction: @escaping (String) -> Void) {
+        let alertController = UIAlertController(title: "Nouveau", message: "Ajoutez votre examen", preferredStyle: .alert)
+        
+        alertController.addTextField { $0.placeholder = "Mathématiques..." }
+        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "Ajouter", style: .default, handler: { _ in
+            guard let examName = alertController.textFields?[0].text,
+            !examName.isEmpty else { return }
+            saveAction(examName)
+        }))
+        
+        alertController.view.tintColor = PlomeColor.pink.color
+        rootViewController?.present(alertController, animated: true)
+    }
 }

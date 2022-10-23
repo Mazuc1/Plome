@@ -23,6 +23,6 @@ public class AppAppearance {
         
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        UINavigationBar.appearance().tintColor = PlomeColor.pink.color        
+        UINavigationBar.appearance().tintColor = PlomeColor.pink.color
     }
 }

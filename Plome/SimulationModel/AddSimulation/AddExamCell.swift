@@ -13,11 +13,11 @@ final class AddExamCell: UITableViewCell {
     // MARK: - Properties
     
     static let reuseIdentifier: String = "AddExamCell"
-    private static let icon = Icons.add
     
     // MARK: - UI
     
-    var secondaryIconCTAAdd: SecondaryIconCTA = SecondaryIconCTA(icon: icon).configure {
+    private var iconImageView: UIImageView = UIImageView().configure {
+        $0.image = Icons.add.configure(weight: .regular, color: .darkBlue, size: 25)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -35,17 +35,20 @@ final class AddExamCell: UITableViewCell {
     
     func setup() {
         setupLayout()
+        contentView.backgroundColor = PlomeColor.darkBlue.color.withAlphaComponent(0.1)
+        contentView.layer.cornerRadius = AppStyles.defaultRadius
         
         backgroundColor = .clear
         selectionStyle = .none
     }
     
     private func setupLayout() {
-        secondaryIconCTAAdd.stretchInView(parentView: contentView)
+        contentView.addSubview(iconImageView)
         
         NSLayoutConstraint.activate([
-            secondaryIconCTAAdd.heightAnchor.constraint(equalToConstant: AppStyles.secondaryIconCTAHeight),
+            contentView.heightAnchor.constraint(equalToConstant: AppStyles.defaultCellHeight),
+            iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
-
 }

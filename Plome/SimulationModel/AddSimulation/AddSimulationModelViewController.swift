@@ -7,14 +7,18 @@
 
 import UIKit
 import PlomeCoreKit
+import Combine
 
 final class AddSimulationModelViewController: AppViewController {
 
     // MARK: - Properties
     
     let viewModel: AddSimulationModelViewModel
+    var cancellables: Set<AnyCancellable> = .init()
     
-    private enum AddSimulationModelSection: Int, CaseIterable {
+    static let numberOfAddExamRowInSection: Int = 1
+    
+    enum AddSimulationModelSection: Int, CaseIterable {
         case trial = 0
         case continuousControl = 1
         case option = 2
@@ -30,12 +34,14 @@ final class AddSimulationModelViewController: AppViewController {
 
     // MARK: - UI
     
-    lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
+    lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
         $0.dataSource = self
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
         $0.register(AddExamCell.self, forCellReuseIdentifier: AddExamCell.reuseIdentifier)
+        $0.register(ModelExamCell.self, forCellReuseIdentifier: ModelExamCell.reuseIdentifier)
         $0.register(AddSimulationModelHeaderView.self, forHeaderFooterViewReuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -63,6 +69,7 @@ final class AddSimulationModelViewController: AppViewController {
         navigationItem.title = "Nouveau modèle"
         
         setupConstraint()
+        subscribeToExams()
     }
     
     // MARK: - Methods
@@ -87,6 +94,29 @@ final class AddSimulationModelViewController: AppViewController {
         ])
     }
     
+    private func subscribeToExams() {
+        viewModel.$trials
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$continousControls
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$options
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+    
     @objc private func userDidTapRegisterModel() {
         print("🫑")
     }
@@ -100,7 +130,16 @@ extension AddSimulationModelViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        var numberOfRows: Int = Self.numberOfAddExamRowInSection
+        
+        switch section {
+        case 0: numberOfRows += viewModel.trials.count
+        case 1: numberOfRows += viewModel.continousControls.count
+        case 2: numberOfRows += viewModel.options.count
+        default: return 0
+        }
+        
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -114,11 +153,76 @@ extension AddSimulationModelViewController: UITableViewDataSource {
                 cell.setup()
                 return cell
             }
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ModelExamCell.reuseIdentifier) as? ModelExamCell,
+            let exam = exam(for: indexPath) {
+                cell.setup(exam: exam)
+                return cell
+            }
         }
+        
         return UITableViewCell()
+    }
+    
+    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
+    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
+    // indexPath will already be at 1, and skip the first item of arrays
+    private func exam(for indexPath: IndexPath) -> Exam? {
+        switch indexPath.section {
+        case 0: return viewModel.trials[indexPath.row - 1]
+        case 1: return viewModel.continousControls[indexPath.row - 1]
+        case 2: return viewModel.options[indexPath.row - 1]
+        default: return nil
+        }
     }
 }
 
 // MARK: - Table View Delegate
 
-extension AddSimulationModelViewController: UITableViewDelegate {}
+extension AddSimulationModelViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            var section: AddSimulationModelSection = .option
+            
+            switch indexPath.section {
+            case 0: section = .trial
+            case 1: section = .continuousControl
+            case 2: section = .option
+            default: break
+            }
+            
+            viewModel.userDidTapAddExam(in: section)
+        }
+    }
+    
+    // Disable edit for AddExamRow
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 { return false }
+        return true
+    }
+    
+    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
+    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
+    // indexPath will already be at 1, and skip the first item of arrays
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (_, _, completion) in
+            var section: AddSimulationModelSection = .option
+            
+            switch indexPath.section {
+            case 0: section = .trial
+            case 1: section = .continuousControl
+            case 2: section = .option
+            default: break
+            }
+            
+            self?.viewModel.userDidTapDeleteExam(at: indexPath.row - 1, in: section)
+            
+            completion(true)
+        }
+        
+        deleteAction.image = Icons.trash.configure(weight: .regular, color: .fail, size: 25)
+        deleteAction.backgroundColor = PlomeColor.background.color
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+}

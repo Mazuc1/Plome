@@ -31,7 +31,7 @@ extension Screens {
     }
     
     func createAddSimulationModel(router: SimulationModelsRouter) -> UIViewController {
-        let addSimulationViewModel = AddSimulationModelViewModel()
+        let addSimulationViewModel = AddSimulationModelViewModel(router: router)
         let addSimulationViewController = AddSimulationModelViewController(viewModel: addSimulationViewModel)
         let navigationController = UINavigationController(rootViewController: addSimulationViewController)
 
