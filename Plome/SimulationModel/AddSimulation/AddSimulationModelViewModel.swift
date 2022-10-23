@@ -10,7 +10,19 @@ import Foundation
 final class AddSimulationModelViewModel {
     // MARK: - Properties
     
+    let router: SimulationModelsRouter
+    
     // MARK: - Init
     
-    init() {}
+    init(router: SimulationModelsRouter) {
+        self.router = router
+    }
+    
+    // MARK: - Methods
+    
+    func userDidTapAddExam(in section: AddSimulationModelViewController.AddSimulationModelSection) {
+        router.openAddExamAlert {
+            print("🫑", $0)
+        }
+    }
 }

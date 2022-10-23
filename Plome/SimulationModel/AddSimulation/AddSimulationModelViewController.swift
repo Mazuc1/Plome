@@ -14,7 +14,7 @@ final class AddSimulationModelViewController: AppViewController {
     
     let viewModel: AddSimulationModelViewModel
     
-    private enum AddSimulationModelSection: Int, CaseIterable {
+    enum AddSimulationModelSection: Int, CaseIterable {
         case trial = 0
         case continuousControl = 1
         case option = 2
@@ -121,4 +121,19 @@ extension AddSimulationModelViewController: UITableViewDataSource {
 
 // MARK: - Table View Delegate
 
-extension AddSimulationModelViewController: UITableViewDelegate {}
+extension AddSimulationModelViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            var section: AddSimulationModelSection = .option
+            
+            switch indexPath.section {
+            case 0: section = .trial
+            case 1: section = .continuousControl
+            case 2: section = .option
+            default: break
+            }
+            
+            viewModel.userDidTapAddExam(in: section)
+        }
+    }
+}
