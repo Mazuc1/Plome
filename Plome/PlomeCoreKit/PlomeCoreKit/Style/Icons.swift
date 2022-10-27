@@ -28,6 +28,8 @@ public enum Icons {
     // Main
     case trash
     case add
+    case xmark
+    case pencil
 
     public var uiImage: UIImage {
         UIImage(systemName: name)!
@@ -50,6 +52,8 @@ public enum Icons {
 
         case .trash: return "trash.circle"
         case .add: return "plus.rectangle"
+        case .xmark: return "xmark"
+        case .pencil: return "pencil.circle"
         }
     }
 
