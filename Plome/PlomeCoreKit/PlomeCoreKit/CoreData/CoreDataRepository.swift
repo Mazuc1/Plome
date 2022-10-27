@@ -71,8 +71,9 @@ public extension CoreDataRepository {
         }
     }
 
-    func update() throws {
+    func update(_ body: @escaping (NSManagedObjectContext) -> Void) throws {
         _ = try mainContext.performAndWait {
+            body(mainContext)
             try mainContext.saveIfNeeded()
         }
     }

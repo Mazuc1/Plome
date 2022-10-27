@@ -25,7 +25,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []
     @Published var options: [Exam] = []
-    
+
     var cdSimulation: CDSimulation?
 
     // MARK: - Init
@@ -34,25 +34,25 @@ final class AddSimulationModelViewModel: ObservableObject {
         self.router = router
         self.simulationRepository = simulationRepository
         self.openAs = openAs
-        
+
         switch openAs {
         case .add: break
-        case .edit(let cdSimulation): self.setupEditMode(with: cdSimulation)
+        case let .edit(cdSimulation): setupEditMode(with: cdSimulation)
         }
     }
 
     // MARK: - Methods
-    
+
     private func setupEditMode(with cdSimulation: CDSimulation) {
         self.cdSimulation = cdSimulation
-        
+
         if let exams = cdSimulation.exams {
             trials = Array(exams.filter { $0.type == .trial })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
-            
+
             continousControls = Array(exams.filter { $0.type == .continuousControl })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
-            
+
             options = Array(exams.filter { $0.type == .option })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
         }
@@ -88,30 +88,27 @@ final class AddSimulationModelViewModel: ObservableObject {
         case .add:
             router.alertWithTextField(title: "Nouveau",
                                       message: "Comment souhaitez-vous nommer votre nouveau modèle ?",
-                                      buttonActionName: "Enregistrer") { [weak self] in
+                                      buttonActionName: "Enregistrer")
+            { [weak self] in
                 self?.saveNewSimulationModel(name: $0)
             }
-        case .edit(_): saveEditSimulationModel()
+        case .edit: saveEditSimulationModel()
         }
     }
-    
+
     private func saveEditSimulationModel() {
-//        cdSimulation?.addToExams(CDExam.init(context: simulationRepository.mainContext).configure(block: {
-//            $0.name = "Du code"
-//            $0.type = .option
-//            $0.simulation = self.cdSimulation!
-//        }))
-        cdSimulation?.exams?.removeAll()
-        
-        try! simulationRepository.update()
-        
-//        do {
-//
-//
-//            router.dismiss()
-//        } catch {
-//            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
-//        }
+        let _mergeAndConvertExams = mergeAndConvertExams
+        do {
+            try simulationRepository.update { [cdSimulation] in
+                if let cdSimulation {
+                    cdSimulation.exams = _mergeAndConvertExams($0, cdSimulation)
+                }
+            }
+
+            router.dismiss()
+        } catch {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+        }
     }
 
     private func saveNewSimulationModel(name: String) {
