@@ -13,7 +13,7 @@ public enum AppStyles {
     public static func defaultSpacing(factor: CGFloat) -> CGFloat {
         return defaultSpacing * factor
     }
-    
+
     public static let primaryCTAHeight: CGFloat = 54
     public static let secondaryIconCTAHeight: CGFloat = 48
     public static let defaultCellHeight: CGFloat = 44

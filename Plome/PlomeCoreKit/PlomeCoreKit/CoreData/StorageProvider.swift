@@ -10,29 +10,26 @@ import CoreData
 public class PersistentContainer: NSPersistentContainer {}
 
 public class StorageProvider {
-
     // MARK: - Properties
-    
+
     public let persistentContainer: PersistentContainer
-    
-    public lazy var context: NSManagedObjectContext = {
-        persistentContainer.viewContext
-    }()
-    
+
+    public lazy var context: NSManagedObjectContext = persistentContainer.viewContext
+
     // MARK: - Init
-    
+
     public init(storeType: StoreType = .persisted) {
-        persistentContainer = PersistentContainer(name: "Chapter11")
-        
+        persistentContainer = PersistentContainer(name: "Plome")
+
         if storeType == .inMemory {
             let persistentStoreDescription = NSPersistentStoreDescription()
             persistentStoreDescription.type = NSInMemoryStoreType
             persistentStoreDescription.url = URL(fileURLWithPath: "/dev/null")
-            
+
             persistentContainer.persistentStoreDescriptions = [persistentStoreDescription]
         }
-        
-        persistentContainer.loadPersistentStores(completionHandler: { description, error in
+
+        persistentContainer.loadPersistentStores(completionHandler: { _, error in
             if let error = error {
                 fatalError("Core Data store failed to load with error: \(error)")
             }

@@ -57,7 +57,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     public func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
-        alertController.view.tintColor = .black
+        alertController.view.tintColor = PlomeColor.pink.color
         rootViewController?.present(alertController, animated: true)
     }
 
@@ -67,7 +67,22 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         alertController.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
             completion()
         }))
-        alertController.view.tintColor = .black
+        alertController.view.tintColor = PlomeColor.pink.color
+        rootViewController?.present(alertController, animated: true)
+    }
+
+    public func alertWithTextField(title: String, message: String, buttonActionName: String, returnedValue: @escaping (String) -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alertController.addTextField { $0.placeholder = "Ecrivez ici..." }
+        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel))
+        alertController.addAction(UIAlertAction(title: buttonActionName, style: .default, handler: { _ in
+            guard let value = alertController.textFields?[0].text,
+                  !value.isEmpty else { return }
+            returnedValue(value)
+        }))
+
+        alertController.view.tintColor = PlomeColor.pink.color
         rootViewController?.present(alertController, animated: true)
     }
 }

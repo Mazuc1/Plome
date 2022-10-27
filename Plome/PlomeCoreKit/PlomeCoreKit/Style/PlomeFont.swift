@@ -11,11 +11,11 @@ public enum PlomeFont {
     case buttonDemiBold
     case title
     case subtitle
-    
+
     case bodyL
     case bodyM
     case bodyS
-    
+
     case demiBoldL
     case demiBoldM
     case demiBoldS
