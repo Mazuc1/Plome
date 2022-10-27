@@ -10,14 +10,21 @@ import Foundation
 import PlomeCoreKit
 import UserNotifications
 
-public protocol ContextProtocol: AnyObject {
+protocol ContextProtocol: AnyObject {
     var defaultSimulationModelsProvider: DefaultSimulationModelsProvider { get }
+    var storageProvider: StorageProvider { get }
+    var simulationRepository: CoreDataRepository<CDSimulation> { get }
 }
 
-public final class Context: ContextProtocol {
-    public var defaultSimulationModelsProvider: PlomeCoreKit.DefaultSimulationModelsProvider
+final class Context: ContextProtocol {
+    let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
+    let simulationRepository: CoreDataRepository<CDSimulation>
+    let storageProvider: StorageProvider
 
-    public init() {
+    init() {
         defaultSimulationModelsProvider = DefaultSimulationModelsProvider()
+        
+        storageProvider = StorageProvider()
+        simulationRepository = CoreDataRepository(storageProvider: storageProvider)
     }
 }

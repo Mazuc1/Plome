@@ -13,6 +13,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
 
     let router: SimulationModelsRouter
+    let simulationRepository: CoreDataRepository<CDSimulation>
 
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []
@@ -20,8 +21,9 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: SimulationModelsRouter) {
+    init(router: SimulationModelsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.router = router
+        self.simulationRepository = simulationRepository
     }
 
     // MARK: - Methods
