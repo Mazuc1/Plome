@@ -9,8 +9,14 @@ import Foundation
 
 public struct Simulation: Hashable {
     public let name: String
-    public let date: Date
+    public let date: Date?
     public let exams: Set<Exam>?
+
+    public init(name: String, date: Date?, exams: Set<Exam>?) {
+        self.name = name
+        self.date = date
+        self.exams = exams
+    }
 
     public func number(of type: ExamType) -> Int {
         guard let exams else { return 0 }

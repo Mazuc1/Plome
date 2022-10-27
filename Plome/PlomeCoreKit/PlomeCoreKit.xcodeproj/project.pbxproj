@@ -19,6 +19,7 @@
 		CF208F5A28F96E9F001F83B1 /* BrevetExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5928F96E9F001F83B1 /* BrevetExamsProvider.swift */; };
 		CF208F5C28F96EB9001F83B1 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5B28F96EB9001F83B1 /* Exam.swift */; };
 		CF208F5E28F96F8B001F83B1 /* GeneralBACExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5D28F96F8B001F83B1 /* GeneralBACExamsProvider.swift */; };
+		CF236879290AB13000D04AAD /* Collection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF236878290AB13000D04AAD /* Collection+extension.swift */; };
 		CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBC729027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift */; };
 		CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBC929027F3600FA14C4 /* Simulation.swift */; };
 		CF2CCBD22902945500FA14C4 /* UIStackView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBD12902945500FA14C4 /* UIStackView+extension.swift */; };
@@ -68,6 +69,7 @@
 		CF208F5928F96E9F001F83B1 /* BrevetExamsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrevetExamsProvider.swift; sourceTree = "<group>"; };
 		CF208F5B28F96EB9001F83B1 /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 		CF208F5D28F96F8B001F83B1 /* GeneralBACExamsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralBACExamsProvider.swift; sourceTree = "<group>"; };
+		CF236878290AB13000D04AAD /* Collection+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+extension.swift"; sourceTree = "<group>"; };
 		CF2CCBC729027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologicalBACExamsProvider.swift; sourceTree = "<group>"; };
 		CF2CCBC929027F3600FA14C4 /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
 		CF2CCBD12902945500FA14C4 /* UIStackView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+extension.swift"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				CF3B9A9528F1E5E700457A44 /* UIView+extension.swift */,
 				CF3B9A9328F1E04400457A44 /* UIColor+extension.swift */,
 				CF2CCBD12902945500FA14C4 /* UIStackView+extension.swift */,
+				CF236878290AB13000D04AAD /* Collection+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				CF3B9A8728F1DCBA00457A44 /* PushTransition.swift in Sources */,
 				CF3B9A9828F1E84100457A44 /* Configurable.swift in Sources */,
 				CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */,
+				CF236879290AB13000D04AAD /* Collection+extension.swift in Sources */,
 				CF208F5728F963A7001F83B1 /* DefaultSimulationModelsProvider.swift in Sources */,
 				CF208F5E28F96F8B001F83B1 /* GeneralBACExamsProvider.swift in Sources */,
 				CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */,

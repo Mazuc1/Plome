@@ -11,6 +11,7 @@
 		CF208F5328F960E0001F83B1 /* UrbaneRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */; };
 		CF208F5428F960E0001F83B1 /* UrbaneRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */; };
 		CF208F5528F960E0001F83B1 /* UrbaneRounded-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F5028F960D5001F83B1 /* UrbaneRounded-DemiBold.ttf */; };
+		CF236877290AB03200D04AAD /* SimulationModelsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF236876290AB03200D04AAD /* SimulationModelsTableViewDataSource.swift */; };
 		CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBCB2902838300FA14C4 /* SimulationModelsRouter.swift */; };
 		CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBCD290286CB00FA14C4 /* SimulationModelsViewModel.swift */; };
 		CF2CCBD029028F2C00FA14C4 /* SimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBCF29028F2C00FA14C4 /* SimulationCell.swift */; };
@@ -53,6 +54,7 @@
 		CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Light.ttf"; sourceTree = "<group>"; };
 		CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Medium.ttf"; sourceTree = "<group>"; };
 		CF208F5028F960D5001F83B1 /* UrbaneRounded-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-DemiBold.ttf"; sourceTree = "<group>"; };
+		CF236876290AB03200D04AAD /* SimulationModelsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationModelsTableViewDataSource.swift; sourceTree = "<group>"; };
 		CF2CCBCB2902838300FA14C4 /* SimulationModelsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsRouter.swift; sourceTree = "<group>"; };
 		CF2CCBCD290286CB00FA14C4 /* SimulationModelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsViewModel.swift; sourceTree = "<group>"; };
 		CF2CCBCF29028F2C00FA14C4 /* SimulationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		CF49EBCF2902A29500693A85 /* SimulationModels */ = {
 			isa = PBXGroup;
 			children = (
+				CF236876290AB03200D04AAD /* SimulationModelsTableViewDataSource.swift */,
 				CF3B9AA528F32B8C00457A44 /* SimulationModelsViewController.swift */,
 				CF2CCBCD290286CB00FA14C4 /* SimulationModelsViewModel.swift */,
 				CF2CCBCF29028F2C00FA14C4 /* SimulationCell.swift */,
@@ -276,6 +279,7 @@
 				CF3B9A9F28F3287B00457A44 /* AppRouter.swift in Sources */,
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
 				CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */,
+				CF236877290AB03200D04AAD /* SimulationModelsTableViewDataSource.swift in Sources */,
 				CF3B9A8D28F1DD1400457A44 /* Context.swift in Sources */,
 				CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */,
 				CF2CCBD029028F2C00FA14C4 /* SimulationCell.swift in Sources */,
