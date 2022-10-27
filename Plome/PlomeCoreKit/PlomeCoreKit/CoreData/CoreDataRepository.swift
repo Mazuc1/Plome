@@ -67,13 +67,13 @@ extension CoreDataRepository {
             var entity = CoreDataEntity(context: mainContext)
             body(&entity, mainContext)
             
-            try mainContext.save()
+            try mainContext.saveIfNeeded()
         }
     }
     
     func update(_ entity: CoreDataEntity) throws {
-        try mainContext.performAndWait {
-            try mainContext.save()
+        _ = try mainContext.performAndWait {
+            try mainContext.saveIfNeeded()
         }
     }
     
@@ -84,7 +84,7 @@ extension CoreDataRepository {
 
         try mainContext.performAndWait {
             mainContext.delete(entity)
-            try mainContext.save()
+            try mainContext.saveIfNeeded()
         }
     }
     
@@ -97,7 +97,7 @@ extension CoreDataRepository {
             if let results = try mainContext.fetch(request) as? [CoreDataEntity],
                let firstEntity = results.first {
                 mainContext.delete(firstEntity)
-                try mainContext.save()
+                try mainContext.saveIfNeeded()
             } else {
                 throw CoreDataManagerError.objectNotFound
             }
@@ -113,11 +113,11 @@ extension CoreDataRepository {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         try mainContext.performAndWait {
-            // Need to do this to update UI, don't know why after many hours of searching...
+            // Need to do this to update UI, don't know why after manqy hours of searching...
             // _ = try backgroundContext.fetch(fetchRequest)
             
             try mainContext.deleteAndMergeChanges(using: deleteRequest)
-            try mainContext.save()
+            try mainContext.saveIfNeeded()
         }
     }
 }
