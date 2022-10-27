@@ -17,6 +17,8 @@ final class SimulationModelsViewModel: ObservableObject {
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationModelsSection, Simulation>
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     private let simulationRepository: CoreDataRepository<CDSimulation>
+    
+    private var coreDataSimulations: [CDSimulation]?
 
     @Published var snapshot: TableViewSnapshot = .init()
 
@@ -31,15 +33,20 @@ final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Methods
 
     func bindDataSource() {
-        let simulations = try? simulationRepository.list()
-            .map {
+        let coreDataSimulations = try? simulationRepository.list()
+        var simulations: [Simulation]?
+        
+        if let coreDataSimulations {
+            simulations = coreDataSimulations
+                .map {
                 var examSet: Set<Exam>?
                 if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
                     examSet = Set(exams)
                 }
                 return Simulation(name: $0.name, date: $0.date ?? Date(), exams: examSet)
             }
-
+        }
+        
         snapshot = makeTableViewSnapshot(coreDataSimulations: simulations)
     }
 
