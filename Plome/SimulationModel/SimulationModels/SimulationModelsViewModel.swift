@@ -68,7 +68,15 @@ final class SimulationModelsViewModel: ObservableObject {
     }
 
     func userDidTapAddSimulationModel() {
-        router.openAddSimulationModel()
+        router.openAddSimulationModel(openAs: .add)
+    }
+    
+    func userDidTapOnSimulation(at index: Int) {
+        if let simulation = coreDataSimulations?[index] {
+            router.openAddSimulationModel(openAs: .edit(simulation))
+        } else {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+        }
     }
 
     func userDidTapDeleteSimulationModel(at index: Int) {

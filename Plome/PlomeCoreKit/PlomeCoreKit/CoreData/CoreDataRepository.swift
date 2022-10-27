@@ -11,7 +11,7 @@ import CoreData
 public final class CoreDataRepository<CoreDataEntity: NSManagedObject> {
     // MARK: - Properties
 
-    private let mainContext: NSManagedObjectContext
+    public let mainContext: NSManagedObjectContext
 
     // MARK: - Init
 
@@ -71,7 +71,7 @@ public extension CoreDataRepository {
         }
     }
 
-    func update(_: CoreDataEntity) throws {
+    func update() throws {
         _ = try mainContext.performAndWait {
             try mainContext.saveIfNeeded()
         }

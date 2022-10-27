@@ -114,6 +114,12 @@ final class SimulationModelsViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationModelsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 0 {
+            viewModel.userDidTapOnSimulation(at: indexPath.row)
+        }
+    }
+    
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completion in
             self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)

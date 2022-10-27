@@ -1,13 +1,13 @@
 //
 //  CDExam+CoreDataProperties.swift
+//  
 //
-//
-//  Created by Loic Mazuc on 14/10/2022.
+//  Created by Loic Mazuc on 27/10/2022.
 //
 //
 
-import CoreData
 import Foundation
+import CoreData
 
 @objc public enum ExamType: Int16 {
     case trial
@@ -18,14 +18,16 @@ import Foundation
 @objc(CDExam)
 public class CDExam: NSManagedObject {}
 
-public extension CDExam {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDExam> {
+extension CDExam {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CDExam> {
         return NSFetchRequest<CDExam>(entityName: "CDExam")
     }
 
-    @NSManaged var name: String
-    @NSManaged var coefficient: Float
-    @NSManaged var grade: Float
-    @NSManaged var type: ExamType
-    @NSManaged var simulation: CDSimulation
+    @NSManaged public var coefficient: Float
+    @NSManaged public var grade: Float
+    @NSManaged public var name: String
+    @NSManaged public var type: ExamType
+    @NSManaged public var simulation: CDSimulation?
+
 }

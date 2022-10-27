@@ -22,7 +22,7 @@ final class AddSimulationModelViewController: AppViewController {
         case continuousControl = 1
         case option = 2
 
-        var name: String {
+        var sectionTitle: String {
             switch self {
             case .trial: return "Épreuve(s)"
             case .continuousControl: return "Contrôle(s) continue"
@@ -66,7 +66,7 @@ final class AddSimulationModelViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Nouveau modèle"
+        navigationItem.title = viewModel.cdSimulation?.name ?? "Nouveau modèle"
 
         setupConstraint()
         subscribeToExams()
@@ -143,7 +143,7 @@ extension AddSimulationModelViewController: UITableViewDataSource {
     }
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionName = AddSimulationModelSection(rawValue: section)?.name else { return nil }
+        guard let sectionName = AddSimulationModelSection(rawValue: section)?.sectionTitle else { return nil }
         return AddSimulationModelHeaderView(text: sectionName, reuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
     }
 
