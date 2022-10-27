@@ -26,8 +26,10 @@ final class AddSimulationModelViewModel: ObservableObject {
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []
     @Published var options: [Exam] = []
+    
+    var simulationName: String = "Nouveau modèle"
 
-    var cdSimulation: CDSimulation?
+    private var cdSimulation: CDSimulation?
 
     // MARK: - Init
 
@@ -46,6 +48,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Methods
 
     private func setupEditMode(with cdSimulation: CDSimulation) {
+        simulationName = cdSimulation.name
         self.cdSimulation = cdSimulation
 
         if let exams = cdSimulation.exams {
@@ -61,6 +64,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     }
     
     private func setupEditModeFromDefault(with simulation: Simulation) {
+        simulationName = simulation.name
         if let exams = simulation.exams {
             trials = Array(exams.filter { $0.type == .trial })
             continousControls = Array(exams.filter { $0.type == .continuousControl })
@@ -95,23 +99,22 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     func userDidTapSaveSimulationModel() {
         switch openAs {
-        case .add:
-            router.alertWithTextField(title: "Nouveau",
-                                      message: "Comment souhaitez-vous nommer votre nouveau modèle ?",
-                                      buttonActionName: "Enregistrer")
-            { [weak self] in
-                self?.saveNewSimulationModel(name: $0)
-            }
+        case .add: saveNewSimulationModel(name: simulationName)
         case .edit: saveEditSimulationModel()
-        case .editFromDefault(_): saveNewSimulationModel(name: "Nouveau")
+        case .editFromDefault(_): saveNewSimulationModel(name: simulationName)
         }
+    }
+    
+    func dismiss() {
+        router.dismiss()
     }
 
     private func saveEditSimulationModel() {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {
-            try simulationRepository.update { [cdSimulation] in
+            try simulationRepository.update { [cdSimulation, simulationName] in
                 if let cdSimulation {
+                    cdSimulation.name = simulationName
                     cdSimulation.exams = _mergeAndConvertExams($0, cdSimulation)
                 }
             }

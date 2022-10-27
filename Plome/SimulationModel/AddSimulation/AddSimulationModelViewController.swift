@@ -49,6 +49,29 @@ final class AddSimulationModelViewController: AppViewController {
         $0.addTarget(self, action: #selector(userDidTapSaveSimulationModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    lazy var textFieldTitle: UITextField = UITextField().configure { [weak self] in
+        $0.delegate = self
+        $0.placeholder = "Bac Pro..."
+        $0.returnKeyType = .done
+        $0.textAlignment = .center
+        $0.font = PlomeFont.demiBoldM.font
+        $0.textColor = PlomeColor.darkBlue.color
+    }
+    
+    lazy var buttonClose: UIBarButtonItem = UIBarButtonItem().configure { [weak self] in
+        $0.target = self
+        $0.style = .plain
+        $0.action = #selector(self?.userDidTapCloseButton)
+        $0.image = Icons.xmark.configure(weight: .regular, color: .pink, size: 20)
+    }
+    
+    lazy var buttonEditTitle: UIBarButtonItem = UIBarButtonItem().configure { [weak self] in
+        $0.target = self
+        $0.style = .plain
+        $0.action = #selector(self?.userDidTapEditTitleButton)
+        $0.image = Icons.pencil.configure(weight: .regular, color: .pink, size: 20)
+    }
 
     // MARK: - Init
 
@@ -66,7 +89,11 @@ final class AddSimulationModelViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = viewModel.cdSimulation?.name ?? "Nouveau modèle"
+        textFieldTitle.text = viewModel.simulationName
+        navigationItem.titleView = textFieldTitle
+        
+        navigationItem.leftBarButtonItem = buttonClose
+        navigationItem.rightBarButtonItem = buttonEditTitle
 
         setupConstraint()
         subscribeToExams()
@@ -119,6 +146,14 @@ final class AddSimulationModelViewController: AppViewController {
 
     @objc private func userDidTapSaveSimulationModel() {
         viewModel.userDidTapSaveSimulationModel()
+    }
+    
+    @objc private func userDidTapCloseButton() {
+        viewModel.dismiss()
+    }
+    
+    @objc private func userDidTapEditTitleButton() {
+        textFieldTitle.becomeFirstResponder()
     }
 }
 
@@ -225,5 +260,23 @@ extension AddSimulationModelViewController: UITableViewDelegate {
         deleteAction.backgroundColor = PlomeColor.background.color
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
+    }
+}
+
+// MARK: - Table View Delegate
+
+extension AddSimulationModelViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text,
+           !text.isEmpty {
+            viewModel.simulationName = text
+        } else {
+            textField.text = "Nouveau modèle"
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
