@@ -8,21 +8,21 @@
 import Combine
 import CoreData
 
-final class CoreDataRepository<CoreDataEntity: NSManagedObject> {
+final public class CoreDataRepository<CoreDataEntity: NSManagedObject> {
     // MARK: - Properties
 
     private let mainContext: NSManagedObjectContext
 
     // MARK: - Init
 
-    init(storageProvider: StorageProvider) {
+    public init(storageProvider: StorageProvider) {
         mainContext = storageProvider.context
     }
 }
 
 // MARK: - Methods
 
-extension CoreDataRepository {
+public extension CoreDataRepository {
     func list(sortDescriptors: [NSSortDescriptor] = [], predicate: NSPredicate? = nil) throws -> [CoreDataEntity] {
         try mainContext.performAndWait {
             let request = CoreDataEntity.fetchRequest()
