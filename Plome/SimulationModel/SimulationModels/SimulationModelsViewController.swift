@@ -115,9 +115,7 @@ final class SimulationModelsViewController: AppViewController {
 
 extension SimulationModelsViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section != 0 {
-            viewModel.userDidTapOnSimulation(at: indexPath.row)
-        }
+        viewModel.userDidTapOnSimulation(at: indexPath)
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
