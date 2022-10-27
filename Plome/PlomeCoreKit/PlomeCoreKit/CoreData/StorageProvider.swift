@@ -19,7 +19,7 @@ public class StorageProvider {
     // MARK: - Init
 
     public init(storeType: StoreType = .persisted) {
-        persistentContainer = PersistentContainer(name: "Chapter11")
+        persistentContainer = PersistentContainer(name: "Plome")
 
         if storeType == .inMemory {
             let persistentStoreDescription = NSPersistentStoreDescription()
