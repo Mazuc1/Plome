@@ -6,8 +6,8 @@
 //
 
 import Combine
-import Foundation
 import CoreData
+import Foundation
 import PlomeCoreKit
 
 final class AddSimulationModelViewModel: ObservableObject {
@@ -32,7 +32,8 @@ final class AddSimulationModelViewModel: ObservableObject {
     func userDidTapAddExam(in section: AddSimulationModelViewController.AddSimulationModelSection) {
         router.alertWithTextField(title: "Nouveau",
                                   message: "Comment se nomme votre examen ?",
-                                  buttonActionName: "Ajouter") { [weak self] in
+                                  buttonActionName: "Ajouter")
+        { [weak self] in
             self?.addExam(name: $0, in: section)
         }
     }
@@ -52,35 +53,36 @@ final class AddSimulationModelViewModel: ObservableObject {
         case .option: options.append(.init(name: name, coefficient: nil, grade: nil, type: .option))
         }
     }
-    
+
     func userDidTapSaveSimulationModel() {
         router.alertWithTextField(title: "Nouveau",
                                   message: "Comment souhaitez-vous nommer votre nouveau modèle ?",
-                                  buttonActionName: "Enregistrer") { [weak self] in
+                                  buttonActionName: "Enregistrer")
+        { [weak self] in
             self?.saveNewSimulationModel(name: $0)
         }
     }
-    
+
     private func saveNewSimulationModel(name: String) {
         do {
             try simulationRepository.add { [weak self] cdSimulation, context in
                 cdSimulation.name = name
                 cdSimulation.exams = self?.mergeAndConvertExams(in: context)
             }
-            
+
             router.dismiss()
         } catch {
             router.alert(title: "Oups", message: "Une erreur est survenue 😕")
         }
     }
-    
+
     private func mergeAndConvertExams(in context: NSManagedObjectContext) -> Set<CDExam> {
         var cdExams: Set<CDExam> = .init()
-        
+
         _ = trials.map { cdExams.insert($0.toCoreDataModel(in: context)) }
         _ = continousControls.map { cdExams.insert($0.toCoreDataModel(in: context)) }
         _ = options.map { cdExams.insert($0.toCoreDataModel(in: context)) }
-        
+
         return cdExams
     }
 }

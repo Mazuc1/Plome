@@ -23,7 +23,7 @@ final class Context: ContextProtocol {
 
     init() {
         defaultSimulationModelsProvider = DefaultSimulationModelsProvider()
-        
+
         storageProvider = StorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: storageProvider)
     }

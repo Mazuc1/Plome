@@ -70,10 +70,10 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         alertController.view.tintColor = PlomeColor.pink.color
         rootViewController?.present(alertController, animated: true)
     }
-    
+
     public func alertWithTextField(title: String, message: String, buttonActionName: String, returnedValue: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
+
         alertController.addTextField { $0.placeholder = "Ecrivez ici..." }
         alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel))
         alertController.addAction(UIAlertAction(title: buttonActionName, style: .default, handler: { _ in
@@ -81,7 +81,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
                   !value.isEmpty else { return }
             returnedValue(value)
         }))
-        
+
         alertController.view.tintColor = PlomeColor.pink.color
         rootViewController?.present(alertController, animated: true)
     }

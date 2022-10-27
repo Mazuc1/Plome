@@ -8,7 +8,7 @@
 import Combine
 import CoreData
 
-final public class CoreDataRepository<CoreDataEntity: NSManagedObject> {
+public final class CoreDataRepository<CoreDataEntity: NSManagedObject> {
     // MARK: - Properties
 
     private let mainContext: NSManagedObjectContext
