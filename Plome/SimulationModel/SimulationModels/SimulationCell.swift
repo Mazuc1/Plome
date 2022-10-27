@@ -5,43 +5,42 @@
 //  Created by Loic Mazuc on 21/10/2022.
 //
 
-import UIKit
 import PlomeCoreKit
+import UIKit
 
 final class SimulationCell: UITableViewCell {
-    
     // MARK: - Properties
-    
+
     static let reuseIdentifier: String = "SimulationCell"
-    
+
     // MARK: - UI
-    
-    private var labelSimulationName: UILabel = UILabel().configure {
+
+    private var labelSimulationName: UILabel = .init().configure {
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 1
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkBlue.color
     }
-    
-    private var labelTrials: UILabel = UILabel().configure {
+
+    private var labelTrials: UILabel = .init().configure {
         $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkGray.color
     }
-    
-    private var labelContinuousControls: UILabel = UILabel().configure {
+
+    private var labelContinuousControls: UILabel = .init().configure {
         $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkGray.color
     }
-    
-    private var labelOptions: UILabel = UILabel().configure {
+
+    private var labelOptions: UILabel = .init().configure {
         $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkGray.color
     }
-    
-    private var stackView: UIStackView = UIStackView().configure {
+
+    private var stackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.alignment = .leading
         $0.distribution = .equalSpacing
@@ -51,9 +50,9 @@ final class SimulationCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isLayoutMarginsRelativeArrangement = true
     }
-    
+
     // MARK: - Init
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -61,32 +60,32 @@ final class SimulationCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     // MARK: - Methods
-    
+
     func setup(with simulation: Simulation) {
         setupLayout()
-        
+
         labelSimulationName.text = simulation.name
         labelTrials.text = "\(simulation.number(of: .trial)) Epreuve(s)"
         labelContinuousControls.text = "\(simulation.number(of: .continuousControl)) Contrôle(s) continue"
         labelOptions.text = "\(simulation.number(of: .option)) Option(s)"
-                
+
         backgroundColor = .clear
         selectionStyle = .none
     }
-    
+
     private func setupLayout() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubviews([labelSimulationName, labelTrials, labelContinuousControls, labelOptions])
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: AppStyles.defaultSpacing),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
         ])
-        
+
         stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                         left: AppStyles.defaultSpacing,
                                         bottom: AppStyles.defaultSpacing,

@@ -5,27 +5,26 @@
 //  Created by Loic Mazuc on 23/10/2022.
 //
 
-import UIKit
 import PlomeCoreKit
+import UIKit
 
 final class ModelExamCell: UITableViewCell {
-
     // MARK: - Properties
-    
+
     static let reuseIdentifier: String = "ModelExamCell"
     static let modelExamCellHeight: CGFloat = 40
-    
+
     // MARK: - UI
-    
-    private var labelExamName: UILabel = UILabel().configure {
+
+    private var labelExamName: UILabel = .init().configure {
         $0.font = PlomeFont.bodyL.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
         $0.numberOfLines = 1
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    private var stackView: UIStackView = UIStackView().configure {
+
+    private var stackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.alignment = .leading
         $0.distribution = .equalSpacing
@@ -35,9 +34,9 @@ final class ModelExamCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isLayoutMarginsRelativeArrangement = true
     }
-    
+
     // MARK: - Init
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -45,22 +44,22 @@ final class ModelExamCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     // MARK: - Methods
-    
+
     func setup(exam: Exam) {
         setupLayout()
-        
+
         labelExamName.text = exam.name
-        
+
         backgroundColor = .clear
         selectionStyle = .none
     }
-    
+
     private func setupLayout() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubviews([labelExamName])
-        
+
         NSLayoutConstraint.activate([
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
@@ -68,11 +67,10 @@ final class ModelExamCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             stackView.heightAnchor.constraint(equalToConstant: Self.modelExamCellHeight),
         ])
-        
+
         stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                         left: AppStyles.defaultSpacing,
                                         bottom: AppStyles.defaultSpacing,
                                         right: AppStyles.defaultSpacing)
     }
-
 }

@@ -7,8 +7,8 @@
 
 import CoreData
 import Foundation
-import UserNotifications
 import PlomeCoreKit
+import UserNotifications
 
 public protocol ContextProtocol: AnyObject {
     var defaultSimulationModelsProvider: DefaultSimulationModelsProvider { get }
@@ -16,7 +16,7 @@ public protocol ContextProtocol: AnyObject {
 
 public final class Context: ContextProtocol {
     public var defaultSimulationModelsProvider: PlomeCoreKit.DefaultSimulationModelsProvider
-    
+
     public init() {
         defaultSimulationModelsProvider = DefaultSimulationModelsProvider()
     }

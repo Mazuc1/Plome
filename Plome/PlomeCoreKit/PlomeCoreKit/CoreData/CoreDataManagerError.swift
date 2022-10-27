@@ -18,10 +18,10 @@ extension CoreDataManagerError {
         switch self {
         case .objectNotFound:
             return "Object not found"
-            
+
         case .entityNameNotFound:
             return "Entity name not found"
-            
+
         case .failedToCast:
             return "Cast failed"
         }

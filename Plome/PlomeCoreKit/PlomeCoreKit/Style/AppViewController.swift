@@ -8,7 +8,7 @@
 import UIKit
 
 open class AppViewController: UIViewController {
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .init(color: .background)
     }

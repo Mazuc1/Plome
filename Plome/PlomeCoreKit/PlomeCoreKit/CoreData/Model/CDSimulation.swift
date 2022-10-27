@@ -1,42 +1,39 @@
 //
 //  CDSimulation+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Loic Mazuc on 14/10/2022.
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 @objc(CDSimulation)
 public class CDSimulation: NSManagedObject {}
 
-extension CDSimulation {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CDSimulation> {
+public extension CDSimulation {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<CDSimulation> {
         return NSFetchRequest<CDSimulation>(entityName: "CDSimulation")
     }
 
-    @NSManaged public var name: String
-    @NSManaged public var date: Date?
-    @NSManaged public var exams: Set<CDExam>?
-
+    @NSManaged var name: String
+    @NSManaged var date: Date?
+    @NSManaged var exams: Set<CDExam>?
 }
 
 // MARK: Generated accessors for exams
-extension CDSimulation {
 
+public extension CDSimulation {
     @objc(addExamsObject:)
-    @NSManaged public func addToExams(_ value: CDExam)
+    @NSManaged func addToExams(_ value: CDExam)
 
     @objc(removeExamsObject:)
-    @NSManaged public func removeFromExams(_ value: CDExam)
+    @NSManaged func removeFromExams(_ value: CDExam)
 
     @objc(addExams:)
-    @NSManaged public func addToExams(_ values: NSSet)
+    @NSManaged func addToExams(_ values: NSSet)
 
     @objc(removeExams:)
-    @NSManaged public func removeFromExams(_ values: NSSet)
-
+    @NSManaged func removeFromExams(_ values: NSSet)
 }

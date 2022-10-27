@@ -11,6 +11,5 @@ import UIKit
 final class SettingsViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
