@@ -32,7 +32,7 @@ final class SimulationModelsViewModel: ObservableObject {
 
     // MARK: - Methods
 
-    func bindDataSource() {
+    private func bindDataSource() {
         coreDataSimulations = try? simulationRepository.list()
         var simulations: [Simulation]?
 
@@ -50,7 +50,7 @@ final class SimulationModelsViewModel: ObservableObject {
         snapshot = makeTableViewSnapshot(with: simulations)
     }
 
-    private func updateSnapshot() {
+    func updateSnapshot() {
         bindDataSource()
     }
 

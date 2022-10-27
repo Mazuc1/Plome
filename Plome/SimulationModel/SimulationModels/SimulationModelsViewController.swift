@@ -52,7 +52,13 @@ final class SimulationModelsViewController: AppViewController {
         setupConstraint()
 
         bindSnapshot()
-        viewModel.bindDataSource()
+        viewModel.updateSnapshot()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
 
     // MARK: - Methods
@@ -88,6 +94,10 @@ final class SimulationModelsViewController: AppViewController {
 
     @objc private func userDidTapAddModel() {
         viewModel.userDidTapAddSimulationModel()
+    }
+    
+    @objc private func contextObjectsDidChange(_ notification: Notification) {
+        viewModel.updateSnapshot()
     }
 
     private func createDataSource() -> SimulationModelsTableViewDataSource {
