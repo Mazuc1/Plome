@@ -2,7 +2,7 @@
 //  CDExam+CoreDataProperties.swift
 //
 //
-//  Created by Loic Mazuc on 14/10/2022.
+//  Created by Loic Mazuc on 27/10/2022.
 //
 //
 
@@ -23,9 +23,9 @@ public extension CDExam {
         return NSFetchRequest<CDExam>(entityName: "CDExam")
     }
 
-    @NSManaged var name: String
     @NSManaged var coefficient: Float
     @NSManaged var grade: Float
+    @NSManaged var name: String
     @NSManaged var type: ExamType
-    @NSManaged var simulation: CDSimulation
+    @NSManaged var simulation: CDSimulation?
 }

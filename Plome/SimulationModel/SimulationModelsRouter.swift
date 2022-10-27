@@ -31,10 +31,10 @@ final class SimulationModelsRouter: DefaultRouter {
         return simulationModelsViewController
     }
 
-    func openAddSimulationModel() {
+    func openAddSimulationModel(openAs: AddSimulationModelOpeningMode) {
         let transition = ModalTransition()
         let router = SimulationModelsRouter(screens: screens, rootTransition: transition)
-        let addSimulationViewController = screens.createAddSimulationModel(router: router)
+        let addSimulationViewController = screens.createAddSimulationModel(router: router, openAs: openAs)
         router.rootViewController = addSimulationViewController
 
         route(to: addSimulationViewController, as: transition)

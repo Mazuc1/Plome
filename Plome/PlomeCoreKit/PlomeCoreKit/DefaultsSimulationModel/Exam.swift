@@ -21,12 +21,13 @@ public struct Exam: Hashable {
     public let grade: Float?
     public let type: ExamType
 
-    public func toCoreDataModel(in context: NSManagedObjectContext) -> CDExam {
+    public func toCoreDataModel(in context: NSManagedObjectContext, for simulation: CDSimulation) -> CDExam {
         let cdExam = CDExam(context: context)
         cdExam.name = name
         cdExam.coefficient = coefficient ?? 0
         cdExam.grade = grade ?? 0
         cdExam.type = type
+        cdExam.simulation = simulation
 
         return cdExam
     }

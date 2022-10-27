@@ -53,10 +53,10 @@ final class SimulationModelsViewController: AppViewController {
 
         bindSnapshot()
         viewModel.updateSnapshot()
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
@@ -95,8 +95,8 @@ final class SimulationModelsViewController: AppViewController {
     @objc private func userDidTapAddModel() {
         viewModel.userDidTapAddSimulationModel()
     }
-    
-    @objc private func contextObjectsDidChange(_ notification: Notification) {
+
+    @objc private func contextObjectsDidChange(_: Notification) {
         viewModel.updateSnapshot()
     }
 
@@ -114,6 +114,10 @@ final class SimulationModelsViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationModelsViewController: UITableViewDelegate {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.userDidTapOnSimulation(at: indexPath)
+    }
+
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completion in
             self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
