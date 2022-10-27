@@ -12,30 +12,46 @@ import UIKit
 final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Properties
 
-    let router: SimulationModelsRouter
+    private let router: SimulationModelsRouter
 
-    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationModelsSection, Simulation>
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
+    private let simulationRepository: CoreDataRepository<CDSimulation>
 
     @Published var snapshot: TableViewSnapshot = .init()
 
     // MARK: - Init
 
-    init(router: SimulationModelsRouter, defaultSimulationModelsProvider: DefaultSimulationModelsProvider) {
+    init(router: SimulationModelsRouter, defaultSimulationModelsProvider: DefaultSimulationModelsProvider, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.router = router
         self.defaultSimulationModelsProvider = defaultSimulationModelsProvider
+        self.simulationRepository = simulationRepository
     }
 
     // MARK: - Methods
 
     func bindDataSource() {
-        snapshot = makeTableViewSnapshot()
+        let simulations = try? simulationRepository.list()
+            .map {
+                var examSet: Set<Exam>?
+                if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
+                    examSet = Set(exams)
+                }
+                return Simulation(name: $0.name, date: $0.date ?? Date(), exams: examSet)
+            }
+
+        snapshot = makeTableViewSnapshot(coreDataSimulations: simulations)
     }
 
-    private func makeTableViewSnapshot() -> TableViewSnapshot {
+    private func makeTableViewSnapshot(coreDataSimulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
-        snapshot.appendSections([1])
-        snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: 1)
+        snapshot.appendSections([.default])
+        snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: .default)
+
+        if let coreDataSimulations {
+            snapshot.appendSections([.coreData])
+            snapshot.appendItems(coreDataSimulations, toSection: .coreData)
+        }
 
         return snapshot
     }

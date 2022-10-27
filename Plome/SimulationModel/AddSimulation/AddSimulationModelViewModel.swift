@@ -13,8 +13,8 @@ import PlomeCoreKit
 final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
 
-    let router: SimulationModelsRouter
-    let simulationRepository: CoreDataRepository<CDSimulation>
+    private let router: SimulationModelsRouter
+    private let simulationRepository: CoreDataRepository<CDSimulation>
 
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []

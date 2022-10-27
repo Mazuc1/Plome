@@ -14,14 +14,13 @@ final class SimulationModelsViewController: AppViewController {
 
     let viewModel: SimulationModelsViewModel
 
-    typealias DataSourceSnapshot = UITableViewDiffableDataSource<Int, Simulation>
-    private lazy var dataSource: DataSourceSnapshot = self.createDataSource()
+    private lazy var dataSource: SimulationModelsTableViewDataSource = self.createDataSource()
 
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - UI
 
-    lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
+    lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
         $0.backgroundColor = .clear
@@ -72,7 +71,7 @@ final class SimulationModelsViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             primaryCTAAddModel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
@@ -92,7 +91,7 @@ final class SimulationModelsViewController: AppViewController {
         viewModel.userDidTapAddSimulationModel()
     }
 
-    private func createDataSource() -> DataSourceSnapshot {
+    private func createDataSource() -> SimulationModelsTableViewDataSource {
         return .init(tableView: tableView) { tableView, _, itemIdentifier in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
                 cell.setup(with: itemIdentifier)
