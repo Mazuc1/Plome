@@ -29,7 +29,9 @@ final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Methods
 
     func userDidTapAddExam(in section: AddSimulationModelViewController.AddSimulationModelSection) {
-        router.openAddExamAlert { [weak self] in
+        router.alertWithTextField(title: "Nouveau",
+                                  message: "Comment se nomme votre examen ?",
+                                  buttonActionName: "Ajouter") { [weak self] in
             self?.addExam(name: $0, in: section)
         }
     }
