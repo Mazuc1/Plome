@@ -26,7 +26,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []
     @Published var options: [Exam] = []
-    
+
     var simulationName: String = "Nouveau modèle"
 
     private var cdSimulation: CDSimulation?
@@ -62,7 +62,7 @@ final class AddSimulationModelViewModel: ObservableObject {
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
         }
     }
-    
+
     private func setupEditModeFromDefault(with simulation: Simulation) {
         simulationName = simulation.name
         if let exams = simulation.exams {
@@ -101,10 +101,10 @@ final class AddSimulationModelViewModel: ObservableObject {
         switch openAs {
         case .add: saveNewSimulationModel(name: simulationName)
         case .edit: saveEditSimulationModel()
-        case .editFromDefault(_): saveNewSimulationModel(name: simulationName)
+        case .editFromDefault: saveNewSimulationModel(name: simulationName)
         }
     }
-    
+
     func dismiss() {
         router.dismiss()
     }
