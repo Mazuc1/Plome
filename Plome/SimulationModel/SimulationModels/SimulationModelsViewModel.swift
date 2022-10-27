@@ -17,7 +17,7 @@ final class SimulationModelsViewModel: ObservableObject {
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationModelsSection, Simulation>
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     private let simulationRepository: CoreDataRepository<CDSimulation>
-    
+
     private var coreDataSimulations: [CDSimulation]?
 
     @Published var snapshot: TableViewSnapshot = .init()
@@ -33,31 +33,35 @@ final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Methods
 
     func bindDataSource() {
-        let coreDataSimulations = try? simulationRepository.list()
+        coreDataSimulations = try? simulationRepository.list()
         var simulations: [Simulation]?
-        
+
         if let coreDataSimulations {
             simulations = coreDataSimulations
                 .map {
-                var examSet: Set<Exam>?
-                if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
-                    examSet = Set(exams)
+                    var examSet: Set<Exam>?
+                    if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
+                        examSet = Set(exams)
+                    }
+                    return Simulation(name: $0.name, date: $0.date ?? Date(), exams: examSet)
                 }
-                return Simulation(name: $0.name, date: $0.date ?? Date(), exams: examSet)
-            }
         }
-        
-        snapshot = makeTableViewSnapshot(coreDataSimulations: simulations)
+
+        snapshot = makeTableViewSnapshot(with: simulations)
     }
 
-    private func makeTableViewSnapshot(coreDataSimulations: [Simulation]?) -> TableViewSnapshot {
+    private func updateSnapshot() {
+        bindDataSource()
+    }
+
+    private func makeTableViewSnapshot(with simulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
         snapshot.appendSections([.default])
         snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: .default)
 
-        if let coreDataSimulations {
+        if let simulations, !simulations.isEmpty {
             snapshot.appendSections([.coreData])
-            snapshot.appendItems(coreDataSimulations, toSection: .coreData)
+            snapshot.appendItems(simulations, toSection: .coreData)
         }
 
         return snapshot
@@ -65,5 +69,22 @@ final class SimulationModelsViewModel: ObservableObject {
 
     func userDidTapAddSimulationModel() {
         router.openAddSimulationModel()
+    }
+
+    func userDidTapDeleteSimulationModel(at index: Int) {
+        router.alertWithAction(title: "Attention", message: "Vous vous apprêtez à supprimer ce modèle. Êtes vous sur de vouloir le supprimer ?") { [weak self] in
+            self?.deleteSimulationModel(at: index)
+        }
+    }
+
+    private func deleteSimulationModel(at index: Int) {
+        do {
+            if let simulation = coreDataSimulations?[index] {
+                try simulationRepository.delete(with: simulation.objectID)
+                updateSnapshot()
+            }
+        } catch {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+        }
     }
 }

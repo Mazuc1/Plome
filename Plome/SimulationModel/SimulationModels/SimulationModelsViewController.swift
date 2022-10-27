@@ -15,7 +15,6 @@ final class SimulationModelsViewController: AppViewController {
     let viewModel: SimulationModelsViewModel
 
     private lazy var dataSource: SimulationModelsTableViewDataSource = self.createDataSource()
-
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - UI
@@ -104,4 +103,16 @@ final class SimulationModelsViewController: AppViewController {
 
 // MARK: - Table View Delegate
 
-extension SimulationModelsViewController: UITableViewDelegate {}
+extension SimulationModelsViewController: UITableViewDelegate {
+    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completion in
+            self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
+            completion(true)
+        }
+
+        deleteAction.image = Icons.trash.configure(weight: .regular, color: .fail, size: 25)
+        deleteAction.backgroundColor = PlomeColor.background.color
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+}

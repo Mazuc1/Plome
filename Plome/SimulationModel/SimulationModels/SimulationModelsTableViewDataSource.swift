@@ -24,4 +24,10 @@ class SimulationModelsTableViewDataSource: UITableViewDiffableDataSource<Simulat
     override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         return snapshot().sectionIdentifiers[safe: section]?.sectionTitle
     }
+
+    // Disable edit for default models
+    override func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 { return false }
+        return true
+    }
 }
