@@ -49,4 +49,16 @@ final class AddSimulationModelViewModel: ObservableObject {
         case .option: options.append(.init(name: name, coefficient: nil, grade: nil, type: .option))
         }
     }
+    
+    func userDidTapSaveSimulationModel() {
+        router.alertWithTextField(title: "Nouveau",
+                                  message: "Comment souhaitez-vous nommer votre nouveau modèle ?",
+                                  buttonActionName: "Enregistrer") { [weak self] in
+            self?.saveSimulationModel(name: $0)
+        }
+    }
+    
+    private func saveSimulationModel(name: String) {
+        
+    }
 }

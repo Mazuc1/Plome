@@ -46,7 +46,7 @@ final class AddSimulationModelViewController: AppViewController {
     }
 
     lazy var primaryCTARegisterModel: PrimaryCTA = .init(title: "Enregistrer").configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapRegisterModel), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(userDidTapSaveSimulationModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -117,8 +117,8 @@ final class AddSimulationModelViewController: AppViewController {
             .store(in: &cancellables)
     }
 
-    @objc private func userDidTapRegisterModel() {
-        print("🫑")
+    @objc private func userDidTapSaveSimulationModel() {
+        viewModel.userDidTapSaveSimulationModel()
     }
 }
 
