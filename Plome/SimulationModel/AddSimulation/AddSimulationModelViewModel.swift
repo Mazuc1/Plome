@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import CoreData
 import PlomeCoreKit
 
 final class AddSimulationModelViewModel: ObservableObject {
@@ -56,11 +57,30 @@ final class AddSimulationModelViewModel: ObservableObject {
         router.alertWithTextField(title: "Nouveau",
                                   message: "Comment souhaitez-vous nommer votre nouveau modèle ?",
                                   buttonActionName: "Enregistrer") { [weak self] in
-            self?.saveSimulationModel(name: $0)
+            self?.saveNewSimulationModel(name: $0)
         }
     }
     
-    private func saveSimulationModel(name: String) {
+    private func saveNewSimulationModel(name: String) {
+        do {
+            try simulationRepository.add { [weak self] cdSimulation, context in
+                cdSimulation.name = name
+                cdSimulation.exams = self?.mergeAndConvertExams(in: context)
+            }
+            
+            router.dismiss()
+        } catch {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+        }
+    }
+    
+    private func mergeAndConvertExams(in context: NSManagedObjectContext) -> Set<CDExam> {
+        var cdExams: Set<CDExam> = .init()
         
+        _ = trials.map { cdExams.insert($0.toCoreDataModel(in: context)) }
+        _ = continousControls.map { cdExams.insert($0.toCoreDataModel(in: context)) }
+        _ = options.map { cdExams.insert($0.toCoreDataModel(in: context)) }
+        
+        return cdExams
     }
 }

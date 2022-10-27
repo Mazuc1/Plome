@@ -23,7 +23,7 @@ public extension CDExam {
         return NSFetchRequest<CDExam>(entityName: "CDExam")
     }
 
-    @NSManaged var name: String?
+    @NSManaged var name: String
     @NSManaged var coefficient: Float
     @NSManaged var grade: Float
     @NSManaged var type: ExamType
