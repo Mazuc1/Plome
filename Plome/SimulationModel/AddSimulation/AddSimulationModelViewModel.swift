@@ -29,7 +29,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     var simulationName: String = "Nouveau modèle"
 
-    private var cdSimulation: CDSimulation?
+    var cdSimulation: CDSimulation?
 
     // MARK: - Init
 
@@ -115,7 +115,7 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
 
-    private func addExam(name: String, in section: AddSimulationModelViewController.AddSimulationModelSection) {
+    func addExam(name: String, in section: AddSimulationModelViewController.AddSimulationModelSection) {
         switch section {
         case .trial: trials.append(.init(name: name, coefficient: nil, grade: nil, type: .trial))
         case .continuousControl: continousControls.append(.init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
@@ -135,7 +135,7 @@ final class AddSimulationModelViewModel: ObservableObject {
         router.dismiss()
     }
 
-    private func saveEditSimulationModel() {
+    func saveEditSimulationModel() {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {
             try simulationRepository.update { [cdSimulation, simulationName] in
@@ -151,7 +151,7 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
 
-    private func saveNewSimulationModel(name: String) {
+    func saveNewSimulationModel(name: String) {
         do {
             try simulationRepository.add { [weak self] cdSimulation, context in
                 cdSimulation.name = name
@@ -164,7 +164,7 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
 
-    private func mergeAndConvertExams(in context: NSManagedObjectContext, for simulation: CDSimulation) -> Set<CDExam> {
+    func mergeAndConvertExams(in context: NSManagedObjectContext, for simulation: CDSimulation) -> Set<CDExam> {
         var cdExams: Set<CDExam> = .init()
 
         _ = trials.map { cdExams.insert($0.toCoreDataModel(in: context, for: simulation)) }

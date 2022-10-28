@@ -12,29 +12,32 @@ public class PersistentContainer: NSPersistentContainer {}
 public class StorageProvider {
     // MARK: - Properties
 
-    public let persistentContainer: PersistentContainer
+    static let modelName = "Plome"
 
-    public lazy var context: NSManagedObjectContext = persistentContainer.viewContext
+    static let model: NSManagedObjectModel = {
+        let modelURL = Module.bundle.url(forResource: modelName, withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
+    }()
+
+    public lazy var context: NSManagedObjectContext = {
+        let context = persistentContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
+        return context
+    }()
+
+    public lazy var persistentContainer: PersistentContainer = {
+        let container = PersistentContainer(name: Self.modelName)
+        container.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
 
     // MARK: - Init
 
-    public init(storeType: StoreType = .persisted) {
-        persistentContainer = PersistentContainer(name: "Plome")
-
-        if storeType == .inMemory {
-            let persistentStoreDescription = NSPersistentStoreDescription()
-            persistentStoreDescription.type = NSInMemoryStoreType
-            persistentStoreDescription.url = URL(fileURLWithPath: "/dev/null")
-
-            persistentContainer.persistentStoreDescriptions = [persistentStoreDescription]
-        }
-
-        persistentContainer.loadPersistentStores(completionHandler: { _, error in
-            if let error = error {
-                fatalError("Core Data store failed to load with error: \(error)")
-            }
-        })
-    }
+    public init() {}
 }
 
 public enum StoreType {
