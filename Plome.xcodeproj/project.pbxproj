@@ -27,6 +27,7 @@
 		CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */; };
 		CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */; };
 		CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */; };
+		CF82A56E290BDE70004E2D50 /* PlomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A56D290BDE70004E2D50 /* PlomeTests.swift */; };
 		CFBF56AE28ECC5F000E4EC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */; };
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
@@ -34,6 +35,16 @@
 		CFDC912A2902C7A0008B21B0 /* AddExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC91292902C7A0008B21B0 /* AddExamCell.swift */; };
 		CFDC912C2902D38C008B21B0 /* AddSimulationModelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF82A56F290BDE70004E2D50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFBF56A228ECC5F000E4EC7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFBF56A928ECC5F000E4EC7D;
+			remoteInfo = Plome;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CF2747CA28ECCB8A00CCAF76 /* Embed Frameworks */ = {
@@ -72,6 +83,8 @@
 		CF59EABD28ECD3580041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExamCell.swift; sourceTree = "<group>"; };
+		CF82A56B290BDE70004E2D50 /* PlomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF82A56D290BDE70004E2D50 /* PlomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlomeTests.swift; sourceTree = "<group>"; };
 		CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CF82A568290BDE70004E2D50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFBF56A728ECC5F000E4EC7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -164,12 +184,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF82A56C290BDE70004E2D50 /* PlomeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF82A56D290BDE70004E2D50 /* PlomeTests.swift */,
+			);
+			path = PlomeTests;
+			sourceTree = "<group>";
+		};
 		CFBF56A128ECC5F000E4EC7D = {
 			isa = PBXGroup;
 			children = (
 				CFBF56AC28ECC5F000E4EC7D /* Plome */,
+				CF82A56C290BDE70004E2D50 /* PlomeTests */,
 				CF59EA3F28ECCE260041B33B /* Frameworks */,
 				CF3B9AAB28F5762000457A44 /* Plome.app */,
+				CF82A56B290BDE70004E2D50 /* PlomeTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,6 +226,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CF82A56A290BDE70004E2D50 /* PlomeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF82A573290BDE70004E2D50 /* Build configuration list for PBXNativeTarget "PlomeTests" */;
+			buildPhases = (
+				CF82A567290BDE70004E2D50 /* Sources */,
+				CF82A568290BDE70004E2D50 /* Frameworks */,
+				CF82A569290BDE70004E2D50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF82A570290BDE70004E2D50 /* PBXTargetDependency */,
+			);
+			name = PlomeTests;
+			productName = PlomeTests;
+			productReference = CF82A56B290BDE70004E2D50 /* PlomeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CFBF56A928ECC5F000E4EC7D /* Plome */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFBF56BE28ECC5F000E4EC7D /* Build configuration list for PBXNativeTarget "Plome" */;
@@ -226,6 +274,10 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					CF82A56A290BDE70004E2D50 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = CFBF56A928ECC5F000E4EC7D;
+					};
 					CFBF56A928ECC5F000E4EC7D = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -245,11 +297,19 @@
 			projectRoot = "";
 			targets = (
 				CFBF56A928ECC5F000E4EC7D /* Plome */,
+				CF82A56A290BDE70004E2D50 /* PlomeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CF82A569290BDE70004E2D50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFBF56A828ECC5F000E4EC7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +326,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CF82A567290BDE70004E2D50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF82A56E290BDE70004E2D50 /* PlomeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFBF56A628ECC5F000E4EC7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +361,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CF82A570290BDE70004E2D50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFBF56A928ECC5F000E4EC7D /* Plome */;
+			targetProxy = CF82A56F290BDE70004E2D50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -305,6 +381,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CF82A571290BDE70004E2D50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6L49G5QS6U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Plome.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Plome";
+			};
+			name = Debug;
+		};
+		CF82A572290BDE70004E2D50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6L49G5QS6U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Plome.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Plome";
+			};
+			name = Release;
+		};
 		CFBF56BC28ECC5F000E4EC7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -486,6 +600,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CF82A573290BDE70004E2D50 /* Build configuration list for PBXNativeTarget "PlomeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF82A571290BDE70004E2D50 /* Debug */,
+				CF82A572290BDE70004E2D50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CFBF56A528ECC5F000E4EC7D /* Build configuration list for PBXProject "Plome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
