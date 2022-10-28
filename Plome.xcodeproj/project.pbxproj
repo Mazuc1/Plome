@@ -27,7 +27,7 @@
 		CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */; };
 		CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */; };
 		CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */; };
-		CF82A56E290BDE70004E2D50 /* PlomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A56D290BDE70004E2D50 /* PlomeTests.swift */; };
+		CF82A577290BDF6E004E2D50 /* SimulationModelsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A576290BDF6E004E2D50 /* SimulationModelsViewModelTests.swift */; };
 		CFBF56AE28ECC5F000E4EC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */; };
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
@@ -84,7 +84,7 @@
 		CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExamCell.swift; sourceTree = "<group>"; };
 		CF82A56B290BDE70004E2D50 /* PlomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF82A56D290BDE70004E2D50 /* PlomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlomeTests.swift; sourceTree = "<group>"; };
+		CF82A576290BDF6E004E2D50 /* SimulationModelsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsViewModelTests.swift; sourceTree = "<group>"; };
 		CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,9 +187,17 @@
 		CF82A56C290BDE70004E2D50 /* PlomeTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF82A56D290BDE70004E2D50 /* PlomeTests.swift */,
+				CF82A575290BDEBB004E2D50 /* SimulationModels */,
 			);
 			path = PlomeTests;
+			sourceTree = "<group>";
+		};
+		CF82A575290BDEBB004E2D50 /* SimulationModels */ = {
+			isa = PBXGroup;
+			children = (
+				CF82A576290BDF6E004E2D50 /* SimulationModelsViewModelTests.swift */,
+			);
+			path = SimulationModels;
 			sourceTree = "<group>";
 		};
 		CFBF56A128ECC5F000E4EC7D = {
@@ -330,7 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF82A56E290BDE70004E2D50 /* PlomeTests.swift in Sources */,
+				CF82A577290BDF6E004E2D50 /* SimulationModelsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
