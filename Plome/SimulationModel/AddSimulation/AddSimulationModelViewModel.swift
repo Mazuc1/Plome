@@ -29,7 +29,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     var simulationName: String = "Nouveau modèle"
 
-    private var cdSimulation: CDSimulation?
+    var cdSimulation: CDSimulation?
 
     // MARK: - Init
 
@@ -135,7 +135,7 @@ final class AddSimulationModelViewModel: ObservableObject {
         router.dismiss()
     }
 
-    private func saveEditSimulationModel() {
+    func saveEditSimulationModel() {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {
             try simulationRepository.update { [cdSimulation, simulationName] in
@@ -151,7 +151,7 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
 
-    private func saveNewSimulationModel(name: String) {
+    func saveNewSimulationModel(name: String) {
         do {
             try simulationRepository.add { [weak self] cdSimulation, context in
                 cdSimulation.name = name
