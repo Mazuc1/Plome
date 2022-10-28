@@ -41,6 +41,7 @@
 		CF59EAF128ECD6F20041B33B /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE928ECD6F10041B33B /* Icons.swift */; };
 		CF59EAF228ECD6F20041B33B /* PlomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */; };
 		CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */; };
+		CF82A566290BD560004E2D50 /* AppContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A565290BD560004E2D50 /* AppContextualAction.swift */; };
 		CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFF846F8290AE25800D31F5F /* Plome.xcdatamodeld */; };
 		CFF84702290AE34000D31F5F /* CDExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF84700290AE34000D31F5F /* CDExam.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		CF59EAE928ECD6F10041B33B /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlomeFont.swift; sourceTree = "<group>"; };
 		CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		CF82A565290BD560004E2D50 /* AppContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContextualAction.swift; sourceTree = "<group>"; };
 		CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
 		CFF84700290AE34000D31F5F /* CDExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CDExam.swift; path = /Users/loicmazuc/Documents/OpenClassroom/P12/Plome/Plome/PlomeCoreKit/PlomeCoreKit/CoreData/Model/CDExam.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */,
 				CF3B9A8E28F1DFCB00457A44 /* PlomeColor.swift */,
 				CF208F2628F95318001F83B1 /* PrimaryCTA.swift */,
+				CF82A565290BD560004E2D50 /* AppContextualAction.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			files = (
 				CF3B9A9628F1E5E700457A44 /* UIView+extension.swift in Sources */,
 				CF208F5C28F96EB9001F83B1 /* Exam.swift in Sources */,
+				CF82A566290BD560004E2D50 /* AppContextualAction.swift in Sources */,
 				CF3B9A8528F1DCBA00457A44 /* Transition.swift in Sources */,
 				CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */,
 				CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */,

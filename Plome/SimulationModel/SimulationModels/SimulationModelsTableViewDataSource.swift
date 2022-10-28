@@ -20,7 +20,7 @@ enum SimulationModelsSection {
     }
 }
 
-class SimulationModelsTableViewDataSource: UITableViewDiffableDataSource<SimulationModelsSection, Simulation> {
+final class SimulationModelsTableViewDataSource: UITableViewDiffableDataSource<SimulationModelsSection, Simulation> {
     override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         return snapshot().sectionIdentifiers[safe: section]?.sectionTitle
     }

@@ -12,10 +12,10 @@ import UIKit
 final class AddSimulationModelViewController: AppViewController {
     // MARK: - Properties
 
-    let viewModel: AddSimulationModelViewModel
-    var cancellables: Set<AnyCancellable> = .init()
+    private let viewModel: AddSimulationModelViewModel
+    private var cancellables: Set<AnyCancellable> = .init()
 
-    static let numberOfAddExamRowInSection: Int = 1
+    private static let numberOfAddExamRowInSection: Int = 1
 
     enum AddSimulationModelSection: Int, CaseIterable {
         case trial = 0
@@ -33,7 +33,7 @@ final class AddSimulationModelViewController: AppViewController {
 
     // MARK: - UI
 
-    lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
+    private lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
         $0.dataSource = self
         $0.backgroundColor = .clear
@@ -45,12 +45,12 @@ final class AddSimulationModelViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    lazy var primaryCTARegisterModel: PrimaryCTA = .init(title: "Enregistrer").configure { [weak self] in
+    private lazy var primaryCTARegisterModel: PrimaryCTA = .init(title: "Enregistrer").configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapSaveSimulationModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    lazy var textFieldTitle: UITextField = .init().configure { [weak self] in
+    private lazy var textFieldTitle: UITextField = .init().configure { [weak self] in
         $0.delegate = self
         $0.placeholder = "Bac Pro..."
         $0.returnKeyType = .done
@@ -59,14 +59,14 @@ final class AddSimulationModelViewController: AppViewController {
         $0.textColor = PlomeColor.darkBlue.color
     }
 
-    lazy var buttonClose: UIBarButtonItem = .init().configure { [weak self] in
+    private lazy var buttonClose: UIBarButtonItem = .init().configure { [weak self] in
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapCloseButton)
         $0.image = Icons.xmark.configure(weight: .regular, color: .pink, size: 20)
     }
 
-    lazy var buttonEditTitle: UIBarButtonItem = .init().configure { [weak self] in
+    private lazy var buttonEditTitle: UIBarButtonItem = .init().configure { [weak self] in
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapEditTitleButton)
@@ -190,7 +190,7 @@ extension AddSimulationModelViewController: UITableViewDataSource {
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: ModelExamCell.reuseIdentifier) as? ModelExamCell,
-               let exam = exam(for: indexPath)
+               let exam = viewModel.exam(for: indexPath)
             {
                 cell.setup(exam: exam)
                 return cell
@@ -199,36 +199,13 @@ extension AddSimulationModelViewController: UITableViewDataSource {
 
         return UITableViewCell()
     }
-
-    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
-    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
-    // indexPath will already be at 1, and skip the first item of arrays
-    private func exam(for indexPath: IndexPath) -> Exam? {
-        switch indexPath.section {
-        case 0: return viewModel.trials[indexPath.row - 1]
-        case 1: return viewModel.continousControls[indexPath.row - 1]
-        case 2: return viewModel.options[indexPath.row - 1]
-        default: return nil
-        }
-    }
 }
 
 // MARK: - Table View Delegate
 
 extension AddSimulationModelViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            var section: AddSimulationModelSection = .option
-
-            switch indexPath.section {
-            case 0: section = .trial
-            case 1: section = .continuousControl
-            case 2: section = .option
-            default: break
-            }
-
-            viewModel.userDidTapAddExam(in: section)
-        }
+        viewModel.userDidTapAddExam(at: indexPath)
     }
 
     // Disable edit for AddExamRow
@@ -237,29 +214,11 @@ extension AddSimulationModelViewController: UITableViewDelegate {
         return true
     }
 
-    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
-    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
-    // indexPath will already be at 1, and skip the first item of arrays
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completion in
-            var section: AddSimulationModelSection = .option
-
-            switch indexPath.section {
-            case 0: section = .trial
-            case 1: section = .continuousControl
-            case 2: section = .option
-            default: break
-            }
-
-            self?.viewModel.userDidTapDeleteExam(at: indexPath.row - 1, in: section)
-
-            completion(true)
+        let deleteAction = AppContextualAction.deleteAction { [weak self] in
+            self?.viewModel.userDidTapDeleteExam(at: indexPath)
         }
-
-        deleteAction.image = Icons.trash.configure(weight: .regular, color: .fail, size: 25)
-        deleteAction.backgroundColor = PlomeColor.background.color
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        return configuration
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 

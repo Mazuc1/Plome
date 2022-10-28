@@ -37,3 +37,15 @@ public extension CDSimulation {
     @objc(removeExams:)
     @NSManaged func removeFromExams(_ values: NSSet)
 }
+
+// MARK: - Sort descriptor
+
+public extension CDSimulation {
+    static let alphabeticDescriptor = NSSortDescriptor(key: "name", ascending: true)
+}
+
+// MARK: - Predicate
+
+public extension CDSimulation {
+    static let withoutDatePredicate = NSPredicate(format: "date = nil")
+}
