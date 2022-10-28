@@ -17,7 +17,6 @@ final class AddSimulationModelHeaderView: UITableViewHeaderFooterView {
 
     required init(text: String, reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-
         textLabel?.text = text
     }
 

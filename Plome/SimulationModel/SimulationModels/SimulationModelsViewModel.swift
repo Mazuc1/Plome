@@ -12,13 +12,13 @@ import UIKit
 final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Properties
 
-    private let router: SimulationModelsRouter
-
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationModelsSection, Simulation>
+
+    private let router: SimulationModelsRouter
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
-    private var coreDataSimulations: [CDSimulation]?
+    private var coreDataSimulationModels: [CDSimulation]?
 
     @Published var snapshot: TableViewSnapshot = .init()
 
@@ -33,17 +33,17 @@ final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Methods
 
     private func bindDataSource() {
-        coreDataSimulations = try? simulationRepository.list()
+        coreDataSimulationModels = try? simulationRepository.list(sortDescriptors: [CDSimulation.alphabeticDescriptor], predicate: CDSimulation.withoutDatePredicate)
         var simulations: [Simulation]?
 
-        if let coreDataSimulations {
-            simulations = coreDataSimulations
+        if let coreDataSimulationModels {
+            simulations = coreDataSimulationModels
                 .map {
                     var examSet: Set<Exam>?
                     if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
                         examSet = Set(exams)
                     }
-                    return Simulation(name: $0.name, date: $0.date ?? Date(), exams: examSet)
+                    return Simulation(name: $0.name, date: $0.date, exams: examSet)
                 }
         }
 
@@ -75,7 +75,7 @@ final class SimulationModelsViewModel: ObservableObject {
         if index.section == 0 {
             router.openAddSimulationModel(openAs: .editFromDefault(defaultSimulationModelsProvider.simulations[index.row]))
         } else if index.section == 1 {
-            if let simulation = coreDataSimulations?[index.row] {
+            if let simulation = coreDataSimulationModels?[index.row] {
                 router.openAddSimulationModel(openAs: .edit(simulation))
             } else {
                 router.alert(title: "Oups", message: "Une erreur est survenue 😕")
@@ -91,9 +91,8 @@ final class SimulationModelsViewModel: ObservableObject {
 
     private func deleteSimulationModel(at index: Int) {
         do {
-            if let simulation = coreDataSimulations?[index] {
+            if let simulation = coreDataSimulationModels?[index] {
                 try simulationRepository.delete(with: simulation.objectID)
-                updateSnapshot()
             }
         } catch {
             router.alert(title: "Oups", message: "Une erreur est survenue 😕")

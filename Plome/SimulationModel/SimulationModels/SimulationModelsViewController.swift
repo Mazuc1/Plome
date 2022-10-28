@@ -12,14 +12,14 @@ import UIKit
 final class SimulationModelsViewController: AppViewController {
     // MARK: - Properties
 
-    let viewModel: SimulationModelsViewModel
+    private let viewModel: SimulationModelsViewModel
 
     private lazy var dataSource: SimulationModelsTableViewDataSource = self.createDataSource()
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - UI
 
-    lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
+    private lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
         $0.backgroundColor = .clear
@@ -27,7 +27,7 @@ final class SimulationModelsViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    lazy var primaryCTAAddModel: PrimaryCTA = .init(title: "Nouveau modèle").configure { [weak self] in
+    private lazy var primaryCTAAddModel: PrimaryCTA = .init(title: "Nouveau modèle").configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapAddModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -53,11 +53,17 @@ final class SimulationModelsViewController: AppViewController {
 
         bindSnapshot()
         viewModel.updateSnapshot()
+    }
 
+    // Set observer and remove it in viewWillDisappear to avoid reload when it's not neccessary
+    // For example, when user make a simulation
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
 
-    deinit {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: nil)
     }
 
@@ -119,14 +125,9 @@ extension SimulationModelsViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completion in
+        let deleteAction = AppContextualAction.deleteAction { [weak self] in
             self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
-            completion(true)
         }
-
-        deleteAction.image = Icons.trash.configure(weight: .regular, color: .fail, size: 25)
-        deleteAction.backgroundColor = PlomeColor.background.color
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        return configuration
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }

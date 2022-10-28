@@ -72,20 +72,46 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
 
-    func userDidTapAddExam(in section: AddSimulationModelViewController.AddSimulationModelSection) {
-        router.alertWithTextField(title: "Nouveau",
-                                  message: "Comment se nomme votre examen ?",
-                                  buttonActionName: "Ajouter")
-        { [weak self] in
-            self?.addExam(name: $0, in: section)
+    func userDidTapAddExam(at indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            var section: AddSimulationModelViewController.AddSimulationModelSection = .trial
+            switch indexPath.section {
+            case 0: section = .trial
+            case 1: section = .continuousControl
+            case 2: section = .option
+            default: break
+            }
+
+            router.alertWithTextField(title: "Nouveau",
+                                      message: "Comment se nomme votre examen ?",
+                                      buttonActionName: "Ajouter")
+            { [weak self] in
+                self?.addExam(name: $0, in: section)
+            }
         }
     }
 
-    func userDidTapDeleteExam(at index: Int, in section: AddSimulationModelViewController.AddSimulationModelSection) {
-        switch section {
-        case .trial: trials.remove(at: index)
-        case .continuousControl: continousControls.remove(at: index)
-        case .option: options.remove(at: index)
+    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
+    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
+    // indexPath will already be at 1, and skip the first item of arrays
+    func exam(for indexPath: IndexPath) -> Exam? {
+        switch indexPath.section {
+        case 0: return trials[indexPath.row - 1]
+        case 1: return continousControls[indexPath.row - 1]
+        case 2: return options[indexPath.row - 1]
+        default: return nil
+        }
+    }
+
+    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
+    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
+    // indexPath will already be at 1, and skip the first item of arrays
+    func userDidTapDeleteExam(at indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: trials.remove(at: indexPath.row - 1)
+        case 1: continousControls.remove(at: indexPath.row - 1)
+        case 2: options.remove(at: indexPath.row - 1)
+        default: break
         }
     }
 
