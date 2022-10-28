@@ -18,7 +18,7 @@ final class SimulationModelsViewModel: ObservableObject {
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
-    private var coreDataSimulationModels: [CDSimulation]?
+    var coreDataSimulationModels: [CDSimulation]?
 
     @Published var snapshot: TableViewSnapshot = .init()
 
