@@ -30,4 +30,13 @@ final class SimulationsRouter: DefaultRouter {
 
         return simulationsViewController
     }
+
+    func openSelectSimulationModel() {
+        let transition = ModalTransition()
+        let router = SimulationsRouter(screens: screens, rootTransition: transition)
+        let selectSimulationViewController = screens.createSelectSimulationModel(router: router)
+        router.rootViewController = selectSimulationViewController
+
+        route(to: selectSimulationViewController, as: transition)
+    }
 }
