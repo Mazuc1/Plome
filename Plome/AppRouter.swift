@@ -21,6 +21,7 @@ final class AppRouter {
     let tabBarController = MainTabBarController()
 
     let simulationModelsRouter: SimulationModelsRouter
+    let simulationsRouter: SimulationsRouter
 
     // MARK: - Initializer
 
@@ -31,6 +32,7 @@ final class AppRouter {
 
         window.makeKeyAndVisible()
 
+        simulationsRouter = SimulationsRouter(screens: screens, rootTransition: EmptyTransition())
         simulationModelsRouter = SimulationModelsRouter(screens: screens, rootTransition: EmptyTransition())
     }
 
@@ -38,7 +40,7 @@ final class AppRouter {
 
     func start() {
         tabBarController.viewControllers = [
-            HomeViewController().configure { $0.tabBarItem = Tabs.home.item },
+            simulationsRouter.makeRootViewController(),
             simulationModelsRouter.makeRootViewController(),
             SettingsViewController().configure { $0.tabBarItem = Tabs.settings.item },
         ]
