@@ -13,6 +13,15 @@ final class SelectSimulationModelViewController: AppViewController {
 
     let viewModel: SelectSimulationModelViewModel
 
+    // MARK: - UI
+
+    private lazy var closeButton: UIBarButtonItem = .init().configure { [weak self] in
+        $0.target = self
+        $0.style = .plain
+        $0.action = #selector(self?.userDidTapCloseButton)
+        $0.image = Icons.xmark.configure(weight: .regular, color: .pink, size: 20)
+    }
+
     // MARK: - Init
 
     required init(viewModel: SelectSimulationModelViewModel) {
@@ -29,5 +38,14 @@ final class SelectSimulationModelViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.title = "Nouvelle simulation"
+        navigationItem.leftBarButtonItem = closeButton
+    }
+
+    // MARK: - Methods
+
+    @objc private func userDidTapCloseButton() {
+        viewModel.userDidTapCloseButton()
     }
 }

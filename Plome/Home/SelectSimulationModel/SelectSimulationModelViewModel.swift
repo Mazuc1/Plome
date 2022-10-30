@@ -19,4 +19,8 @@ final class SelectSimulationModelViewModel {
     }
 
     // MARK: - Methods
+
+    func userDidTapCloseButton() {
+        router.dismiss()
+    }
 }
