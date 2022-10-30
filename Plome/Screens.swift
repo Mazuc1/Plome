@@ -23,9 +23,9 @@ final class Screens {
 // MARK: - Simulations
 
 extension Screens {
-    func createSimulationsTab(router _: SimulationsRouter) -> UIViewController {
-        // let simulationModelsViewModel = SimulationModelsViewModel(router: router, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider, simulationRepository: context.simulationRepository)
-        let simulationsViewController = SimulationsViewController()
+    func createSimulationsTab(router: SimulationsRouter) -> UIViewController {
+        let simulationListViewModel = SimulationListViewModel(router: router)
+        let simulationsViewController = SimulationListViewController(viewModel: simulationListViewModel)
         simulationsViewController.tabBarItem = Tabs.home.item
         return simulationsViewController
     }
