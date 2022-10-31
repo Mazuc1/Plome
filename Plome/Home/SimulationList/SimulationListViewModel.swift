@@ -19,4 +19,8 @@ final class SimulationListViewModel {
     }
 
     // MARK: - Methods
+
+    func userDidTapNewSimulation() {
+        router.openSelectSimulationModel()
+    }
 }

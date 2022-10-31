@@ -29,6 +29,15 @@ extension Screens {
         simulationsViewController.tabBarItem = Tabs.home.item
         return simulationsViewController
     }
+
+    func createSelectSimulationModel(router: SimulationsRouter) -> UIViewController {
+        let selectSimulationModelViewModel = SelectSimulationModelViewModel(router: router, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider, simulationRepository: context.simulationRepository)
+        let selectSimulationModelViewController = SelectSimulationModelViewController(viewModel: selectSimulationModelViewModel)
+        selectSimulationModelViewController.isModalInPresentation = true
+        let navigationController = UINavigationController(rootViewController: selectSimulationModelViewController)
+
+        return navigationController
+    }
 }
 
 // MARK: - Simulation Models

@@ -18,8 +18,8 @@ public enum AppAppearance {
         //  Navigation Bar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
-        navigationBarAppearance.titleTextAttributes = [.font: PlomeFont.subtitle.font, .foregroundColor: UIColor.black]
-        navigationBarAppearance.largeTitleTextAttributes = [.font: PlomeFont.title.font, .foregroundColor: UIColor.black]
+        navigationBarAppearance.titleTextAttributes = [.font: PlomeFont.demiBoldM.font, .foregroundColor: PlomeColor.darkBlue.color]
+        navigationBarAppearance.largeTitleTextAttributes = [.font: PlomeFont.title.font, .foregroundColor: PlomeColor.darkBlue.color]
 
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance

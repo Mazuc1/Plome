@@ -79,5 +79,7 @@ final class SimulationListViewController: AppViewController {
         ])
     }
 
-    @objc private func userDidTapNewSimulation() {}
+    @objc private func userDidTapNewSimulation() {
+        viewModel.userDidTapNewSimulation()
+    }
 }

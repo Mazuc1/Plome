@@ -1,8 +1,8 @@
 //
 //  DestinationsSearchTableViewDataSource.swift
-//  Explorer
+//  Plome
 //
-//  Created by Loïc MAZUC on 28/09/2022.
+//  Created by Loic Mazuc on 31/10/2022.
 //
 
 import PlomeCoreKit
