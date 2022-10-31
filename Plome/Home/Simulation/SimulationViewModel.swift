@@ -8,15 +8,18 @@
 import Foundation
 import PlomeCoreKit
 
-final class SimulationViewModel {
+final class SimulationViewModel: ObservableObject {
     // MARK: - Properties
 
     private let router: SimulationsRouter
 
+    @Published var simulation: Simulation
+
     // MARK: - Init
 
-    init(router: SimulationsRouter) {
+    init(router: SimulationsRouter, simulation: Simulation) {
         self.router = router
+        self.simulation = simulation
     }
 
     // MARK: - Methods
