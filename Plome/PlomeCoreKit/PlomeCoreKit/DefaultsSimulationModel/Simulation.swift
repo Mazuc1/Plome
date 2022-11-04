@@ -30,8 +30,12 @@ public struct Simulation: Hashable {
         return exams
             .filter { $0.type == type }
     }
-    
+
     public mutating func remove(exam: Exam) {
         exams?.remove(exam)
+    }
+
+    public mutating func add(exam: Exam) {
+        exams?.insert(exam)
     }
 }

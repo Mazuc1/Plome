@@ -5,9 +5,9 @@
 //  Created by Loic Mazuc on 31/10/2022.
 //
 
+import Combine
 import PlomeCoreKit
 import UIKit
-import Combine
 
 final class SimulationViewController: AppViewController {
     // MARK: - Properties
@@ -76,7 +76,7 @@ final class SimulationViewController: AppViewController {
             primaryCTACalculate.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
     }
-    
+
     private func subscribeToSimulation() {
         viewModel.$simulation
             .receive(on: RunLoop.main)
@@ -85,7 +85,6 @@ final class SimulationViewController: AppViewController {
             }
             .store(in: &cancellables)
     }
-    
 
     @objc private func userDidTapCalculate() {}
 }
