@@ -24,3 +24,11 @@ final class SimulationViewModel: ObservableObject {
 
     // MARK: - Methods
 }
+
+// MARK: - ExamTypeHeaderViewOutput
+
+extension SimulationViewModel: ExamTypeHeaderViewOutput {
+    func userDidTapAddExam(for _: PlomeCoreKit.ExamTypeSection) {
+        //
+    }
+}
