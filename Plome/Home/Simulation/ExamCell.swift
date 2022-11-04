@@ -45,12 +45,16 @@ final class ExamCell: UITableViewCell {
         $0.placeholder = "1.0"
         $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
     }
 
     private var textFieldGrade: UITextField = .init().configure {
         $0.placeholder = "08/20"
         $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
     }
 
     private var stackViewTextFields: UIStackView = .init().configure {
@@ -65,7 +69,7 @@ final class ExamCell: UITableViewCell {
 
     private var stackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.alignment = .leading
+        $0.alignment = .fill
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing
         $0.translatesAutoresizingMaskIntoConstraints = false

@@ -44,12 +44,12 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
     }
 
     private var addButton: UIButton = .init().configure {
-        $0.setBackgroundImage(Icons.add.configure(weight: .regular, color: .pink, size: 23), for: .normal)
+        $0.setBackgroundImage(Icons.add.configure(weight: .regular, color: .lightViolet, size: 23), for: .normal)
     }
 
     private var stackView: UIStackView = .init().configure {
         $0.axis = .horizontal
-        $0.alignment = .leading
+        $0.alignment = .center
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
         $0.backgroundColor = .clear
@@ -77,14 +77,22 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
         titleLabel.text = section.title
 
         addButton.addTarget(self, action: #selector(userDidTapAddExam), for: .touchUpInside)
+
+        contentView.backgroundColor = PlomeColor.darkGray.color.withAlphaComponent(0.1)
+        contentView.layer.cornerRadius = AppStyles.defaultRadius
     }
 
     private func setupLayout() {
         stackView.addArrangedSubviews([titleLabel, UIView(), addButton])
         stackView.stretchInView(parentView: contentView)
 
+        stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                        left: AppStyles.defaultSpacing,
+                                        bottom: AppStyles.defaultSpacing,
+                                        right: AppStyles.defaultSpacing)
+
         NSLayoutConstraint.activate([
-            stackView.heightAnchor.constraint(equalToConstant: 30),
+            stackView.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
 
