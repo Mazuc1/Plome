@@ -10,7 +10,7 @@ import Foundation
 public struct Simulation: Hashable {
     public let name: String
     public let date: Date?
-    public let exams: Set<Exam>?
+    public var exams: Set<Exam>?
 
     public init(name: String, date: Date?, exams: Set<Exam>?) {
         self.name = name
@@ -29,5 +29,9 @@ public struct Simulation: Hashable {
         guard let exams else { return [] }
         return exams
             .filter { $0.type == type }
+    }
+    
+    public mutating func remove(exam: Exam) {
+        exams?.remove(exam)
     }
 }

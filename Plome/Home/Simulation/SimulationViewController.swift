@@ -7,11 +7,13 @@
 
 import PlomeCoreKit
 import UIKit
+import Combine
 
 final class SimulationViewController: AppViewController {
     // MARK: - Properties
 
     private let viewModel: SimulationViewModel
+    private var cancellables: Set<AnyCancellable> = .init()
 
     // MARK: - UI
 
@@ -50,6 +52,7 @@ final class SimulationViewController: AppViewController {
         navigationItem.title = viewModel.simulation.name
 
         setupConstraint()
+        subscribeToSimulation()
     }
 
     // MARK: - Methods
@@ -73,6 +76,16 @@ final class SimulationViewController: AppViewController {
             primaryCTACalculate.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
     }
+    
+    private func subscribeToSimulation() {
+        viewModel.$simulation
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+    
 
     @objc private func userDidTapCalculate() {}
 }
@@ -119,4 +132,15 @@ extension SimulationViewController: UITableViewDataSource {
 
 // MARK: -  Table view delegate
 
-extension SimulationViewController: UITableViewDelegate {}
+extension SimulationViewController: UITableViewDelegate {
+    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+        true
+    }
+
+    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = AppContextualAction.deleteAction { [weak self] in
+            self?.viewModel.userDidTapDeleteExam(at: indexPath)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+}
