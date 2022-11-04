@@ -41,8 +41,6 @@
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
 		CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */; };
-		CFDC912A2902C7A0008B21B0 /* AddExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC91292902C7A0008B21B0 /* AddExamCell.swift */; };
-		CFDC912C2902D38C008B21B0 /* AddSimulationModelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */; };
 		CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,8 +107,6 @@
 		CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFBF56B928ECC5F000E4EC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFBF56BB28ECC5F000E4EC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFDC91292902C7A0008B21B0 /* AddExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExamCell.swift; sourceTree = "<group>"; };
-		CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelHeaderView.swift; sourceTree = "<group>"; };
 		CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,8 +204,6 @@
 			children = (
 				CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */,
 				CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */,
-				CFDC91292902C7A0008B21B0 /* AddExamCell.swift */,
-				CFDC912B2902D38C008B21B0 /* AddSimulationModelHeaderView.swift */,
 				CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */,
 			);
 			path = AddSimulation;
@@ -412,7 +406,6 @@
 			files = (
 				CF9D0C4D290FC5AF00DA9BC9 /* SmallSimulationModelCell.swift in Sources */,
 				CF888F7D290F300300D2D3E5 /* SelectSimulationModelViewModel.swift in Sources */,
-				CFDC912C2902D38C008B21B0 /* AddSimulationModelHeaderView.swift in Sources */,
 				CF852674290FF4FD00D58B2A /* SimulationViewController.swift in Sources */,
 				CFBF56AE28ECC5F000E4EC7D /* AppDelegate.swift in Sources */,
 				CF852676290FF51800D58B2A /* SimulationViewModel.swift in Sources */,
@@ -431,7 +424,6 @@
 				CF888F75290F249E00D2D3E5 /* SimulationListViewModel.swift in Sources */,
 				CF888F78290F289D00D2D3E5 /* EmptySimulationListView.swift in Sources */,
 				CF2CCBD029028F2C00FA14C4 /* SimulationCell.swift in Sources */,
-				CFDC912A2902C7A0008B21B0 /* AddExamCell.swift in Sources */,
 				CF3B9AA428F32AE900457A44 /* SimulationListViewController.swift in Sources */,
 				CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */,
 				CF3B9A8C28F1DD1400457A44 /* Screens.swift in Sources */,
