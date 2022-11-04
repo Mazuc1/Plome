@@ -24,4 +24,10 @@ public struct Simulation: Hashable {
             .filter { $0.type == type }
             .count
     }
+
+    public func exams(of type: ExamType) -> [Exam] {
+        guard let exams else { return [] }
+        return exams
+            .filter { $0.type == type }
+    }
 }

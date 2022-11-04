@@ -22,6 +22,7 @@ final class SimulationViewController: AppViewController {
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
         $0.register(ExamTypeHeaderView.self, forHeaderFooterViewReuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
+        $0.register(ExamCell.self, forCellReuseIdentifier: ExamCell.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -100,8 +101,19 @@ extension SimulationViewController: UITableViewDataSource {
         }
     }
 
-    func tableView(_: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: ExamCell.reuseIdentifier) as? ExamCell {
+            var exam: Exam?
+            switch indexPath.section {
+            case 0: exam = viewModel.simulation.exams(of: .trial)[indexPath.row]
+            case 1: exam = viewModel.simulation.exams(of: .continuousControl)[indexPath.row]
+            case 2: exam = viewModel.simulation.exams(of: .option)[indexPath.row]
+            default: break
+            }
+            cell.setup(exam: exam)
+            return cell
+        }
+        return UITableViewCell()
     }
 }
 

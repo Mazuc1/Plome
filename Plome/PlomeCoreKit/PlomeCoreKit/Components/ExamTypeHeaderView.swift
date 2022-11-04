@@ -36,7 +36,7 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
     // MARK: - UI
 
     private var titleLabel: UILabel = .init().configure {
-        $0.font = PlomeFont.demiBoldS.font
+        $0.font = PlomeFont.demiBoldL.font
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .left
         $0.numberOfLines = 1

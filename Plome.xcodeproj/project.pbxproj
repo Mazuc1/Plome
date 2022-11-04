@@ -24,6 +24,7 @@
 		CF3B9AA828F32BA600457A44 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9AA728F32BA600457A44 /* SettingsViewController.swift */; };
 		CF3B9AA928F32C3300457A44 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */; };
 		CF3B9AAA28F32C3300457A44 /* PlomeCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF4893902915439100B97147 /* ExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938F2915439100B97147 /* ExamCell.swift */; };
 		CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */; };
 		CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */; };
 		CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */; };
@@ -86,6 +87,7 @@
 		CF3B9AA528F32B8C00457A44 /* SimulationModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsViewController.swift; sourceTree = "<group>"; };
 		CF3B9AA728F32BA600457A44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CF3B9AAB28F5762000457A44 /* Plome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF48938F2915439100B97147 /* ExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCell.swift; sourceTree = "<group>"; };
 		CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelViewController.swift; sourceTree = "<group>"; };
 		CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelViewModel.swift; sourceTree = "<group>"; };
 		CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 			children = (
 				CF852673290FF4FD00D58B2A /* SimulationViewController.swift */,
 				CF852675290FF51800D58B2A /* SimulationViewModel.swift */,
+				CF48938F2915439100B97147 /* ExamCell.swift */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				CF9D0C55290FCF4A00DA9BC9 /* DestinationsSearchTableViewDataSource.swift in Sources */,
 				CF888F75290F249E00D2D3E5 /* SimulationListViewModel.swift in Sources */,
 				CF888F78290F289D00D2D3E5 /* EmptySimulationListView.swift in Sources */,
+				CF4893902915439100B97147 /* ExamCell.swift in Sources */,
 				CF2CCBD029028F2C00FA14C4 /* SimulationCell.swift in Sources */,
 				CF3B9AA428F32AE900457A44 /* SimulationListViewController.swift in Sources */,
 				CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */,
