@@ -43,14 +43,13 @@ final class ExamCell: UITableViewCell {
 
     private var textFieldCoeff: UITextField = .init().configure {
         $0.placeholder = "1.0"
-        $0.keyboardType = .decimalPad
+        $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
-        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private var textFieldGrade: UITextField = .init().configure {
         $0.placeholder = "08/20"
-        $0.keyboardType = .decimalPad
+        $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
     }
 
@@ -91,6 +90,9 @@ final class ExamCell: UITableViewCell {
         setupLayout()
 
         labelExamName.text = exam?.name
+        if let coeff = exam?.coefficient {
+            textFieldCoeff.text = "\(coeff)"
+        }
 
         backgroundColor = .clear
         selectionStyle = .none
