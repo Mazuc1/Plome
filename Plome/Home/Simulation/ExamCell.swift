@@ -115,22 +115,3 @@ final class ExamCell: UITableViewCell {
         stackView.stretchInView(parentView: contentView)
     }
 }
-
-/*
-
- contentView.addSubview(stackView)
- stackView.addArrangedSubviews([labelExamName])
-
- NSLayoutConstraint.activate([
-     stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
-     stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-     stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: AppStyles.defaultSpacing),
-     stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-     stackView.heightAnchor.constraint(equalToConstant: Self.modelExamCellHeight),
- ])
-
- stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                 left: AppStyles.defaultSpacing,
-                                 bottom: AppStyles.defaultSpacing,
-                                 right: AppStyles.defaultSpacing)
- */
