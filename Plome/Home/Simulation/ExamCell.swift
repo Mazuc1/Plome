@@ -43,16 +43,20 @@ final class ExamCell: UITableViewCell {
 
     private var textFieldCoeff: UITextField = .init().configure {
         $0.placeholder = "1.0"
+        $0.font = PlomeFont.bodyM.font
         $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
+        $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
     }
 
     private var textFieldGrade: UITextField = .init().configure {
         $0.placeholder = "08/20"
+        $0.font = PlomeFont.bodyM.font
         $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
+        $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
     }
@@ -80,6 +84,8 @@ final class ExamCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        textFieldCoeff.delegate = self
+        textFieldGrade.delegate = self
     }
 
     @available(*, unavailable)
@@ -117,5 +123,43 @@ final class ExamCell: UITableViewCell {
         stackView.addArrangedSubviews([labelExamName, stackViewTextFields])
 
         stackView.stretchInView(parentView: contentView)
+    }
+}
+
+// MARK: - Table View Delegate
+
+extension ExamCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text,
+           !text.isEmpty {
+            var checkResult: Bool = true
+            
+            if textField.placeholder == "08/20" {
+                checkResult = check(text, isConform: .grade)
+            } else if textField.placeholder == "1.0" {
+                checkResult = check(text, isConform: .coeff)
+            }
+            
+            setStyle(for: textField, dependOf: checkResult)
+        }
+    }
+    
+    private func setStyle(for textField: UITextField, dependOf result: Bool) {
+        if !result {
+            textField.textColor = .red
+            textField.font = PlomeFont.demiBoldM.font
+        } else {
+            textField.textColor = .black
+            textField.font = PlomeFont.bodyM.font
+        }
+    }
+    
+    private func check(_ text: String, isConform to: Exam.Regex) -> Bool {
+        return text ~= to.regex
     }
 }
