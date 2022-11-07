@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-public struct Exam: Hashable {
+public class Exam: Hashable {
     public enum Rule {
         case grade
         case coeff
@@ -44,11 +44,13 @@ public struct Exam: Hashable {
         return cdExam
     }
 
-    public mutating func save(_ text: String, ifIsConformTo rule: Rule) -> Bool {
+    public func save(_ text: String, ifIsConformTo rule: Rule) -> Bool {
         switch rule {
         case .grade:
             let isConform = text ~= rule.regex && checkRatioFor(text)
-            if isConform { grade = text }
+            if isConform {
+                grade = text
+            }
             return isConform
         case .coeff:
             let isConform = text ~= rule.regex
@@ -63,6 +65,16 @@ public struct Exam: Hashable {
               let rhsFloat = Float(values[1]) else { return false }
 
         return lhsFloat <= rhsFloat
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+}
+
+extension Exam: Equatable {
+    public static func == (lhs: Exam, rhs: Exam) -> Bool {
+        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 }
 

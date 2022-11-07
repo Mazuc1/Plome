@@ -92,7 +92,7 @@ final class ExamCell: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         textFieldGrade.text = nil
@@ -108,6 +108,10 @@ final class ExamCell: UITableViewCell {
         labelExamName.text = exam?.name
         if let coeff = exam?.coefficient {
             textFieldCoeff.text = "\(coeff)"
+        }
+
+        if let grade = exam?.grade {
+            textFieldGrade.text = grade
         }
 
         backgroundColor = .clear

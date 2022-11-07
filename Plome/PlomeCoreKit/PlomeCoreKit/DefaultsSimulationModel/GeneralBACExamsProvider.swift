@@ -18,13 +18,13 @@ struct GeneralBACExamsProvider {
     ]
 
     private static var premiereContinuousControls: [Exam] = [
-        .init(name: "Spécialité abandonnée", coefficient: 8, grade: nil, type: .continuousControl),
-        .init(name: "Enseignement scientifique", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "LVA", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "LVB", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "EPS", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "Histoire-géo", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "EMC", coefficient: 1, grade: nil, type: .continuousControl),
+        .init(name: "1ère Spécialité abandonnée", coefficient: 8, grade: nil, type: .continuousControl),
+        .init(name: "1ère Enseignement scientifique", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "1ère LVA", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "1ère LVB", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "1ère EPS", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "1ère Histoire-géo", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "1ère EMC", coefficient: 1, grade: nil, type: .continuousControl),
     ]
 
     private static var terminaleTrials: [Exam] = [
@@ -35,11 +35,11 @@ struct GeneralBACExamsProvider {
     ]
 
     private static var terminaleContinuousControls: [Exam] = [
-        .init(name: "Enseignement scientifique", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "LVA", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "LVB", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "EPS", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "Histoire-géo", coefficient: 3, grade: nil, type: .continuousControl),
-        .init(name: "EMC", coefficient: 1, grade: nil, type: .continuousControl),
+        .init(name: "Terminale Enseignement scientifique", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Terminale LVA", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Terminale LVB", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Terminale EPS", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Terminale Histoire-géo", coefficient: 3, grade: nil, type: .continuousControl),
+        .init(name: "Terminale EMC", coefficient: 1, grade: nil, type: .continuousControl),
     ]
 }
