@@ -133,22 +133,29 @@ extension ExamCell: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
+    // Set default style of textField when start editing to avoid error style when user entry new correct value during editing
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .black
+        textField.font = PlomeFont.bodyM.font
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text,
-           !text.isEmpty {
-            var checkResult: Bool = true
-            
+           !text.isEmpty
+        {
+            var checkResult: Bool?
+
             if textField.placeholder == "08/20" {
-                checkResult = check(text, isConform: .grade)
+                checkResult = exam?.save(text, ifIsConformTo: .grade)
             } else if textField.placeholder == "1.0" {
-                checkResult = check(text, isConform: .coeff)
+                checkResult = exam?.save(text, ifIsConformTo: .coeff)
             }
-            
-            setStyle(for: textField, dependOf: checkResult)
+
+            setStyle(for: textField, dependOf: checkResult ?? false)
         }
     }
-    
+
     private func setStyle(for textField: UITextField, dependOf result: Bool) {
         if !result {
             textField.textColor = .red
@@ -157,9 +164,5 @@ extension ExamCell: UITextFieldDelegate {
             textField.textColor = .black
             textField.font = PlomeFont.bodyM.font
         }
-    }
-    
-    private func check(_ text: String, isConform to: Exam.Regex) -> Bool {
-        return text ~= to.regex
     }
 }

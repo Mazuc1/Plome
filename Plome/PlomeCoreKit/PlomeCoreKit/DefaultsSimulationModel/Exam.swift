@@ -9,10 +9,10 @@ import CoreData
 import Foundation
 
 public struct Exam: Hashable {
-    public enum Regex {
+    public enum Rule {
         case grade
         case coeff
-        
+
         public var regex: String {
             switch self {
             case .grade: return "^[0-9]+(?:\\.[0-9]{1,2})?[/][0-9]+(?:\\.[0-9]{1,2})?$"
@@ -20,12 +20,12 @@ public struct Exam: Hashable {
             }
         }
     }
-    
-    public let name: String
-    public let coefficient: Float?
-    public let grade: String?
-    public let type: ExamType
-    
+
+    public var name: String
+    public var coefficient: Float?
+    public var grade: String?
+    public var type: ExamType
+
     public init(name: String, coefficient: Float?, grade: String?, type: ExamType) {
         self.name = name
         self.coefficient = coefficient
@@ -42,6 +42,27 @@ public struct Exam: Hashable {
         cdExam.simulation = simulation
 
         return cdExam
+    }
+
+    public mutating func save(_ text: String, ifIsConformTo rule: Rule) -> Bool {
+        switch rule {
+        case .grade:
+            let isConform = text ~= rule.regex && checkRatioFor(text)
+            if isConform { grade = text }
+            return isConform
+        case .coeff:
+            let isConform = text ~= rule.regex
+            if isConform { coefficient = Float(text) }
+            return isConform
+        }
+    }
+
+    private func checkRatioFor(_ text: String) -> Bool {
+        let values = text.split(separator: "/")
+        guard let lhsFloat = Float(values[0]),
+              let rhsFloat = Float(values[1]) else { return false }
+
+        return lhsFloat <= rhsFloat
     }
 }
 
