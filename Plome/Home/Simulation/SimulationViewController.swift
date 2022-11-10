@@ -50,6 +50,7 @@ final class SimulationViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.simulation.name
+        navigationItem.rightBarButtonItem = createInfoBarButton()
 
         setupConstraint()
         subscribeToSimulation()
@@ -94,6 +95,20 @@ final class SimulationViewController: AppViewController {
                 self?.primaryCTACalculate.isEnabled = $0
             }
             .store(in: &cancellables)
+    }
+
+    private func createInfoBarButton() -> UIBarButtonItem {
+        UIBarButtonItem(image: Icons.info.configure(weight: .regular, color: .pink, size: 20), style: .plain, target: self, action: #selector(userDidTapInfo))
+    }
+
+    @objc private func userDidTapInfo() {
+        let alertController = UIAlertController(title: "Comment complétez la simulation ?",
+                                                message: "Voici les quelques règles pour bien faire votre simulation.\n\n1. Les nombres à décimaux s'écrivent avec des points.\n\n2. Les notes doivent être séparer avec un /.\n\n3. Si vous n'indiquez pas de coefficient, il sera automatiquement mis à 1 lors du calcul.",
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alertController.view.tintColor = PlomeColor.pink.color
+
+        present(alertController, animated: true)
     }
 
     @objc private func userDidTapCalculate() {
