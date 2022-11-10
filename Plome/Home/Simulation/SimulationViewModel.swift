@@ -73,6 +73,8 @@ extension SimulationViewModel: ExamTypeHeaderViewOutput {
     }
 }
 
+// MARK: - SimulationViewModelInput
+
 extension SimulationViewModel: SimulationViewModelInput {
     func userDidChangeValue() {
         canCalculate = simulation.gradeIsSetForAllExams()

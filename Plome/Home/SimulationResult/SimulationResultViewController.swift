@@ -8,7 +8,7 @@
 import PlomeCoreKit
 import UIKit
 
-final class SimulationResultViewController: UIViewController {
+final class SimulationResultViewController: AppViewController {
     // MARK: - Properties
 
     let viewModel: SimulationResultViewModel
