@@ -68,4 +68,21 @@ final class SelectSimulationModelViewModel: ObservableObject {
     func userDidTapCloseButton() {
         router.dismiss()
     }
+
+    func userDidSelectSimulationModel(at indexPath: IndexPath) {
+        var simulation: Simulation?
+
+        if indexPath.section == 0 {
+            simulation = defaultSimulationModelsProvider.simulations[indexPath.row]
+        } else if indexPath.section == 1 {
+            simulation = snapshot.itemIdentifiers(inSection: .coreData)[indexPath.row]
+        }
+
+        guard let simulation else {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            return
+        }
+
+        router.openSimulation(with: simulation)
+    }
 }

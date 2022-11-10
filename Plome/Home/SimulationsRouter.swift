@@ -39,4 +39,24 @@ final class SimulationsRouter: DefaultRouter {
 
         route(to: selectSimulationViewController, as: transition)
     }
+
+    func openSimulation(with simulation: Simulation) {
+        let transition = PushTransition()
+        let router = SimulationsRouter(screens: screens, rootTransition: transition)
+        let simulationViewController = screens.createSimulation(router: router, with: simulation)
+
+        router.rootViewController = simulationViewController
+
+        route(to: simulationViewController, as: transition)
+    }
+
+    func openSimulationResult(with simulation: Simulation) {
+        let transition = PushTransition()
+        let router = SimulationsRouter(screens: screens, rootTransition: transition)
+        let simulationResultViewController = screens.createSimulationResult(router: router, with: simulation)
+
+        router.rootViewController = simulationResultViewController
+
+        route(to: simulationResultViewController, as: transition)
+    }
 }

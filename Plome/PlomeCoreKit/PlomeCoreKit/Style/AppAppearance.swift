@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 17/03/2022.
 //
 
+import IQKeyboardManagerSwift
 import UIKit
 
 public enum AppAppearance {
@@ -24,5 +25,17 @@ public enum AppAppearance {
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         UINavigationBar.appearance().tintColor = PlomeColor.pink.color
+
+        UITableView.appearance().sectionHeaderTopPadding = 0
+    }
+
+    public static func setKeyboardAppearance() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
+        IQKeyboardManager.shared.toolbarTintColor = PlomeColor.pink.color
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Terminé"
+        IQKeyboardManager.shared.previousNextDisplayMode = .default
+        IQKeyboardManager.shared.toolbarNextBarButtonItemImage = Icons.arrowDown.configure(weight: .regular, color: .pink, size: 20)
+        IQKeyboardManager.shared.toolbarPreviousBarButtonItemImage = Icons.arrowUp.configure(weight: .regular, color: .pink, size: 20)
     }
 }

@@ -62,6 +62,7 @@ final class SelectSimulationModelViewController: AppViewController {
 
         navigationItem.title = "Nouvelle simulation"
         navigationItem.leftBarButtonItem = closeButton
+        navigationItem.backButtonDisplayMode = .minimal
 
         setupLayout()
 
@@ -116,4 +117,8 @@ final class SelectSimulationModelViewController: AppViewController {
 
 // MARK: - Table View delegate
 
-extension SelectSimulationModelViewController: UITableViewDelegate {}
+extension SelectSimulationModelViewController: UITableViewDelegate {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.userDidSelectSimulationModel(at: indexPath)
+    }
+}

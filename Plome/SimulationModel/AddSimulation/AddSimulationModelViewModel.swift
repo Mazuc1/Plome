@@ -72,50 +72,25 @@ final class AddSimulationModelViewModel: ObservableObject {
         }
     }
 
-    func userDidTapAddExam(at indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            var section: AddSimulationModelViewController.AddSimulationModelSection = .trial
-            switch indexPath.section {
-            case 0: section = .trial
-            case 1: section = .continuousControl
-            case 2: section = .option
-            default: break
-            }
-
-            router.alertWithTextField(title: "Nouveau",
-                                      message: "Comment se nomme votre examen ?",
-                                      buttonActionName: "Ajouter")
-            { [weak self] in
-                self?.addExam(name: $0, in: section)
-            }
-        }
-    }
-
-    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
-    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
-    // indexPath will already be at 1, and skip the first item of arrays
     func exam(for indexPath: IndexPath) -> Exam? {
         switch indexPath.section {
-        case 0: return trials[indexPath.row - 1]
-        case 1: return continousControls[indexPath.row - 1]
-        case 2: return options[indexPath.row - 1]
+        case 0: return trials[indexPath.row]
+        case 1: return continousControls[indexPath.row]
+        case 2: return options[indexPath.row]
         default: return nil
         }
     }
 
-    // `indexPath.row - 1` avoid crashes when attemps to access wrong index in array
-    // Because of we had first a custom cell to add exam, when `cellForRowAt` will fetch exams in viewModel
-    // indexPath will already be at 1, and skip the first item of arrays
     func userDidTapDeleteExam(at indexPath: IndexPath) {
         switch indexPath.section {
-        case 0: trials.remove(at: indexPath.row - 1)
-        case 1: continousControls.remove(at: indexPath.row - 1)
-        case 2: options.remove(at: indexPath.row - 1)
+        case 0: trials.remove(at: indexPath.row)
+        case 1: continousControls.remove(at: indexPath.row)
+        case 2: options.remove(at: indexPath.row)
         default: break
         }
     }
 
-    func addExam(name: String, in section: AddSimulationModelViewController.AddSimulationModelSection) {
+    func addExam(name: String, in section: ExamTypeSection) {
         switch section {
         case .trial: trials.append(.init(name: name, coefficient: nil, grade: nil, type: .trial))
         case .continuousControl: continousControls.append(.init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
@@ -172,5 +147,16 @@ final class AddSimulationModelViewModel: ObservableObject {
         _ = options.map { cdExams.insert($0.toCoreDataModel(in: context, for: simulation)) }
 
         return cdExams
+    }
+}
+
+extension AddSimulationModelViewModel: ExamTypeHeaderViewOutput {
+    func userDidTapAddExam(for section: ExamTypeSection) {
+        router.alertWithTextField(title: "Nouveau",
+                                  message: "Comment se nomme votre \(section.title) ?",
+                                  buttonActionName: "Ajouter")
+        { [weak self] in
+            self?.addExam(name: $0, in: section)
+        }
     }
 }

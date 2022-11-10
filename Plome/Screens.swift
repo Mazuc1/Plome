@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PlomeCoreKit
 import UIKit
 
 final class Screens {
@@ -37,6 +38,18 @@ extension Screens {
         let navigationController = UINavigationController(rootViewController: selectSimulationModelViewController)
 
         return navigationController
+    }
+
+    func createSimulation(router: SimulationsRouter, with simulation: Simulation) -> UIViewController {
+        let simulationViewModel = SimulationViewModel(router: router, simulation: simulation)
+        let simulationViewController = SimulationViewController(viewModel: simulationViewModel)
+        return simulationViewController
+    }
+
+    func createSimulationResult(router: SimulationsRouter, with simulation: Simulation) -> UIViewController {
+        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation)
+        let simulationResultViewController = SimulationResultViewController(viewModel: simulationResultViewModel)
+        return simulationResultViewController
     }
 }
 

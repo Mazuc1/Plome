@@ -15,22 +15,6 @@ final class AddSimulationModelViewController: AppViewController {
     private let viewModel: AddSimulationModelViewModel
     private var cancellables: Set<AnyCancellable> = .init()
 
-    private static let numberOfAddExamRowInSection: Int = 1
-
-    enum AddSimulationModelSection: Int, CaseIterable {
-        case trial = 0
-        case continuousControl = 1
-        case option = 2
-
-        var sectionTitle: String {
-            switch self {
-            case .trial: return "Épreuve(s)"
-            case .continuousControl: return "Contrôle(s) continue"
-            case .option: return "Option(s)"
-            }
-        }
-    }
-
     // MARK: - UI
 
     private lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
@@ -39,9 +23,8 @@ final class AddSimulationModelViewController: AppViewController {
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
-        $0.register(AddExamCell.self, forCellReuseIdentifier: AddExamCell.reuseIdentifier)
         $0.register(ModelExamCell.self, forCellReuseIdentifier: ModelExamCell.reuseIdentifier)
-        $0.register(AddSimulationModelHeaderView.self, forHeaderFooterViewReuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
+        $0.register(ExamTypeHeaderView.self, forHeaderFooterViewReuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -114,7 +97,7 @@ final class AddSimulationModelViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             primaryCTARegisterModel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
@@ -161,40 +144,32 @@ final class AddSimulationModelViewController: AppViewController {
 
 extension AddSimulationModelViewController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        AddSimulationModelSection.allCases.count
+        ExamTypeSection.allCases.count
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfRows: Int = Self.numberOfAddExamRowInSection
-
         switch section {
-        case 0: numberOfRows += viewModel.trials.count
-        case 1: numberOfRows += viewModel.continousControls.count
-        case 2: numberOfRows += viewModel.options.count
+        case 0: return viewModel.trials.count
+        case 1: return viewModel.continousControls.count
+        case 2: return viewModel.options.count
         default: return 0
         }
-
-        return numberOfRows
     }
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionName = AddSimulationModelSection(rawValue: section)?.sectionTitle else { return nil }
-        return AddSimulationModelHeaderView(text: sectionName, reuseIdentifier: AddSimulationModelHeaderView.reuseIdentifier)
+        guard let section = ExamTypeSection(rawValue: section) else { return nil }
+        let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
+        simulationHeaderView.setup()
+        simulationHeaderView.examTypeHeaderViewOutput = viewModel
+        return simulationHeaderView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: AddExamCell.reuseIdentifier) as? AddExamCell {
-                cell.setup()
-                return cell
-            }
-        } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ModelExamCell.reuseIdentifier) as? ModelExamCell,
-               let exam = viewModel.exam(for: indexPath)
-            {
-                cell.setup(exam: exam)
-                return cell
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: ModelExamCell.reuseIdentifier) as? ModelExamCell,
+           let exam = viewModel.exam(for: indexPath)
+        {
+            cell.setup(exam: exam)
+            return cell
         }
 
         return UITableViewCell()
@@ -204,14 +179,8 @@ extension AddSimulationModelViewController: UITableViewDataSource {
 // MARK: - Table View Delegate
 
 extension AddSimulationModelViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.userDidTapAddExam(at: indexPath)
-    }
-
-    // Disable edit for AddExamRow
-    func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == 0 { return false }
-        return true
+    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+        true
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
