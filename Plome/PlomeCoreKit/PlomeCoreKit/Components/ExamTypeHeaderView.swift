@@ -47,6 +47,11 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
         $0.setBackgroundImage(Icons.add.configure(weight: .regular, color: .lightViolet, size: 23), for: .normal)
     }
 
+    private var divider: UIView = .init().configure {
+        $0.backgroundColor = PlomeColor.darkBlue.color
+        $0.frame.size.height = 5
+    }
+
     private var stackView: UIStackView = .init().configure {
         $0.axis = .horizontal
         $0.alignment = .center
@@ -78,13 +83,15 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
 
         addButton.addTarget(self, action: #selector(userDidTapAddExam), for: .touchUpInside)
 
-        contentView.backgroundColor = PlomeColor.darkGray.color.withAlphaComponent(0.1)
-        contentView.layer.cornerRadius = AppStyles.defaultRadius
+        backgroundConfiguration = .clear()
+        backgroundConfiguration?.backgroundColor = PlomeColor.background.color
     }
 
     private func setupLayout() {
         stackView.addArrangedSubviews([titleLabel, UIView(), addButton])
         stackView.stretchInView(parentView: contentView)
+
+        stackView.addSeparator(at: .bottom, color: PlomeColor.darkBlue.color, weight: 3)
 
         stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                         left: AppStyles.defaultSpacing,

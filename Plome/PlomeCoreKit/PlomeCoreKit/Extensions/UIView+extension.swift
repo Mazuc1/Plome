@@ -55,6 +55,7 @@ public extension UIView {
     func addSeparator(at position: SeparatorPosition, color: UIColor, weight: CGFloat = 1.0 / UIScreen.main.scale, insets: UIEdgeInsets = .zero) -> UIView {
         let view = UIView().configure {
             $0.backgroundColor = color
+            $0.layer.cornerRadius = weight / 2
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         addSubview(view)
