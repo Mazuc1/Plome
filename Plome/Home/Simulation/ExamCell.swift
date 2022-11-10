@@ -20,11 +20,19 @@ final class ExamCell: UITableViewCell {
 
     // MARK: - UI
 
-    private var labelExamName: UILabel = .init().configure {
+    private var labelExamName: AppLabel = .init(withInsets: AppStyles.defaultSpacing,
+                                                AppStyles.defaultSpacing,
+                                                AppStyles.defaultSpacing,
+                                                AppStyles.defaultSpacing).configure {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
+        $0.backgroundColor = .white
         $0.textAlignment = .left
         $0.numberOfLines = 1
+        $0.layer.cornerRadius = AppStyles.defaultRadius
+        $0.layer.masksToBounds = true
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        $0.addSeparator(at: .bottom, color: PlomeColor.darkGray.color.withAlphaComponent(0.5), weight: 1.5, insets: .init(top: 0, left: 5, bottom: 0, right: 5))
     }
 
     private var labelCoeff: UILabel = .init().configure {
@@ -70,14 +78,15 @@ final class ExamCell: UITableViewCell {
         $0.distribution = .equalSpacing
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
+        $0.layer.masksToBounds = true
+        $0.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
         $0.isLayoutMarginsRelativeArrangement = true
     }
 
     private var stackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.alignment = .fill
+        $0.alignment = .leading
         $0.distribution = .equalSpacing
-        $0.spacing = AppStyles.defaultSpacing
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isLayoutMarginsRelativeArrangement = true
     }
@@ -140,6 +149,7 @@ final class ExamCell: UITableViewCell {
         stackViewTextFields.addArrangedSubviews([labelCoeff, textFieldCoeff, labelGrade, textFieldGrade])
         stackView.addArrangedSubviews([labelExamName, stackViewTextFields])
 
+        stackViewTextFields.attachToSides(parentView: stackView)
         stackView.stretchInView(parentView: contentView)
     }
 }
