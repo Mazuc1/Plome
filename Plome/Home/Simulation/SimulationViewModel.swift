@@ -8,12 +8,17 @@
 import Foundation
 import PlomeCoreKit
 
+protocol SimulationViewModelInput: AnyObject {
+    func userDidChangeValue()
+}
+
 final class SimulationViewModel: ObservableObject {
     // MARK: - Properties
 
     private let router: SimulationsRouter
 
     @Published var simulation: Simulation
+    @Published var canCalculate: Bool = false
 
     // MARK: - Init
 
@@ -61,5 +66,11 @@ extension SimulationViewModel: ExamTypeHeaderViewOutput {
         { [weak self] in
             self?.addExam(name: $0, in: section)
         }
+    }
+}
+
+extension SimulationViewModel: SimulationViewModelInput {
+    func userDidChangeValue() {
+        canCalculate = simulation.gradeIsSetForAllExams()
     }
 }

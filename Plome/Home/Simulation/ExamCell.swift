@@ -16,6 +16,8 @@ final class ExamCell: UITableViewCell {
 
     private var exam: Exam?
 
+    weak var simulationViewModelInput: SimulationViewModelInput?
+
     // MARK: - UI
 
     private var labelExamName: UILabel = .init().configure {
@@ -97,6 +99,12 @@ final class ExamCell: UITableViewCell {
         super.prepareForReuse()
         textFieldGrade.text = nil
         textFieldCoeff.text = nil
+
+        textFieldGrade.backgroundColor = nil
+        textFieldCoeff.backgroundColor = nil
+
+        textFieldGrade.font = PlomeFont.bodyM.font
+        textFieldCoeff.font = PlomeFont.bodyM.font
     }
 
     // MARK: - Methods
@@ -147,6 +155,7 @@ extension ExamCell: UITextFieldDelegate {
     // Set default style of textField when start editing to avoid error style when user entry new correct value during editing
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.textColor = .black
+        textField.backgroundColor = nil
         textField.font = PlomeFont.bodyM.font
     }
 
@@ -163,15 +172,21 @@ extension ExamCell: UITextFieldDelegate {
             }
 
             setStyle(for: textField, dependOf: checkResult ?? false)
+        } else {
+            exam?.grade = nil
         }
+
+        simulationViewModelInput?.userDidChangeValue()
     }
 
     private func setStyle(for textField: UITextField, dependOf result: Bool) {
         if !result {
             textField.textColor = .red
             textField.font = PlomeFont.demiBoldM.font
+            textField.backgroundColor = .red.withAlphaComponent(0.1)
         } else {
             textField.textColor = .black
+            textField.backgroundColor = nil
             textField.font = PlomeFont.bodyM.font
         }
     }

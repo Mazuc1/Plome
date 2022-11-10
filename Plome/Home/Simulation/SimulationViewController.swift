@@ -121,6 +121,7 @@ extension SimulationViewController: UITableViewDataSource {
             case 2: cell.setup(exam: viewModel.simulation.exams(of: .option)[indexPath.row])
             default: break
             }
+            cell.simulationViewModelInput = viewModel
             return cell
         }
         return UITableViewCell()

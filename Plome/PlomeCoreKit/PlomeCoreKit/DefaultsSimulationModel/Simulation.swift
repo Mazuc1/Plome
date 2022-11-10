@@ -32,6 +32,11 @@ public class Simulation: Hashable {
             .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
     }
 
+    public func gradeIsSetForAllExams() -> Bool {
+        guard let exams else { return false }
+        return exams.allSatisfy { $0.grade != nil }
+    }
+
     public func remove(exam: Exam) {
         exams?.remove(exam)
     }
