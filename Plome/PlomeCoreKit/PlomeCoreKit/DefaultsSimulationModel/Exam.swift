@@ -48,13 +48,11 @@ public class Exam: Hashable {
         switch rule {
         case .grade:
             let isConform = text ~= rule.regex && checkRatioFor(text)
-            if isConform {
-                grade = text
-            }
+            if isConform { grade = text } else { grade = nil }
             return isConform
         case .coeff:
             let isConform = text ~= rule.regex
-            if isConform { coefficient = Float(text) }
+            if isConform { coefficient = Float(text) } else { coefficient = nil }
             return isConform
         }
     }

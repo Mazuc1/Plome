@@ -53,6 +53,7 @@ final class SimulationViewController: AppViewController {
 
         setupConstraint()
         subscribeToSimulation()
+        subscribeToCapabilityToRunSimulation()
     }
 
     // MARK: - Methods
@@ -86,7 +87,18 @@ final class SimulationViewController: AppViewController {
             .store(in: &cancellables)
     }
 
-    @objc private func userDidTapCalculate() {}
+    private func subscribeToCapabilityToRunSimulation() {
+        viewModel.$canCalculate
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                self?.primaryCTACalculate.isEnabled = $0
+            }
+            .store(in: &cancellables)
+    }
+
+    @objc private func userDidTapCalculate() {
+        print("👒")
+    }
 }
 
 // MARK: - Table view data source
