@@ -83,6 +83,6 @@ final class SelectSimulationModelViewModel: ObservableObject {
             return
         }
 
-        router.openSimulationViewModel(with: simulation)
+        router.openSimulation(with: simulation)
     }
 }
