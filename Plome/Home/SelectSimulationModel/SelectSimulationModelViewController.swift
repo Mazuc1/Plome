@@ -62,6 +62,7 @@ final class SelectSimulationModelViewController: AppViewController {
 
         navigationItem.title = "Nouvelle simulation"
         navigationItem.leftBarButtonItem = closeButton
+        navigationItem.backButtonDisplayMode = .minimal
 
         setupLayout()
 
