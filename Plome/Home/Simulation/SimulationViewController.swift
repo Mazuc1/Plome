@@ -97,7 +97,7 @@ final class SimulationViewController: AppViewController {
     }
 
     @objc private func userDidTapCalculate() {
-        print("👒")
+        viewModel.userDidTapCalculate()
     }
 }
 

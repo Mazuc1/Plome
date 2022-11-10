@@ -54,6 +54,10 @@ final class SimulationViewModel: ObservableObject {
         case .option: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .option))
         }
     }
+
+    func userDidTapCalculate() {
+        router.openSimulationResult(with: simulation)
+    }
 }
 
 // MARK: - ExamTypeHeaderViewOutput
