@@ -23,26 +23,36 @@ public enum Mention {
     }
 }
 
-public protocol MentionScores: AnyObject {
-    var withoutMentionScore: Int { get }
-    var ABMentionScore: Int { get }
-    var BMentionScore: Int { get }
-    var TBMentionScore: Int { get }
+protocol MentionScores: AnyObject {
+    var withoutMentionScore: Float { get }
+    var ABMentionScore: Float { get }
+    var BMentionScore: Float { get }
+    var TBMentionScore: Float { get }
 }
 
 public class Calculator: MentionScores {
     // MARK: - Properties
 
-    public var withoutMentionScore: Int
-    public var ABMentionScore: Int
-    public var BMentionScore: Int
-    public var TBMentionScore: Int
+    public var withoutMentionScore: Float
+    public var ABMentionScore: Float
+    public var BMentionScore: Float
+    public var TBMentionScore: Float
 
     public let simulation: Simulation
 
+    public private(set) var mention: Mention?
+
+    public private(set) var totalGrade: Float = 0
+    public private(set) var totalOutOf: Float = 0
+    public private(set) var totalCoefficient: Float = 0
+
+    public private(set) var trialsGrade: Float?
+    public private(set) var continousControlGrade: Float?
+    public private(set) var optionsGrade: Float?
+
     // MARK: - Init
 
-    public init(simulation: Simulation, withoutMentionScore: Int = 1000, ABMentionScore: Int = 1200, BMentionScore: Int = 1400, TBMentionScore: Int = 1600) {
+    public init(simulation: Simulation, withoutMentionScore: Float = 1000, ABMentionScore: Float = 1200, BMentionScore: Float = 1400, TBMentionScore: Float = 1600) {
         self.simulation = simulation
         self.withoutMentionScore = withoutMentionScore
         self.ABMentionScore = ABMentionScore
@@ -52,16 +62,39 @@ public class Calculator: MentionScores {
 
     // MARK: - Methods
 
-    public func setMissingCoefficientOfExams() {
-        guard let exams = simulation.exams else { return }
-
-        _ = exams.map {
-            if $0.coefficient == nil { $0.coefficient = 1 }
-        }
+    public func hasSucceed() -> Bool {
+        mention != nil
     }
 
-    public func calculate() -> (Float, Float, Float) {
-        guard let exams = simulation.exams else { return (-1, -1, -1) }
+    public func calculate() -> Float {
+        if simulation.number(of: .trial) > 0 {
+            let (grade, outOf, coefficient) = calculateGrade(for: .trial)
+            totalGrade += grade
+            totalOutOf += outOf
+            totalCoefficient += coefficient
+        }
+
+        if simulation.number(of: .continuousControl) > 0 {
+            let (grade, outOf, coefficient) = calculateGrade(for: .continuousControl)
+            totalGrade += grade
+            totalOutOf += outOf
+            totalCoefficient += coefficient
+        }
+
+        if simulation.number(of: .option) > 0 {
+            let (grade, outOf, coefficient) = calculateGrade(for: .option)
+            totalGrade += grade
+            totalOutOf += outOf
+            totalCoefficient += coefficient
+        }
+
+        setMention()
+
+        return rateOufOfTwenty(totalGrade / totalOutOf)
+    }
+
+    private func calculateGrade(for type: ExamType) -> (Float, Float, Float) {
+        let exams = simulation.exams(of: type)
 
         var totalGrade: Float = 0
         var totalOn: Float = 0
@@ -75,6 +108,26 @@ public class Calculator: MentionScores {
                 totalCoefficient += $2
             }
 
-        return (totalGrade / totalOn, totalGrade, totalOn)
+        switch type {
+        case .trial: trialsGrade = rateOufOfTwenty(totalGrade / totalOn)
+        case .option: optionsGrade = rateOufOfTwenty(totalGrade / totalOn)
+        case .continuousControl: continousControlGrade = rateOufOfTwenty(totalGrade / totalOn)
+        }
+
+        return (totalGrade, totalOn, totalCoefficient)
+    }
+
+    private func rateOufOfTwenty(_ value: Float) -> Float {
+        value * 20
+    }
+
+    private func setMention() {
+        switch totalGrade {
+        case withoutMentionScore ..< ABMentionScore: mention = .without
+        case ABMentionScore ..< BMentionScore: mention = .AB
+        case BMentionScore ..< TBMentionScore: mention = .B
+        case TBMentionScore...: mention = .TB
+        default: mention = nil
+        }
     }
 }
