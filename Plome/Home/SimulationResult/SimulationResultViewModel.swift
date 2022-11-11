@@ -22,4 +22,10 @@ final class SimulationResultViewModel {
     }
 
     // MARK: - Methods
+
+    func calculate() -> String {
+        let calculator: Calculator = .init(simulation: simulation)
+
+        return "\(calculator.calculate())"
+    }
 }

@@ -57,6 +57,14 @@ public class Exam: Hashable {
         }
     }
 
+    public func getGradeInformation() -> (lhs: Float, rhs: Float, coeff: Float) {
+        guard let grade = grade?.split(separator: "/"),
+              let lhsFloat = Float(grade[0]),
+              let rhsFloat = Float(grade[1]) else { return (-1, -1, -1) }
+
+        return (lhsFloat, rhsFloat, coefficient ?? 1)
+    }
+
     private func checkRatioFor(_ text: String) -> Bool {
         let values = text.split(separator: "/")
         guard let lhsFloat = Float(values[0]),
