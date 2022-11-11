@@ -9,6 +9,13 @@
 import CoreData
 import Foundation
 
+@objc public enum SimulationType: Int16 {
+    case custom
+    case brevet
+    case generalBAC
+    case technologicalBAC
+}
+
 @objc(CDSimulation)
 public class CDSimulation: NSManagedObject {}
 
@@ -20,6 +27,7 @@ public extension CDSimulation {
     @NSManaged var name: String
     @NSManaged var date: Date?
     @NSManaged var exams: Set<CDExam>?
+    @NSManaged var type: SimulationType
 }
 
 // MARK: Generated accessors for exams

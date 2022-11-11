@@ -11,11 +11,13 @@ public class Simulation: Hashable {
     public let name: String
     public let date: Date?
     public var exams: Set<Exam>?
+    public var type: SimulationType
 
-    public init(name: String, date: Date?, exams: Set<Exam>?) {
+    public init(name: String, date: Date?, exams: Set<Exam>?, type: SimulationType) {
         self.name = name
         self.date = date
         self.exams = exams
+        self.type = type
     }
 
     public func number(of type: ExamType) -> Int {

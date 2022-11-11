@@ -131,6 +131,7 @@ final class AddSimulationModelViewModel: ObservableObject {
             try simulationRepository.add { [weak self] cdSimulation, context in
                 cdSimulation.name = name
                 cdSimulation.exams = self?.mergeAndConvertExams(in: context, for: cdSimulation)
+                cdSimulation.type = .custom
             }
 
             router.dismiss()

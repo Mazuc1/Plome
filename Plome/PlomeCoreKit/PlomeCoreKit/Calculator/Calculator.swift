@@ -130,4 +130,6 @@ public class Calculator: MentionScores {
         default: mention = nil
         }
     }
+
+    private func setMentionScores() {}
 }
