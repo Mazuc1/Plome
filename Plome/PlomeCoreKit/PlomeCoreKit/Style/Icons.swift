@@ -47,7 +47,7 @@ public enum Icons {
         case .arrowDown: return "arrow.down.circle.fill"
         case .medal: return "medal.fill"
 
-        case .success: return "checkmark"
+        case .success: return "checkmark.circle.fill"
         case .fail: return "xmark"
         case .warning: return "exclamationmark.triangle.fill"
 
