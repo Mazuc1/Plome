@@ -116,3 +116,25 @@ public extension UIView {
         return view
     }
 }
+
+public extension UIView {
+    func addShadow(color: UIColor, offset: CGSize, opacity: Float) {
+        let contentView = UIView()
+        contentView.layer.cornerRadius = layer.cornerRadius
+        contentView.layer.masksToBounds = true
+
+        layer.masksToBounds = false
+
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = offset
+        layer.shadowOpacity = opacity
+        layer.shadowRadius = layer.cornerRadius
+
+        contentView.frame = bounds
+        contentView.autoresizingMask = [
+            .flexibleWidth, .flexibleHeight,
+        ]
+
+        addSubview(contentView)
+    }
+}

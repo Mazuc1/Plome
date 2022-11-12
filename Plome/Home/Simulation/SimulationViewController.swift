@@ -89,12 +89,12 @@ final class SimulationViewController: AppViewController {
     }
 
     private func subscribeToCapabilityToRunSimulation() {
-        viewModel.$canCalculate
-            .receive(on: RunLoop.main)
-            .sink { [weak self] in
-                self?.primaryCTACalculate.isEnabled = $0
-            }
-            .store(in: &cancellables)
+//        viewModel.$canCalculate
+//            .receive(on: RunLoop.main)
+//            .sink { [weak self] in
+//                self?.primaryCTACalculate.isEnabled = $0
+//            }
+//            .store(in: &cancellables)
     }
 
     private func createInfoBarButton() -> UIBarButtonItem {
