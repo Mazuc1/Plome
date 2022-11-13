@@ -51,6 +51,7 @@ final class SimulationViewController: AppViewController {
         super.viewDidLoad()
         navigationItem.title = viewModel.simulation.name
         navigationItem.rightBarButtonItem = createInfoBarButton()
+        navigationItem.backButtonDisplayMode = .minimal
 
         setupConstraint()
         subscribeToSimulation()

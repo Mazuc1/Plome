@@ -51,7 +51,7 @@ final class SimulationResultViewController: AppViewController {
         $0.textColor = PlomeColor.darkBlue.color
     }
 
-    private let resultStackView: UIStackView = .init().configure {
+    private let resultInformationsStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .equalCentering
         $0.spacing = AppStyles.defaultSpacing
@@ -72,17 +72,47 @@ final class SimulationResultViewController: AppViewController {
 
     private let someNumbersStackView: UIStackView = .init().configure {
         $0.axis = .vertical
+        $0.distribution = .equalCentering
+        $0.spacing = AppStyles.defaultSpacing
+        $0.alignment = .center
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private lazy var primaryCTARemakeSimulation: PrimaryCTA = .init(title: "Refaire une simulation").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private lazy var secondaryCTASaveModel: SecondaryCTA = .init(title: "Enregistrer ce modèle").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapSaveModel), for: .touchUpInside)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private let ctaStackView: UIStackView = .init().configure {
+        $0.axis = .vertical
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let stackView: UIStackView = .init().configure {
+    private let resultStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
         $0.alignment = .center
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private let scrollViewContainerStackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.distribution = .equalSpacing
+        $0.spacing = AppStyles.defaultSpacing(factor: 7)
+        $0.alignment = .center
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private let scrollView: UIScrollView = .init().configure {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -110,29 +140,51 @@ final class SimulationResultViewController: AppViewController {
     // MARK: - Methods
 
     private func setupLayout() {
-        someNumbersStackView.addArrangedSubviews([someNumbersLabel,
-                                                  SomeNumberCell(frame: .zero, examTypeName: "Examen", grade: "17.30"),
-                                                  SomeNumberCell(frame: .zero, examTypeName: "Examen", grade: "17.30"),
-                                                  SomeNumberCell(frame: .zero, examTypeName: "Examen", grade: "17.30")])
+        let firstNumberCell = SomeNumberCell(frame: .zero, examTypeName: "Epreuves", grade: "17.30")
+        let secondNumberCell = SomeNumberCell(frame: .zero, examTypeName: "Contrôle continue", grade: "17.30")
+        let thirdNumberCell = SomeNumberCell(frame: .zero, examTypeName: "Options", grade: "17.30")
 
-        resultStackView.addArrangedSubviews([admissionLabel, mentionLabel, finalGradeLabel])
-        stackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultStackView, someNumbersStackView])
+        someNumbersStackView.addArrangedSubviews([someNumbersLabel, firstNumberCell, secondNumberCell, thirdNumberCell])
+        firstNumberCell.attachToSides(parentView: someNumbersStackView)
+        secondNumberCell.attachToSides(parentView: someNumbersStackView)
+        thirdNumberCell.attachToSides(parentView: someNumbersStackView)
 
-        view.addSubview(stackView)
+        ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, secondaryCTASaveModel])
+        primaryCTARemakeSimulation.attachToSides(parentView: ctaStackView)
+        secondaryCTASaveModel.attachToSides(parentView: ctaStackView)
+
+        resultInformationsStackView.addArrangedSubviews([admissionLabel, mentionLabel, finalGradeLabel])
+        resultStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView, someNumbersStackView])
+
+        resultInformationsStackView.attachToSides(parentView: resultStackView)
+        someNumbersStackView.attachToSides(parentView: resultStackView)
+        ctaStackView.attachToSides(parentView: resultStackView)
+
+        resultInformationsStackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                                          left: AppStyles.defaultSpacing,
+                                                          bottom: AppStyles.defaultSpacing,
+                                                          right: AppStyles.defaultSpacing)
+
+        scrollViewContainerStackView.addArrangedSubviews([resultStackView, ctaStackView])
+
+        scrollView.addSubview(scrollViewContainerStackView)
+        scrollViewContainerStackView.stretchInView(parentView: scrollView)
+
+        view.addSubview(scrollView)
 
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
+            secondaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
         ])
-
-        stackView.attachToSides(parentView: view)
-        resultStackView.attachToSides(parentView: stackView)
-
-        resultStackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                              left: AppStyles.defaultSpacing,
-                                              bottom: AppStyles.defaultSpacing,
-                                              right: AppStyles.defaultSpacing)
     }
+
+    @objc private func userDidTapRemakeSimulation() {}
+    @objc private func userDidTapSaveModel() {}
 }
 
 class SomeNumberCell: UIView {
@@ -159,10 +211,11 @@ class SomeNumberCell: UIView {
 
     private let stackView: UIStackView = .init().configure {
         $0.axis = .horizontal
-        $0.distribution = .fill
-        $0.spacing = AppStyles.defaultSpacing(factor: 2)
-        $0.alignment = .center
+        $0.distribution = .equalSpacing
+        $0.spacing = AppStyles.defaultSpacing
+        $0.alignment = .leading
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isLayoutMarginsRelativeArrangement = true
     }
 
     // MARK: - Init
@@ -194,7 +247,12 @@ class SomeNumberCell: UIView {
         examTypeNameLabel.text = examTypeName
         gradeLabel.text = "\(grade)/20"
 
-        stackView.addArrangedSubviews([examTypeNameLabel, gradeLabel])
+        stackView.addArrangedSubviews([examTypeNameLabel, UIView(), gradeLabel])
         stackView.stretchInView(parentView: self)
+
+        stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                        left: AppStyles.defaultSpacing,
+                                        bottom: AppStyles.defaultSpacing,
+                                        right: AppStyles.defaultSpacing)
     }
 }

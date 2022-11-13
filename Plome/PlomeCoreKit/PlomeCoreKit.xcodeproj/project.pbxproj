@@ -44,6 +44,7 @@
 		CF59EAF128ECD6F20041B33B /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE928ECD6F10041B33B /* Icons.swift */; };
 		CF59EAF228ECD6F20041B33B /* PlomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */; };
 		CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */; };
+		CF5B5F2A2921B220002EF9BD /* SecondaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */; };
 		CF82A566290BD560004E2D50 /* AppContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A565290BD560004E2D50 /* AppContextualAction.swift */; };
 		CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
@@ -103,6 +104,7 @@
 		CF59EAE928ECD6F10041B33B /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlomeFont.swift; sourceTree = "<group>"; };
 		CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryCTA.swift; sourceTree = "<group>"; };
 		CF82A565290BD560004E2D50 /* AppContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContextualAction.swift; sourceTree = "<group>"; };
 		CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleProtocol.swift; sourceTree = "<group>"; };
 		CF8F96E3291EAB88000815F8 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */,
 				CF4F1849291D125A003F005B /* AppLabel.swift */,
 				CF8F96E729205A9F000815F8 /* PulseLayer.swift */,
+				CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				CF3B9A9828F1E84100457A44 /* Configurable.swift in Sources */,
 				CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */,
 				CF236879290AB13000D04AAD /* Collection+extension.swift in Sources */,
+				CF5B5F2A2921B220002EF9BD /* SecondaryCTA.swift in Sources */,
 				CF208F5728F963A7001F83B1 /* DefaultSimulationModelsProvider.swift in Sources */,
 				CF208F5E28F96F8B001F83B1 /* GeneralBACExamsProvider.swift in Sources */,
 				CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */,
