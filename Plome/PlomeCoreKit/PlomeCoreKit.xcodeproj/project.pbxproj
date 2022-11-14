@@ -45,6 +45,8 @@
 		CF59EAF228ECD6F20041B33B /* PlomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */; };
 		CF59EAF328ECD6F20041B33B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */; };
 		CF5B5F2A2921B220002EF9BD /* SecondaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */; };
+		CF5B5F2E2921BA64002EF9BD /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */; };
+		CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5B5F322921BD8C002EF9BD /* confetti.png */; };
 		CF82A566290BD560004E2D50 /* AppContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A565290BD560004E2D50 /* AppContextualAction.swift */; };
 		CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
@@ -104,6 +106,8 @@
 		CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlomeFont.swift; sourceTree = "<group>"; };
 		CF59EAEB28ECD6F20041B33B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryCTA.swift; sourceTree = "<group>"; };
+		CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		CF5B5F322921BD8C002EF9BD /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		CF82A565290BD560004E2D50 /* AppContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContextualAction.swift; sourceTree = "<group>"; };
 		CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleProtocol.swift; sourceTree = "<group>"; };
 		CF8F96E3291EAB88000815F8 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */,
 				CF4F1849291D125A003F005B /* AppLabel.swift */,
 				CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */,
+				CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */,
 				CF3B9A9728F1E84100457A44 /* Configurable.swift */,
 				CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */,
+				CF5B5F312921BD79002EF9BD /* Ressources */,
 				CF8F96E2291EAB4E000815F8 /* Calculator */,
 				CF48938C2915273900B97147 /* Components */,
 				CF208F5828F96E6D001F83B1 /* DefaultsSimulationModel */,
@@ -269,6 +275,14 @@
 				CF59EAD828ECD6B30041B33B /* PlomeCoreKitTests.swift */,
 			);
 			path = PlomeCoreKitTests;
+			sourceTree = "<group>";
+		};
+		CF5B5F312921BD79002EF9BD /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				CF5B5F322921BD8C002EF9BD /* confetti.png */,
+			);
+			path = Ressources;
 			sourceTree = "<group>";
 		};
 		CF8F96E2291EAB4E000815F8 /* Calculator */ = {
@@ -377,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +416,7 @@
 				CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */,
 				CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */,
 				CF3B9A8528F1DCBA00457A44 /* Transition.swift in Sources */,
+				CF5B5F2E2921BA64002EF9BD /* ConfettiView.swift in Sources */,
 				CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */,
 				CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */,
 				CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */,

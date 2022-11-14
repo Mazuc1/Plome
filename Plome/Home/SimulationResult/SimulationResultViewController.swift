@@ -116,6 +116,13 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    private lazy var confettiView: ConfettiView = .init(frame: self.view.bounds).configure {
+        $0.intensity = 0.5
+        $0.colors = [PlomeColor.success.color,
+                     PlomeColor.success.color.withAlphaComponent(0.6),
+                     PlomeColor.success.color.withAlphaComponent(0.2)]
+    }
+
     // MARK: - Init
 
     required init(viewModel: SimulationResultViewModel) {
@@ -181,6 +188,9 @@ final class SimulationResultViewController: AppViewController {
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
             secondaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
         ])
+
+        view.addSubview(confettiView)
+        confettiView.startConfetti()
     }
 
     @objc private func userDidTapRemakeSimulation() {}
