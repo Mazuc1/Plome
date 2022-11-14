@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Simulation: Hashable {
+public class Simulation: NSObject, NSCopying {
     public let name: String
     public let date: Date?
     public var exams: Set<Exam>?
@@ -47,13 +47,7 @@ public class Simulation: Hashable {
         exams?.insert(exam)
     }
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
-    }
-}
-
-extension Simulation: Equatable {
-    public static func == (lhs: Simulation, rhs: Simulation) -> Bool {
-        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    public func copy(with _: NSZone? = nil) -> Any {
+        Simulation(name: name, date: date, exams: exams, type: type)
     }
 }

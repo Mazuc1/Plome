@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 31/10/2022.
 //
 
+import Combine
 import Foundation
 import PlomeCoreKit
 
@@ -17,8 +18,10 @@ final class SimulationViewModel: ObservableObject {
 
     private let router: SimulationsRouter
 
-    @Published var simulation: Simulation
+    var simulation: Simulation
     @Published var canCalculate: Bool = false
+
+    weak var viewControllerDelegate: SimulationViewControllerOutput?
 
     // MARK: - Init
 
@@ -45,6 +48,8 @@ final class SimulationViewModel: ObservableObject {
         }
 
         simulation.remove(exam: exam)
+
+        viewControllerDelegate?.reloadTableView()
     }
 
     func addExam(name: String, in section: ExamTypeSection) {
@@ -53,6 +58,8 @@ final class SimulationViewModel: ObservableObject {
         case .continuousControl: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
         case .option: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .option))
         }
+
+        viewControllerDelegate?.reloadTableView()
     }
 
     func userDidTapCalculate() {

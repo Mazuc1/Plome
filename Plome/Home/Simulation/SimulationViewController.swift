@@ -9,6 +9,10 @@ import Combine
 import PlomeCoreKit
 import UIKit
 
+protocol SimulationViewControllerOutput: AnyObject {
+    func reloadTableView()
+}
+
 final class SimulationViewController: AppViewController {
     // MARK: - Properties
 
@@ -54,7 +58,6 @@ final class SimulationViewController: AppViewController {
         navigationItem.backButtonDisplayMode = .minimal
 
         setupConstraint()
-        subscribeToSimulation()
         subscribeToCapabilityToRunSimulation()
     }
 
@@ -80,22 +83,13 @@ final class SimulationViewController: AppViewController {
         ])
     }
 
-    private func subscribeToSimulation() {
-        viewModel.$simulation
+    private func subscribeToCapabilityToRunSimulation() {
+        viewModel.$canCalculate
             .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
+            .sink { [weak self] in
+                self?.primaryCTACalculate.isEnabled = $0
             }
             .store(in: &cancellables)
-    }
-
-    private func subscribeToCapabilityToRunSimulation() {
-//        viewModel.$canCalculate
-//            .receive(on: RunLoop.main)
-//            .sink { [weak self] in
-//                self?.primaryCTACalculate.isEnabled = $0
-//            }
-//            .store(in: &cancellables)
     }
 
     private func createInfoBarButton() -> UIBarButtonItem {
@@ -168,5 +162,13 @@ extension SimulationViewController: UITableViewDelegate {
             self?.viewModel.userDidTapDeleteExam(at: indexPath)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+}
+
+// MARK: -  SimulationViewControllerOutput
+
+extension SimulationViewController: SimulationViewControllerOutput {
+    func reloadTableView() {
+        tableView.reloadData()
     }
 }

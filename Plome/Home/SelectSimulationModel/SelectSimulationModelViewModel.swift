@@ -78,11 +78,11 @@ final class SelectSimulationModelViewModel: ObservableObject {
             simulation = snapshot.itemIdentifiers(inSection: .coreData)[indexPath.row]
         }
 
-        guard let simulation else {
+        guard let simulationCopy = simulation?.copy() as? Simulation else {
             router.alert(title: "Oups", message: "Une erreur est survenue 😕")
             return
         }
 
-        router.openSimulation(with: simulation)
+        router.openSimulation(with: simulationCopy)
     }
 }
