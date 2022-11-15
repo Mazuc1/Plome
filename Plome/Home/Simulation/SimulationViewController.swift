@@ -36,13 +36,6 @@ final class SimulationViewController: AppViewController {
         $0.addTarget(self, action: #selector(userDidTapCalculate), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    private let progressBar: UIProgressView = .init().configure {
-        $0.progressViewStyle = .bar
-        $0.progressTintColor = PlomeColor.pink.color
-        $0.progress = 0.3
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
 
     // MARK: - Init
 
@@ -83,18 +76,10 @@ final class SimulationViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             primaryCTACalculate.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing),
-        ])
-        
-        view.addSubview(progressBar)
-        
-        NSLayoutConstraint.activate([
-            progressBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            progressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
-            view.trailingAnchor.constraint(equalTo: progressBar.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
-            progressBar.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: AppStyles.defaultSpacing),
         ])
     }
 
