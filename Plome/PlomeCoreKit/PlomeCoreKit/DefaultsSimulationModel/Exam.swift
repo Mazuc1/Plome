@@ -65,7 +65,7 @@ public class Exam: Hashable {
         return (lhsFloat, rhsFloat, coefficient ?? 1)
     }
 
-    private func checkRatioFor(_ text: String) -> Bool {
+    func checkRatioFor(_ text: String) -> Bool {
         let values = text.split(separator: "/")
         guard let lhsFloat = Float(values[0]),
               let rhsFloat = Float(values[1]) else { return false }
