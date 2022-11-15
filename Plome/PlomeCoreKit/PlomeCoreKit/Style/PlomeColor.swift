@@ -17,6 +17,7 @@ public enum PlomeColor {
     case pink
     case lightViolet
     case darkBlue
+    case progressView
 
     // Background
     case background
@@ -39,6 +40,7 @@ public enum PlomeColor {
         case .darkBlue: return (0.07, 0.03, 0.35)
         case .pink: return (0.95, 0.34, 0.48)
         case .lightViolet: return (0.47, 0.40, 0.97)
+        case .progressView: return (0.54, 0.86, 0.62)
 
         case .background: return (0.94, 0.95, 0.99)
 
@@ -60,6 +62,7 @@ public enum PlomeColor {
         case .darkBlue: return UIColor(color: .darkBlue)
         case .pink: return UIColor(color: .pink)
         case .lightViolet: return UIColor(color: .lightViolet)
+        case .progressView: return UIColor(color: .progressView)
 
         case .background: return UIColor(color: .background)
 
