@@ -56,9 +56,9 @@ final class SimulationViewModel: ObservableObject {
 
     func addExam(name: String, in section: ExamTypeSection) {
         switch section {
-        case .trial: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .trial))
-        case .continuousControl: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
-        case .option: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .option))
+        case .trial: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .trial))
+        case .continuousControl: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .continuousControl))
+        case .option: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .option))
         }
 
         viewControllerDelegate?.reloadTableView()
