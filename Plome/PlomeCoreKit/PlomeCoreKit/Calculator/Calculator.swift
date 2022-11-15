@@ -33,10 +33,10 @@ protocol MentionScores: AnyObject {
 public class Calculator: MentionScores {
     // MARK: - Properties
 
-    public var withoutMentionScore: Float
-    public var ABMentionScore: Float
-    public var BMentionScore: Float
-    public var TBMentionScore: Float
+    public var withoutMentionScore: Float = 0
+    public var ABMentionScore: Float = 0
+    public var BMentionScore: Float = 0
+    public var TBMentionScore: Float = 0
 
     public let simulation: Simulation
 
@@ -52,12 +52,10 @@ public class Calculator: MentionScores {
 
     // MARK: - Init
 
-    public init(simulation: Simulation, withoutMentionScore: Float = 1000, ABMentionScore: Float = 1200, BMentionScore: Float = 1400, TBMentionScore: Float = 1600) {
+    public init(simulation: Simulation) {
         self.simulation = simulation
-        self.withoutMentionScore = withoutMentionScore
-        self.ABMentionScore = ABMentionScore
-        self.BMentionScore = BMentionScore
-        self.TBMentionScore = TBMentionScore
+
+        setMentionScores()
     }
 
     // MARK: - Methods
@@ -131,5 +129,28 @@ public class Calculator: MentionScores {
         }
     }
 
-    private func setMentionScores() {}
+    private func setMentionScores() {
+        switch simulation.type {
+        case .custom:
+            withoutMentionScore = 1000
+            ABMentionScore = 1200
+            BMentionScore = 1400
+            TBMentionScore = 1600
+        case .brevet:
+            withoutMentionScore = 400
+            ABMentionScore = 480
+            BMentionScore = 560
+            TBMentionScore = 640
+        case .generalBAC:
+            withoutMentionScore = 1000
+            ABMentionScore = 1200
+            BMentionScore = 1400
+            TBMentionScore = 1600
+        case .technologicalBAC:
+            withoutMentionScore = 1000
+            ABMentionScore = 1200
+            BMentionScore = 1400
+            TBMentionScore = 1600
+        }
+    }
 }
