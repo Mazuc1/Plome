@@ -28,6 +28,8 @@ final class SimulationViewModel: ObservableObject {
     init(router: SimulationsRouter, simulation: Simulation) {
         self.router = router
         self.simulation = simulation
+
+        simulation.exams!.map { $0.grade = "\(Int.random(in: 1 ... 20))/20" }
     }
 
     // MARK: - Methods

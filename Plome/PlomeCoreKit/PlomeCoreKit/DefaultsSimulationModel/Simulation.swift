@@ -39,6 +39,21 @@ public class Simulation: NSObject, NSCopying {
         return exams.allSatisfy { $0.grade != nil }
     }
 
+    public func examsContainTrials() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.type == .trial }
+    }
+
+    public func examsContainContinuousControls() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.type == .continuousControl }
+    }
+
+    public func examsContainOptions() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.type == .option }
+    }
+
     public func remove(exam: Exam) {
         exams?.remove(exam)
     }

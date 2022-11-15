@@ -13,10 +13,12 @@ final class SimulationResultViewController: AppViewController {
 
     let viewModel: SimulationResultViewModel
 
+    private static let succeessImage: UIImage = Icons.success.configure(weight: .regular, color: .success, size: 125)
+    private static let failureImage: UIImage = Icons.fail.configure(weight: .regular, color: .fail, size: 125)
+
     // MARK: - UI
 
     private let resultTitleLabel: UILabel = .init().configure {
-        $0.text = "Félicitation !"
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -28,7 +30,6 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private let admissionLabel: UILabel = .init().configure {
-        $0.text = "Vous êtes admis"
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -36,7 +37,6 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private let mentionLabel: UILabel = .init().configure {
-        $0.text = "Mention bien"
         $0.font = PlomeFont.bodyM.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -44,11 +44,18 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private let finalGradeLabel: UILabel = .init().configure {
-        $0.text = "20/20"
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
         $0.textColor = PlomeColor.darkBlue.color
+    }
+
+    private let finalGradeBeforeTwentyConformLabel: UILabel = .init().configure {
+        $0.text = "20/20"
+        $0.font = PlomeFont.bodyS.font
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.textColor = PlomeColor.darkGray.color
     }
 
     private let resultInformationsStackView: UIStackView = .init().configure {
@@ -141,26 +148,36 @@ final class SimulationResultViewController: AppViewController {
         super.viewDidLoad()
         navigationItem.title = "Résultat"
 
+        setCalculatorInformation()
         setupLayout()
     }
 
     // MARK: - Methods
 
-    private func setupLayout() {
-        let firstNumberCell = SomeNumberCell(frame: .zero, examTypeName: "Epreuves", grade: "17.30")
-        let secondNumberCell = SomeNumberCell(frame: .zero, examTypeName: "Contrôle continue", grade: "17.30")
-        let thirdNumberCell = SomeNumberCell(frame: .zero, examTypeName: "Options", grade: "17.30")
+    private func setCalculatorInformation() {
+        finalGradeLabel.text = viewModel.finalGradeOutOfTwenty()
 
-        someNumbersStackView.addArrangedSubviews([someNumbersLabel, firstNumberCell, secondNumberCell, thirdNumberCell])
-        firstNumberCell.attachToSides(parentView: someNumbersStackView)
-        secondNumberCell.attachToSides(parentView: someNumbersStackView)
-        thirdNumberCell.attachToSides(parentView: someNumbersStackView)
+        if viewModel.hasSucceedExam() {
+            resultImageView.image = Self.succeessImage
+            confettiView.startConfetti()
+        } else {
+            resultImageView.image = Self.failureImage
+        }
+
+        admissionLabel.text = viewModel.admissionSentence()
+        resultTitleLabel.text = viewModel.resultSentence()
+        mentionLabel.text = viewModel.mentionSentence()
+        finalGradeBeforeTwentyConformLabel.text = viewModel.finalGradeBeforeTwentyConform()
+    }
+
+    private func setupLayout() {
+        createSomeNumbersView()
 
         ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, secondaryCTASaveModel])
         primaryCTARemakeSimulation.attachToSides(parentView: ctaStackView)
         secondaryCTASaveModel.attachToSides(parentView: ctaStackView)
 
-        resultInformationsStackView.addArrangedSubviews([admissionLabel, mentionLabel, finalGradeLabel])
+        resultInformationsStackView.addArrangedSubviews([admissionLabel, mentionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
         resultStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView, someNumbersStackView])
 
         resultInformationsStackView.attachToSides(parentView: resultStackView)
@@ -190,7 +207,27 @@ final class SimulationResultViewController: AppViewController {
         ])
 
         view.addSubview(confettiView)
-        confettiView.startConfetti()
+    }
+
+    private func createSomeNumbersView() {
+        var views: [UIView] = []
+
+        if viewModel.simulationContainTrials() {
+            views.append(SomeNumberCell(frame: .zero, examTypeName: "Epreuves", grade: viewModel.trialsGrade()))
+        }
+
+        if viewModel.simulationContainContinousControls() {
+            views.append(SomeNumberCell(frame: .zero, examTypeName: "Contrôle continue", grade: viewModel.continousControlGrade()))
+        }
+
+        if viewModel.simulationContainOptions() {
+            views.append(SomeNumberCell(frame: .zero, examTypeName: "Options", grade: viewModel.optionGrade()))
+        }
+
+        someNumbersStackView.addArrangedSubview(someNumbersLabel)
+        someNumbersStackView.addArrangedSubviews(views)
+
+        views.forEach { $0.attachToSides(parentView: someNumbersStackView) }
     }
 
     @objc private func userDidTapRemakeSimulation() {}
