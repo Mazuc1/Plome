@@ -39,6 +39,7 @@
 		CF45FA562924335C00047B7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA552924335C00047B7D /* ContentView.swift */; };
 		CF45FA582924335D00047B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF45FA572924335D00047B7D /* Assets.xcassets */; };
 		CF45FA5B2924335D00047B7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF45FA5A2924335D00047B7D /* Preview Assets.xcassets */; };
+		CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA61292445F400047B7D /* SimulationTests.swift */; };
 		CF48938E2915275A00B97147 /* ExamTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */; };
 		CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */; };
 		CF4F184A291D125A003F005B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1849291D125A003F005B /* AppLabel.swift */; };
@@ -114,6 +115,7 @@
 		CF45FA552924335C00047B7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CF45FA572924335D00047B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF45FA5A2924335D00047B7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CF45FA61292445F400047B7D /* SimulationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationTests.swift; sourceTree = "<group>"; };
 		CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypeHeaderView.swift; sourceTree = "<group>"; };
 		CF4893912915548500B97147 /* Plome_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome_2.xcdatamodel; sourceTree = "<group>"; };
 		CF4F1849291D125A003F005B /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				CF59EAD828ECD6B30041B33B /* ExamTests.swift */,
+				CF45FA61292445F400047B7D /* SimulationTests.swift */,
 			);
 			path = PlomeCoreKitTests;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */,
 				CF59EAD928ECD6B30041B33B /* ExamTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
