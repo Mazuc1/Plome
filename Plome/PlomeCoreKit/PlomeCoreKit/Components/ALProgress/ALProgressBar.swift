@@ -22,32 +22,14 @@
 
 import UIKit
 
-/// A fillable progress ring drawing. 
-open class ALProgressRing: UIView {
+/// A fillable progress ring drawing.
+open class ALProgressBar: UIView {
     
     // MARK: Properties
     
-    /// Sets the line width for progress ring and groove ring.
-    /// - Note: If you need separate customization use the `ringWidth` and `grooveWidth` properties
-    public var lineWidth: CGFloat = 10 {
-        didSet {
-            ringWidth = lineWidth
-            grooveWidth = lineWidth
-        }
-    }
-    
-    /// The line width of the progress ring.
-    public var ringWidth: CGFloat = 10 {
-        didSet {
-            ringLayer.lineWidth = ringWidth
-        }
-    }
-
-    /// The line width of the groove ring.
-    public var grooveWidth: CGFloat = 10 {
-        didSet {
-            grooveLayer.lineWidth = grooveWidth
-        }
+    /// Distance between groove and progress bar. Default is 0
+    public var barEdgeInset: CGFloat = 0 {
+        didSet { configureBar(); styleBarLayer() }
     }
     
     /// The first gradient color of the track.
@@ -62,26 +44,16 @@ open class ALProgressRing: UIView {
     
     /// The groove color in which the fillable ring resides.
     public var grooveColor: UIColor = UIColor.systemGray.withAlphaComponent(0.2) {
-        didSet { grooveLayer.strokeColor = grooveColor.cgColor }
+        didSet { barLayer.strokeColor = grooveColor.cgColor }
     }
     
-    /// The start angle of the ring to begin drawing.
-    public var startAngle: CGFloat = -.pi / 2 {
-        didSet { ringLayer.path = ringPath() }
-    }
-
-    /// The end angle of the ring to end drawing.
-    public var endAngle: CGFloat = 1.5 * .pi {
-        didSet { ringLayer.path = ringPath() }
-    }
-    
-    /// The starting poin of the gradient. Default is (x: 0.5, y: 0)
-    public var startGradientPoint: CGPoint = .init(x: 0.5, y: 0) {
+    /// The starting poin of the gradient. Default is (x: 0, y: 0.5)
+    public var startGradientPoint: CGPoint = .init(x: 0, y: 0.5) {
         didSet { gradientLayer.startPoint = startGradientPoint }
     }
     
-    /// The ending position of the gradient. Default is (x: 0.5, y: 1)
-    public var endGradientPoint: CGPoint = .init(x: 0.5, y: 1) {
+    /// The ending position of the gradient. Default is (x: 1, y: 0.5)
+    public var endGradientPoint: CGPoint = .init(x: 1, y: 0.5) {
         didSet { gradientLayer.endPoint = endGradientPoint }
     }
 
@@ -90,24 +62,6 @@ open class ALProgressRing: UIView {
     
     /// Timing function of the ring's fill animation. Default is `.easeOutExpo`
     public var timingFunction: ALTimingFunction = .easeOutExpo
-
-    /// The radius of the ring.
-    public var ringRadius: CGFloat {
-        var radius = min(bounds.height, bounds.width) / 2 - ringWidth / 2
-        if ringWidth < grooveWidth {
-            radius -= (grooveWidth - ringWidth) / 2
-        }
-        return radius
-    }
-    
-    /// The radius of the groove.
-    public var grooveRadius: CGFloat {
-        var radius = min(bounds.height, bounds.width) / 2 - grooveWidth / 2
-        if grooveWidth < ringWidth {
-            radius -= (ringWidth - grooveWidth) / 2
-        }
-        return radius
-    }
     
     /// The progress of the ring between 0 and 1. The ring will fill based on the value.
     public private(set) var progress: CGFloat = 0
@@ -117,10 +71,11 @@ open class ALProgressRing: UIView {
         layer.lineCap = .round
         layer.fillColor = nil
         layer.strokeStart = 0
+        layer.strokeEnd = 1
         return layer
     }()
     
-    private let grooveLayer: CAShapeLayer = {
+    private let barLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineCap = .round
         layer.fillColor = nil
@@ -149,13 +104,13 @@ open class ALProgressRing: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        configureRing()
-        styleRingLayer()
+        configureBar()
+        styleBarLayer()
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        styleRingLayer()
+        styleBarLayer()
     }
 
     // MARK: Methods
@@ -179,7 +134,7 @@ open class ALProgressRing: UIView {
             completion?()
             return
         }
-        
+
         CATransaction.begin()
         let path = #keyPath(CAShapeLayer.strokeEnd)
         let fill = CABasicAnimation(keyPath: path)
@@ -195,49 +150,42 @@ open class ALProgressRing: UIView {
     
     private func setup() {
         preservesSuperviewLayoutMargins = true
-        layer.addSublayer(grooveLayer)
+        layer.addSublayer(barLayer)
         layer.addSublayer(gradientLayer)
-        styleRingLayer()
+        styleBarLayer()
+        setProgress(Float(progress), animated: false)
     }
 
-    private func styleRingLayer() {
-        grooveLayer.strokeColor = grooveColor.cgColor
-        grooveLayer.lineWidth = grooveWidth
+    private func styleBarLayer() {
+        barLayer.strokeColor = grooveColor.cgColor
+        barLayer.lineWidth = frame.height
         
-        ringLayer.lineWidth = ringWidth
-        ringLayer.strokeColor = UIColor.black.cgColor
+        ringLayer.lineWidth = frame.height - (barEdgeInset * 2)
+        ringLayer.strokeColor = startColor.cgColor
         ringLayer.strokeEnd = min(progress, 1.0)
-        
+
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1)
-        
-        gradientLayer.shadowColor = startColor.cgColor
-        gradientLayer.shadowOffset = .zero
+        gradientLayer.startPoint = startGradientPoint
+        gradientLayer.endPoint = endGradientPoint
     }
 
-    private func configureRing() {
-        let ringPath = self.ringPath()
-        let groovePath = self.groovePath()
-        grooveLayer.frame = bounds
-        grooveLayer.path = groovePath
+    private func configureBar() {
+        let inset = frame.height / 2
+        let barInset = barEdgeInset / 2
         
-        ringLayer.frame = bounds
-        ringLayer.path = ringPath
+        let grooveLinePath = UIBezierPath()
+        grooveLinePath.move(to: CGPoint(x: inset, y: bounds.midY))
+        grooveLinePath.addLine(to: CGPoint(x: bounds.width - inset, y: bounds.midY))
+        barLayer.path = grooveLinePath.cgPath
         
-        gradientLayer.frame = bounds
+        
+        let barLinePath = UIBezierPath()
+        barLinePath.move(to: CGPoint(x: inset + barInset, y: bounds.midY))
+        barLinePath.addLine(to: CGPoint(x: bounds.width - (inset + barInset), y: bounds.midY))
+        ringLayer.path = barLinePath.cgPath
+        
+        [barLayer, ringLayer, gradientLayer].forEach { $0.frame = bounds }
         gradientLayer.mask = ringLayer
     }
-
-    private func ringPath() -> CGPath {
-        let center = CGPoint(x: bounds.origin.x + frame.width / 2.0, y: bounds.origin.y + frame.height / 2.0)
-        let circlePath = UIBezierPath(arcCenter: center, radius: ringRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        return circlePath.cgPath
-    }
-    
-    private func groovePath() -> CGPath {
-        let center = CGPoint(x: bounds.origin.x + frame.width / 2.0, y: bounds.origin.y + frame.height / 2.0)
-        let circlePath = UIBezierPath(arcCenter: center, radius: grooveRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        return circlePath.cgPath
-    }
 }
+

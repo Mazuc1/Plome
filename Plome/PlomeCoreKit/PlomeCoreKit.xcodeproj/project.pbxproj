@@ -33,6 +33,7 @@
 		CF3B9A9628F1E5E700457A44 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A9528F1E5E700457A44 /* UIView+extension.swift */; };
 		CF3B9A9828F1E84100457A44 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A9728F1E84100457A44 /* Configurable.swift */; };
 		CF3B9A9B28F3280900457A44 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9A9A28F3280900457A44 /* AppViewController.swift */; };
+		CF45FA4A2923FFF100047B7D /* ALProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA492923FFF100047B7D /* ALProgressBar.swift */; };
 		CF48938E2915275A00B97147 /* ExamTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */; };
 		CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */; };
 		CF4F184A291D125A003F005B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1849291D125A003F005B /* AppLabel.swift */; };
@@ -49,7 +50,6 @@
 		CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5B5F322921BD8C002EF9BD /* confetti.png */; };
 		CF82A566290BD560004E2D50 /* AppContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A565290BD560004E2D50 /* AppContextualAction.swift */; };
 		CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */; };
-		CF8E3D1E2923BF77001B1AC8 /* ALProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E3D1D2923BF77001B1AC8 /* ALProgressRing.swift */; };
 		CF8E3D202923BF7E001B1AC8 /* ALTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
@@ -95,6 +95,7 @@
 		CF3B9A9528F1E5E700457A44 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		CF3B9A9728F1E84100457A44 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		CF3B9A9A28F3280900457A44 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		CF45FA492923FFF100047B7D /* ALProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressBar.swift; sourceTree = "<group>"; };
 		CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypeHeaderView.swift; sourceTree = "<group>"; };
 		CF4893912915548500B97147 /* Plome_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome_2.xcdatamodel; sourceTree = "<group>"; };
 		CF4F1849291D125A003F005B /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		CF5B5F322921BD8C002EF9BD /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		CF82A565290BD560004E2D50 /* AppContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContextualAction.swift; sourceTree = "<group>"; };
 		CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleProtocol.swift; sourceTree = "<group>"; };
-		CF8E3D1D2923BF77001B1AC8 /* ALProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressRing.swift; sourceTree = "<group>"; };
 		CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTimingFunction.swift; sourceTree = "<group>"; };
 		CF8F96E3291EAB88000815F8 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		CFA7CAAD29185EE400F941F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
@@ -293,8 +293,8 @@
 		CF8E3D212923BF83001B1AC8 /* ALProgress */ = {
 			isa = PBXGroup;
 			children = (
+				CF45FA492923FFF100047B7D /* ALProgressBar.swift */,
 				CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */,
-				CF8E3D1D2923BF77001B1AC8 /* ALProgressRing.swift */,
 			);
 			path = ALProgress;
 			sourceTree = "<group>";
@@ -438,6 +438,7 @@
 				CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */,
 				CF3B9A8828F1DCBA00457A44 /* Router.swift in Sources */,
 				CF3B9A9428F1E04400457A44 /* UIColor+extension.swift in Sources */,
+				CF45FA4A2923FFF100047B7D /* ALProgressBar.swift in Sources */,
 				CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */,
 				CF3B9A9228F1E01A00457A44 /* UIFont+extension.swift in Sources */,
 				CFF84702290AE34000D31F5F /* CDExam.swift in Sources */,
@@ -447,7 +448,6 @@
 				CF3B9A8928F1DCBA00457A44 /* DefaultRouter.swift in Sources */,
 				CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */,
 				CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */,
-				CF8E3D1E2923BF77001B1AC8 /* ALProgressRing.swift in Sources */,
 				CF208F5A28F96E9F001F83B1 /* BrevetExamsProvider.swift in Sources */,
 				CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */,
 				CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */,
