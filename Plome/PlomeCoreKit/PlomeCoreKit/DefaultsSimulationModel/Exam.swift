@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-public class Exam: Hashable {
+public class Exam: NSObject, NSCopying {
     public enum Rule {
         case grade
         case coeff
@@ -65,6 +65,23 @@ public class Exam: Hashable {
         return (lhsFloat, rhsFloat, coefficient ?? 1)
     }
 
+    func isGradeLowerThanItsOutOf() -> Bool {
+        guard let grade = grade?.split(separator: "/"),
+              let lhsFloat = Float(grade[0]),
+              let rhsFloat = Float(grade[1]) else { return false }
+
+        return lhsFloat < (rhsFloat / 2)
+    }
+
+    func addOnePoint() {
+        guard let grade = grade?.split(separator: "/"),
+              let lhsFloat = Float(grade[0]),
+              let rhsFloat = Float(grade[1]) else { return }
+        if lhsFloat + 1 > rhsFloat { return }
+
+        self.grade = "\(lhsFloat + 1)/\(rhsFloat)"
+    }
+
     func checkRatioFor(_ text: String) -> Bool {
         let values = text.split(separator: "/")
         guard let lhsFloat = Float(values[0]),
@@ -73,14 +90,8 @@ public class Exam: Hashable {
         return lhsFloat <= rhsFloat
     }
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
-    }
-}
-
-extension Exam: Equatable {
-    public static func == (lhs: Exam, rhs: Exam) -> Bool {
-        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    public func copy(with _: NSZone? = nil) -> Any {
+        Exam(name: name, coefficient: coefficient, grade: grade, type: type)
     }
 }
 

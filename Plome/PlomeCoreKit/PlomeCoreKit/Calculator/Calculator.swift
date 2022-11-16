@@ -33,6 +33,8 @@ protocol MentionScores: AnyObject {
 public class Calculator: MentionScores {
     // MARK: - Properties
 
+    public typealias DifferenceAfterCatchUp = [Exam: Int]
+
     public var withoutMentionScore: Float = 0
     public var ABMentionScore: Float = 0
     public var BMentionScore: Float = 0
@@ -50,6 +52,10 @@ public class Calculator: MentionScores {
     public private(set) var continousControlGrade: Float?
     public private(set) var optionsGrade: Float?
 
+    private var catchUpSimulation: Simulation?
+    public private(set) var gradeOutOfTwentyAfterCatchUp: Float?
+    public private(set) var differenceAfterCatchUp: DifferenceAfterCatchUp?
+
     // MARK: - Init
 
     public init(simulation: Simulation) {
@@ -65,6 +71,10 @@ public class Calculator: MentionScores {
     }
 
     public func calculate() -> Float {
+        totalGrade = 0
+        totalOutOf = 0
+        totalCoefficient = 0
+
         if simulation.number(of: .trial) > 0 {
             let (grade, outOf, coefficient) = calculateGrade(for: .trial)
             totalGrade += grade
@@ -88,7 +98,10 @@ public class Calculator: MentionScores {
 
         setMention()
 
-        return rateOufOfTwenty(totalGrade / totalOutOf)
+        let finalGradeOutOfTwenty = rateOufOfTwenty(totalGrade / totalOutOf)
+        catchUpIfNeeded(grade: finalGradeOutOfTwenty)
+
+        return finalGradeOutOfTwenty
     }
 
     private func calculateGrade(for type: ExamType) -> (Float, Float, Float) {
@@ -152,5 +165,88 @@ public class Calculator: MentionScores {
             BMentionScore = 1400
             TBMentionScore = 1600
         }
+    }
+}
+
+// MARK: - Catch up
+
+extension Calculator {
+    private func catchUpIfNeeded(grade: Float) {
+        guard grade < 10,
+              let catchUpSimulation = simulation.copy() as? Simulation else { return }
+
+        self.catchUpSimulation = catchUpSimulation
+        catchUp(grade: grade)
+    }
+
+    private func catchUp(grade _: Float) {
+        guard let catchUpSimulation else { return }
+        let gradesLowerThanAverage = getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from: catchUpSimulation)
+
+        var indexWherePointIsAdded = 0
+        let maxIndex: Int = gradesLowerThanAverage.count - 1
+
+        while calculateCatchUp() < 10 {
+            gradesLowerThanAverage[indexWherePointIsAdded].addOnePoint()
+            if indexWherePointIsAdded < maxIndex {
+                indexWherePointIsAdded += 1
+            } else {
+                indexWherePointIsAdded = 0
+            }
+        }
+
+        print("🏹", calculateCatchUp())
+        gradeOutOfTwentyAfterCatchUp = calculateCatchUp()
+
+        compareGradesAfterCatchUp(from: gradesLowerThanAverage)
+    }
+
+    private func calculateCatchUp() -> Float {
+        guard let exams = catchUpSimulation?.exams else { return 999 }
+        var totalGrade: Float = 0
+        var totalOutOf: Float = 0
+
+        _ = exams
+            .map { $0.getGradeInformation() }
+            .map {
+                totalGrade += $0.lhs
+                totalOutOf += $0.rhs
+            }
+
+        return rateOufOfTwenty(totalGrade / totalOutOf)
+    }
+
+    private func compareGradesAfterCatchUp(from exams: [Exam]) {
+        let simulationExamsLowerThanAverageBeforeCatchUp = getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from: simulation)
+            .sorted { $0.name < $1.name }
+        let examsSortedByName = exams.sorted { $0.name < $1.name }
+
+        _ = zip(examsSortedByName, simulationExamsLowerThanAverageBeforeCatchUp)
+            .map { [weak self] catchUpExam, exam in
+                print("🚨", catchUpExam.grade, exam.grade)
+                if catchUpExam.grade != exam.grade {
+                    self?.differenceAfterCatchUp?[exam] = self?.differenceOfGradeBetween(catchUpExam: catchUpExam, and: exam)
+                }
+            }
+
+        // print("🫑", differenceAfterCatchUp)
+    }
+
+    private func getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from simulation: Simulation) -> [Exam] {
+        guard let exams = simulation.exams else { return [] }
+        return exams
+            .filter { $0.isGradeLowerThanItsOutOf() }
+            .sorted {
+                guard let lhsCoeff = $0.coefficient,
+                      let rhsCoeff = $1.coefficient else { return false }
+                return lhsCoeff > rhsCoeff
+            }
+    }
+
+    private func differenceOfGradeBetween(catchUpExam: Exam, and exam: Exam) -> Int {
+        let catchUpGrade = catchUpExam.getGradeInformation()
+        let grade = exam.getGradeInformation()
+
+        return Int(grade.lhs - catchUpGrade.lhs)
     }
 }
