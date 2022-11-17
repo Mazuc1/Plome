@@ -9,7 +9,7 @@ import Foundation
 
 public class Simulation: NSObject, NSCopying {
     public let name: String
-    public let date: Date?
+    public var date: Date?
     public var exams: Set<Exam>?
     public var type: SimulationType
 
@@ -63,6 +63,7 @@ public class Simulation: NSObject, NSCopying {
     }
 
     public func copy(with _: NSZone? = nil) -> Any {
-        Simulation(name: name, date: date, exams: exams, type: type)
+        guard let examsCopy = exams?.map({ $0.copy() }) as? [Exam] else { return -1 }
+        return Simulation(name: name, date: date, exams: Set(examsCopy), type: type)
     }
 }
