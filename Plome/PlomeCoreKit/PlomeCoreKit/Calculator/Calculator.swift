@@ -171,15 +171,19 @@ public class Calculator: MentionScores {
 // MARK: - Catch up
 
 extension Calculator {
+    /// Determine if catchUp is Needed depending of simulation final grade
+    /// If final grade is lower than 10, catchUp is needed
+    /// CatchUp is done with copy of simulation
     private func catchUpIfNeeded(grade: Float) {
         guard grade < 10,
               let catchUpSimulation = simulation.copy() as? Simulation else { return }
 
         self.catchUpSimulation = catchUpSimulation
-        catchUp(grade: grade)
+        catchUp()
     }
 
-    private func catchUp(grade _: Float) {
+    /// For all exams with grade lower than is average divided by two, a point is added grade after grade until final grade is higher than 10
+    private func catchUp() {
         guard let catchUpSimulation else { return }
         let gradesLowerThanAverage = getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from: catchUpSimulation)
 
@@ -195,12 +199,13 @@ extension Calculator {
             }
         }
 
-        print("🏹", calculateCatchUp())
         gradeOutOfTwentyAfterCatchUp = calculateCatchUp()
 
         compareGradesAfterCatchUp(from: gradesLowerThanAverage)
     }
 
+    /// Calculate final grade for catchUp simulation
+    /// Grade returned is out of twenty (/20)
     private func calculateCatchUp() -> Float {
         guard let exams = catchUpSimulation?.exams else { return 999 }
         var totalGrade: Float = 0
@@ -216,22 +221,28 @@ extension Calculator {
         return rateOufOfTwenty(totalGrade / totalOutOf)
     }
 
+    /// Compare catchUp simulation grade with simulation grade to extract all exams where points have been added
+    /// All values (exams + grades differences) are save in differenceAfterCatchUp
     private func compareGradesAfterCatchUp(from exams: [Exam]) {
         let simulationExamsLowerThanAverageBeforeCatchUp = getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from: simulation)
             .sorted { $0.name < $1.name }
         let examsSortedByName = exams.sorted { $0.name < $1.name }
 
+        differenceAfterCatchUp = .init()
+
         _ = zip(examsSortedByName, simulationExamsLowerThanAverageBeforeCatchUp)
             .map { [weak self] catchUpExam, exam in
-                print("🚨", catchUpExam.grade, exam.grade)
-                if catchUpExam.grade != exam.grade {
+
+                if catchUpExam.grade! != exam.grade! {
                     self?.differenceAfterCatchUp?[exam] = self?.differenceOfGradeBetween(catchUpExam: catchUpExam, and: exam)
                 }
             }
-
-        // print("🫑", differenceAfterCatchUp)
     }
 
+    /// Returns exams sorted by coefficient depending of exam grade
+    /// If lhs of grade if lower than rhs of grade divided by two, then exam is return
+    /// Eg when grade is returned: 8.3/20, 18/40, 4/10...
+    /// Eg when grade is not returned: 13/20, 37/40, 8/10
     private func getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from simulation: Simulation) -> [Exam] {
         guard let exams = simulation.exams else { return [] }
         return exams
@@ -243,10 +254,13 @@ extension Calculator {
             }
     }
 
+    /// Returns the difference between two exams grade
+    /// Eg: catchUpExam.grade = 15/20, exam.grade = 12/20
+    /// Output = 3
     private func differenceOfGradeBetween(catchUpExam: Exam, and exam: Exam) -> Int {
         let catchUpGrade = catchUpExam.getGradeInformation()
         let grade = exam.getGradeInformation()
 
-        return Int(grade.lhs - catchUpGrade.lhs)
+        return Int(catchUpGrade.lhs - grade.lhs)
     }
 }
