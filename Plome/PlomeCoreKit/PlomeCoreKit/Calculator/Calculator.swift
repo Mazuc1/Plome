@@ -33,8 +33,6 @@ protocol MentionScores: AnyObject {
 public class Calculator: MentionScores {
     // MARK: - Properties
 
-    public typealias DifferenceAfterCatchUp = [Exam: Int]
-
     public var withoutMentionScore: Float = 0
     public var ABMentionScore: Float = 0
     public var BMentionScore: Float = 0
@@ -54,7 +52,7 @@ public class Calculator: MentionScores {
 
     private var catchUpSimulation: Simulation?
     public private(set) var gradeOutOfTwentyAfterCatchUp: Float?
-    public private(set) var differenceAfterCatchUp: DifferenceAfterCatchUp?
+    public private(set) var differenceAfterCatchUp: [Exam: Int]?
 
     // MARK: - Init
 
@@ -234,7 +232,7 @@ extension Calculator {
             .map { [weak self] catchUpExam, exam in
 
                 if catchUpExam.grade! != exam.grade! {
-                    self?.differenceAfterCatchUp?[exam] = self?.differenceOfGradeBetween(catchUpExam: catchUpExam, and: exam)
+                    self?.differenceAfterCatchUp?[catchUpExam] = self?.differenceOfGradeBetween(catchUpExam: catchUpExam, and: exam)
                 }
             }
     }

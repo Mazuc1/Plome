@@ -38,6 +38,21 @@ final class SimulationResultViewModel {
         calculator.hasSucceed()
     }
 
+    func displayCatchUpSectionIfNeeded() -> Bool {
+        !hasSucceedExam() && calculator.differenceAfterCatchUp != nil && calculator.gradeOutOfTwentyAfterCatchUp != nil
+    }
+
+    func getCatchUpInformations() -> (grade: Float, difference: [Exam: Int])? {
+        guard let grade = calculator.gradeOutOfTwentyAfterCatchUp,
+              let difference = calculator.differenceAfterCatchUp else { return nil }
+
+        let sortedDifference: [Exam: Int] = difference
+            .sorted(by: { $0.key.name < $1.key.name })
+            .reduce(into: [:]) { $0[$1.0] = $1.1 }
+
+        return (grade, sortedDifference)
+    }
+
     func admissionSentence() -> String {
         hasSucceedExam() ? "Vous êtes admis ! 🥳" : "Vous n'êtes pas admis 😕"
     }
@@ -53,17 +68,17 @@ final class SimulationResultViewModel {
 
     func trialsGrade() -> String {
         guard let grade = calculator.trialsGrade else { return "" }
-        return "\(grade.truncate(places: 2))"
+        return "\(grade.truncate(places: 2))/20"
     }
 
     func continousControlGrade() -> String {
         guard let grade = calculator.continousControlGrade else { return "" }
-        return "\(grade.truncate(places: 2))"
+        return "\(grade.truncate(places: 2))/20"
     }
 
     func optionGrade() -> String {
         guard let grade = calculator.optionsGrade else { return "" }
-        return "\(grade.truncate(places: 2))"
+        return "\(grade.truncate(places: 2))/20"
     }
 
     func simulationContainTrials() -> Bool {

@@ -184,6 +184,12 @@ final class SimulationResultViewController: AppViewController {
 
         resultStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView, someNumbersStackView])
 
+        if viewModel.displayCatchUpSectionIfNeeded() {
+            guard let catchUpView = createCatchUpView() else { return }
+            resultStackView.addArrangedSubview(catchUpView)
+            catchUpView.attachToSides(parentView: resultStackView)
+        }
+
         resultInformationsStackView.attachToSides(parentView: resultStackView)
         someNumbersStackView.attachToSides(parentView: resultStackView)
         ctaStackView.attachToSides(parentView: resultStackView)
@@ -217,21 +223,26 @@ final class SimulationResultViewController: AppViewController {
         var views: [UIView] = []
 
         if viewModel.simulationContainTrials() {
-            views.append(SomeNumberCell(frame: .zero, examTypeName: "Epreuves", grade: viewModel.trialsGrade()))
+            views.append(GradeInformationCell(frame: .zero, title: "Epreuves", grade: viewModel.trialsGrade()))
         }
 
         if viewModel.simulationContainContinousControls() {
-            views.append(SomeNumberCell(frame: .zero, examTypeName: "Contrôle continue", grade: viewModel.continousControlGrade()))
+            views.append(GradeInformationCell(frame: .zero, title: "Contrôle continue", grade: viewModel.continousControlGrade()))
         }
 
         if viewModel.simulationContainOptions() {
-            views.append(SomeNumberCell(frame: .zero, examTypeName: "Options", grade: viewModel.optionGrade()))
+            views.append(GradeInformationCell(frame: .zero, title: "Options", grade: viewModel.optionGrade()))
         }
 
         someNumbersStackView.addArrangedSubview(someNumbersLabel)
         someNumbersStackView.addArrangedSubviews(views)
 
         views.forEach { $0.attachToSides(parentView: someNumbersStackView) }
+    }
+
+    private func createCatchUpView() -> UIView? {
+        guard let catchUpInformations = viewModel.getCatchUpInformations() else { return nil }
+        return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
     }
 
     @objc private func userDidTapRemakeSimulation() {}
