@@ -89,34 +89,38 @@ class CatchUpView: UIView {
     // MARK: - Methods
 
     private func setupView() {
-        _ = differenceAfterCatchUp.map { [gradeInformationStackView] key, value in
-            guard let grade = key.grade else { return }
-            let cell = GradeInformationCell(frame: .zero, title: key.name, grade: grade, optionalInformation: "+\(value)")
-            gradeInformationStackView.addArrangedSubview(cell)
-            cell.attachToSides(parentView: gradeInformationStackView)
-        }
+        _ = differenceAfterCatchUp
+            .sorted { $0.key.name < $1.key.name }
+            .map { [gradeInformationStackView] key, value in
+                guard let grade = key.grade else { return }
+                let cell = GradeInformationCell(frame: .zero, title: key.name, grade: grade, optionalInformation: "+\(value)")
+                gradeInformationStackView.addArrangedSubview(cell)
+                cell.attachToSides(parentView: gradeInformationStackView)
+            }
 
         setupLayout()
     }
 
     private func setupLayout() {
-        stackView.addArrangedSubview(UIStackView().configure(block: {
+        let labelStackView = UIStackView().configure(block: {
             $0.axis = .vertical
             $0.distribution = .equalSpacing
             $0.spacing = AppStyles.defaultSpacing
             $0.alignment = .leading
             $0.addArrangedSubviews([titleLabel, descriptionLabel])
-        }))
+        })
 
-        stackView.addArrangedSubview(gradeInformationStackView)
-
-        stackView.addArrangedSubview(UIStackView().configure(block: {
+        let resultStackView = UIStackView().configure(block: {
             $0.axis = .vertical
             $0.distribution = .equalSpacing
             $0.spacing = AppStyles.defaultSpacing(factor: 1.5)
             $0.alignment = .center
             $0.addArrangedSubviews([resultLabel, gradeLabel])
-        }))
+        })
+
+        stackView.addArrangedSubviews([labelStackView, gradeInformationStackView, resultStackView])
+        labelStackView.attachToSides(parentView: stackView)
+        resultStackView.attachToSides(parentView: stackView)
 
         stackView.stretchInView(parentView: self)
     }

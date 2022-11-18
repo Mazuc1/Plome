@@ -18,7 +18,7 @@ final class SimulationResultViewController: AppViewController {
 
     // MARK: - UI
 
-    private let resultTitleLabel: UILabel = .init().configure {
+    private let resultTitleLabel: AppLabel = .init(withInsets: AppStyles.defaultSpacing(factor: 2), 0, 0, 0).configure {
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -120,6 +120,7 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private let scrollView: UIScrollView = .init().configure {
+        $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -208,15 +209,15 @@ final class SimulationResultViewController: AppViewController {
 
         NSLayoutConstraint.activate([
             resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
             secondaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
         ])
 
-        view.addSubview(confettiView)
+        scrollView.addSubview(confettiView)
     }
 
     private func createSomeNumbersView() {

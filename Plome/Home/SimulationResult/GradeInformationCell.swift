@@ -21,7 +21,7 @@ class GradeInformationCell: UIView {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .center
-        $0.numberOfLines = 0
+        $0.numberOfLines = 1
     }
 
     private let gradeLabel: UILabel = .init().configure {
@@ -29,12 +29,14 @@ class GradeInformationCell: UIView {
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .center
         $0.numberOfLines = 0
+        $0.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 
     private let optionalInformationLabel: UILabel = .init().configure {
         $0.font = PlomeFont.demiBoldS.font
         $0.textColor = PlomeColor.success.color
         $0.textAlignment = .center
+        $0.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 
     private let stackView: UIStackView = .init().configure {

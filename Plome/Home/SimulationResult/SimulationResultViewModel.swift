@@ -46,11 +46,7 @@ final class SimulationResultViewModel {
         guard let grade = calculator.gradeOutOfTwentyAfterCatchUp,
               let difference = calculator.differenceAfterCatchUp else { return nil }
 
-        let sortedDifference: [Exam: Int] = difference
-            .sorted(by: { $0.key.name < $1.key.name })
-            .reduce(into: [:]) { $0[$1.0] = $1.1 }
-
-        return (grade, sortedDifference)
+        return (grade, difference)
     }
 
     func admissionSentence() -> String {
