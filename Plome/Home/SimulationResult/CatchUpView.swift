@@ -121,6 +121,7 @@ class CatchUpView: UIView {
         stackView.addArrangedSubviews([labelStackView, gradeInformationStackView, resultStackView])
         labelStackView.attachToSides(parentView: stackView)
         resultStackView.attachToSides(parentView: stackView)
+        gradeInformationStackView.attachToSides(parentView: stackView)
 
         stackView.stretchInView(parentView: self)
     }
