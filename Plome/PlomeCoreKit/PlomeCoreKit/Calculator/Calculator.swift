@@ -214,8 +214,8 @@ extension Calculator {
         _ = exams
             .map { $0.getGradeInformation() }
             .map {
-                totalGrade += $0.lhs
-                totalOutOf += $0.rhs
+                totalGrade += $0.lhs * $0.coeff
+                totalOutOf += $0.rhs * $0.coeff
             }
 
         return rateOufOfTwenty(totalGrade / totalOutOf)
