@@ -75,4 +75,14 @@ public enum PlomeColor {
         case .fail: return UIColor(color: .fail)
         }
     }
+
+    public static var confettiColors: [UIColor] {
+        [
+            .init(red: 34 / 255, green: 92 / 255, blue: 110 / 255, alpha: 1),
+            .init(red: 0 / 255, green: 136 / 255, blue: 121 / 255, alpha: 1),
+            .init(red: 235 / 255, green: 179 / 255, blue: 102 / 255, alpha: 1),
+            .init(red: 255 / 255, green: 139 / 255, blue: 90 / 255, alpha: 1),
+            .init(red: 242 / 255, green: 121 / 255, blue: 109 / 255, alpha: 1),
+        ]
+    }
 }

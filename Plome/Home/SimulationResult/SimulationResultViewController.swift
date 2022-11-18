@@ -126,9 +126,7 @@ final class SimulationResultViewController: AppViewController {
 
     private lazy var confettiView: ConfettiView = .init(frame: self.view.bounds).configure {
         $0.intensity = 0.5
-        $0.colors = [PlomeColor.success.color,
-                     PlomeColor.success.color.withAlphaComponent(0.6),
-                     PlomeColor.success.color.withAlphaComponent(0.2)]
+        $0.colors = PlomeColor.confettiColors
     }
 
     // MARK: - Init

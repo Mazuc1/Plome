@@ -98,6 +98,8 @@ class CatchUpView: UIView {
                 cell.attachToSides(parentView: gradeInformationStackView)
             }
 
+        gradeLabel.text = "\(grade.truncate(places: 2))/20"
+
         setupLayout()
     }
 
