@@ -177,7 +177,11 @@ final class SimulationResultViewController: AppViewController {
         primaryCTARemakeSimulation.attachToSides(parentView: ctaStackView)
         secondaryCTASaveModel.attachToSides(parentView: ctaStackView)
 
-        resultInformationsStackView.addArrangedSubviews([admissionLabel, mentionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
+        resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
+        if viewModel.hasSucceedExam() {
+            resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)
+        }
+
         resultStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView, someNumbersStackView])
 
         resultInformationsStackView.attachToSides(parentView: resultStackView)
