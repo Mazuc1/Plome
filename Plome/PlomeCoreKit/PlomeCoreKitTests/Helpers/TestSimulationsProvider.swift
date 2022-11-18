@@ -10,7 +10,8 @@ import Foundation
 
 class TestSimulations {
     enum TargetMention {
-        case failure
+        case bigFailure
+        case mediumFailure
         case without
         case AB
         case B
@@ -19,7 +20,8 @@ class TestSimulations {
 
         var gradeRange: ClosedRange<Int> {
             switch self {
-            case .failure: return 0 ... 10
+            case .bigFailure: return 0 ... 10
+            case .mediumFailure: return 7 ... 11
             case .without: return 10 ... 12
             case .AB: return 12 ... 14
             case .B: return 14 ... 16
