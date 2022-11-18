@@ -81,7 +81,7 @@ final class SimulationResultViewController: AppViewController {
         $0.axis = .vertical
         $0.distribution = .equalCentering
         $0.spacing = AppStyles.defaultSpacing
-        $0.alignment = .center
+        $0.alignment = .leading
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
