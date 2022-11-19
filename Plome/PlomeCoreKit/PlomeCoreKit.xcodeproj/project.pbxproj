@@ -43,6 +43,7 @@
 		CF45FA5B2924335D00047B7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF45FA5A2924335D00047B7D /* Preview Assets.xcassets */; };
 		CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA61292445F400047B7D /* SimulationTests.swift */; };
 		CF48938E2915275A00B97147 /* ExamTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */; };
+		CF4B5AEB292940F1005F8D18 /* ALProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */; };
 		CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */; };
 		CF4F184A291D125A003F005B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1849291D125A003F005B /* AppLabel.swift */; };
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
@@ -122,6 +123,7 @@
 		CF45FA61292445F400047B7D /* SimulationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationTests.swift; sourceTree = "<group>"; };
 		CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypeHeaderView.swift; sourceTree = "<group>"; };
 		CF4893912915548500B97147 /* Plome_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome_2.xcdatamodel; sourceTree = "<group>"; };
+		CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressRing.swift; sourceTree = "<group>"; };
 		CF4F1849291D125A003F005B /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKit.h; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 		CF8E3D212923BF83001B1AC8 /* ALProgress */ = {
 			isa = PBXGroup;
 			children = (
+				CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */,
 				CF45FA492923FFF100047B7D /* ALProgressBar.swift */,
 				CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */,
 			);
@@ -539,6 +542,7 @@
 				CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */,
 				CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */,
 				CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */,
+				CF4B5AEB292940F1005F8D18 /* ALProgressRing.swift in Sources */,
 				CF3B9A8428F1DCBA00457A44 /* ModalTransition.swift in Sources */,
 				CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */,
 				CF45FA4C292423E900047B7D /* Numeric+extension.swift in Sources */,
