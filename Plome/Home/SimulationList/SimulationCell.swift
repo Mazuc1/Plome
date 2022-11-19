@@ -45,10 +45,10 @@ final class SimulationCell: UITableViewCell {
 
     // MARK: - Methods
 
-    func setup(with simulation: Simulation) {
+    func setup(with viewModel: SimulationCellViewModel) {
         setupLayout()
 
-        labelSimulationName.text = simulation.name
+        labelSimulationName.text = viewModel.simulation.name
 
         backgroundColor = .clear
         selectionStyle = .none

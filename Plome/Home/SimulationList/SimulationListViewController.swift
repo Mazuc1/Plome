@@ -117,9 +117,9 @@ final class SimulationListViewController: AppViewController {
     }
 
     private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
-        return .init(tableView: tableView) { tableView, _, itemIdentifier in
+        return .init(tableView: tableView) { tableView, _, simulation in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
-                cell.setup(with: itemIdentifier)
+                cell.setup(with: SimulationCellViewModel(simulation: simulation))
                 return cell
             }
             return UITableViewCell()

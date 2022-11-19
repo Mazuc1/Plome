@@ -54,6 +54,21 @@ public class Simulation: NSObject, NSCopying {
         return exams.contains { $0.type == .option }
     }
 
+    public func worstExamGrade() -> Float? {
+        examsGradeOutOfTwenty().min()
+    }
+
+    public func bestExamGrade() -> Float? {
+        examsGradeOutOfTwenty().max()
+    }
+
+    private func examsGradeOutOfTwenty() -> [Float] {
+        guard let exams else { return [] }
+        return exams
+            .map { $0.getGradeInformation() }
+            .map { ($0.lhs / $0.rhs) * 20 }
+    }
+
     public func remove(exam: Exam) {
         exams?.remove(exam)
     }
