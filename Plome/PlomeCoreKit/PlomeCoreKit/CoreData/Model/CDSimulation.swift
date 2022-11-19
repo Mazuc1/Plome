@@ -56,4 +56,5 @@ public extension CDSimulation {
 
 public extension CDSimulation {
     static let withoutDatePredicate = NSPredicate(format: "date = nil")
+    static let withDatePredicate = NSPredicate(format: "date != nil")
 }
