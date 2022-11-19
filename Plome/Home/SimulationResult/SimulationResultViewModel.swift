@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 10/11/2022.
 //
 
+import CoreData
 import Foundation
 import PlomeCoreKit
 
@@ -12,14 +13,17 @@ final class SimulationResultViewModel {
     // MARK: - Properties
 
     private let router: SimulationsRouter
-    let simulation: Simulation
     private let calculator: Calculator
+    private let simulationRepository: CoreDataRepository<CDSimulation>
+
+    let simulation: Simulation
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulation: Simulation) {
+    init(router: SimulationsRouter, simulation: Simulation, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.router = router
         self.simulation = simulation
+        self.simulationRepository = simulationRepository
 
         calculator = .init(simulation: simulation)
     }
@@ -87,5 +91,30 @@ final class SimulationResultViewModel {
 
     func simulationContainOptions() -> Bool {
         simulation.examsContainOptions()
+    }
+
+    // MARK: - Save simulation
+
+    func saveSimulation() {
+        let _mergeAndConvertExams = mergeAndConvertExams
+        do {
+            try simulationRepository.add { [simulation] cdSimulation, context in
+                cdSimulation.name = simulation.name
+                cdSimulation.date = Date()
+                cdSimulation.exams = _mergeAndConvertExams(context, cdSimulation)
+                cdSimulation.type = simulation.type
+            }
+        } catch {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+        }
+    }
+
+    private func mergeAndConvertExams(in context: NSManagedObjectContext, for simulation: CDSimulation) -> Set<CDExam>? {
+        guard let exams = self.simulation.exams else { return nil }
+        var cdExams: Set<CDExam> = .init()
+
+        _ = exams.map { cdExams.insert($0.toCoreDataModel(in: context, for: simulation)) }
+
+        return cdExams
     }
 }

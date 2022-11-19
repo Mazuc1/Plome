@@ -147,6 +147,8 @@ final class SimulationResultViewController: AppViewController {
         super.viewDidLoad()
         navigationItem.title = "Résultat"
 
+        viewModel.saveSimulation()
+
         setCalculatorInformation()
         setupLayout()
     }

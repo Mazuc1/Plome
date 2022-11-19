@@ -47,7 +47,7 @@ extension Screens {
     }
 
     func createSimulationResult(router: SimulationsRouter, with simulation: Simulation) -> UIViewController {
-        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation)
+        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation, simulationRepository: context.simulationRepository)
         let simulationResultViewController = SimulationResultViewController(viewModel: simulationResultViewModel)
         return simulationResultViewController
     }
