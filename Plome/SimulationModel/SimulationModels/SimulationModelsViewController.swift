@@ -21,7 +21,7 @@ final class SimulationModelsViewController: AppViewController {
 
     private lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
-        $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
+        $0.register(SimulationModelCell.self, forCellReuseIdentifier: SimulationModelCell.reuseIdentifier)
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +108,7 @@ final class SimulationModelsViewController: AppViewController {
 
     private func createDataSource() -> SimulationModelsTableViewDataSource {
         return .init(tableView: tableView) { tableView, _, itemIdentifier in
-            if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationModelCell.reuseIdentifier) as? SimulationModelCell {
                 cell.setup(with: itemIdentifier)
                 return cell
             }

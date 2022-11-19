@@ -1,5 +1,5 @@
 //
-//  SimulationCell.swift
+//  SimulationModelCell.swift
 //  Plome
 //
 //  Created by Loic Mazuc on 21/10/2022.
@@ -8,10 +8,10 @@
 import PlomeCoreKit
 import UIKit
 
-final class SimulationCell: UITableViewCell {
+final class SimulationModelCell: UITableViewCell {
     // MARK: - Properties
 
-    static let reuseIdentifier: String = "SimulationCell"
+    static let reuseIdentifier: String = "SimulationModelCell"
 
     // MARK: - UI
 
