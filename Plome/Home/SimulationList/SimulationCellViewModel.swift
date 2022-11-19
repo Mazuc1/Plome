@@ -27,6 +27,10 @@ final class SimulationCellViewModel {
         "\(calculator.calculate().truncate(places: 2))/20"
     }
 
+    func finalGradeProgress() -> Float {
+        calculator.calculate().truncate(places: 2) / 20
+    }
+
     private func hasSucceedExam() -> Bool {
         calculator.hasSucceed()
     }
@@ -48,5 +52,10 @@ final class SimulationCellViewModel {
     func worstGrade() -> String {
         guard let worstExamGrade = simulation.worstExamGrade() else { return "--" }
         return "\(worstExamGrade)"
+    }
+
+    func date() -> String {
+        guard let date = simulation.date else { return Date().toString(format: .classicPoint) }
+        return date.toString(format: .classicPoint)
     }
 }
