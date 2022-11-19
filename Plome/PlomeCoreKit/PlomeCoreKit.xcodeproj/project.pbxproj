@@ -44,6 +44,7 @@
 		CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA61292445F400047B7D /* SimulationTests.swift */; };
 		CF48938E2915275A00B97147 /* ExamTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */; };
 		CF4B5AEB292940F1005F8D18 /* ALProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */; };
+		CF4B5AEF292946B2005F8D18 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B5AEE292946B1005F8D18 /* Date+extension.swift */; };
 		CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */; };
 		CF4F184A291D125A003F005B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1849291D125A003F005B /* AppLabel.swift */; };
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
@@ -124,6 +125,7 @@
 		CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypeHeaderView.swift; sourceTree = "<group>"; };
 		CF4893912915548500B97147 /* Plome_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome_2.xcdatamodel; sourceTree = "<group>"; };
 		CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressRing.swift; sourceTree = "<group>"; };
+		CF4B5AEE292946B1005F8D18 /* Date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		CF4F1849291D125A003F005B /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKit.h; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		CF3B9A9028F1E00B00457A44 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CF4B5AEE292946B1005F8D18 /* Date+extension.swift */,
 				CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */,
 				CF3B9A9128F1E01A00457A44 /* UIFont+extension.swift */,
 				CF3B9A9528F1E5E700457A44 /* UIView+extension.swift */,
@@ -564,6 +567,7 @@
 				CF3B9A9B28F3280900457A44 /* AppViewController.swift in Sources */,
 				CF59EAEC28ECD6F20041B33B /* AppStyles.swift in Sources */,
 				CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */,
+				CF4B5AEF292946B2005F8D18 /* Date+extension.swift in Sources */,
 				CF59EAF228ECD6F20041B33B /* PlomeFont.swift in Sources */,
 				CF59EAF128ECD6F20041B33B /* Icons.swift in Sources */,
 				CF3B9A8728F1DCBA00457A44 /* PushTransition.swift in Sources */,
