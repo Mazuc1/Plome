@@ -20,8 +20,8 @@ final class SimulationListViewController: AppViewController {
     // MARK: - UI
 
     private var collectionViewLayout: UICollectionViewFlowLayout = .init().configure {
-        $0.itemSize = .init(width: 130, height: 200)
-        $0.sectionInset = .init(top: 10, left: 10, bottom: 10, right: 10)
+        $0.itemSize = SimulationCell.size
+        $0.sectionInset = .init(top: 10, left: 0, bottom: 10, right: 0)
         $0.scrollDirection = .vertical
     }
 
@@ -70,6 +70,18 @@ final class SimulationListViewController: AppViewController {
         viewModel.updateSnapshot()
     }
 
+    // Set observer and remove it in viewWillDisappear to avoid reload when it's not neccessary
+    // For example, when user make a simulation model
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: nil)
+    }
+
     // MARK: - Methods
 
     private func setupLayout() {
@@ -97,6 +109,10 @@ final class SimulationListViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             collectionView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
+    }
+
+    @objc private func contextObjectsDidChange(_: Notification) {
+        viewModel.updateSnapshot()
     }
 
     @objc private func userDidTapNewSimulation() {

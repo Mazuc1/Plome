@@ -12,6 +12,7 @@ final class SimulationCell: UICollectionViewCell {
     // MARK: - Properties
 
     static let reuseIdentifier: String = "SimulationCell"
+    static let size: CGSize = .init(width: 150, height: 200)
 
     // MARK: - UI
 
