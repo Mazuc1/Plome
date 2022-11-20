@@ -10,6 +10,7 @@
 		CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BA2905E7760099186E /* CoreDataRepository.swift */; };
 		CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */; };
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
+		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
 		CF1B6474292526CA0051A7C3 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1E28F94810001F83B1 /* CDSimulation.swift */; };
@@ -88,6 +89,7 @@
 		CF0A26BA2905E7760099186E /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerError.swift; sourceTree = "<group>"; };
 		CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+extension.swift"; sourceTree = "<group>"; };
+		CF142A77292ADA5800866408 /* TertiaryCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryCTA.swift; sourceTree = "<group>"; };
 		CF1B64702925182B0051A7C3 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSimulationsProvider.swift; sourceTree = "<group>"; };
 		CF208F1E28F94810001F83B1 /* CDSimulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDSimulation.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				CF4F1849291D125A003F005B /* AppLabel.swift */,
 				CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */,
 				CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */,
+				CF142A77292ADA5800866408 /* TertiaryCTA.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */,
 				CF4F184A291D125A003F005B /* AppLabel.swift in Sources */,
 				CF2CCBD22902945500FA14C4 /* UIStackView+extension.swift in Sources */,
+				CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

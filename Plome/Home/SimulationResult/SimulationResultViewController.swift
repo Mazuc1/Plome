@@ -90,7 +90,15 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var secondaryCTASaveModel: SecondaryCTA = .init(title: "Enregistrer ce modèle").configure { [weak self] in
+    private let saveModelLabel: UILabel = .init().configure {
+        $0.text = "Vous avez modifié le modèle utilisé ? Pensez à l'enregistrer."
+        $0.font = PlomeFont.bodyS.font
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.textColor = PlomeColor.darkGray.color
+    }
+
+    private lazy var tertiaryCTASaveModel: TertiaryCTA = .init(title: "Enregistrer ce modèle").configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapSaveModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -174,9 +182,9 @@ final class SimulationResultViewController: AppViewController {
     private func setupLayout() {
         createSomeNumbersView()
 
-        ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, secondaryCTASaveModel])
+        ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, saveModelLabel, tertiaryCTASaveModel])
         primaryCTARemakeSimulation.attachToSides(parentView: ctaStackView)
-        secondaryCTASaveModel.attachToSides(parentView: ctaStackView)
+        tertiaryCTASaveModel.attachToSides(parentView: ctaStackView)
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
         if viewModel.hasSucceedExam() {
@@ -214,7 +222,7 @@ final class SimulationResultViewController: AppViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
-            secondaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
+            tertiaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.tertiaryCTAHeight),
         ])
 
         scrollView.addSubview(confettiView)
