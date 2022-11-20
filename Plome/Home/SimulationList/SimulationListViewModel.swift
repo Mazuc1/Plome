@@ -67,4 +67,18 @@ final class SimulationListViewModel {
     func userDidTapNewSimulation() {
         router.openSelectSimulationModel()
     }
+
+    func userDidTapDeleteSimulation(at index: Int) {
+        deleteSimulationModel(at: index)
+    }
+
+    private func deleteSimulationModel(at index: Int) {
+        do {
+            if let simulation = coreDataSimulationModels?[index] {
+                try simulationRepository.delete(with: simulation.objectID)
+            }
+        } catch {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+        }
+    }
 }

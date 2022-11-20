@@ -65,6 +65,18 @@ final class SimulationListViewController: AppViewController {
         viewModel.updateSnapshot()
     }
 
+    // Set observer and remove it in viewWillDisappear to avoid reload when it's not neccessary
+    // For example, when user make a simulation model
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: nil)
+    }
+
     // MARK: - Methods
 
     private func setupLayout() {
@@ -92,6 +104,15 @@ final class SimulationListViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
+
+        view.addSubview(emptySimulationListView)
+
+        NSLayoutConstraint.activate([
+            emptySimulationListView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            emptySimulationListView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor),
+            emptySimulationListView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: emptySimulationListView.trailingAnchor),
+        ])
     }
 
     @objc private func userDidTapNewSimulation() {
@@ -109,11 +130,11 @@ final class SimulationListViewController: AppViewController {
 
     private func applySnapshotIfNeeded(snapshot: SimulationListViewModel.TableViewSnapshot) {
         if snapshot.numberOfItems == 0 {
-            tableView.backgroundView = emptySimulationListView
+            emptySimulationListView.isHidden = false
         } else {
-            tableView.backgroundView = nil
-            dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
+            emptySimulationListView.isHidden = true
         }
+        dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
 
     private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
@@ -125,19 +146,23 @@ final class SimulationListViewController: AppViewController {
             return UITableViewCell()
         }
     }
+
+    @objc private func contextObjectsDidChange(_: Notification) {
+        viewModel.updateSnapshot()
+    }
 }
 
 // MARK: - Table View Delegate
 
 extension SimulationListViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        // viewModel.userDidTapOnSimulation(at: indexPath)
+        //
     }
 
-//    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let deleteAction = AppContextualAction.deleteAction { [weak self] in
-//            self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
-//        }
-//        return UISwipeActionsConfiguration(actions: [deleteAction])
-//    }
+    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = AppContextualAction.deleteAction { [weak self] in
+            self?.viewModel.userDidTapDeleteSimulation(at: indexPath.row)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
