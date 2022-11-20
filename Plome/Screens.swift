@@ -28,7 +28,10 @@ extension Screens {
         let simulationListViewModel = SimulationListViewModel(router: router, simulationRepository: context.simulationRepository)
         let simulationsViewController = SimulationListViewController(viewModel: simulationListViewModel)
         simulationsViewController.tabBarItem = Tabs.home.item
-        return simulationsViewController
+
+        let navigationController = UINavigationController(rootViewController: simulationsViewController)
+
+        return navigationController
     }
 
     func createSelectSimulationModel(router: SimulationsRouter) -> UIViewController {
