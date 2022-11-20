@@ -8,7 +8,7 @@
 import PlomeCoreKit
 import UIKit
 
-final class SimulationCell: UITableViewCell {
+final class SimulationCell: UICollectionViewCell {
     // MARK: - Properties
 
     static let reuseIdentifier: String = "SimulationCell"
@@ -59,8 +59,8 @@ final class SimulationCell: UITableViewCell {
 
     // MARK: - Init
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -81,7 +81,6 @@ final class SimulationCell: UITableViewCell {
         progressRing.setProgress(viewModel.finalGradeProgress(), animated: true)
 
         backgroundColor = .clear
-        selectionStyle = .none
     }
 
     private func setupLayout() {

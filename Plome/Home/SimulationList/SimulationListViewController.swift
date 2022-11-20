@@ -15,20 +15,25 @@ final class SimulationListViewController: AppViewController {
     private let viewModel: SimulationListViewModel
     private var cancellables: Set<AnyCancellable> = []
 
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, Simulation> = self.createDataSource()
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, Simulation> = self.createDataSource()
 
     // MARK: - UI
 
-    private lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
+    private var collectionViewLayout: UICollectionViewFlowLayout = .init().configure {
+        $0.itemSize = .init(width: 130, height: 200)
+        $0.sectionInset = .init(top: 10, left: 10, bottom: 10, right: 10)
+        $0.scrollDirection = .vertical
+    }
+
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout).configure { [weak self] in
         $0.delegate = self
-        $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
         $0.backgroundColor = .clear
-        $0.separatorStyle = .none
+        $0.register(SimulationCell.self, forCellWithReuseIdentifier: SimulationCell.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private let labelTitleView: UILabel = .init().configure {
-        $0.text = "Accueil"
+        $0.text = "Mes simulations"
         $0.font = PlomeFont.title.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
@@ -84,13 +89,13 @@ final class SimulationListViewController: AppViewController {
             primaryCTANewSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
         ])
 
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: labelTitleView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            tableView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            collectionView.topAnchor.constraint(equalTo: labelTitleView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            view.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            collectionView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
     }
 
@@ -109,35 +114,28 @@ final class SimulationListViewController: AppViewController {
 
     private func applySnapshotIfNeeded(snapshot: SimulationListViewModel.TableViewSnapshot) {
         if snapshot.numberOfItems == 0 {
-            tableView.backgroundView = emptySimulationListView
+            collectionView.backgroundView = emptySimulationListView
         } else {
-            tableView.backgroundView = nil
+            collectionView.backgroundView = nil
             dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
         }
     }
 
-    private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
-        return .init(tableView: tableView) { tableView, _, simulation in
-            if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
+    private func createDataSource() -> UICollectionViewDiffableDataSource<Int, Simulation> {
+        return .init(collectionView: collectionView) { collectionView, indexPath, simulation in
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimulationCell.reuseIdentifier, for: indexPath) as? SimulationCell {
                 cell.setup(with: SimulationCellViewModel(simulation: simulation))
                 return cell
             }
-            return UITableViewCell()
+            return UICollectionViewCell()
         }
     }
 }
 
 // MARK: - Table View Delegate
 
-extension SimulationListViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        // viewModel.userDidTapOnSimulation(at: indexPath)
+extension SimulationListViewController: UICollectionViewDelegate {
+    func collectionView(_: UICollectionView, didSelectItemAt _: IndexPath) {
+        //
     }
-
-//    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let deleteAction = AppContextualAction.deleteAction { [weak self] in
-//            self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
-//        }
-//        return UISwipeActionsConfiguration(actions: [deleteAction])
-//    }
 }
