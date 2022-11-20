@@ -56,6 +56,7 @@ final class SimulationListViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Mes simulations"
+        navigationItem.rightBarButtonItem = createEditBarButton()
 
         setupLayout()
 
@@ -140,6 +141,14 @@ final class SimulationListViewController: AppViewController {
             }
             return UICollectionViewCell()
         }
+    }
+
+    private func createEditBarButton() -> UIBarButtonItem {
+        .init(image: Icons.pencil.configure(weight: .regular, color: .pink, size: 20), style: .plain, target: self, action: #selector(userDidTapEditButton))
+    }
+
+    @objc private func userDidTapEditButton() {
+        print("userDidTapEditButton")
     }
 }
 
