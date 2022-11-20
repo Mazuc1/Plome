@@ -109,6 +109,15 @@ final class SimulationListViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             collectionView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
+
+        collectionView.addSubview(emptySimulationListView)
+
+        NSLayoutConstraint.activate([
+            emptySimulationListView.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor),
+            emptySimulationListView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+            emptySimulationListView.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            collectionView.trailingAnchor.constraint(equalTo: emptySimulationListView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+        ])
     }
 
     @objc private func contextObjectsDidChange(_: Notification) {
@@ -130,9 +139,9 @@ final class SimulationListViewController: AppViewController {
 
     private func applySnapshotIfNeeded(snapshot: SimulationListViewModel.TableViewSnapshot) {
         if snapshot.numberOfItems == 0 {
-            collectionView.backgroundView = emptySimulationListView
+            emptySimulationListView.isHidden = false
         } else {
-            collectionView.backgroundView = nil
+            emptySimulationListView.isHidden = true
             dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
         }
     }
