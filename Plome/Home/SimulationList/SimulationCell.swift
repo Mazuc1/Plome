@@ -47,7 +47,7 @@ final class SimulationCell: UITableViewCell {
     }
 
     private var stackView: UIStackView = .init().configure {
-        $0.axis = .vertical
+        $0.axis = .horizontal
         $0.alignment = .center
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing(factor: 1.5)
@@ -92,11 +92,11 @@ final class SimulationCell: UITableViewCell {
             $0.alignment = .leading
             $0.distribution = .equalSpacing
             $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
-            $0.addArrangedSubviews([dateLabel, labelSimulationName])
+            $0.addArrangedSubviews([dateLabel, labelSimulationName, admissionLabel])
         }))
 
         progressRing.addSubview(finalGradeLabel)
-        stackView.addArrangedSubviews([progressRing, admissionLabel])
+        stackView.addArrangedSubviews([progressRing])
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
