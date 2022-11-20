@@ -31,7 +31,7 @@ final class SimulationCellViewModel {
         calculator.calculate().truncate(places: 2) / 20
     }
 
-    private func hasSucceedExam() -> Bool {
+    func hasSucceedExam() -> Bool {
         calculator.hasSucceed()
     }
 
@@ -42,16 +42,6 @@ final class SimulationCellViewModel {
     func mentionSentence() -> String {
         guard let mention = calculator.mention else { return "Sans mention" }
         return mention.name
-    }
-
-    func bestGrade() -> String {
-        guard let bestExamGrade = simulation.bestExamGrade() else { return "--" }
-        return "\(bestExamGrade)"
-    }
-
-    func worstGrade() -> String {
-        guard let worstExamGrade = simulation.worstExamGrade() else { return "--" }
-        return "\(worstExamGrade)"
     }
 
     func date() -> String {
