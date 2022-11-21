@@ -21,6 +21,8 @@ final class SimulationListViewController: AppViewController {
 
     private lazy var tableView = UITableView(frame: .zero, style: .grouped).configure { [weak self] in
         $0.delegate = self
+        $0.rowHeight = SimulationCell.height
+        $0.estimatedRowHeight = SimulationCell.height
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
         $0.backgroundColor = .clear
         $0.separatorStyle = .none

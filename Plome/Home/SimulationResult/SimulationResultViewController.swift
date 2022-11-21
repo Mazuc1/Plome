@@ -15,6 +15,7 @@ final class SimulationResultViewController: AppViewController {
 
     private static let succeessImage: UIImage = Icons.success.configure(weight: .regular, color: .success, size: 125)
     private static let failureImage: UIImage = Icons.fail.configure(weight: .regular, color: .fail, size: 125)
+    private var scrollViewWidth: CGFloat = 100
 
     // MARK: - UI
 
@@ -60,7 +61,7 @@ final class SimulationResultViewController: AppViewController {
 
     private let resultInformationsStackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.distribution = .equalCentering
+        $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing
         $0.alignment = .center
         $0.isLayoutMarginsRelativeArrangement = true
@@ -79,7 +80,7 @@ final class SimulationResultViewController: AppViewController {
 
     private let someNumbersStackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.distribution = .equalCentering
+        $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing
         $0.alignment = .leading
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +106,7 @@ final class SimulationResultViewController: AppViewController {
 
     private let ctaStackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.distribution = .equalSpacing
+        $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +114,7 @@ final class SimulationResultViewController: AppViewController {
 
     private let resultStackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.distribution = .equalSpacing
+        $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +122,7 @@ final class SimulationResultViewController: AppViewController {
 
     private let scrollViewContainerStackView: UIStackView = .init().configure {
         $0.axis = .vertical
-        $0.distribution = .equalSpacing
+        $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing(factor: 7)
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -153,9 +154,10 @@ final class SimulationResultViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
         navigationItem.title = "Résultat"
 
-        viewModel.saveSimulation()
+        viewModel.save(.simulation)
 
         setCalculatorInformation()
         setupLayout()
@@ -183,10 +185,11 @@ final class SimulationResultViewController: AppViewController {
         createSomeNumbersView()
 
         ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, saveModelLabel, tertiaryCTASaveModel])
-        primaryCTARemakeSimulation.attachToSides(parentView: ctaStackView)
-        tertiaryCTASaveModel.attachToSides(parentView: ctaStackView)
+        ctaStackView.setWidthConstraint(constant: scrollViewWidth)
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
+        resultInformationsStackView.setWidthConstraint(constant: scrollViewWidth)
+
         if viewModel.hasSucceedExam() {
             resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)
         }
@@ -196,12 +199,7 @@ final class SimulationResultViewController: AppViewController {
         if viewModel.displayCatchUpSectionIfNeeded() {
             guard let catchUpView = createCatchUpView() else { return }
             resultStackView.addArrangedSubview(catchUpView)
-            catchUpView.attachToSides(parentView: resultStackView)
         }
-
-        resultInformationsStackView.attachToSides(parentView: resultStackView)
-        someNumbersStackView.attachToSides(parentView: resultStackView)
-        ctaStackView.attachToSides(parentView: resultStackView)
 
         resultInformationsStackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                                           left: AppStyles.defaultSpacing,
@@ -209,23 +207,21 @@ final class SimulationResultViewController: AppViewController {
                                                           right: AppStyles.defaultSpacing)
 
         scrollViewContainerStackView.addArrangedSubviews([resultStackView, ctaStackView])
-
-        scrollView.addSubview(scrollViewContainerStackView)
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
         view.addSubview(scrollView)
 
         NSLayoutConstraint.activate([
-            resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
             tertiaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.tertiaryCTAHeight),
         ])
 
-        scrollView.addSubview(confettiView)
+        resultStackView.addSubview(confettiView)
     }
 
     private func createSomeNumbersView() {
@@ -245,8 +241,7 @@ final class SimulationResultViewController: AppViewController {
 
         someNumbersStackView.addArrangedSubview(someNumbersLabel)
         someNumbersStackView.addArrangedSubviews(views)
-
-        views.forEach { $0.attachToSides(parentView: someNumbersStackView) }
+        someNumbersStackView.setWidthConstraint(constant: scrollViewWidth)
     }
 
     private func createCatchUpView() -> UIView? {
@@ -254,6 +249,12 @@ final class SimulationResultViewController: AppViewController {
         return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
     }
 
-    @objc private func userDidTapRemakeSimulation() {}
-    @objc private func userDidTapSaveModel() {}
+    @objc private func userDidTapRemakeSimulation() {
+        print("🐛")
+    }
+
+    @objc private func userDidTapSaveModel() {
+        print("🚨")
+        viewModel.save(.simulationModel)
+    }
 }

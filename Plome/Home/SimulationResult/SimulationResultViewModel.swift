@@ -18,6 +18,11 @@ final class SimulationResultViewModel {
 
     let simulation: Simulation
 
+    enum Save {
+        case simulation
+        case simulationModel
+    }
+
     // MARK: - Init
 
     init(router: SimulationsRouter, simulation: Simulation, simulationRepository: CoreDataRepository<CDSimulation>) {
@@ -95,14 +100,18 @@ final class SimulationResultViewModel {
 
     // MARK: - Save simulation
 
-    func saveSimulation() {
+    func save(_ type: Save) {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {
             try simulationRepository.add { [simulation] cdSimulation, context in
                 cdSimulation.name = simulation.name
-                cdSimulation.date = Date()
                 cdSimulation.exams = _mergeAndConvertExams(context, cdSimulation)
                 cdSimulation.type = simulation.type
+
+                switch type {
+                case .simulation: cdSimulation.date = Date()
+                case .simulationModel: cdSimulation.date = nil
+                }
             }
         } catch {
             router.alert(title: "Oups", message: "Une erreur est survenue 😕")

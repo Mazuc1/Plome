@@ -47,13 +47,14 @@ final class SimulationCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private var stackView: UIStackView = UIStackView().configure(block: {
+    private var stackView: UIStackView = .init().configure(block: {
         $0.axis = .vertical
         $0.alignment = .leading
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
         $0.translatesAutoresizingMaskIntoConstraints = false
     })
+
     // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -65,7 +66,7 @@ final class SimulationCell: UITableViewCell {
     }
 
     // MARK: - Methods
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -85,7 +86,7 @@ final class SimulationCell: UITableViewCell {
 
         backgroundColor = .clear
         selectionStyle = .none
-        
+
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = AppStyles.defaultRadius
     }
@@ -93,7 +94,7 @@ final class SimulationCell: UITableViewCell {
     private func setupLayout() {
         stackView.addArrangedSubviews([dateLabel, labelSimulationName, admissionLabel])
         contentView.addSubview(stackView)
-        
+
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
