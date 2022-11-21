@@ -239,7 +239,7 @@ final class SimulationTests: XCTestCase {
         let result = simulation.number(of: .option)
 
         // Assert
-        XCTAssert(result == 2)
+        XCTAssertTrue(result == 2)
     }
 
     func testThatCountingExamsForRequestedTypeWithExamsNilThenZeroIsReturned() {
@@ -251,5 +251,77 @@ final class SimulationTests: XCTestCase {
 
         // Assert
         XCTAssertTrue(result == 0)
+    }
+
+    // MARK: - Worst grade
+
+    func testThatWorstGradeIsReturned() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+
+        let exam: Exam = .init(name: "", coefficient: nil, grade: "5/20", type: .option)
+        let exam2: Exam = .init(name: "", coefficient: nil, grade: "2.75/20", type: .trial)
+        let exam3: Exam = .init(name: "", coefficient: nil, grade: "3/20", type: .option)
+        let exam4: Exam = .init(name: "", coefficient: nil, grade: "1.99/20", type: .trial)
+        let exam5: Exam = .init(name: "", coefficient: nil, grade: "12/20", type: .continuousControl)
+
+        simulation.add(exam: exam5)
+        simulation.add(exam: exam4)
+        simulation.add(exam: exam2)
+        simulation.add(exam: exam3)
+        simulation.add(exam: exam)
+
+        // Act
+        let result = simulation.worstExamGrade()
+
+        // Assert
+        XCTAssertTrue(result! == 1.99)
+    }
+
+    func testThatWorstGradeReturnsNilWhenExamsIsNil() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
+
+        // Act
+        let result = simulation.worstExamGrade()
+
+        // Assert
+        XCTAssertNil(result)
+    }
+
+    // MARK: - Best grade
+
+    func testThatBestGradeIsReturned() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+
+        let exam: Exam = .init(name: "", coefficient: nil, grade: "5/20", type: .option)
+        let exam2: Exam = .init(name: "", coefficient: nil, grade: "18.75/20", type: .trial)
+        let exam3: Exam = .init(name: "", coefficient: nil, grade: "13/20", type: .option)
+        let exam4: Exam = .init(name: "", coefficient: nil, grade: "10.99/20", type: .trial)
+        let exam5: Exam = .init(name: "", coefficient: nil, grade: "19.76/20", type: .continuousControl)
+
+        simulation.add(exam: exam5)
+        simulation.add(exam: exam4)
+        simulation.add(exam: exam2)
+        simulation.add(exam: exam3)
+        simulation.add(exam: exam)
+
+        // Act
+        let result = simulation.bestExamGrade()
+
+        // Assert
+        XCTAssertTrue(result! == 19.76)
+    }
+
+    func testThatBestGradeReturnsNilWhenExamsIsNil() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
+
+        // Act
+        let result = simulation.bestExamGrade()
+
+        // Assert
+        XCTAssertNil(result)
     }
 }
