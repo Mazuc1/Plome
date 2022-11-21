@@ -12,6 +12,7 @@ final class SimulationCell: UITableViewCell {
     // MARK: - Properties
 
     static let reuseIdentifier: String = "SimulationCell"
+    static let height: CGFloat = 105
 
     // MARK: - UI
 
@@ -46,17 +47,13 @@ final class SimulationCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private var stackView: UIStackView = .init().configure {
-        $0.axis = .horizontal
-        $0.alignment = .center
+    private var stackView: UIStackView = UIStackView().configure(block: {
+        $0.axis = .vertical
+        $0.alignment = .leading
         $0.distribution = .equalSpacing
-        $0.spacing = AppStyles.defaultSpacing(factor: 1.5)
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = AppStyles.defaultRadius
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isLayoutMarginsRelativeArrangement = true
-    }
-
+    })
     // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -68,6 +65,12 @@ final class SimulationCell: UITableViewCell {
     }
 
     // MARK: - Methods
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: AppStyles.defaultSpacing, right: 0))
+    }
 
     func setup(with viewModel: SimulationCellViewModel) {
         setupLayout()
@@ -82,39 +85,30 @@ final class SimulationCell: UITableViewCell {
 
         backgroundColor = .clear
         selectionStyle = .none
+        
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = AppStyles.defaultRadius
     }
 
     private func setupLayout() {
+        stackView.addArrangedSubviews([dateLabel, labelSimulationName, admissionLabel])
         contentView.addSubview(stackView)
-
-        stackView.addArrangedSubview(UIStackView().configure(block: {
-            $0.axis = .vertical
-            $0.alignment = .leading
-            $0.distribution = .equalSpacing
-            $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
-            $0.addArrangedSubviews([dateLabel, labelSimulationName, admissionLabel])
-        }))
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+        ])
 
         progressRing.addSubview(finalGradeLabel)
-        stackView.addArrangedSubviews([progressRing])
+        contentView.addSubview(progressRing)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: AppStyles.defaultSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-        ])
-
-        NSLayoutConstraint.activate([
-            progressRing.heightAnchor.constraint(equalToConstant: 80),
-            progressRing.widthAnchor.constraint(equalToConstant: 80),
+            contentView.trailingAnchor.constraint(equalTo: progressRing.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            progressRing.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             finalGradeLabel.centerXAnchor.constraint(equalTo: progressRing.centerXAnchor),
             finalGradeLabel.centerYAnchor.constraint(equalTo: progressRing.centerYAnchor),
+            progressRing.heightAnchor.constraint(equalToConstant: 80),
+            progressRing.widthAnchor.constraint(equalToConstant: 80),
         ])
-
-        stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                        left: AppStyles.defaultSpacing,
-                                        bottom: AppStyles.defaultSpacing,
-                                        right: AppStyles.defaultSpacing)
     }
 }
