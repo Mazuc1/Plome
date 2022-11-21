@@ -43,7 +43,7 @@ final class SimulationModelsViewModel: ObservableObject {
                     if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
                         examSet = Set(exams)
                     }
-                    return Simulation(name: $0.name, date: $0.date, exams: examSet)
+                    return Simulation(name: $0.name, date: $0.date, exams: examSet, type: $0.type)
                 }
         }
 

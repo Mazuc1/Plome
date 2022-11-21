@@ -7,15 +7,17 @@
 
 import Foundation
 
-public class Simulation: Hashable {
+public class Simulation: NSObject, NSCopying {
     public let name: String
-    public let date: Date?
+    public var date: Date?
     public var exams: Set<Exam>?
+    public var type: SimulationType
 
-    public init(name: String, date: Date?, exams: Set<Exam>?) {
+    public init(name: String, date: Date?, exams: Set<Exam>?, type: SimulationType) {
         self.name = name
         self.date = date
         self.exams = exams
+        self.type = type
     }
 
     public func number(of type: ExamType) -> Int {
@@ -37,6 +39,36 @@ public class Simulation: Hashable {
         return exams.allSatisfy { $0.grade != nil }
     }
 
+    public func examsContainTrials() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.type == .trial }
+    }
+
+    public func examsContainContinuousControls() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.type == .continuousControl }
+    }
+
+    public func examsContainOptions() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.type == .option }
+    }
+
+    public func worstExamGrade() -> Float? {
+        examsGradeOutOfTwenty().min()
+    }
+
+    public func bestExamGrade() -> Float? {
+        examsGradeOutOfTwenty().max()
+    }
+
+    private func examsGradeOutOfTwenty() -> [Float] {
+        guard let exams else { return [] }
+        return exams
+            .map { $0.getGradeInformation() }
+            .map { ($0.lhs / $0.rhs) * 20 }
+    }
+
     public func remove(exam: Exam) {
         exams?.remove(exam)
     }
@@ -45,13 +77,8 @@ public class Simulation: Hashable {
         exams?.insert(exam)
     }
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
-    }
-}
-
-extension Simulation: Equatable {
-    public static func == (lhs: Simulation, rhs: Simulation) -> Bool {
-        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    public func copy(with _: NSZone? = nil) -> Any {
+        guard let examsCopy = exams?.map({ $0.copy() }) as? [Exam] else { return -1 }
+        return Simulation(name: name, date: date, exams: Set(examsCopy), type: type)
     }
 }

@@ -13,4 +13,11 @@ public extension UIStackView {
             addArrangedSubview(view)
         }
     }
+
+    func setWidthConstraint(constant: CGFloat) {
+        _ = subviews.map {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.widthAnchor.constraint(equalToConstant: constant).isActive = true
+        }
+    }
 }

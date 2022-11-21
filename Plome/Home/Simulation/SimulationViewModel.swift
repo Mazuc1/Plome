@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 31/10/2022.
 //
 
+import Combine
 import Foundation
 import PlomeCoreKit
 
@@ -17,14 +18,18 @@ final class SimulationViewModel: ObservableObject {
 
     private let router: SimulationsRouter
 
-    @Published var simulation: Simulation
+    var simulation: Simulation
     @Published var canCalculate: Bool = false
+
+    weak var viewControllerDelegate: SimulationViewControllerOutput?
 
     // MARK: - Init
 
     init(router: SimulationsRouter, simulation: Simulation) {
         self.router = router
         self.simulation = simulation
+
+        simulation.exams!.map { $0.grade = "\(Float.random(in: 1 ... 20).truncate(places: 2))/20" }
     }
 
     // MARK: - Methods
@@ -45,14 +50,18 @@ final class SimulationViewModel: ObservableObject {
         }
 
         simulation.remove(exam: exam)
+
+        viewControllerDelegate?.reloadTableView()
     }
 
     func addExam(name: String, in section: ExamTypeSection) {
         switch section {
-        case .trial: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .trial))
-        case .continuousControl: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
-        case .option: simulation.add(exam: .init(name: name, coefficient: nil, grade: nil, type: .option))
+        case .trial: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .trial))
+        case .continuousControl: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .continuousControl))
+        case .option: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .option))
         }
+
+        viewControllerDelegate?.reloadTableView()
     }
 
     func userDidTapCalculate() {

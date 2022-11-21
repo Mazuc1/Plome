@@ -25,7 +25,7 @@ final class Screens {
 
 extension Screens {
     func createSimulationsTab(router: SimulationsRouter) -> UIViewController {
-        let simulationListViewModel = SimulationListViewModel(router: router)
+        let simulationListViewModel = SimulationListViewModel(router: router, simulationRepository: context.simulationRepository)
         let simulationsViewController = SimulationListViewController(viewModel: simulationListViewModel)
         simulationsViewController.tabBarItem = Tabs.home.item
         return simulationsViewController
@@ -34,7 +34,6 @@ extension Screens {
     func createSelectSimulationModel(router: SimulationsRouter) -> UIViewController {
         let selectSimulationModelViewModel = SelectSimulationModelViewModel(router: router, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider, simulationRepository: context.simulationRepository)
         let selectSimulationModelViewController = SelectSimulationModelViewController(viewModel: selectSimulationModelViewModel)
-        selectSimulationModelViewController.isModalInPresentation = true
         let navigationController = UINavigationController(rootViewController: selectSimulationModelViewController)
 
         return navigationController
@@ -43,11 +42,12 @@ extension Screens {
     func createSimulation(router: SimulationsRouter, with simulation: Simulation) -> UIViewController {
         let simulationViewModel = SimulationViewModel(router: router, simulation: simulation)
         let simulationViewController = SimulationViewController(viewModel: simulationViewModel)
+        simulationViewModel.viewControllerDelegate = simulationViewController
         return simulationViewController
     }
 
     func createSimulationResult(router: SimulationsRouter, with simulation: Simulation) -> UIViewController {
-        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation)
+        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation, simulationRepository: context.simulationRepository)
         let simulationResultViewController = SimulationResultViewController(viewModel: simulationResultViewModel)
         return simulationResultViewController
     }

@@ -9,6 +9,13 @@
 import CoreData
 import Foundation
 
+@objc public enum SimulationType: Int16 {
+    case custom
+    case brevet
+    case generalBAC
+    case technologicalBAC
+}
+
 @objc(CDSimulation)
 public class CDSimulation: NSManagedObject {}
 
@@ -20,6 +27,7 @@ public extension CDSimulation {
     @NSManaged var name: String
     @NSManaged var date: Date?
     @NSManaged var exams: Set<CDExam>?
+    @NSManaged var type: SimulationType
 }
 
 // MARK: Generated accessors for exams
@@ -42,10 +50,12 @@ public extension CDSimulation {
 
 public extension CDSimulation {
     static let alphabeticDescriptor = NSSortDescriptor(key: "name", ascending: true)
+    static let dateDescriptor = NSSortDescriptor(key: "date", ascending: false)
 }
 
 // MARK: - Predicate
 
 public extension CDSimulation {
     static let withoutDatePredicate = NSPredicate(format: "date = nil")
+    static let withDatePredicate = NSPredicate(format: "date != nil")
 }

@@ -9,6 +9,10 @@ import Combine
 import PlomeCoreKit
 import UIKit
 
+protocol SimulationViewControllerOutput: AnyObject {
+    func reloadTableView()
+}
+
 final class SimulationViewController: AppViewController {
     // MARK: - Properties
 
@@ -51,9 +55,9 @@ final class SimulationViewController: AppViewController {
         super.viewDidLoad()
         navigationItem.title = viewModel.simulation.name
         navigationItem.rightBarButtonItem = createInfoBarButton()
+        navigationItem.backButtonDisplayMode = .minimal
 
         setupConstraint()
-        subscribeToSimulation()
         subscribeToCapabilityToRunSimulation()
     }
 
@@ -64,7 +68,7 @@ final class SimulationViewController: AppViewController {
 
         NSLayoutConstraint.activate([
             primaryCTACalculate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTACalculate.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 1)),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTACalculate.bottomAnchor, constant: 0),
             view.trailingAnchor.constraint(equalTo: primaryCTACalculate.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             primaryCTACalculate.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
         ])
@@ -72,20 +76,11 @@ final class SimulationViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 3)),
-            primaryCTACalculate.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            primaryCTACalculate.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing),
         ])
-    }
-
-    private func subscribeToSimulation() {
-        viewModel.$simulation
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
-            }
-            .store(in: &cancellables)
     }
 
     private func subscribeToCapabilityToRunSimulation() {
@@ -167,5 +162,13 @@ extension SimulationViewController: UITableViewDelegate {
             self?.viewModel.userDidTapDeleteExam(at: indexPath)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+}
+
+// MARK: -  SimulationViewControllerOutput
+
+extension SimulationViewController: SimulationViewControllerOutput {
+    func reloadTableView() {
+        tableView.reloadData()
     }
 }

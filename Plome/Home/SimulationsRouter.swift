@@ -59,4 +59,8 @@ final class SimulationsRouter: DefaultRouter {
 
         route(to: simulationResultViewController, as: transition)
     }
+
+    func popViewController() {
+        rootViewController?.navigationController?.popViewController(animated: true)
+    }
 }

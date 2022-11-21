@@ -92,9 +92,9 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     func addExam(name: String, in section: ExamTypeSection) {
         switch section {
-        case .trial: trials.append(.init(name: name, coefficient: nil, grade: nil, type: .trial))
-        case .continuousControl: continousControls.append(.init(name: name, coefficient: nil, grade: nil, type: .continuousControl))
-        case .option: options.append(.init(name: name, coefficient: nil, grade: nil, type: .option))
+        case .trial: trials.append(.init(name: name, coefficient: 1, grade: nil, type: .trial))
+        case .continuousControl: continousControls.append(.init(name: name, coefficient: 1, grade: nil, type: .continuousControl))
+        case .option: options.append(.init(name: name, coefficient: 1, grade: nil, type: .option))
         }
     }
 
@@ -131,6 +131,7 @@ final class AddSimulationModelViewModel: ObservableObject {
             try simulationRepository.add { [weak self] cdSimulation, context in
                 cdSimulation.name = name
                 cdSimulation.exams = self?.mergeAndConvertExams(in: context, for: cdSimulation)
+                cdSimulation.type = .custom
             }
 
             router.dismiss()

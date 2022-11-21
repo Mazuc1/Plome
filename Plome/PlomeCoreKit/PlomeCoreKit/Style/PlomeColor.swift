@@ -17,6 +17,7 @@ public enum PlomeColor {
     case pink
     case lightViolet
     case darkBlue
+    case progressView
 
     // Background
     case background
@@ -39,6 +40,7 @@ public enum PlomeColor {
         case .darkBlue: return (0.07, 0.03, 0.35)
         case .pink: return (0.95, 0.34, 0.48)
         case .lightViolet: return (0.47, 0.40, 0.97)
+        case .progressView: return (0.54, 0.86, 0.62)
 
         case .background: return (0.94, 0.95, 0.99)
 
@@ -60,6 +62,7 @@ public enum PlomeColor {
         case .darkBlue: return UIColor(color: .darkBlue)
         case .pink: return UIColor(color: .pink)
         case .lightViolet: return UIColor(color: .lightViolet)
+        case .progressView: return UIColor(color: .progressView)
 
         case .background: return UIColor(color: .background)
 
@@ -71,5 +74,15 @@ public enum PlomeColor {
         case .success: return UIColor(color: .success)
         case .fail: return UIColor(color: .fail)
         }
+    }
+
+    public static var confettiColors: [UIColor] {
+        [
+            .init(red: 34 / 255, green: 92 / 255, blue: 110 / 255, alpha: 1),
+            .init(red: 0 / 255, green: 136 / 255, blue: 121 / 255, alpha: 1),
+            .init(red: 235 / 255, green: 179 / 255, blue: 102 / 255, alpha: 1),
+            .init(red: 255 / 255, green: 139 / 255, blue: 90 / 255, alpha: 1),
+            .init(red: 242 / 255, green: 121 / 255, blue: 109 / 255, alpha: 1),
+        ]
     }
 }
