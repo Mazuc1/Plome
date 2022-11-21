@@ -50,6 +50,7 @@ public extension CDSimulation {
 
 public extension CDSimulation {
     static let alphabeticDescriptor = NSSortDescriptor(key: "name", ascending: true)
+    static let dateDescriptor = NSSortDescriptor(key: "date", ascending: false)
 }
 
 // MARK: - Predicate

@@ -32,7 +32,7 @@ final class SimulationListViewModel {
     // MARK: - Methods
 
     private func bindDataSource() {
-        coreDataSimulationModels = try? simulationRepository.list(sortDescriptors: [CDSimulation.alphabeticDescriptor], predicate: CDSimulation.withDatePredicate)
+        coreDataSimulationModels = try? simulationRepository.list(sortDescriptors: [CDSimulation.dateDescriptor], predicate: CDSimulation.withDatePredicate)
         var simulations: [Simulation]?
 
         if let coreDataSimulationModels {
