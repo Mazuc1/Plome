@@ -250,11 +250,10 @@ final class SimulationResultViewController: AppViewController {
     }
 
     @objc private func userDidTapRemakeSimulation() {
-        print("🐛")
+        viewModel.userDidTapRemakeSimulate()
     }
 
     @objc private func userDidTapSaveModel() {
-        print("🚨")
         viewModel.save(.simulationModel)
     }
 }

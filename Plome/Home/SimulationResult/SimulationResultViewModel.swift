@@ -98,7 +98,11 @@ final class SimulationResultViewModel {
         simulation.examsContainOptions()
     }
 
-    // MARK: - Save simulation
+    func userDidTapRemakeSimulate() {
+        router.popViewController()
+    }
+
+    // MARK: - Save simulation / simulation model
 
     func save(_ type: Save) {
         let _mergeAndConvertExams = mergeAndConvertExams
