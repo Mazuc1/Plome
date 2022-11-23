@@ -90,6 +90,15 @@ public class Exam: NSObject, NSCopying {
         return lhsFloat <= rhsFloat
     }
 
+    public func truncatedGrade() -> String? {
+        guard let grade = grade?.split(separator: "/"),
+              let lhsFloat = Float(grade[0]),
+              let rhsFloat = Float(grade[1]) else { return nil }
+
+        let gradeOutOfTwenty = (lhsFloat / rhsFloat) * 20
+        return "\(gradeOutOfTwenty.truncate(places: 2))/20"
+    }
+
     public func copy(with _: NSZone? = nil) -> Any {
         Exam(name: name, coefficient: coefficient, grade: grade, type: type)
     }

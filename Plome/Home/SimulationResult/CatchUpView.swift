@@ -92,7 +92,7 @@ class CatchUpView: UIView {
         _ = differenceAfterCatchUp
             .sorted { $0.key.name < $1.key.name }
             .map { [gradeInformationStackView] key, value in
-                guard let grade = key.grade else { return }
+                guard let grade = key.truncatedGrade() else { return }
                 let cell = GradeInformationCell(frame: .zero, title: key.name, grade: grade, optionalInformation: "+\(value)")
                 gradeInformationStackView.addArrangedSubview(cell)
                 cell.attachToSides(parentView: gradeInformationStackView)

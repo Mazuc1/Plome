@@ -260,6 +260,6 @@ extension Calculator {
         let catchUpGrade = catchUpExam.getGradeInformation()
         let grade = exam.getGradeInformation()
 
-        return Int(catchUpGrade.lhs - grade.lhs)
+        return Int((catchUpGrade.lhs - grade.lhs).rounded(.toNearestOrEven))
     }
 }
