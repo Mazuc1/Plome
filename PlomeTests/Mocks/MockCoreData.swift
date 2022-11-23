@@ -19,7 +19,7 @@ final class MockCoreData: StorageProvider {
         let persistentStoreDescription = NSPersistentStoreDescription()
         persistentStoreDescription.type = NSInMemoryStoreType
 
-        let container = PersistentContainer(name: "Plome", managedObjectModel: StorageProvider.model)
+        let container = PersistentContainer(name: Self.modelName, managedObjectModel: StorageProvider.model)
         container.persistentStoreDescriptions = [persistentStoreDescription]
 
         container.loadPersistentStores { _, error in

@@ -26,7 +26,7 @@ public class StorageProvider {
     }()
 
     public lazy var persistentContainer: PersistentContainer = {
-        let container = PersistentContainer(name: Self.modelName)
+        let container = PersistentContainer(name: Self.modelName, managedObjectModel: Self.model)
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -38,8 +38,4 @@ public class StorageProvider {
     // MARK: - Init
 
     public init() {}
-}
-
-public enum StoreType {
-    case inMemory, persisted
 }
