@@ -24,7 +24,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         mockCoreData = MockCoreData()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: context), rootTransition: EmptyTransition())
+        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
         addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
     }
 
