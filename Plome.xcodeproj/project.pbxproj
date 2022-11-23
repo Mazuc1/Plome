@@ -48,6 +48,7 @@
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
 		CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */; };
+		CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */; };
 		CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFBF56B928ECC5F000E4EC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFBF56BB28ECC5F000E4EC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationResultViewModelTests.swift; sourceTree = "<group>"; };
 		CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 		CF324070290BF82D00FC6666 /* PlomeTests */ = {
 			isa = PBXGroup;
 			children = (
+				CFBFA087292E4CFC00F36790 /* Simulation */,
 				CFB001CA290C170900EF5A4E /* Mocks */,
 				CF324078290BF8D300FC6666 /* SimulationModel */,
 			);
@@ -316,6 +319,14 @@
 			path = Plome;
 			sourceTree = "<group>";
 		};
+		CFBFA087292E4CFC00F36790 /* Simulation */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */,
+			);
+			path = Simulation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -425,6 +436,7 @@
 			files = (
 				CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */,
 				CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */,
+				CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */,
 				CF32407A290BF8EB00FC6666 /* SimulationModelsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
