@@ -8,8 +8,8 @@
 import Foundation
 @testable import PlomeCoreKit
 
-class TestSimulations {
-    enum TargetMention {
+public enum TestSimulations {
+    public enum TargetMention {
         case bigFailure
         case mediumFailure
         case without
@@ -31,7 +31,7 @@ class TestSimulations {
         }
     }
 
-    static func generalBACSimulation(targetedMention: TargetMention) -> Simulation {
+    public static func generalBACSimulation(targetedMention: TargetMention, withOptions: Bool = false) -> Simulation {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .generalBAC)
         _ = GeneralBACExamsProvider.allExams()
             .map {
@@ -39,10 +39,12 @@ class TestSimulations {
                 simulation.add(exam: $0)
             }
 
+        if withOptions { addOptions(in: simulation, for: targetedMention) }
+
         return simulation
     }
 
-    static func technologicalBACSimulation(targetedMention: TargetMention) -> Simulation {
+    public static func technologicalBACSimulation(targetedMention: TargetMention, withOptions: Bool = false) -> Simulation {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .technologicalBAC)
         _ = TechnologicalBACExamsProvider.allExams()
             .map {
@@ -50,10 +52,12 @@ class TestSimulations {
                 simulation.add(exam: $0)
             }
 
+        if withOptions { addOptions(in: simulation, for: targetedMention) }
+
         return simulation
     }
 
-    static func brevetSimulation(targetedMention: TargetMention) -> Simulation {
+    public static func brevetSimulation(targetedMention: TargetMention, withOptions: Bool = false) -> Simulation {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .brevet)
         _ = BrevetExamsProvider.allExams()
             .map {
@@ -61,10 +65,20 @@ class TestSimulations {
                 simulation.add(exam: $0)
             }
 
+        if withOptions { addOptions(in: simulation, for: targetedMention) }
+
         return simulation
     }
 
     private static func setRandomGrade(targetedMention: TargetMention) -> String {
         "\(Int.random(in: targetedMention.gradeRange))/20"
+    }
+
+    private static func addOptions(in simulation: Simulation, for mention: TargetMention) {
+        (0 ... 4)
+            .forEach { _ in
+                let exam = Exam(name: "", coefficient: 1, grade: "\(mention.gradeRange.randomElement()!)/20", type: .option)
+                simulation.exams?.insert(exam)
+            }
     }
 }
