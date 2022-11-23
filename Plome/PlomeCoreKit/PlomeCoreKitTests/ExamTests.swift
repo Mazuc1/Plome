@@ -311,4 +311,26 @@ final class ExamTests: XCTestCase {
         XCTAssertEqual(result.rhs, 20)
         XCTAssertEqual(result.coeff, 1)
     }
+
+    func testThatTruncatedGradeReturnsTwoDigitsAfterPoint() {
+        // Arrange
+        let exam = Exam(name: "", coefficient: nil, grade: "10.4678332/20", type: .trial)
+
+        // Act
+        let result = exam.truncatedGrade()
+
+        // Assert
+        XCTAssertEqual(result!, "10.46/20")
+    }
+
+    func testThatTruncatedGradeWithNilValueOfGradeReturnsNil() {
+        // Arrange
+        let exam = Exam(name: "", coefficient: nil, grade: nil, type: .trial)
+
+        // Act
+        let result = exam.truncatedGrade()
+
+        // Assert
+        XCTAssertNil(result)
+    }
 }
