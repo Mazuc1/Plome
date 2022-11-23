@@ -31,12 +31,13 @@ final class SimulationResultViewModel {
         self.simulationRepository = simulationRepository
 
         calculator = .init(simulation: simulation)
+        calculator.calculate()
     }
 
     // MARK: - Methods
 
     func finalGradeOutOfTwenty() -> String {
-        "\(calculator.calculate().truncate(places: 2))/20"
+        "\(calculator.finalGrade.truncate(places: 2))/20"
     }
 
     func finalGradeBeforeTwentyConform() -> String {
@@ -117,7 +118,7 @@ final class SimulationResultViewModel {
                 case .simulationModel: cdSimulation.date = nil
                 }
             }
-            
+
             if type == .simulationModel {
                 router.alert(title: "C'est fait !", message: "Le modèle à bien été enregistrer")
             }

@@ -24,11 +24,11 @@ final class SimulationCellViewModel {
     // MARK: - Methods
 
     func finalGradeOutOfTwenty() -> String {
-        "\(calculator.calculate().truncate(places: 2))/20"
+        "\(calculator.finalGrade.truncate(places: 2))/20"
     }
 
     func finalGradeProgress() -> Float {
-        calculator.calculate().truncate(places: 2) / 20
+        calculator.finalGrade.truncate(places: 2) / 20
     }
 
     func hasSucceedExam() -> Bool {
