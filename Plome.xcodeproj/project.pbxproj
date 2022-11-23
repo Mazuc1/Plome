@@ -49,6 +49,7 @@
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
 		CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */; };
 		CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */; };
+		CFBFA09F292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,8 @@
 		CFBF56B928ECC5F000E4EC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFBF56BB28ECC5F000E4EC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationResultViewModelTests.swift; sourceTree = "<group>"; };
+		CFBFA09C292E6A7200F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBFA09F292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +245,8 @@
 		CF59EA3F28ECCE260041B33B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */,
+				CFBFA09C292E6A7200F36790 /* PlomeCoreKitTestsHelpers.framework */,
 				CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */,
 				CF59EABD28ECD3580041B33B /* PlomeCoreKit.framework */,
 				CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */,
