@@ -190,7 +190,6 @@ final class SimulationResultViewController: AppViewController {
         ctaStackView.setWidthConstraint(constant: scrollViewWidth)
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
-        resultInformationsStackView.setWidthConstraint(constant: scrollViewWidth)
 
         if viewModel.hasSucceedExam() {
             resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)
