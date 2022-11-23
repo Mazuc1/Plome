@@ -7,7 +7,10 @@
 
 import CoreData
 import Foundation
+@testable import Plome
 @testable import PlomeCoreKit
+
+let context = Context()
 
 final class MockCoreData: StorageProvider {
     override init() {

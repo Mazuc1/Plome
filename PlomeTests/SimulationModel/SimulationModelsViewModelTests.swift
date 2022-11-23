@@ -11,8 +11,6 @@ import CoreData
 @testable import PlomeCoreKit
 import XCTest
 
-let context = Context()
-
 final class SimulationModelsViewModelTests: XCTestCase {
     private var simulationModelsRouter: SimulationModelsRouter!
     private var simulationModelsViewModel: SimulationModelsViewModel!
