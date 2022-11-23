@@ -154,6 +154,8 @@ final class SimulationResultViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.calculator.calculate()
+
         scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
         navigationItem.title = "Résultat"
 

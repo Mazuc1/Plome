@@ -13,9 +13,9 @@ final class SimulationResultViewModel {
     // MARK: - Properties
 
     private let router: SimulationsRouter
-    private let calculator: Calculator
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
+    let calculator: Calculator
     let simulation: Simulation
 
     enum Save {
@@ -31,7 +31,6 @@ final class SimulationResultViewModel {
         self.simulationRepository = simulationRepository
 
         calculator = .init(simulation: simulation)
-        calculator.calculate()
     }
 
     // MARK: - Methods

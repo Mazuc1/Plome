@@ -19,6 +19,7 @@ final class SimulationCellViewModel {
     init(simulation: Simulation) {
         self.simulation = simulation
         calculator = Calculator(simulation: simulation)
+        calculator.calculate()
     }
 
     // MARK: - Methods
