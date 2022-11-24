@@ -120,6 +120,13 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    private let screenshotStackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing(factor: 2)
+        $0.alignment = .center
+    }
+
     private let scrollViewContainerStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
@@ -158,6 +165,7 @@ final class SimulationResultViewController: AppViewController {
 
         scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
         navigationItem.title = "Résultat"
+        navigationItem.rightBarButtonItem = createShareResultBarButton()
 
         viewModel.save(.simulation)
 
@@ -195,7 +203,8 @@ final class SimulationResultViewController: AppViewController {
             resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)
         }
 
-        resultStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView, someNumbersStackView])
+        screenshotStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView])
+        resultStackView.addArrangedSubviews([screenshotStackView, someNumbersStackView])
 
         if viewModel.displayCatchUpSectionIfNeeded() {
             guard let catchUpView = createCatchUpView() else { return }
@@ -250,11 +259,19 @@ final class SimulationResultViewController: AppViewController {
         return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
     }
 
+    private func createShareResultBarButton() -> UIBarButtonItem {
+        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .pink, size: 20), style: .plain, target: self, action: #selector(userDidTapShareResult))
+    }
+
     @objc private func userDidTapRemakeSimulation() {
         viewModel.userDidTapRemakeSimulate()
     }
 
     @objc private func userDidTapSaveModel() {
         viewModel.save(.simulationModel)
+    }
+
+    @objc private func userDidTapShareResult() {
+        viewModel.userDidTapShareResult(screenshot: screenshotStackView.takeScreenshot())
     }
 }

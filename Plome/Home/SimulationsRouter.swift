@@ -63,4 +63,9 @@ final class SimulationsRouter: DefaultRouter {
     func popViewController() {
         rootViewController?.navigationController?.popViewController(animated: true)
     }
+
+    func openActivityController(with items: [Any]) {
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        rootViewController?.present(activityController, animated: true)
+    }
 }
