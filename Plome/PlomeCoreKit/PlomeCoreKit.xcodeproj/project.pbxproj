@@ -213,6 +213,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF0C7A6A292FDC2E00E49803 /* CTA */ = {
+			isa = PBXGroup;
+			children = (
+				CF208F2628F95318001F83B1 /* PrimaryCTA.swift */,
+				CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */,
+				CF142A77292ADA5800866408 /* TertiaryCTA.swift */,
+			);
+			path = CTA;
+			sourceTree = "<group>";
+		};
 		CF208F1728F9459A001F83B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,15 +329,13 @@
 		CF48938C2915273900B97147 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CF0C7A6A292FDC2E00E49803 /* CTA */,
 				CF8E3D212923BF83001B1AC8 /* ALProgress */,
 				CF3B9A9A28F3280900457A44 /* AppViewController.swift */,
-				CF208F2628F95318001F83B1 /* PrimaryCTA.swift */,
 				CF82A565290BD560004E2D50 /* AppContextualAction.swift */,
 				CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */,
 				CF4F1849291D125A003F005B /* AppLabel.swift */,
-				CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */,
 				CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */,
-				CF142A77292ADA5800866408 /* TertiaryCTA.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
