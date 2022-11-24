@@ -12,7 +12,6 @@
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
 		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
-		CF1B6474292526CA0051A7C3 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1E28F94810001F83B1 /* CDSimulation.swift */; };
 		CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2428F94C3C001F83B1 /* StorageProvider.swift */; };
 		CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2628F95318001F83B1 /* PrimaryCTA.swift */; };
@@ -64,6 +63,10 @@
 		CF8E3D202923BF7E001B1AC8 /* ALTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
+		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFBFA095292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
+		CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFF846F8290AE25800D31F5F /* Plome.xcdatamodeld */; };
 		CFF84702290AE34000D31F5F /* CDExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF84700290AE34000D31F5F /* CDExam.swift */; };
 /* End PBXBuildFile section */
@@ -83,7 +86,28 @@
 			remoteGlobalIDString = CF59EAC828ECD6B30041B33B;
 			remoteInfo = PlomeCoreKit;
 		};
+		CFBFA093292E69B700F36790 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF59EAC028ECD6B30041B33B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFBFA08E292E69B700F36790;
+			remoteInfo = PlomeCoreKitTestsHelpers;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CFBFA097292E69B700F36790 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CF0A26BA2905E7760099186E /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -146,6 +170,8 @@
 		CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTimingFunction.swift; sourceTree = "<group>"; };
 		CF8F96E3291EAB88000815F8 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		CFA7CAAD29185EE400F941F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKitTestsHelpers.h; sourceTree = "<group>"; };
 		CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
 		CFF84700290AE34000D31F5F /* CDExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CDExam.swift; path = /Users/loicmazuc/Documents/OpenClassroom/P12/Plome/Plome/PlomeCoreKit/PlomeCoreKit/CoreData/Model/CDExam.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -155,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBFA095292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,17 +201,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CFBFA08C292E69B700F36790 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CF1B6472292526AF0051A7C3 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		CF208F1728F9459A001F83B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +335,7 @@
 				CF59EACB28ECD6B30041B33B /* PlomeCoreKit */,
 				CF59EAD728ECD6B30041B33B /* PlomeCoreKitTests */,
 				CF45FA522924335C00047B7D /* PlomeCoreKitApp */,
+				CFBFA090292E69B700F36790 /* PlomeCoreKitTestsHelpers */,
 				CF59EACA28ECD6B30041B33B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -319,6 +346,7 @@
 				CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */,
 				CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */,
 				CF45FA512924335C00047B7D /* PlomeCoreKitApp.app */,
+				CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,7 +374,6 @@
 		CF59EAD728ECD6B30041B33B /* PlomeCoreKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF1B6472292526AF0051A7C3 /* Helpers */,
 				CF59EAD828ECD6B30041B33B /* ExamTests.swift */,
 				CF45FA61292445F400047B7D /* SimulationTests.swift */,
 				CF1B64702925182B0051A7C3 /* CalculatorTests.swift */,
@@ -380,6 +407,15 @@
 			path = Calculator;
 			sourceTree = "<group>";
 		};
+		CFBFA090292E69B700F36790 /* PlomeCoreKitTestsHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */,
+				CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */,
+			);
+			path = PlomeCoreKitTestsHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -388,6 +424,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBFA08A292E69B700F36790 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +445,12 @@
 				CF45FA4D2924335C00047B7D /* Sources */,
 				CF45FA4E2924335C00047B7D /* Frameworks */,
 				CF45FA4F2924335C00047B7D /* Resources */,
+				CFBFA097292E69B700F36790 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CFBFA094292E69B700F36790 /* PBXTargetDependency */,
 			);
 			name = PlomeCoreKitApp;
 			productName = PlomeCoreKitApp;
@@ -451,6 +497,24 @@
 			productReference = CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		CFBFA08E292E69B700F36790 /* PlomeCoreKitTestsHelpers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFBFA09A292E69B700F36790 /* Build configuration list for PBXNativeTarget "PlomeCoreKitTestsHelpers" */;
+			buildPhases = (
+				CFBFA08A292E69B700F36790 /* Headers */,
+				CFBFA08B292E69B700F36790 /* Sources */,
+				CFBFA08C292E69B700F36790 /* Frameworks */,
+				CFBFA08D292E69B700F36790 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlomeCoreKitTestsHelpers;
+			productName = PlomeCoreKitTestsHelpers;
+			productReference = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -470,6 +534,9 @@
 					CF59EAD228ECD6B30041B33B = {
 						CreatedOnToolsVersion = 14.0.1;
 						TestTargetID = CF45FA502924335C00047B7D;
+					};
+					CFBFA08E292E69B700F36790 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -492,6 +559,7 @@
 				CF59EAC828ECD6B30041B33B /* PlomeCoreKit */,
 				CF59EAD228ECD6B30041B33B /* PlomeCoreKitTests */,
 				CF45FA502924335C00047B7D /* PlomeCoreKitApp */,
+				CFBFA08E292E69B700F36790 /* PlomeCoreKitTestsHelpers */,
 			);
 		};
 /* End PBXProject section */
@@ -515,6 +583,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CF59EAD128ECD6B30041B33B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBFA08D292E69B700F36790 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -594,7 +669,14 @@
 				CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */,
 				CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */,
 				CF59EAD928ECD6B30041B33B /* ExamTests.swift in Sources */,
-				CF1B6474292526CA0051A7C3 /* TestSimulationsProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBFA08B292E69B700F36790 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,12 +693,18 @@
 			target = CF59EAC828ECD6B30041B33B /* PlomeCoreKit */;
 			targetProxy = CF59EAD528ECD6B30041B33B /* PBXContainerItemProxy */;
 		};
+		CFBFA094292E69B700F36790 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFBFA08E292E69B700F36790 /* PlomeCoreKitTestsHelpers */;
+			targetProxy = CFBFA093292E69B700F36790 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CF45FA5D2924335D00047B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -647,6 +735,7 @@
 		CF45FA5E2924335D00047B7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -890,6 +979,64 @@
 			};
 			name = Release;
 		};
+		CFBFA098292E69B700F36790 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6L49G5QS6U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeCoreKitTestsHelpers;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFBFA099292E69B700F36790 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6L49G5QS6U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeCoreKitTestsHelpers;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -925,6 +1072,15 @@
 			buildConfigurations = (
 				CF59EAE128ECD6B30041B33B /* Debug */,
 				CF59EAE228ECD6B30041B33B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFBFA09A292E69B700F36790 /* Build configuration list for PBXNativeTarget "PlomeCoreKitTestsHelpers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFBFA098292E69B700F36790 /* Debug */,
+				CFBFA099292E69B700F36790 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

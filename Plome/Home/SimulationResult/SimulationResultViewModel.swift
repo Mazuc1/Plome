@@ -13,9 +13,9 @@ final class SimulationResultViewModel {
     // MARK: - Properties
 
     private let router: SimulationsRouter
-    private let calculator: Calculator
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
+    let calculator: Calculator
     let simulation: Simulation
 
     enum Save {
@@ -36,7 +36,7 @@ final class SimulationResultViewModel {
     // MARK: - Methods
 
     func finalGradeOutOfTwenty() -> String {
-        "\(calculator.calculate().truncate(places: 2))/20"
+        "\(calculator.finalGrade.truncate(places: 2))/20"
     }
 
     func finalGradeBeforeTwentyConform() -> String {
@@ -107,17 +107,19 @@ final class SimulationResultViewModel {
     func save(_ type: Save) {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {
-            try simulationRepository.add { [simulation, router] cdSimulation, context in
+            try simulationRepository.add { [simulation] cdSimulation, context in
                 cdSimulation.name = simulation.name
                 cdSimulation.exams = _mergeAndConvertExams(context, cdSimulation)
                 cdSimulation.type = simulation.type
 
                 switch type {
                 case .simulation: cdSimulation.date = Date()
-                case .simulationModel:
-                    cdSimulation.date = nil
-                    router.alert(title: "C'est fait !", message: "Le modèle à bien été enregistrer")
+                case .simulationModel: cdSimulation.date = nil
                 }
+            }
+
+            if type == .simulationModel {
+                router.alert(title: "C'est fait !", message: "Le modèle à bien été enregistrer")
             }
         } catch {
             router.alert(title: "Oups", message: "Une erreur est survenue 😕")

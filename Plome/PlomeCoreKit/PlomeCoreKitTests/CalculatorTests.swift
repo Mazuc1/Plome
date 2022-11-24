@@ -6,6 +6,7 @@
 //
 
 @testable import PlomeCoreKit
+import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class CalculatorTests: XCTestCase {
@@ -83,7 +84,7 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        _ = calculator.calculate()
+        calculator.calculate()
 
         // Assert
         XCTAssertNil(calculator.mention)
@@ -95,7 +96,7 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        _ = calculator.calculate()
+        calculator.calculate()
 
         // Assert
         XCTAssertEqual(calculator.mention!, .without)
@@ -107,7 +108,7 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        _ = calculator.calculate()
+        calculator.calculate()
 
         // Assert
         XCTAssertEqual(calculator.mention!, .AB)
@@ -119,7 +120,7 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        _ = calculator.calculate()
+        calculator.calculate()
 
         // Assert
         XCTAssertEqual(calculator.mention!, .B)
@@ -131,7 +132,7 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        _ = calculator.calculate()
+        calculator.calculate()
 
         // Assert
         XCTAssertEqual(calculator.mention!, .TB)
@@ -170,10 +171,10 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        let result = calculator.calculate()
+        calculator.calculate()
 
         // Assert
-        XCTAssertEqual(result.truncate(places: 2), 12.40)
+        XCTAssertEqual(calculator.finalGrade.truncate(places: 2), 12.40)
 
         XCTAssertEqual(calculator.totalGrade.truncate(places: 2), 446.67)
         XCTAssertEqual(calculator.totalOutOf, 720)
@@ -217,7 +218,7 @@ final class CalculatorTests: XCTestCase {
         let calculator = Calculator(simulation: simulation)
 
         // Act
-        _ = calculator.calculate()
+        calculator.calculate()
 
         // Assert
         XCTAssertNotNil(calculator.gradeOutOfTwentyAfterCatchUp)

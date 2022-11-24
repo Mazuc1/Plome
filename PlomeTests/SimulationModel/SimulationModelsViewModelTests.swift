@@ -11,8 +11,6 @@ import CoreData
 @testable import PlomeCoreKit
 import XCTest
 
-let context = Context()
-
 final class SimulationModelsViewModelTests: XCTestCase {
     private var simulationModelsRouter: SimulationModelsRouter!
     private var simulationModelsViewModel: SimulationModelsViewModel!
@@ -26,8 +24,8 @@ final class SimulationModelsViewModelTests: XCTestCase {
         mockCoreData = MockCoreData()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: context), rootTransition: EmptyTransition())
-        simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider, simulationRepository: simulationRepository)
+        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
+        simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter, defaultSimulationModelsProvider: testContext.defaultSimulationModelsProvider, simulationRepository: simulationRepository)
     }
 
     func testWhenUpdatingSnapshotWithEmptyDatabaseThenSnapshotContainsOnlyDefaultSection() {

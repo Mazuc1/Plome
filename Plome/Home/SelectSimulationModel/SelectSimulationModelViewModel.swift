@@ -70,6 +70,15 @@ final class SelectSimulationModelViewModel: ObservableObject {
     }
 
     func userDidSelectSimulationModel(at indexPath: IndexPath) {
+        guard let simulation = getSimulation(indexPath: indexPath) else {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            return
+        }
+
+        router.openSimulation(with: simulation)
+    }
+
+    func getSimulation(indexPath: IndexPath) -> Simulation? {
         var simulation: Simulation?
 
         if indexPath.section == 0 {
@@ -78,11 +87,8 @@ final class SelectSimulationModelViewModel: ObservableObject {
             simulation = snapshot.itemIdentifiers(inSection: .coreData)[indexPath.row]
         }
 
-        guard let simulationCopy = simulation?.copy() as? Simulation else {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
-            return
-        }
+        guard let simulationCopy = simulation?.copy() as? Simulation else { return nil }
 
-        router.openSimulation(with: simulationCopy)
+        return simulationCopy
     }
 }

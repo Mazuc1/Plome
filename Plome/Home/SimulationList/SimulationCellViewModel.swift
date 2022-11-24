@@ -19,16 +19,17 @@ final class SimulationCellViewModel {
     init(simulation: Simulation) {
         self.simulation = simulation
         calculator = Calculator(simulation: simulation)
+        calculator.calculate()
     }
 
     // MARK: - Methods
 
     func finalGradeOutOfTwenty() -> String {
-        "\(calculator.calculate().truncate(places: 2))/20"
+        "\(calculator.finalGrade.truncate(places: 2))/20"
     }
 
     func finalGradeProgress() -> Float {
-        calculator.calculate().truncate(places: 2) / 20
+        calculator.finalGrade.truncate(places: 2) / 20
     }
 
     func hasSucceedExam() -> Bool {
@@ -37,11 +38,6 @@ final class SimulationCellViewModel {
 
     func admissionSentence() -> String {
         hasSucceedExam() ? "Admis" : "Non admis"
-    }
-
-    func mentionSentence() -> String {
-        guard let mention = calculator.mention else { return "Sans mention" }
-        return mention.name
     }
 
     func date() -> String {

@@ -42,6 +42,7 @@ public class Calculator: MentionScores {
 
     public private(set) var mention: Mention?
 
+    public private(set) var finalGrade: Float = 0
     public private(set) var totalGrade: Float = 0
     public private(set) var totalOutOf: Float = 0
     public private(set) var totalCoefficient: Float = 0
@@ -68,7 +69,7 @@ public class Calculator: MentionScores {
         mention != nil
     }
 
-    public func calculate() -> Float {
+    public func calculate() {
         totalGrade = 0
         totalOutOf = 0
         totalCoefficient = 0
@@ -99,7 +100,7 @@ public class Calculator: MentionScores {
         let finalGradeOutOfTwenty = rateOufOfTwenty(totalGrade / totalOutOf)
         catchUpIfNeeded(grade: finalGradeOutOfTwenty)
 
-        return finalGradeOutOfTwenty
+        finalGrade = finalGradeOutOfTwenty
     }
 
     private func calculateGrade(for type: ExamType) -> (Float, Float, Float) {
@@ -259,6 +260,6 @@ extension Calculator {
         let catchUpGrade = catchUpExam.getGradeInformation()
         let grade = exam.getGradeInformation()
 
-        return Int(catchUpGrade.lhs - grade.lhs)
+        return Int((catchUpGrade.lhs - grade.lhs).rounded(.toNearestOrEven))
     }
 }

@@ -154,6 +154,8 @@ final class SimulationResultViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.calculator.calculate()
+
         scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
         navigationItem.title = "Résultat"
 
@@ -188,7 +190,6 @@ final class SimulationResultViewController: AppViewController {
         ctaStackView.setWidthConstraint(constant: scrollViewWidth)
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
-        resultInformationsStackView.setWidthConstraint(constant: scrollViewWidth)
 
         if viewModel.hasSucceedExam() {
             resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)

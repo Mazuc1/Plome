@@ -24,7 +24,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         mockCoreData = MockCoreData()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: context), rootTransition: EmptyTransition())
+        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
         addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
     }
 
@@ -64,7 +64,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         let exam = Exam(name: "Test", coefficient: nil, grade: nil, type: .option)
         var exams = Set<Exam>.init()
         exams.insert(exam)
-        let simulation = Simulation(name: "Test", date: nil, exams: exams)
+        let simulation = Simulation(name: "Test", date: nil, exams: exams, type: .custom)
 
         // Act
         let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .editFromDefault(simulation))
@@ -98,7 +98,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
 
     func testWhenOpeningAddSimulationModelVCAsEditFromDefaultOpeningModeThenTitleIsSimulationName() {
         // Arrange
-        let simulation = Simulation(name: "Test", date: nil, exams: nil)
+        let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
 
         // Act
         let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .editFromDefault(simulation))
@@ -140,7 +140,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         addSimulationModelViewModel.addExam(name: "Trial", in: .trial)
 
         // Act
-        let trial = addSimulationModelViewModel.exam(for: .init(row: 1, section: 0))
+        let trial = addSimulationModelViewModel.exam(for: .init(row: 0, section: 0))
 
         // Assert
         XCTAssertEqual(trial?.name, "Trial")
@@ -151,7 +151,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         addSimulationModelViewModel.addExam(name: "Continuous Control", in: .continuousControl)
 
         // Act
-        let continuousControl = addSimulationModelViewModel.exam(for: .init(row: 1, section: 1))
+        let continuousControl = addSimulationModelViewModel.exam(for: .init(row: 0, section: 1))
 
         // Assert
         XCTAssertEqual(continuousControl?.name, "Continuous Control")
@@ -162,7 +162,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         addSimulationModelViewModel.addExam(name: "Option", in: .option)
 
         // Act
-        let option = addSimulationModelViewModel.exam(for: .init(row: 1, section: 2))
+        let option = addSimulationModelViewModel.exam(for: .init(row: 0, section: 2))
 
         // Assert
         XCTAssertEqual(option?.name, "Option")
@@ -175,7 +175,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         addSimulationModelViewModel.addExam(name: "Trial", in: .trial)
 
         // Act
-        addSimulationModelViewModel.userDidTapDeleteExam(at: .init(row: 1, section: 0))
+        addSimulationModelViewModel.userDidTapDeleteExam(at: .init(row: 0, section: 0))
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.options.count, 0)
@@ -186,7 +186,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         addSimulationModelViewModel.addExam(name: "Continuous Control", in: .continuousControl)
 
         // Act
-        addSimulationModelViewModel.userDidTapDeleteExam(at: .init(row: 1, section: 1))
+        addSimulationModelViewModel.userDidTapDeleteExam(at: .init(row: 0, section: 1))
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.options.count, 0)
@@ -197,7 +197,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         addSimulationModelViewModel.addExam(name: "Option", in: .option)
 
         // Act
-        addSimulationModelViewModel.userDidTapDeleteExam(at: .init(row: 1, section: 2))
+        addSimulationModelViewModel.userDidTapDeleteExam(at: .init(row: 0, section: 2))
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.options.count, 0)
