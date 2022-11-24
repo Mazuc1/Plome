@@ -72,6 +72,11 @@ final class SimulationListViewModel {
         deleteSimulationModel(at: index)
     }
 
+    func userDidSelectSimulation(at index: IndexPath) {
+        let simulation = snapshot.itemIdentifiers[index.row]
+        router.openSimulationDetails(for: simulation)
+    }
+
     private func deleteSimulationModel(at index: Int) {
         do {
             if let simulation = coreDataSimulationModels?[index] {

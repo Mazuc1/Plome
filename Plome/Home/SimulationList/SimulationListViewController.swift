@@ -143,8 +143,8 @@ final class SimulationListViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationListViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        //
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.userDidSelectSimulation(at: indexPath)
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
