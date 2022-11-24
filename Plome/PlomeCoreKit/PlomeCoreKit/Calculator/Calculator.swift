@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 11/11/2022.
 //
 
-import Foundation
+import UIKit
 
 public enum Mention {
     case without
@@ -19,6 +19,15 @@ public enum Mention {
         case .AB: return "Mention assez bien"
         case .B: return "Mention bien"
         case .TB: return "Mention très bien"
+        }
+    }
+
+    public var plomeColor: PlomeColor {
+        switch self {
+        case .without: return PlomeColor.withoutMention
+        case .AB: return PlomeColor.quiteWellMention
+        case .B: return PlomeColor.greatMention
+        case .TB: return PlomeColor.veryGreatMention
         }
     }
 }
