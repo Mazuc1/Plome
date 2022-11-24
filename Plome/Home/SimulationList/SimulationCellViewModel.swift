@@ -40,11 +40,6 @@ final class SimulationCellViewModel {
         hasSucceedExam() ? "Admis" : "Non admis"
     }
 
-    func mentionSentence() -> String {
-        guard let mention = calculator.mention else { return "Sans mention" }
-        return mention.name
-    }
-
     func date() -> String {
         guard let date = simulation.date else { return Date().toString(format: .classicPoint) }
         return date.toString(format: .classicPoint)
