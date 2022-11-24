@@ -60,6 +60,16 @@ final class SimulationsRouter: DefaultRouter {
         route(to: simulationResultViewController, as: transition)
     }
 
+    func openSimulationDetails(for simulation: Simulation) {
+        let transition = PushTransition()
+        let router = SimulationsRouter(screens: screens, rootTransition: transition)
+        let simulationDetailsViewController = screens.createSimulationDetails(router: router, for: simulation)
+
+        router.rootViewController = simulationDetailsViewController
+
+        route(to: simulationDetailsViewController, as: transition)
+    }
+
     func popViewController() {
         rootViewController?.navigationController?.popViewController(animated: true)
     }
