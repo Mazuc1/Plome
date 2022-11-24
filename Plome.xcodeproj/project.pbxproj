@@ -132,6 +132,7 @@
 		CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModelTests.swift; sourceTree = "<group>"; };
 		CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
+		CFD067AB292FBBE30034EE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +171,7 @@
 		CF324070290BF82D00FC6666 /* PlomeTests */ = {
 			isa = PBXGroup;
 			children = (
+				CFD067AB292FBBE30034EE02 /* Info.plist */,
 				CFBFA087292E4CFC00F36790 /* Simulation */,
 				CFB001CA290C170900EF5A4E /* Mocks */,
 				CF324078290BF8D300FC6666 /* SimulationModel */,
@@ -527,6 +529,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L49G5QS6U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlomeTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeTests;
@@ -546,6 +550,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L49G5QS6U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlomeTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeTests;
