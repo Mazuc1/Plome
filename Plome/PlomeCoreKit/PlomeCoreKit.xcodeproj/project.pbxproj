@@ -67,6 +67,7 @@
 		CFBFA095292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
+		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
 		CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFF846F8290AE25800D31F5F /* Plome.xcdatamodeld */; };
 		CFF84702290AE34000D31F5F /* CDExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF84700290AE34000D31F5F /* CDExam.swift */; };
 /* End PBXBuildFile section */
@@ -172,6 +173,7 @@
 		CFA7CAAD29185EE400F941F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKitTestsHelpers.h; sourceTree = "<group>"; };
+		CFD067AC292FBD980034EE02 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
 		CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
 		CFF84700290AE34000D31F5F /* CDExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CDExam.swift; path = /Users/loicmazuc/Documents/OpenClassroom/P12/Plome/Plome/PlomeCoreKit/PlomeCoreKit/CoreData/Model/CDExam.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -278,6 +280,7 @@
 				CF236878290AB13000D04AAD /* Collection+extension.swift */,
 				CFA7CAAD29185EE400F941F4 /* String+extension.swift */,
 				CF45FA4B292423E900047B7D /* Numeric+extension.swift */,
+				CFD067AC292FBD980034EE02 /* UIImage+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				CF3B9A8928F1DCBA00457A44 /* DefaultRouter.swift in Sources */,
 				CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */,
 				CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */,
+				CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */,
 				CF208F5A28F96E9F001F83B1 /* BrevetExamsProvider.swift in Sources */,
 				CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */,
 				CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */,
