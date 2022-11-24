@@ -29,14 +29,6 @@ final class SimulationListViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let labelTitleView: UILabel = .init().configure {
-        $0.text = "Accueil"
-        $0.font = PlomeFont.title.font
-        $0.textColor = PlomeColor.darkBlue.color
-        $0.textAlignment = .left
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
     private lazy var primaryCTANewSimulation: PrimaryCTA = .init(title: "Nouvelle simulation").configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapNewSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +52,7 @@ final class SimulationListViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Mes simulations"
 
         setupLayout()
 
@@ -82,13 +75,6 @@ final class SimulationListViewController: AppViewController {
     // MARK: - Methods
 
     private func setupLayout() {
-        view.addSubview(labelTitleView)
-
-        NSLayoutConstraint.activate([
-            labelTitleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing),
-            labelTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-        ])
-
         view.addSubview(primaryCTANewSimulation)
 
         NSLayoutConstraint.activate([
@@ -101,7 +87,7 @@ final class SimulationListViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: labelTitleView.bottomAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
