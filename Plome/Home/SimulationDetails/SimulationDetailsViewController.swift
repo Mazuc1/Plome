@@ -20,6 +20,8 @@ class SimulationDetailsViewController: AppViewController {
     required init(viewModel: SimulationDetailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
+        hidesBottomBarWhenPushed = true
     }
 
     @available(*, unavailable)
