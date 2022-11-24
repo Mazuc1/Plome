@@ -138,3 +138,20 @@ public extension UIView {
         addSubview(contentView)
     }
 }
+
+public extension UIView {
+    func takeScreenshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        if image != nil {
+            return image!
+        }
+
+        return UIImage()
+    }
+}

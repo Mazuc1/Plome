@@ -31,6 +31,7 @@ public enum Icons {
     case xmark
     case pencil
     case info
+    case share
 
     public var uiImage: UIImage {
         UIImage(systemName: name)!
@@ -56,6 +57,7 @@ public enum Icons {
         case .xmark: return "xmark"
         case .pencil: return "pencil.circle"
         case .info: return "info.circle"
+        case .share: return "square.and.arrow.up"
         }
     }
 

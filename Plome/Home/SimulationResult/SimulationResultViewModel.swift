@@ -8,6 +8,7 @@
 import CoreData
 import Foundation
 import PlomeCoreKit
+import UIKit
 
 final class SimulationResultViewModel {
     // MARK: - Properties
@@ -133,5 +134,15 @@ final class SimulationResultViewModel {
         _ = exams.map { cdExams.insert($0.toCoreDataModel(in: context, for: simulation)) }
 
         return cdExams
+    }
+
+    // MARK: - Share
+
+    func userDidTapShareResult(screenshot: UIImage) {
+        guard let url = screenshot.url(name: "Ma simulation") else {
+            router.alert(title: "Oups...", message: "Impossible de partager.")
+            return
+        }
+        router.openActivityController(with: [url])
     }
 }
