@@ -12,11 +12,8 @@ import XCTest
 
 final class SimulationResultViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
-    private var simulationResultViewModel: SimulationResultViewModel!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
     private var mockCoreData: MockCoreData!
-
-    private var simulation: Simulation!
 
     override func setUp() {
         super.setUp()
@@ -24,10 +21,7 @@ final class SimulationResultViewModelTests: XCTestCase {
         mockCoreData = MockCoreData()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulation = .init(name: "Test", date: nil, exams: nil, type: .generalBAC)
-
         simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        simulationResultViewModel = SimulationResultViewModel(router: simulationsRouter, simulation: simulation, simulationRepository: simulationRepository)
     }
 
     // MARK: - simulationContainTrials
