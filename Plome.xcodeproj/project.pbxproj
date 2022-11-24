@@ -165,8 +165,8 @@
 		CF0C7A6B292FDDA500E49803 /* SimulationDetails */ = {
 			isa = PBXGroup;
 			children = (
-				CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */,
 				CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */,
+				CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */,
 				CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */,
 			);
 			path = SimulationDetails;
@@ -208,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				CF888F72290F234C00D2D3E5 /* SimulationsRouter.swift */,
+				CF5B5F2B2921B848002EF9BD /* GradeInformationCell.swift */,
 				CF4F1844291D006B003F005B /* SimulationResult */,
 				CF852672290FF4E700D58B2A /* Simulation */,
 				CF888F79290F2F6400D2D3E5 /* SelectSimulationModel */,
@@ -261,7 +262,6 @@
 			children = (
 				CF4F1845291D008C003F005B /* SimulationResultViewController.swift */,
 				CF4F1847291D009B003F005B /* SimulationResultViewModel.swift */,
-				CF5B5F2B2921B848002EF9BD /* GradeInformationCell.swift */,
 				CF4B5AE629279FAB005F8D18 /* CatchUpView.swift */,
 			);
 			path = SimulationResult;

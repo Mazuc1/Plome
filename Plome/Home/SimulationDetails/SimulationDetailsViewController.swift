@@ -17,11 +17,18 @@ class SimulationDetailsViewController: AppViewController {
 
     // MARK: - UI
 
+    private let detailsSectionLabel: UILabel = .init().configure {
+        $0.text = "Vos notes"
+        $0.font = PlomeFont.demiBoldM.font
+        $0.textColor = PlomeColor.darkBlue.color
+        $0.textAlignment = .left
+    }
+
     private let scrollViewContainerStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
-        $0.alignment = .center
+        $0.alignment = .leading
         $0.isLayoutMarginsRelativeArrangement = true
         $0.layoutMargins = .init(top: AppStyles.defaultSpacing(factor: 2),
                                  left: AppStyles.defaultSpacing(factor: 2),
@@ -61,7 +68,10 @@ class SimulationDetailsViewController: AppViewController {
 
     private func setupLayout() {
         let detailsHeaderView = createDetailsHeaderView()
-        scrollViewContainerStackView.addArrangedSubviews([detailsHeaderView])
+        scrollViewContainerStackView.addArrangedSubviews([detailsHeaderView, detailsSectionLabel])
+
+        let gradeInformationView = createGradeInformationView()
+        scrollViewContainerStackView.addArrangedSubviews([gradeInformationView])
 
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
@@ -74,6 +84,7 @@ class SimulationDetailsViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             scrollViewContainerStackView.widthAnchor.constraint(equalToConstant: view.frame.width),
             detailsHeaderView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
+            gradeInformationView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
     }
 
@@ -83,5 +94,9 @@ class SimulationDetailsViewController: AppViewController {
                           admission: viewModel.admissionSentence(),
                           isAdmitted: viewModel.hasSucceedExam(),
                           mention: viewModel.mention())
+    }
+
+    private func createGradeInformationView() -> UIView {
+        GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.finalGradeOutOfTwenty())
     }
 }

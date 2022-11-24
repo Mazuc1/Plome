@@ -27,6 +27,10 @@ final class SimulationDetailsViewModel {
 
     // MARK: - Methods
 
+    func finalGradeOutOfTwenty() -> String {
+        "\(calculator.finalGrade.truncate(places: 2))/20"
+    }
+
     func hasSucceedExam() -> Bool {
         calculator.hasSucceed()
     }
