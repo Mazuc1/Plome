@@ -24,6 +24,20 @@ class SimulationDetailsViewController: AppViewController {
         $0.textAlignment = .left
     }
 
+    private let gradeInformationsStackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing
+        $0.alignment = .leading
+    }
+
+    private let examGradeTypeStackView: UIStackView = .init().configure {
+        $0.axis = .horizontal
+        $0.distribution = .fillEqually
+        $0.spacing = AppStyles.defaultSpacing
+        $0.alignment = .center
+    }
+
     private let scrollViewContainerStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
@@ -71,11 +85,17 @@ class SimulationDetailsViewController: AppViewController {
         scrollViewContainerStackView.addArrangedSubviews([detailsHeaderView, detailsSectionLabel])
 
         let gradeInformationView = GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.shaper.finalGradeOutOfTwenty())
-        scrollViewContainerStackView.addArrangedSubviews([gradeInformationView])
+        gradeInformationsStackView.addArrangedSubview(gradeInformationView)
 
         let examsTypeGradeView = ExamsTypeGradeView(frame: .zero, shaper: viewModel.shaper)
-        scrollViewContainerStackView.addArrangedSubview(examsTypeGradeView)
+        gradeInformationsStackView.addArrangedSubview(examsTypeGradeView)
 
+        let worstExamView = ExamInformationsView(frame: .zero, shaper: viewModel.shaper, gradeType: .worst)
+        let betterExamView = ExamInformationsView(frame: .zero, shaper: viewModel.shaper, gradeType: .better)
+        examGradeTypeStackView.addArrangedSubviews([betterExamView, worstExamView])
+        gradeInformationsStackView.addArrangedSubview(examGradeTypeStackView)
+
+        scrollViewContainerStackView.addArrangedSubview(gradeInformationsStackView)
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
         view.addSubview(scrollView)
@@ -90,6 +110,7 @@ class SimulationDetailsViewController: AppViewController {
             detailsHeaderView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             gradeInformationView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examsTypeGradeView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
+            examGradeTypeStackView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
     }
 }

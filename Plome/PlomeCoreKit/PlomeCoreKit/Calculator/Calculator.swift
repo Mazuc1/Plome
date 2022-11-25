@@ -32,6 +32,11 @@ public enum Mention {
     }
 }
 
+public enum GradeType {
+    case worst
+    case better
+}
+
 protocol MentionScores: AnyObject {
     var withoutMentionScore: Float { get }
     var ABMentionScore: Float { get }
@@ -173,6 +178,21 @@ public class Calculator: MentionScores {
             BMentionScore = 1400
             TBMentionScore = 1600
         }
+    }
+
+    func getExamWhereGrade(is type: GradeType) -> Exam? {
+        guard let exams = simulation.exams else { return nil }
+        return exams
+            .sorted {
+                let aInformations = $0.getGradeInformation()
+                let bInformation = $1.getGradeInformation()
+
+                switch type {
+                case .worst: return (aInformations.lhs / aInformations.rhs) <= (bInformation.lhs / bInformation.rhs)
+                case .better: return (aInformations.lhs / aInformations.rhs) >= (bInformation.lhs / bInformation.rhs)
+                }
+            }
+            .first
     }
 }
 

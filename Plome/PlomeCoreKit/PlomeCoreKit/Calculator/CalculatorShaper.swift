@@ -154,4 +154,11 @@ public final class CalculatorShaper {
     public func mention() -> Mention? {
         calculator.mention
     }
+
+    /// Get exam depends of paramters
+    /// - Parameter type: Type of exam grade: worst or better
+    /// - Returns: Returns the better or worst exam grade
+    public func getExamGradeWhere(is type: GradeType) -> Exam? {
+        calculator.getExamWhereGrade(is: type)
+    }
 }
