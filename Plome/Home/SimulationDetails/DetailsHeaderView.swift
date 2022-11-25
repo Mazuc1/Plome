@@ -14,10 +14,7 @@ final class DetailsHeaderView: UIView {
     private static let succeessImage: UIImage = Icons.success.configure(weight: .regular, color: .success, size: 30)
     private static let failureImage: UIImage = Icons.fail.configure(weight: .regular, color: .fail, size: 30)
 
-    private let date: Date
-    private let admission: String
-    private let isAdmitted: Bool
-    private let mention: Mention?
+    private let shaper: CalculatorShaper
 
     // MARK: - UI
 
@@ -45,21 +42,15 @@ final class DetailsHeaderView: UIView {
 
     // MARK: - Init
 
-    required init(frame: CGRect, date: Date, admission: String, isAdmitted: Bool, mention: Mention? = nil) {
-        self.date = date
-        self.admission = admission
-        self.isAdmitted = isAdmitted
-        self.mention = mention
+    required init(frame: CGRect, shaper: CalculatorShaper) {
+        self.shaper = shaper
 
         super.init(frame: frame)
         setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        date = Date()
-        admission = ""
-        isAdmitted = false
-        mention = nil
+        shaper = .init(calculator: .init(simulation: .init(name: "", date: nil, exams: nil, type: .custom)))
 
         super.init(coder: aDecoder)
         setupView()
@@ -73,8 +64,8 @@ final class DetailsHeaderView: UIView {
         backgroundColor = .white
         layer.cornerRadius = AppStyles.defaultRadius
 
-        dateLabel.text = "Simulation du \(date.toString(format: .classicPoint))"
-        admissionLabel.text = admission
+        dateLabel.text = "Simulation du \(shaper.date(with: .classicPoint))"
+        admissionLabel.text = shaper.admissionSentence()
 
         let informationStackView: UIStackView = .init().configure {
             $0.axis = .vertical
@@ -82,12 +73,12 @@ final class DetailsHeaderView: UIView {
             $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
             $0.alignment = .leading
             $0.addArrangedSubviews([dateLabel, admissionLabel])
-            if mention != nil {
-                $0.addArrangedSubview(MentionView(frame: .zero, mention: mention!))
-            }
+
+            guard let mention = shaper.mention() else { return }
+            $0.addArrangedSubview(MentionView(frame: .zero, mention: mention))
         }
 
-        imageView.image = isAdmitted ? Self.succeessImage : Self.failureImage
+        imageView.image = shaper.hasSucceedExam() ? Self.succeessImage : Self.failureImage
 
         stackView.addArrangedSubviews([informationStackView, imageView])
 

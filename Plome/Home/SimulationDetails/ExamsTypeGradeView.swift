@@ -11,8 +11,6 @@ import UIKit
 final class ExamsTypeGradeView: UIView {
     // MARK: - Properties
 
-
-
     // MARK: - UI
 
     private let dateLabel: UILabel = .init().configure {
@@ -40,13 +38,11 @@ final class ExamsTypeGradeView: UIView {
     // MARK: - Init
 
     override init(frame: CGRect) {
-        
         super.init(frame: frame)
         setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-
         super.init(coder: aDecoder)
         setupView()
     }
@@ -58,7 +54,6 @@ final class ExamsTypeGradeView: UIView {
 
         backgroundColor = .white
         layer.cornerRadius = AppStyles.defaultRadius
-
 
         stackView.addArrangedSubviews([imageView])
 

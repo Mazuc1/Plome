@@ -12,8 +12,10 @@ final class SimulationDetailsViewModel {
     // MARK: - Properties
 
     private let router: SimulationsRouter
-    let simulation: Simulation
     private let calculator: Calculator
+
+    let simulation: Simulation
+    let shaper: CalculatorShaper
 
     // MARK: - Init
 
@@ -22,40 +24,13 @@ final class SimulationDetailsViewModel {
         self.simulation = simulation
 
         calculator = Calculator(simulation: simulation)
+
+        shaper = CalculatorShaper(calculator: calculator)
+        shaper.successAdmissionSentence = "Admis"
+        shaper.failureAdmissionSentence = "Non admis"
+
         calculator.calculate()
     }
 
     // MARK: - Methods
-
-    func finalGradeOutOfTwenty() -> String {
-        "\(calculator.finalGrade.truncate(places: 2))/20"
-    }
-
-    func hasSucceedExam() -> Bool {
-        calculator.hasSucceed()
-    }
-
-    func displayCatchUpSectionIfNeeded() -> Bool {
-        !hasSucceedExam() && calculator.differenceAfterCatchUp != nil && calculator.gradeOutOfTwentyAfterCatchUp != nil
-    }
-
-    func getCatchUpInformations() -> (grade: Float, difference: [Exam: Int])? {
-        guard let grade = calculator.gradeOutOfTwentyAfterCatchUp,
-              let difference = calculator.differenceAfterCatchUp else { return nil }
-
-        return (grade, difference)
-    }
-
-    func admissionSentence() -> String {
-        hasSucceedExam() ? "Admis" : "Non admis"
-    }
-
-    func date() -> Date {
-        guard let date = simulation.date else { return Date() }
-        return date
-    }
-
-    func mention() -> Mention? {
-        calculator.mention
-    }
 }

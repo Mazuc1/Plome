@@ -89,14 +89,10 @@ class SimulationDetailsViewController: AppViewController {
     }
 
     private func createDetailsHeaderView() -> UIView {
-        DetailsHeaderView(frame: .zero,
-                          date: viewModel.date(),
-                          admission: viewModel.admissionSentence(),
-                          isAdmitted: viewModel.hasSucceedExam(),
-                          mention: viewModel.mention())
+        DetailsHeaderView(frame: .zero, shaper: viewModel.shaper)
     }
 
     private func createGradeInformationView() -> UIView {
-        GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.finalGradeOutOfTwenty())
+        GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.shaper.finalGradeOutOfTwenty())
     }
 }
