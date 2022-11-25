@@ -29,6 +29,12 @@ public final class CalculatorShaper {
         "\(calculator.finalGrade.truncate(places: 2))/20"
     }
 
+    /// Get the progress of the final grade
+    /// - Returns: Eg: 0.63
+    public func finalGradeProgress() -> Float {
+        calculator.finalGrade.truncate(places: 2) / 20
+    }
+
     /// Get the final grade, truncate by two places
     /// - Returns: Eg: "1200.34/2000.0"
     public func finalGradeBeforeTwentyConform() -> String {
@@ -82,6 +88,13 @@ public final class CalculatorShaper {
         return "\(grade.truncate(places: 2))/20"
     }
 
+    /// Get the progress of the trials grade
+    /// - Returns: Eg: 0.63
+    public func trialsGradeProgress() -> Float? {
+        guard let grade = calculator.trialsGrade else { return nil }
+        return grade / 20
+    }
+
     /// Get continuousControl grade out of twenty, truncated by two places
     /// - Returns: Eg: "13.45/20"
     public func continousControlGrade() -> String {
@@ -89,11 +102,25 @@ public final class CalculatorShaper {
         return "\(grade.truncate(places: 2))/20"
     }
 
+    /// Get the progress of the continuous control grade
+    /// - Returns: Eg: 0.63
+    public func continuousControlGradeProgress() -> Float? {
+        guard let grade = calculator.continousControlGrade else { return nil }
+        return grade / 20
+    }
+
     /// Get options grade out of twenty, truncated by two places
     /// - Returns: Eg: "13.45/20"
     public func optionGrade() -> String {
         guard let grade = calculator.optionsGrade else { return "" }
         return "\(grade.truncate(places: 2))/20"
+    }
+
+    /// Get the progress of the continuous control grade
+    /// - Returns: Eg: 0.63
+    public func optionsGradeProgress() -> Float? {
+        guard let grade = calculator.optionsGrade else { return nil }
+        return grade / 20
     }
 
     /// Returns if the simulation contains Trials

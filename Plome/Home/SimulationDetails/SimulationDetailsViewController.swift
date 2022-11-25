@@ -67,11 +67,14 @@ class SimulationDetailsViewController: AppViewController {
     // MARK: - Methods
 
     private func setupLayout() {
-        let detailsHeaderView = createDetailsHeaderView()
+        let detailsHeaderView = DetailsHeaderView(frame: .zero, shaper: viewModel.shaper)
         scrollViewContainerStackView.addArrangedSubviews([detailsHeaderView, detailsSectionLabel])
 
-        let gradeInformationView = createGradeInformationView()
+        let gradeInformationView = GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.shaper.finalGradeOutOfTwenty())
         scrollViewContainerStackView.addArrangedSubviews([gradeInformationView])
+
+        let examsTypeGradeView = ExamsTypeGradeView(frame: .zero, shaper: viewModel.shaper)
+        scrollViewContainerStackView.addArrangedSubview(examsTypeGradeView)
 
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
@@ -83,16 +86,10 @@ class SimulationDetailsViewController: AppViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             scrollViewContainerStackView.widthAnchor.constraint(equalToConstant: view.frame.width),
+
             detailsHeaderView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             gradeInformationView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
+            examsTypeGradeView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
-    }
-
-    private func createDetailsHeaderView() -> UIView {
-        DetailsHeaderView(frame: .zero, shaper: viewModel.shaper)
-    }
-
-    private func createGradeInformationView() -> UIView {
-        GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.shaper.finalGradeOutOfTwenty())
     }
 }
