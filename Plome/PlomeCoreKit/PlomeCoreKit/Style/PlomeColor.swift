@@ -17,7 +17,6 @@ public enum PlomeColor {
     case pink
     case lightViolet
     case darkBlue
-    case progressView
 
     // Background
     case background
@@ -32,6 +31,11 @@ public enum PlomeColor {
     case success
     case fail
 
+    // Details progressView
+    case trials
+    case continuousControl
+    case options
+
     func rgb() -> (CGFloat, CGFloat, CGFloat) {
         switch self {
         case .black: return (0, 0, 0)
@@ -40,7 +44,6 @@ public enum PlomeColor {
         case .darkBlue: return (0.07, 0.03, 0.35)
         case .pink: return (0.95, 0.34, 0.48)
         case .lightViolet: return (0.47, 0.40, 0.97)
-        case .progressView: return (0.54, 0.86, 0.62)
 
         case .background: return (0.94, 0.95, 0.99)
 
@@ -51,6 +54,10 @@ public enum PlomeColor {
 
         case .success: return (0.19, 0.67, 0.04)
         case .fail: return (0.99, 0.117, 0.121)
+
+        case .trials: return (0.09, 0.36, 0.43)
+        case .continuousControl: return (0, 0.53, 0.47)
+        case .options: return (0.92, 0.70, 0.4)
         }
     }
 
@@ -62,7 +69,6 @@ public enum PlomeColor {
         case .darkBlue: return UIColor(color: .darkBlue)
         case .pink: return UIColor(color: .pink)
         case .lightViolet: return UIColor(color: .lightViolet)
-        case .progressView: return UIColor(color: .progressView)
 
         case .background: return UIColor(color: .background)
 
@@ -73,6 +79,10 @@ public enum PlomeColor {
 
         case .success: return UIColor(color: .success)
         case .fail: return UIColor(color: .fail)
+
+        case .trials: return UIColor(color: .trials)
+        case .continuousControl: return UIColor(color: .continuousControl)
+        case .options: return UIColor(color: .options)
         }
     }
 
