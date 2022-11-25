@@ -55,7 +55,7 @@ public enum PlomeColor {
         case .success: return (0.19, 0.67, 0.04)
         case .fail: return (0.99, 0.117, 0.121)
 
-        case .trials: return (0.09, 0.36, 0.43)
+        case .trials: return (1, 0.54, 0.35)
         case .continuousControl: return (0, 0.53, 0.47)
         case .options: return (0.92, 0.70, 0.4)
         }

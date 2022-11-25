@@ -15,8 +15,8 @@ final class ExamsTypeGradeView: UIView {
 
     private static let progressRingsSize: [CGSize] = [
         .init(width: 150, height: 150),
-        .init(width: 120, height: 120),
-        .init(width: 90, height: 90),
+        .init(width: 110, height: 110),
+        .init(width: 70, height: 70),
     ]
 
     // MARK: - UI
@@ -24,21 +24,21 @@ final class ExamsTypeGradeView: UIView {
     private var trialsProgressRing: ALProgressRing = .init().configure {
         $0.startColor = PlomeColor.trials.color
         $0.endColor = PlomeColor.trials.color
-        $0.lineWidth = 8
+        $0.lineWidth = 10
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private var continuousControlProgressRing: ALProgressRing = .init().configure {
         $0.startColor = PlomeColor.continuousControl.color
         $0.endColor = PlomeColor.continuousControl.color
-        $0.lineWidth = 8
+        $0.lineWidth = 10
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private var optionsProgressRing: ALProgressRing = .init().configure {
         $0.startColor = PlomeColor.options.color
         $0.endColor = PlomeColor.options.color
-        $0.lineWidth = 8
+        $0.lineWidth = 10
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -79,9 +79,10 @@ final class ExamsTypeGradeView: UIView {
         layer.cornerRadius = AppStyles.defaultRadius
 
         let progressViews = setupProgressViews()
-        stackView.addArrangedSubviews([progressViews])
+        stackView.addArrangedSubviews([setupInformationsProgressViews(), progressViews])
 
         NSLayoutConstraint.activate([
+            progressViews.widthAnchor.constraint(equalToConstant: Self.progressRingsSize[0].width),
             progressViews.heightAnchor.constraint(equalToConstant: Self.progressRingsSize[0].height),
         ])
 
@@ -140,5 +141,82 @@ final class ExamsTypeGradeView: UIView {
         }
 
         return view
+    }
+
+    private func setupInformationsProgressViews() -> UIView {
+        let stackView: UIStackView = .init().configure {
+            $0.axis = .vertical
+            $0.distribution = .fill
+            $0.spacing = AppStyles.defaultSpacing
+            $0.alignment = .leading
+        }
+
+        if shaper.simulationContainTrials() {
+            let titleExamTypeLabel: UILabel = .init().configure {
+                $0.text = "Epreuves"
+                $0.font = PlomeFont.bodyM.font
+                $0.textColor = PlomeColor.darkBlue.color
+            }
+
+            let examGradeLabel: UILabel = .init().configure { [shaper] in
+                $0.text = shaper.trialsGrade()
+                $0.font = PlomeFont.demiBoldS.font
+                $0.textColor = PlomeColor.trials.color
+            }
+
+            stackView.addArrangedSubview(UIStackView().configure(block: {
+                $0.axis = .vertical
+                $0.distribution = .fill
+                $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+                $0.alignment = .leading
+                $0.addArrangedSubviews([titleExamTypeLabel, examGradeLabel])
+            }))
+        }
+
+        if shaper.simulationContainContinousControls() {
+            let titleExamTypeLabel: UILabel = .init().configure {
+                $0.text = "Contrôles continue"
+                $0.font = PlomeFont.bodyM.font
+                $0.textColor = PlomeColor.darkBlue.color
+            }
+
+            let examGradeLabel: UILabel = .init().configure { [shaper] in
+                $0.text = shaper.continousControlGrade()
+                $0.font = PlomeFont.demiBoldS.font
+                $0.textColor = PlomeColor.continuousControl.color
+            }
+
+            stackView.addArrangedSubview(UIStackView().configure(block: {
+                $0.axis = .vertical
+                $0.distribution = .fill
+                $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+                $0.alignment = .leading
+                $0.addArrangedSubviews([titleExamTypeLabel, examGradeLabel])
+            }))
+        }
+
+        if shaper.simulationContainOptions() {
+            let titleExamTypeLabel: UILabel = .init().configure {
+                $0.text = "Options"
+                $0.font = PlomeFont.bodyM.font
+                $0.textColor = PlomeColor.darkBlue.color
+            }
+
+            let examGradeLabel: UILabel = .init().configure { [shaper] in
+                $0.text = shaper.optionGrade()
+                $0.font = PlomeFont.demiBoldS.font
+                $0.textColor = PlomeColor.options.color
+            }
+
+            stackView.addArrangedSubview(UIStackView().configure(block: {
+                $0.axis = .vertical
+                $0.distribution = .fill
+                $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+                $0.alignment = .leading
+                $0.addArrangedSubviews([titleExamTypeLabel, examGradeLabel])
+            }))
+        }
+
+        return stackView
     }
 }
