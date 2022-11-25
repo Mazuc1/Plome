@@ -100,6 +100,10 @@ class SimulationDetailsViewController: AppViewController {
         if viewModel.shaper.displayCatchUpSectionIfNeeded() {
             guard let catchUpView = createCatchUpView() else { return }
             scrollViewContainerStackView.addArrangedSubview(catchUpView)
+
+            NSLayoutConstraint.activate([
+                catchUpView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
+            ])
         }
 
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
