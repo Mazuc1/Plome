@@ -96,6 +96,12 @@ class SimulationDetailsViewController: AppViewController {
         gradeInformationsStackView.addArrangedSubview(examGradeTypeStackView)
 
         scrollViewContainerStackView.addArrangedSubview(gradeInformationsStackView)
+
+        if viewModel.shaper.displayCatchUpSectionIfNeeded() {
+            guard let catchUpView = createCatchUpView() else { return }
+            scrollViewContainerStackView.addArrangedSubview(catchUpView)
+        }
+
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
         view.addSubview(scrollView)
@@ -112,5 +118,10 @@ class SimulationDetailsViewController: AppViewController {
             examsTypeGradeView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examGradeTypeStackView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
+    }
+
+    private func createCatchUpView() -> UIView? {
+        guard let catchUpInformations = viewModel.shaper.getCatchUpInformations() else { return nil }
+        return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
     }
 }
