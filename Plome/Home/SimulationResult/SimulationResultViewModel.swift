@@ -44,6 +44,10 @@ final class SimulationResultViewModel {
         router.popViewController()
     }
 
+    func userDidTapBackToHome() {
+        router.popToRootViewController()
+    }
+
     func save(_ type: Save) {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {

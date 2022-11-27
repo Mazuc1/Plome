@@ -38,6 +38,11 @@ class SimulationDetailsViewController: AppViewController {
         $0.alignment = .center
     }
 
+    private lazy var secondaryCTARemakeSimulation: SecondaryCTA = .init(title: "Re simuler à partir de cette simulation").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     private let scrollViewContainerStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
@@ -108,6 +113,8 @@ class SimulationDetailsViewController: AppViewController {
             ])
         }
 
+        scrollViewContainerStackView.addArrangedSubview(secondaryCTARemakeSimulation)
+
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
         view.addSubview(scrollView)
@@ -123,6 +130,8 @@ class SimulationDetailsViewController: AppViewController {
             gradeInformationView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examsTypeGradeView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examGradeTypeStackView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
+            secondaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
+            secondaryCTARemakeSimulation.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
     }
 
@@ -137,5 +146,9 @@ class SimulationDetailsViewController: AppViewController {
 
     @objc private func userDidTapDeleteSimulation() {
         viewModel.userDidTapDeleteSimulation()
+    }
+
+    @objc private func userDidTapRemakeSimulation() {
+        viewModel.userDidTapRemakeSimulation()
     }
 }

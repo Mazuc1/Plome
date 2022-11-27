@@ -46,4 +46,8 @@ final class SimulationDetailsViewModel {
             router.alert(title: "Oups...", message: "Impossible de supprimer la simulation pour le moment.")
         }
     }
+
+    func userDidTapRemakeSimulation() {
+        router.openSimulation(with: simulation)
+    }
 }

@@ -108,6 +108,11 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: "Retourner à l'accueil").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapBackToHome), for: .touchUpInside)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     private let ctaStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
@@ -179,6 +184,12 @@ final class SimulationResultViewController: AppViewController {
         setupLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        print("🚨", isModal)
+    }
+
     // MARK: - Methods
 
     private func setCalculatorInformation() {
@@ -201,6 +212,7 @@ final class SimulationResultViewController: AppViewController {
         createSomeNumbersView()
 
         ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, saveModelLabel, tertiaryCTASaveModel])
+        if !isModal { ctaStackView.addArrangedSubview(tertiaryCTABackToHome) }
         ctaStackView.setWidthConstraint(constant: scrollViewWidth)
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
@@ -274,5 +286,9 @@ final class SimulationResultViewController: AppViewController {
 
     @objc private func userDidTapShareResult() {
         viewModel.userDidTapShareResult(screenshot: screenshotStackView.takeScreenshot())
+    }
+
+    @objc private func userDidTapBackToHome() {
+        viewModel.userDidTapBackToHome()
     }
 }
