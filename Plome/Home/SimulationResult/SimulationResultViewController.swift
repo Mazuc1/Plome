@@ -68,6 +68,10 @@ final class SimulationResultViewController: AppViewController {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
         $0.addShadow(color: PlomeColor.darkGray.color, offset: .init(width: 3, height: 3), opacity: 0.2)
+        $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                 left: AppStyles.defaultSpacing,
+                                 bottom: AppStyles.defaultSpacing,
+                                 right: AppStyles.defaultSpacing)
     }
 
     private let someNumbersLabel: UILabel = .init().configure {
@@ -133,6 +137,9 @@ final class SimulationResultViewController: AppViewController {
         $0.spacing = AppStyles.defaultSpacing(factor: 7)
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isBaselineRelativeArrangement = true
+        let spacing = AppStyles.defaultSpacing(factor: 2)
+        $0.layoutMargins = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
     }
 
     private let scrollView: UIScrollView = .init().configure {
@@ -210,21 +217,16 @@ final class SimulationResultViewController: AppViewController {
             resultStackView.addArrangedSubview(catchUpView)
         }
 
-        resultInformationsStackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                                          left: AppStyles.defaultSpacing,
-                                                          bottom: AppStyles.defaultSpacing,
-                                                          right: AppStyles.defaultSpacing)
-
         scrollViewContainerStackView.addArrangedSubviews([resultStackView, ctaStackView])
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
         view.addSubview(scrollView)
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
             tertiaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.tertiaryCTAHeight),
