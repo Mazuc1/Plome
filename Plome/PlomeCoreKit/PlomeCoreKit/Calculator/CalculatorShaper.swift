@@ -10,7 +10,7 @@ import Foundation
 public final class CalculatorShaper {
     // MARK: - Properties
 
-    private let calculator: Calculator
+    public let calculator: Calculator
 
     public var successAdmissionSentence: String = "Vous êtes admis ! 🥳"
     public var failureAdmissionSentence: String = "Vous n'êtes pas admis 😕"

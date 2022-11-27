@@ -73,16 +73,20 @@ final class SimulationCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: AppStyles.defaultSpacing, right: 0))
     }
 
-    func setup(with viewModel: SimulationCellViewModel) {
+    func setup(with shaper: CalculatorShaper) {
         setupLayout()
 
-        dateLabel.text = viewModel.date()
-        labelSimulationName.text = viewModel.simulation.name
-        finalGradeLabel.text = viewModel.finalGradeOutOfTwenty()
-        admissionLabel.text = viewModel.admissionSentence()
-        admissionLabel.textColor = viewModel.hasSucceedExam() ? PlomeColor.success.color : PlomeColor.fail.color
+        shaper.successAdmissionSentence = "Admis"
+        shaper.failureAdmissionSentence = "Non admis"
+        shaper.calculator.calculate()
 
-        progressRing.setProgress(viewModel.finalGradeProgress(), animated: true)
+        dateLabel.text = shaper.date(with: .classicPoint)
+        labelSimulationName.text = shaper.calculator.simulation.name
+        finalGradeLabel.text = shaper.finalGradeOutOfTwenty()
+        admissionLabel.text = shaper.admissionSentence()
+        admissionLabel.textColor = shaper.hasSucceedExam() ? PlomeColor.success.color : PlomeColor.fail.color
+
+        progressRing.setProgress(shaper.finalGradeProgress(), animated: true)
 
         backgroundColor = .clear
         selectionStyle = .none
