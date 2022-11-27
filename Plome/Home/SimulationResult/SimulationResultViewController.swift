@@ -161,9 +161,8 @@ final class SimulationResultViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.calculator.calculate()
-
         scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
+
         navigationItem.title = "Résultat"
         navigationItem.rightBarButtonItem = createShareResultBarButton()
 
@@ -176,19 +175,19 @@ final class SimulationResultViewController: AppViewController {
     // MARK: - Methods
 
     private func setCalculatorInformation() {
-        finalGradeLabel.text = viewModel.finalGradeOutOfTwenty()
+        finalGradeLabel.text = viewModel.shaper.finalGradeOutOfTwenty()
 
-        if viewModel.hasSucceedExam() {
+        if viewModel.shaper.hasSucceedExam() {
             resultImageView.image = Self.succeessImage
             confettiView.startConfetti()
         } else {
             resultImageView.image = Self.failureImage
         }
 
-        admissionLabel.text = viewModel.admissionSentence()
-        resultTitleLabel.text = viewModel.resultSentence()
-        mentionLabel.text = viewModel.mentionSentence()
-        finalGradeBeforeTwentyConformLabel.text = viewModel.finalGradeBeforeTwentyConform()
+        admissionLabel.text = viewModel.shaper.admissionSentence()
+        resultTitleLabel.text = viewModel.shaper.resultSentence()
+        mentionLabel.text = viewModel.shaper.mentionSentence()
+        finalGradeBeforeTwentyConformLabel.text = viewModel.shaper.finalGradeBeforeTwentyConform()
     }
 
     private func setupLayout() {
@@ -199,14 +198,14 @@ final class SimulationResultViewController: AppViewController {
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
 
-        if viewModel.hasSucceedExam() {
+        if viewModel.shaper.hasSucceedExam() {
             resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)
         }
 
         screenshotStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView])
         resultStackView.addArrangedSubviews([screenshotStackView, someNumbersStackView])
 
-        if viewModel.displayCatchUpSectionIfNeeded() {
+        if viewModel.shaper.displayCatchUpSectionIfNeeded() {
             guard let catchUpView = createCatchUpView() else { return }
             resultStackView.addArrangedSubview(catchUpView)
         }
@@ -237,16 +236,16 @@ final class SimulationResultViewController: AppViewController {
     private func createSomeNumbersView() {
         var views: [UIView] = []
 
-        if viewModel.simulationContainTrials() {
-            views.append(GradeInformationCell(frame: .zero, title: "Epreuves", grade: viewModel.trialsGrade()))
+        if viewModel.shaper.simulationContainTrials() {
+            views.append(GradeInformationCell(frame: .zero, title: "Epreuves", grade: viewModel.shaper.trialsGrade()))
         }
 
-        if viewModel.simulationContainContinousControls() {
-            views.append(GradeInformationCell(frame: .zero, title: "Contrôle continue", grade: viewModel.continousControlGrade()))
+        if viewModel.shaper.simulationContainContinousControls() {
+            views.append(GradeInformationCell(frame: .zero, title: "Contrôle continue", grade: viewModel.shaper.continousControlGrade()))
         }
 
-        if viewModel.simulationContainOptions() {
-            views.append(GradeInformationCell(frame: .zero, title: "Options", grade: viewModel.optionGrade()))
+        if viewModel.shaper.simulationContainOptions() {
+            views.append(GradeInformationCell(frame: .zero, title: "Options", grade: viewModel.shaper.optionGrade()))
         }
 
         someNumbersStackView.addArrangedSubview(someNumbersLabel)
@@ -255,7 +254,7 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private func createCatchUpView() -> UIView? {
-        guard let catchUpInformations = viewModel.getCatchUpInformations() else { return nil }
+        guard let catchUpInformations = viewModel.shaper.getCatchUpInformations() else { return nil }
         return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
     }
 

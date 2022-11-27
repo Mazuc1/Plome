@@ -16,8 +16,9 @@ final class SimulationResultViewModel {
     private let router: SimulationsRouter
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
-    let calculator: Calculator
+    private let calculator: Calculator
     let simulation: Simulation
+    let shaper: CalculatorShaper
 
     enum Save {
         case simulation
@@ -32,78 +33,16 @@ final class SimulationResultViewModel {
         self.simulationRepository = simulationRepository
 
         calculator = .init(simulation: simulation)
+        calculator.calculate()
+
+        shaper = CalculatorShaper(calculator: calculator)
     }
 
     // MARK: - Methods
 
-    func finalGradeOutOfTwenty() -> String {
-        "\(calculator.finalGrade.truncate(places: 2))/20"
-    }
-
-    func finalGradeBeforeTwentyConform() -> String {
-        "\(calculator.totalGrade.truncate(places: 2))/\(calculator.totalOutOf.truncate(places: 0))"
-    }
-
-    func hasSucceedExam() -> Bool {
-        calculator.hasSucceed()
-    }
-
-    func displayCatchUpSectionIfNeeded() -> Bool {
-        !hasSucceedExam() && calculator.differenceAfterCatchUp != nil && calculator.gradeOutOfTwentyAfterCatchUp != nil
-    }
-
-    func getCatchUpInformations() -> (grade: Float, difference: [Exam: Int])? {
-        guard let grade = calculator.gradeOutOfTwentyAfterCatchUp,
-              let difference = calculator.differenceAfterCatchUp else { return nil }
-
-        return (grade, difference)
-    }
-
-    func admissionSentence() -> String {
-        hasSucceedExam() ? "Vous êtes admis ! 🥳" : "Vous n'êtes pas admis 😕"
-    }
-
-    func resultSentence() -> String {
-        hasSucceedExam() ? "Félicitation !" : "Oups..."
-    }
-
-    func mentionSentence() -> String {
-        guard let mention = calculator.mention else { return "Sans mention" }
-        return mention.name
-    }
-
-    func trialsGrade() -> String {
-        guard let grade = calculator.trialsGrade else { return "" }
-        return "\(grade.truncate(places: 2))/20"
-    }
-
-    func continousControlGrade() -> String {
-        guard let grade = calculator.continousControlGrade else { return "" }
-        return "\(grade.truncate(places: 2))/20"
-    }
-
-    func optionGrade() -> String {
-        guard let grade = calculator.optionsGrade else { return "" }
-        return "\(grade.truncate(places: 2))/20"
-    }
-
-    func simulationContainTrials() -> Bool {
-        simulation.examsContainTrials()
-    }
-
-    func simulationContainContinousControls() -> Bool {
-        simulation.examsContainContinuousControls()
-    }
-
-    func simulationContainOptions() -> Bool {
-        simulation.examsContainOptions()
-    }
-
     func userDidTapRemakeSimulate() {
         router.popViewController()
     }
-
-    // MARK: - Save simulation / simulation model
 
     func save(_ type: Save) {
         let _mergeAndConvertExams = mergeAndConvertExams
@@ -135,8 +74,6 @@ final class SimulationResultViewModel {
 
         return cdExams
     }
-
-    // MARK: - Share
 
     func userDidTapShareResult(screenshot: UIImage) {
         guard let url = screenshot.url(name: "Ma simulation") else {
