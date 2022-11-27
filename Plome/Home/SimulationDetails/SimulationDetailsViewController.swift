@@ -74,6 +74,8 @@ class SimulationDetailsViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.simulation.name
+        navigationItem.rightBarButtonItem = createDeleteBarButton()
+
         widthWithoutMargin = view.frame.width - AppStyles.defaultSpacing(factor: 4)
         setupLayout()
     }
@@ -127,5 +129,13 @@ class SimulationDetailsViewController: AppViewController {
     private func createCatchUpView() -> UIView? {
         guard let catchUpInformations = viewModel.shaper.getCatchUpInformations() else { return nil }
         return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
+    }
+
+    private func createDeleteBarButton() -> UIBarButtonItem {
+        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .fail, size: 20), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
+    }
+
+    @objc private func userDidTapDeleteSimulation() {
+        viewModel.userDidTapDeleteSimulation()
     }
 }

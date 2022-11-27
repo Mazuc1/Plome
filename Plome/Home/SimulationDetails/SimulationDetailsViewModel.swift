@@ -13,15 +13,19 @@ final class SimulationDetailsViewModel {
 
     private let router: SimulationsRouter
     private let calculator: Calculator
+    private let cdSimulation: CDSimulation
+    private let simulationRepository: CoreDataRepository<CDSimulation>
 
     let simulation: Simulation
     let shaper: CalculatorShaper
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulation: Simulation) {
+    init(router: SimulationsRouter, simulation: Simulation, cdSimulation: CDSimulation, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.router = router
         self.simulation = simulation
+        self.cdSimulation = cdSimulation
+        self.simulationRepository = simulationRepository
 
         calculator = Calculator(simulation: simulation)
 
@@ -33,4 +37,13 @@ final class SimulationDetailsViewModel {
     }
 
     // MARK: - Methods
+
+    func userDidTapDeleteSimulation() {
+        do {
+            try simulationRepository.delete(with: cdSimulation.objectID)
+            router.popViewController()
+        } catch {
+            router.alert(title: "Oups...", message: "Impossible de supprimer la simulation pour le moment.")
+        }
+    }
 }

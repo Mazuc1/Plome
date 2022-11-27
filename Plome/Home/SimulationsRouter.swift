@@ -60,10 +60,10 @@ final class SimulationsRouter: DefaultRouter {
         route(to: simulationResultViewController, as: transition)
     }
 
-    func openSimulationDetails(for simulation: Simulation) {
+    func openSimulationDetails(for simulation: Simulation, extract from: CDSimulation) {
         let transition = PushTransition()
         let router = SimulationsRouter(screens: screens, rootTransition: transition)
-        let simulationDetailsViewController = screens.createSimulationDetails(router: router, for: simulation)
+        let simulationDetailsViewController = screens.createSimulationDetails(router: router, for: simulation, extract: from)
 
         router.rootViewController = simulationDetailsViewController
 

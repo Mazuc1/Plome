@@ -57,7 +57,6 @@ final class SimulationListViewController: AppViewController {
         setupLayout()
 
         bindSnapshot()
-        viewModel.updateSnapshot()
     }
 
     // Set observer and remove it in viewWillDisappear to avoid reload when it's not neccessary
@@ -65,6 +64,7 @@ final class SimulationListViewController: AppViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+        viewModel.updateSnapshot()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
