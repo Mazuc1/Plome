@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 11/11/2022.
 //
 
-import Foundation
+import UIKit
 
 public enum Mention {
     case without
@@ -21,6 +21,20 @@ public enum Mention {
         case .TB: return "Mention très bien"
         }
     }
+
+    public var plomeColor: PlomeColor {
+        switch self {
+        case .without: return PlomeColor.withoutMention
+        case .AB: return PlomeColor.quiteWellMention
+        case .B: return PlomeColor.greatMention
+        case .TB: return PlomeColor.veryGreatMention
+        }
+    }
+}
+
+public enum GradeType {
+    case worst
+    case better
 }
 
 protocol MentionScores: AnyObject {
@@ -164,6 +178,21 @@ public class Calculator: MentionScores {
             BMentionScore = 1400
             TBMentionScore = 1600
         }
+    }
+
+    func getExamWhereGrade(is type: GradeType) -> Exam? {
+        guard let exams = simulation.exams else { return nil }
+        return exams
+            .sorted {
+                let aInformations = $0.getGradeInformation()
+                let bInformation = $1.getGradeInformation()
+
+                switch type {
+                case .worst: return (aInformations.lhs / aInformations.rhs) <= (bInformation.lhs / bInformation.rhs)
+                case .better: return (aInformations.lhs / aInformations.rhs) >= (bInformation.lhs / bInformation.rhs)
+                }
+            }
+            .first
     }
 }
 

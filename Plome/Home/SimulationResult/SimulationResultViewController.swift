@@ -68,6 +68,10 @@ final class SimulationResultViewController: AppViewController {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
         $0.addShadow(color: PlomeColor.darkGray.color, offset: .init(width: 3, height: 3), opacity: 0.2)
+        $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                 left: AppStyles.defaultSpacing,
+                                 bottom: AppStyles.defaultSpacing,
+                                 right: AppStyles.defaultSpacing)
     }
 
     private let someNumbersLabel: UILabel = .init().configure {
@@ -104,6 +108,11 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: "Retourner à l'accueil").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapBackToHome), for: .touchUpInside)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     private let ctaStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
@@ -133,6 +142,9 @@ final class SimulationResultViewController: AppViewController {
         $0.spacing = AppStyles.defaultSpacing(factor: 7)
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isBaselineRelativeArrangement = true
+        let spacing = AppStyles.defaultSpacing(factor: 2)
+        $0.layoutMargins = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
     }
 
     private let scrollView: UIScrollView = .init().configure {
@@ -161,9 +173,8 @@ final class SimulationResultViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.calculator.calculate()
-
         scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
+
         navigationItem.title = "Résultat"
         navigationItem.rightBarButtonItem = createShareResultBarButton()
 
@@ -173,48 +184,50 @@ final class SimulationResultViewController: AppViewController {
         setupLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        print("🚨", isModal)
+    }
+
     // MARK: - Methods
 
     private func setCalculatorInformation() {
-        finalGradeLabel.text = viewModel.finalGradeOutOfTwenty()
+        finalGradeLabel.text = viewModel.shaper.finalGradeOutOfTwenty()
 
-        if viewModel.hasSucceedExam() {
+        if viewModel.shaper.hasSucceedExam() {
             resultImageView.image = Self.succeessImage
             confettiView.startConfetti()
         } else {
             resultImageView.image = Self.failureImage
         }
 
-        admissionLabel.text = viewModel.admissionSentence()
-        resultTitleLabel.text = viewModel.resultSentence()
-        mentionLabel.text = viewModel.mentionSentence()
-        finalGradeBeforeTwentyConformLabel.text = viewModel.finalGradeBeforeTwentyConform()
+        admissionLabel.text = viewModel.shaper.admissionSentence()
+        resultTitleLabel.text = viewModel.shaper.resultSentence()
+        mentionLabel.text = viewModel.shaper.mentionSentence()
+        finalGradeBeforeTwentyConformLabel.text = viewModel.shaper.finalGradeBeforeTwentyConform()
     }
 
     private func setupLayout() {
         createSomeNumbersView()
 
         ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, saveModelLabel, tertiaryCTASaveModel])
+        if !isModal { ctaStackView.addArrangedSubview(tertiaryCTABackToHome) }
         ctaStackView.setWidthConstraint(constant: scrollViewWidth)
 
         resultInformationsStackView.addArrangedSubviews([admissionLabel, finalGradeLabel, finalGradeBeforeTwentyConformLabel])
 
-        if viewModel.hasSucceedExam() {
+        if viewModel.shaper.hasSucceedExam() {
             resultInformationsStackView.insertArrangedSubview(mentionLabel, at: 1)
         }
 
         screenshotStackView.addArrangedSubviews([resultTitleLabel, resultImageView, resultInformationsStackView])
         resultStackView.addArrangedSubviews([screenshotStackView, someNumbersStackView])
 
-        if viewModel.displayCatchUpSectionIfNeeded() {
+        if viewModel.shaper.displayCatchUpSectionIfNeeded() {
             guard let catchUpView = createCatchUpView() else { return }
             resultStackView.addArrangedSubview(catchUpView)
         }
-
-        resultInformationsStackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                                          left: AppStyles.defaultSpacing,
-                                                          bottom: AppStyles.defaultSpacing,
-                                                          right: AppStyles.defaultSpacing)
 
         scrollViewContainerStackView.addArrangedSubviews([resultStackView, ctaStackView])
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
@@ -222,10 +235,10 @@ final class SimulationResultViewController: AppViewController {
         view.addSubview(scrollView)
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
             tertiaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.tertiaryCTAHeight),
@@ -237,16 +250,16 @@ final class SimulationResultViewController: AppViewController {
     private func createSomeNumbersView() {
         var views: [UIView] = []
 
-        if viewModel.simulationContainTrials() {
-            views.append(GradeInformationCell(frame: .zero, title: "Epreuves", grade: viewModel.trialsGrade()))
+        if viewModel.shaper.simulationContainTrials() {
+            views.append(GradeInformationCell(frame: .zero, title: "Epreuves", grade: viewModel.shaper.trialsGrade()))
         }
 
-        if viewModel.simulationContainContinousControls() {
-            views.append(GradeInformationCell(frame: .zero, title: "Contrôle continue", grade: viewModel.continousControlGrade()))
+        if viewModel.shaper.simulationContainContinousControls() {
+            views.append(GradeInformationCell(frame: .zero, title: "Contrôle continue", grade: viewModel.shaper.continousControlGrade()))
         }
 
-        if viewModel.simulationContainOptions() {
-            views.append(GradeInformationCell(frame: .zero, title: "Options", grade: viewModel.optionGrade()))
+        if viewModel.shaper.simulationContainOptions() {
+            views.append(GradeInformationCell(frame: .zero, title: "Options", grade: viewModel.shaper.optionGrade()))
         }
 
         someNumbersStackView.addArrangedSubview(someNumbersLabel)
@@ -255,7 +268,7 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private func createCatchUpView() -> UIView? {
-        guard let catchUpInformations = viewModel.getCatchUpInformations() else { return nil }
+        guard let catchUpInformations = viewModel.shaper.getCatchUpInformations() else { return nil }
         return CatchUpView(frame: .zero, grade: catchUpInformations.grade, differenceAfterCatchUp: catchUpInformations.difference)
     }
 
@@ -273,5 +286,9 @@ final class SimulationResultViewController: AppViewController {
 
     @objc private func userDidTapShareResult() {
         viewModel.userDidTapShareResult(screenshot: screenshotStackView.takeScreenshot())
+    }
+
+    @objc private func userDidTapBackToHome() {
+        viewModel.userDidTapBackToHome()
     }
 }

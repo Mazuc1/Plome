@@ -29,14 +29,6 @@ final class SimulationListViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let labelTitleView: UILabel = .init().configure {
-        $0.text = "Accueil"
-        $0.font = PlomeFont.title.font
-        $0.textColor = PlomeColor.darkBlue.color
-        $0.textAlignment = .left
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
     private lazy var primaryCTANewSimulation: PrimaryCTA = .init(title: "Nouvelle simulation").configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapNewSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -60,11 +52,11 @@ final class SimulationListViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Mes simulations"
 
         setupLayout()
 
         bindSnapshot()
-        viewModel.updateSnapshot()
     }
 
     // Set observer and remove it in viewWillDisappear to avoid reload when it's not neccessary
@@ -72,6 +64,7 @@ final class SimulationListViewController: AppViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+        viewModel.updateSnapshot()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,13 +75,6 @@ final class SimulationListViewController: AppViewController {
     // MARK: - Methods
 
     private func setupLayout() {
-        view.addSubview(labelTitleView)
-
-        NSLayoutConstraint.activate([
-            labelTitleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing),
-            labelTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-        ])
-
         view.addSubview(primaryCTANewSimulation)
 
         NSLayoutConstraint.activate([
@@ -101,7 +87,7 @@ final class SimulationListViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: labelTitleView.bottomAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: primaryCTANewSimulation.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
@@ -142,7 +128,7 @@ final class SimulationListViewController: AppViewController {
     private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
         return .init(tableView: tableView) { tableView, _, simulation in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
-                cell.setup(with: SimulationCellViewModel(simulation: simulation))
+                cell.setup(with: CalculatorShaper(calculator: .init(simulation: simulation)))
                 return cell
             }
             return UITableViewCell()
@@ -157,8 +143,8 @@ final class SimulationListViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationListViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        //
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.userDidSelectSimulation(at: indexPath)
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

@@ -28,7 +28,8 @@ extension Screens {
         let simulationListViewModel = SimulationListViewModel(router: router, simulationRepository: context.simulationRepository)
         let simulationsViewController = SimulationListViewController(viewModel: simulationListViewModel)
         simulationsViewController.tabBarItem = Tabs.home.item
-        return simulationsViewController
+
+        return UINavigationController(rootViewController: simulationsViewController)
     }
 
     func createSelectSimulationModel(router: SimulationsRouter) -> UIViewController {
@@ -50,6 +51,12 @@ extension Screens {
         let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation, simulationRepository: context.simulationRepository)
         let simulationResultViewController = SimulationResultViewController(viewModel: simulationResultViewModel)
         return simulationResultViewController
+    }
+
+    func createSimulationDetails(router: SimulationsRouter, for simulation: Simulation, extract from: CDSimulation) -> UIViewController {
+        let simulationDetailsViewModel = SimulationDetailsViewModel(router: router, simulation: simulation, cdSimulation: from, simulationRepository: context.simulationRepository)
+        let simulationDetailsViewController = SimulationDetailsViewController(viewModel: simulationDetailsViewModel)
+        return simulationDetailsViewController
     }
 }
 

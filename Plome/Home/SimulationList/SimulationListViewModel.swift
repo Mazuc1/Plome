@@ -72,6 +72,16 @@ final class SimulationListViewModel {
         deleteSimulationModel(at: index)
     }
 
+    func userDidSelectSimulation(at index: IndexPath) {
+        guard let cdSimulation = coreDataSimulationModels?[index.row] else {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            return
+        }
+
+        let simulation = snapshot.itemIdentifiers[index.row]
+        router.openSimulationDetails(for: simulation, extract: cdSimulation)
+    }
+
     private func deleteSimulationModel(at index: Int) {
         do {
             if let simulation = coreDataSimulationModels?[index] {
