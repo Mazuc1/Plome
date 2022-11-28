@@ -32,15 +32,6 @@ final class SettingsRouter: DefaultRouter {
         return settingsViewController
     }
 
-    func shareApplication() {
-        if let url = URL(string: "itms-apps://apple.com/app/id1468320348") {
-            let activity = UIActivityViewController(activityItems: ["Pineapple", url], applicationActivities: nil)
-            rootViewController?.present(activity, animated: true)
-        } else {
-            alert(title: "Oups..", message: "Une erreur est survenu 😕")
-        }
-    }
-
     func openMailApp() {
         if MFMailComposeViewController.canSendMail() {
             launchMailApp()
@@ -48,7 +39,7 @@ final class SettingsRouter: DefaultRouter {
             if let url = createEmailUrl(to: "mazuc.loic@icloud.com", subject: "Plôme", body: "") {
                 UIApplication.shared.open(url)
             } else {
-                alert(title: "Attention", message: "Une erreur est survenue.")
+                alert(title: "Oups...", message: "Vous ne semblez pas avoir d'application d'email.")
             }
         }
     }
@@ -84,14 +75,16 @@ extension SettingsRouter: MFMailComposeViewControllerDelegate {
 
         if let gmailUrl = gmailUrl, UIApplication.shared.canOpenURL(gmailUrl) {
             return gmailUrl
-        } else if let outlookUrl = outlookUrl, UIApplication.shared.canOpenURL(outlookUrl) {
+        } else if let outlookUrl, UIApplication.shared.canOpenURL(outlookUrl) {
             return outlookUrl
-        } else if let yahooMail = yahooMail, UIApplication.shared.canOpenURL(yahooMail) {
+        } else if let yahooMail, UIApplication.shared.canOpenURL(yahooMail) {
             return yahooMail
-        } else if let sparkUrl = sparkUrl, UIApplication.shared.canOpenURL(sparkUrl) {
+        } else if let sparkUrl, UIApplication.shared.canOpenURL(sparkUrl) {
             return sparkUrl
+        } else if let defaultUrl, UIApplication.shared.canOpenURL(defaultUrl) {
+            return defaultUrl
         }
 
-        return defaultUrl
+        return nil
     }
 }

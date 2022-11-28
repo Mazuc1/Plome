@@ -16,7 +16,7 @@ struct SettingsSection {
 
 struct SettingsItem {
     var createdCell: () -> UITableViewCell
-    var action: ((SettingsItem) -> Swift.Void)?
+    var action: (() -> Void)?
 }
 
 final class SettingsViewController: AppViewController {
@@ -74,8 +74,8 @@ final class SettingsViewController: AppViewController {
                 cell.imageView?.image = Icons.addRectangleStack.configure(weight: .light, color: .black, size: 20)
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] _ in
-
+            }, action: { [weak self] in
+                self?.viewModel.userDidTapAddDefaultSimulationModel()
             }),
 
             SettingsItem(createdCell: {
@@ -85,7 +85,7 @@ final class SettingsViewController: AppViewController {
                 cell.imageView?.image = Icons.trash.configure(weight: .light, color: .black, size: 20)
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] _ in
+            }, action: { [weak self] in
                 self?.viewModel.userDidTapDeleteSimulations()
             }),
         ])
@@ -98,19 +98,8 @@ final class SettingsViewController: AppViewController {
                 cell.imageView?.image = Icons.envelope.configure(weight: .light, color: .black, size: 20)
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] _ in
+            }, action: { [weak self] in
                 self?.viewModel.userDidTapContactAssistance()
-            }),
-
-            SettingsItem(createdCell: {
-                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
-                cell.textLabel?.text = "Partager l'application"
-                cell.textLabel?.font = PlomeFont.bodyM.font
-                cell.imageView?.image = Icons.share.configure(weight: .light, color: .black, size: 20)
-                cell.selectionStyle = .none
-                return cell
-            }, action: { [weak self] _ in
-                self?.viewModel.userDidTapShareApplication()
             }),
         ])
 
@@ -122,7 +111,7 @@ final class SettingsViewController: AppViewController {
                 cell.textLabel?.textColor = PlomeColor.fail.color
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] _ in
+            }, action: { [weak self] in
                 self?.viewModel.userDidTapReinitializeApplication()
             }),
         ])
@@ -159,4 +148,9 @@ extension SettingsViewController: UITableViewDataSource {
 
 // MARK: - Table view Delegate
 
-extension SettingsViewController: UITableViewDelegate {}
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableViewSections[indexPath.section].cells[indexPath.row]
+        cell.action?()
+    }
+}
