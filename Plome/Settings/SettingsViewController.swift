@@ -10,6 +10,7 @@ import UIKit
 
 struct SettingsSection {
     var title: String
+    var footer: String? = nil
     var cells: [SettingsItem]
 }
 
@@ -113,7 +114,7 @@ final class SettingsViewController: AppViewController {
             }),
         ])
 
-        let reinitializeSection = SettingsSection(title: "", cells: [
+        let reinitializeSection = SettingsSection(title: "", footer: viewModel.getVersion(), cells: [
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
                 cell.textLabel?.text = "Réinitialiser l'application"
@@ -144,11 +145,15 @@ extension SettingsViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in _: UITableView) -> Int {
-        return tableViewSections.count
+        tableViewSections.count
     }
 
     func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableViewSections[section].title
+        tableViewSections[section].title
+    }
+
+    func tableView(_: UITableView, titleForFooterInSection section: Int) -> String? {
+        tableViewSections[section].footer
     }
 }
 

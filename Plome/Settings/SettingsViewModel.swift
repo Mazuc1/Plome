@@ -25,6 +25,11 @@ final class SettingsViewModel {
 
     // MARK: - Methods
 
+    func getVersion() -> String {
+        let bundleShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "9.99"
+        return "Version \(bundleShortVersion)"
+    }
+
     func userDidTapAddDefaultSimulationModel() {}
 
     func userDidTapReinitializeApplication() {
