@@ -78,3 +78,15 @@ extension Screens {
         return navigationController
     }
 }
+
+// MARK: - Settings
+
+extension Screens {
+    func createSettingsTab(router: SettingsRouter) -> UIViewController {
+        let settingsViewModel = SettingsViewModel(router: router, simulationRepository: context.simulationRepository, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider)
+        let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
+        settingsViewController.tabBarItem = Tabs.settings.item
+
+        return UINavigationController(rootViewController: settingsViewController)
+    }
+}
