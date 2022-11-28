@@ -34,6 +34,10 @@ final class SettingsViewModel {
         router.shareApplication()
     }
 
+    func userDidTapContactAssistance() {
+        router.openMailApp()
+    }
+
     func userDidTapAddDefaultSimulationModel() {}
 
     func userDidTapReinitializeApplication() {

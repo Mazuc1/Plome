@@ -99,7 +99,7 @@ final class SettingsViewController: AppViewController {
                 cell.selectionStyle = .none
                 return cell
             }, action: { [weak self] _ in
-
+                self?.viewModel.userDidTapContactAssistance()
             }),
 
             SettingsItem(createdCell: {
