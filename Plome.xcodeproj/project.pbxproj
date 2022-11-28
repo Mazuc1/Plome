@@ -10,6 +10,7 @@
 		CF0C7A6D292FDDBC00E49803 /* SimulationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */; };
 		CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */; };
 		CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */; };
+		CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */; };
 		CF208F5228F960E0001F83B1 /* UrbaneRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */; };
 		CF208F5328F960E0001F83B1 /* UrbaneRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */; };
 		CF208F5428F960E0001F83B1 /* UrbaneRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */; };
@@ -88,6 +89,7 @@
 		CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewModel.swift; sourceTree = "<group>"; };
 		CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewController.swift; sourceTree = "<group>"; };
 		CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
+		CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Bold.ttf"; sourceTree = "<group>"; };
 		CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Light.ttf"; sourceTree = "<group>"; };
 		CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Medium.ttf"; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */,
 				CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */,
 				CF907B2A292F7B2100DEA169 /* SimulationListViewModelTests.swift */,
+				CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 			files = (
 				CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */,
 				CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */,
+				CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */,
 				CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */,
 				CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */,
 				CF907B2B292F7B2100DEA169 /* SimulationListViewModelTests.swift in Sources */,
