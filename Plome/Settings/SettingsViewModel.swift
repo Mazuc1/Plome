@@ -38,6 +38,17 @@ final class SettingsViewModel {
         router.openMailApp()
     }
 
+    func userDidTapDeleteSimulations() {
+        router.alertWithAction(title: "Attention", message: "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continuer ?") { [simulationRepository, router] in
+            do {
+                try simulationRepository.delete(predicate: CDSimulation.withDatePredicate, sortDescriptors: [])
+                router.alert(title: "Toutes les simulations ont bien été supprimées.", message: "")
+            } catch {
+                router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
+            }
+        }
+    }
+
     func userDidTapAddDefaultSimulationModel() {}
 
     func userDidTapReinitializeApplication() {
