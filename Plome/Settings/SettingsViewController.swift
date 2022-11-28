@@ -8,12 +8,33 @@
 import PlomeCoreKit
 import UIKit
 
+struct SettingsSection {
+    var title: String
+    var cells: [SettingsItem]
+}
+
+struct SettingsItem {
+    var createdCell: () -> UITableViewCell
+    var action: ((SettingsItem) -> Swift.Void)?
+}
+
 final class SettingsViewController: AppViewController {
     // MARK: - Properties
 
     private let viewModel: SettingsViewModel
 
+    private var tableViewSections = [SettingsSection]()
+    static let reuseIdentifier = "SettingsCell"
+
     // MARK: - UI
+
+    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).configure { [weak self] in
+        $0.delegate = self
+        $0.dataSource = self
+        $0.backgroundColor = .clear
+        $0.showsVerticalScrollIndicator = false
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     // MARK: - Init
 
@@ -32,5 +53,105 @@ final class SettingsViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Réglages"
+
+        setupLayout()
+        configureDatasource()
+    }
+
+    // MARK: - Methods
+
+    private func setupLayout() {
+        tableView.stretchInView(parentView: view)
+    }
+
+    private func configureDatasource() {
+        let generalSection = SettingsSection(title: "Général", cells: [
+            SettingsItem(createdCell: {
+                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
+                cell.textLabel?.text = "Ajouter les modèles par défaut"
+                cell.textLabel?.font = PlomeFont.bodyM.font
+                cell.imageView?.image = Icons.addRectangleStack.configure(weight: .light, color: .black, size: 20)
+                cell.selectionStyle = .none
+                return cell
+            }, action: { [weak self] _ in
+
+            }),
+
+            SettingsItem(createdCell: {
+                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
+                cell.textLabel?.text = "Supprimer les simulations"
+                cell.textLabel?.font = PlomeFont.bodyM.font
+                cell.imageView?.image = Icons.trash.configure(weight: .light, color: .black, size: 20)
+                cell.selectionStyle = .none
+                return cell
+            }, action: { [weak self] _ in
+
+            }),
+        ])
+
+        let otherSection = SettingsSection(title: "Autres", cells: [
+            SettingsItem(createdCell: {
+                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
+                cell.textLabel?.text = "Contacter l'assistance"
+                cell.textLabel?.font = PlomeFont.bodyM.font
+                cell.imageView?.image = Icons.envelope.configure(weight: .light, color: .black, size: 20)
+                cell.selectionStyle = .none
+                return cell
+            }, action: { [weak self] _ in
+
+            }),
+
+            SettingsItem(createdCell: {
+                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
+                cell.textLabel?.text = "Partager l'application"
+                cell.textLabel?.font = PlomeFont.bodyM.font
+                cell.imageView?.image = Icons.share.configure(weight: .light, color: .black, size: 20)
+                cell.selectionStyle = .none
+                return cell
+            }, action: { [weak self] _ in
+
+            }),
+        ])
+
+        let reinitializeSection = SettingsSection(title: "", cells: [
+            SettingsItem(createdCell: {
+                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
+                cell.textLabel?.text = "Réinitialiser l'application"
+                cell.textLabel?.font = PlomeFont.bodyM.font
+                cell.textLabel?.textColor = PlomeColor.fail.color
+                cell.selectionStyle = .none
+                return cell
+            }, action: { [weak self] _ in
+                self?.viewModel.userDidTapReinitializeApplication()
+            }),
+        ])
+
+        tableViewSections = [generalSection, otherSection, reinitializeSection]
+        tableView.reloadData()
     }
 }
+
+// MARK: - Table view Data source
+
+extension SettingsViewController: UITableViewDataSource {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableViewSections[section].cells.count
+    }
+
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewSections[indexPath.section].cells[indexPath.row]
+        return cell.createdCell()
+    }
+
+    func numberOfSections(in _: UITableView) -> Int {
+        return tableViewSections.count
+    }
+
+    func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableViewSections[section].title
+    }
+}
+
+// MARK: - Table view Delegate
+
+extension SettingsViewController: UITableViewDelegate {}

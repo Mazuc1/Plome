@@ -32,6 +32,8 @@ public enum Icons {
     case pencil
     case info
     case share
+    case envelope
+    case addRectangleStack
 
     public var uiImage: UIImage {
         UIImage(systemName: name)!
@@ -58,6 +60,8 @@ public enum Icons {
         case .pencil: return "pencil.circle"
         case .info: return "info.circle"
         case .share: return "square.and.arrow.up"
+        case .envelope: return "envelope"
+        case .addRectangleStack: return "rectangle.stack.badge.plus"
         }
     }
 
