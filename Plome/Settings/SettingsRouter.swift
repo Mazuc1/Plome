@@ -30,4 +30,13 @@ final class SettingsRouter: DefaultRouter {
 
         return settingsViewController
     }
+
+    func shareApplication() {
+        if let url = URL(string: "itms-apps://apple.com/app/id1468320348") {
+            let activity = UIActivityViewController(activityItems: ["Pineapple", url], applicationActivities: nil)
+            rootViewController?.present(activity, animated: true)
+        } else {
+            alert(title: "Oups..", message: "Une erreur est survenu 😕")
+        }
+    }
 }

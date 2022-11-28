@@ -30,6 +30,10 @@ final class SettingsViewModel {
         return "Version \(bundleShortVersion)"
     }
 
+    func userDidTapShareApplication() {
+        router.shareApplication()
+    }
+
     func userDidTapAddDefaultSimulationModel() {}
 
     func userDidTapReinitializeApplication() {
