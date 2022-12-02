@@ -7,7 +7,7 @@
 
 @testable import Plome
 @testable import PlomeCoreKit
-import PlomeCoreKitTestsHelpers
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class SimulationDetailsViewModelTests: XCTestCase {

@@ -22,13 +22,13 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
         }
     }
 
-    private let userDefault: Defaults
+    private let userDefault: DefaultsProtocol
     private let simulationRepository: CoreDataRepository<CDSimulation>
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
 
     // MARK: - Init
 
-    public init(userDefault: Defaults, simulationRepository: CoreDataRepository<CDSimulation>) {
+    public init(userDefault: DefaultsProtocol, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.userDefault = userDefault
         self.simulationRepository = simulationRepository
         defaultSimulationModelsProvider = DefaultSimulationModelsProvider()

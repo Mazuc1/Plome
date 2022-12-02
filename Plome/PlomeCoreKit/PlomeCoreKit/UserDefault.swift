@@ -10,6 +10,9 @@ import Foundation
 
 public enum UserDefaultKeys: String, CaseIterable {
     case isSimulationModelRegister
+
+    /// Key for test
+    case userDefaultTest
 }
 
 public protocol DefaultsProtocol: AnyObject {
