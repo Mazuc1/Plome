@@ -13,6 +13,8 @@
 		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF18517529342C1C003CB46F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517429342C1C003CB46F /* UIViewController.swift */; };
 		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
+		CF1BDAA6293A251400E459FD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF1BDAA5293A251400E459FD /* FirebaseAnalytics */; };
+		CF1BDAA8293A251400E459FD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF1BDAA7293A251400E459FD /* FirebaseCrashlytics */; };
 		CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1E28F94810001F83B1 /* CDSimulation.swift */; };
 		CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2428F94C3C001F83B1 /* StorageProvider.swift */; };
 		CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2628F95318001F83B1 /* PrimaryCTA.swift */; };
@@ -209,6 +211,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1BDAA8293A251400E459FD /* FirebaseCrashlytics in Frameworks */,
+				CF1BDAA6293A251400E459FD /* FirebaseAnalytics in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +531,8 @@
 			name = PlomeCoreKit;
 			packageProductDependencies = (
 				CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */,
+				CF1BDAA5293A251400E459FD /* FirebaseAnalytics */,
+				CF1BDAA7293A251400E459FD /* FirebaseCrashlytics */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -605,6 +611,7 @@
 			mainGroup = CF59EABF28ECD6B30041B33B;
 			packageReferences = (
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1152,6 +1159,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1163,6 +1178,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF1BDAA5293A251400E459FD /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		CF1BDAA7293A251400E459FD /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
