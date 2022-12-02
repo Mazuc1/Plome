@@ -57,6 +57,7 @@
 		CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */; };
 		CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */; };
 		CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD196192931057D00A06FE7 /* ExamInformationsView.swift */; };
+		CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
 		CFD067AB292FBBE30034EE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CFD196192931057D00A06FE7 /* ExamInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInformationsView.swift; sourceTree = "<group>"; };
+		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD067AB292FBBE30034EE02 /* Info.plist */,
+				CFE77757293A10F800D0A90D /* Settings */,
 				CFBFA087292E4CFC00F36790 /* Simulation */,
 				CF324078290BF8D300FC6666 /* SimulationModel */,
 			);
@@ -364,6 +367,14 @@
 			path = CommonView;
 			sourceTree = "<group>";
 		};
+		CFE77757293A10F800D0A90D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -478,6 +489,7 @@
 				CF907B2B292F7B2100DEA169 /* SimulationListViewModelTests.swift in Sources */,
 				CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */,
 				CF32407A290BF8EB00FC6666 /* SimulationModelsViewModelTests.swift in Sources */,
+				CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

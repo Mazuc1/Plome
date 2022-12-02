@@ -9,6 +9,7 @@ import Combine
 import CoreData
 @testable import Plome
 @testable import PlomeCoreKit
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class AddSimulationModelViewModelTests: XCTestCase {
