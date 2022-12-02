@@ -32,6 +32,8 @@ final class SimulationModelsViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    private let emptySimulationModelListView: PlaceholderView = .init(frame: .zero, icon: .model, text: "Vous retrouverez ici tous vos modèles de simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.\n\nVous trouverez également des modèles par défaut dans les réglages de l'application.")
+
     // MARK: - Init
 
     required init(viewModel: SimulationModelsViewModel) {
@@ -87,15 +89,33 @@ final class SimulationModelsViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             primaryCTAAddModel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
+
+        view.addSubview(emptySimulationModelListView)
+
+        NSLayoutConstraint.activate([
+            emptySimulationModelListView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            emptySimulationModelListView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor),
+            emptySimulationModelListView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: emptySimulationModelListView.trailingAnchor),
+        ])
     }
 
     private func bindSnapshot() {
         viewModel.$snapshot
             .receive(on: RunLoop.main)
             .sink { [weak self] in
-                self?.dataSource.apply($0, animatingDifferences: false, completion: nil)
+                self?.applySnapshotIfNeeded(snapshot: $0)
             }
             .store(in: &cancellables)
+    }
+
+    private func applySnapshotIfNeeded(snapshot: SimulationListViewModel.TableViewSnapshot) {
+        if snapshot.numberOfItems == 0 {
+            emptySimulationModelListView.isHidden = false
+        } else {
+            emptySimulationModelListView.isHidden = true
+        }
+        dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
 
     @objc private func userDidTapAddModel() {
