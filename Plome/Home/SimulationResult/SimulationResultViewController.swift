@@ -184,12 +184,6 @@ final class SimulationResultViewController: AppViewController {
         setupLayout()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        print("🚨", isModal)
-    }
-
     // MARK: - Methods
 
     private func setCalculatorInformation() {

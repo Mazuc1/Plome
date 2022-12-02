@@ -54,7 +54,7 @@ public enum Icons {
         case .fail: return "xmark.circle.fill"
         case .warning: return "exclamationmark.triangle.fill"
 
-        case .trash: return "trash.circle"
+        case .trash: return "trash"
         case .add: return "plus.rectangle"
         case .xmark: return "xmark"
         case .pencil: return "pencil.circle"

@@ -38,7 +38,7 @@ final class SettingsViewModel {
     func userDidTapDeleteSimulations() {
         router.alertWithAction(title: "Attention", message: "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continuer ?") { [simulationRepository, router] in
             do {
-                try simulationRepository.delete(predicate: CDSimulation.withDatePredicate, sortDescriptors: [])
+                try simulationRepository.deleteAll(where: CDSimulation.withDatePredicate, sortDescriptors: [])
                 router.alert(title: "Toutes les simulations ont bien été supprimées.", message: "")
             } catch {
                 router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
@@ -56,6 +56,7 @@ final class SettingsViewModel {
                         cdSimulation.type = simulation.type
                         cdSimulation.exams = _mergeAndConvertExams(simulation, context, cdSimulation)
                     }
+                    router.alert(title: "Les modèle de simulation ont bien été ajoutées.", message: "")
                 } catch {
                     router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
                 }
