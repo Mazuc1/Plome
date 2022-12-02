@@ -28,20 +28,7 @@ final class SimulationModelsViewModelTests: XCTestCase {
         simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository)
     }
 
-    func testWhenUpdatingSnapshotWithEmptyDatabaseThenSnapshotContainsOnlyDefaultSection() {
-        // Act
-        simulationModelsViewModel.updateSnapshot()
-
-        simulationModelsViewModel.$snapshot
-            .sink { snapshot in
-                // Assert
-                XCTAssertEqual(snapshot.sectionIdentifiers.count, 1)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], 0)
-            }
-            .store(in: &cancellables)
-    }
-
-    func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsTwoSection() {
+    func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsOneSection() {
         // Arrange
         try! simulationRepository.add { simulation, _ in
             simulation.name = "Test modèle"
@@ -53,9 +40,7 @@ final class SimulationModelsViewModelTests: XCTestCase {
         simulationModelsViewModel.$snapshot
             .sink { snapshot in
                 // Assert
-                XCTAssertEqual(snapshot.sectionIdentifiers.count, 2)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], 0)
-                XCTAssertEqual(snapshot.sectionIdentifiers[1], 0)
+                XCTAssertEqual(snapshot.sectionIdentifiers.count, 1)
             }
             .store(in: &cancellables)
     }

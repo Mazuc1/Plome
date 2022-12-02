@@ -33,7 +33,7 @@ final class SimulationViewModel: ObservableObject {
         // Without this, the user need to edit one field to enable button
         userDidChangeValue()
 
-        simulation.exams!.map { $0.grade = "\(Float.random(in: 1 ... 20).truncate(places: 2))/20" }
+        // simulation.exams!.map { $0.grade = "\(Float.random(in: 1 ... 20).truncate(places: 2))/20" }
     }
 
     // MARK: - Methods
