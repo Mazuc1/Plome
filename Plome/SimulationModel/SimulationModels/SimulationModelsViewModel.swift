@@ -12,10 +12,9 @@ import UIKit
 final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Properties
 
-    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationModelsSection, Simulation>
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
 
     private let router: SimulationModelsRouter
-    private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
     var coreDataSimulationModels: [CDSimulation]?
@@ -24,9 +23,8 @@ final class SimulationModelsViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: SimulationModelsRouter, defaultSimulationModelsProvider: DefaultSimulationModelsProvider, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationModelsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.router = router
-        self.defaultSimulationModelsProvider = defaultSimulationModelsProvider
         self.simulationRepository = simulationRepository
     }
 
@@ -56,12 +54,10 @@ final class SimulationModelsViewModel: ObservableObject {
 
     private func makeTableViewSnapshot(with simulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
-        snapshot.appendSections([.default])
-        snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: .default)
 
         if let simulations, !simulations.isEmpty {
-            snapshot.appendSections([.coreData])
-            snapshot.appendItems(simulations, toSection: .coreData)
+            snapshot.appendSections([0])
+            snapshot.appendItems(simulations, toSection: 0)
         }
 
         return snapshot
@@ -72,14 +68,10 @@ final class SimulationModelsViewModel: ObservableObject {
     }
 
     func userDidTapOnSimulation(at index: IndexPath) {
-        if index.section == 0 {
-            router.openAddSimulationModel(openAs: .editFromDefault(defaultSimulationModelsProvider.simulations[index.row]))
-        } else if index.section == 1 {
-            if let simulation = coreDataSimulationModels?[index.row] {
-                router.openAddSimulationModel(openAs: .edit(simulation))
-            } else {
-                router.alert(title: "Oups", message: "Une erreur est survenue 😕")
-            }
+        if let simulation = coreDataSimulationModels?[index.row] {
+            router.openAddSimulationModel(openAs: .edit(simulation))
+        } else {
+            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
         }
     }
 

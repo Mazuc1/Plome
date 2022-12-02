@@ -14,7 +14,7 @@ final class SimulationModelsViewController: AppViewController {
 
     private let viewModel: SimulationModelsViewModel
 
-    private lazy var dataSource: SimulationModelsTableViewDataSource = self.createDataSource()
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, Simulation> = self.createDataSource()
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - UI
@@ -52,7 +52,6 @@ final class SimulationModelsViewController: AppViewController {
         setupConstraint()
 
         bindSnapshot()
-        viewModel.updateSnapshot()
     }
 
     // Set observer and remove it in viewWillDisappear to avoid reload when it's not neccessary
@@ -60,6 +59,7 @@ final class SimulationModelsViewController: AppViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: nil)
+        viewModel.updateSnapshot()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,7 +106,7 @@ final class SimulationModelsViewController: AppViewController {
         viewModel.updateSnapshot()
     }
 
-    private func createDataSource() -> SimulationModelsTableViewDataSource {
+    private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
         return .init(tableView: tableView) { tableView, _, itemIdentifier in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationModelCell.reuseIdentifier) as? SimulationModelCell {
                 cell.setup(with: itemIdentifier)

@@ -76,7 +76,7 @@ final class SimulationViewModel: ObservableObject {
 // MARK: - ExamTypeHeaderViewOutput
 
 extension SimulationViewModel: ExamTypeHeaderViewOutput {
-    func userDidTapAddExam(for section: PlomeCoreKit.ExamTypeSection) {
+    func userDidTapAddExam(for section: ExamTypeSection) {
         router.alertWithTextField(title: "Nouveau",
                                   message: "Comment se nomme votre \(section.title) ?",
                                   buttonActionName: "Ajouter")

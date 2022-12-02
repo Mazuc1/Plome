@@ -50,11 +50,10 @@ final class SettingsViewModel {
         defaultSimulationModelsProvider.simulations
             .forEach { simulation in
                 do {
-                    let _mergeAndConvertExams = mergeAndConvertExams
                     try simulationRepository.add { cdSimulation, context in
                         cdSimulation.name = simulation.name
                         cdSimulation.type = simulation.type
-                        cdSimulation.exams = _mergeAndConvertExams(simulation, context, cdSimulation)
+                        cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
                     }
                     router.alert(title: "Les modèle de simulation ont bien été ajoutées.", message: "")
                 } catch {
@@ -72,19 +71,5 @@ final class SettingsViewModel {
                 router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
             }
         }
-    }
-
-    private func mergeAndConvertExams(of simulation: Simulation, in context: NSManagedObjectContext, for cdSimulation: CDSimulation) -> Set<CDExam> {
-        var cdExams: Set<CDExam> = .init()
-
-        let trials = simulation.exams(of: .trial)
-        let continousControls = simulation.exams(of: .continuousControl)
-        let options = simulation.exams(of: .option)
-
-        _ = trials.map { cdExams.insert($0.toCoreDataModel(in: context, for: cdSimulation)) }
-        _ = continousControls.map { cdExams.insert($0.toCoreDataModel(in: context, for: cdSimulation)) }
-        _ = options.map { cdExams.insert($0.toCoreDataModel(in: context, for: cdSimulation)) }
-
-        return cdExams
     }
 }

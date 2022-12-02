@@ -14,7 +14,7 @@ final class SelectSimulationModelViewController: AppViewController {
 
     let viewModel: SelectSimulationModelViewModel
 
-    private lazy var dataSource: SimulationModelsTableViewDataSource = self.createDataSource()
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, Simulation> = self.createDataSource()
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - UI
@@ -100,7 +100,7 @@ final class SelectSimulationModelViewController: AppViewController {
             .store(in: &cancellables)
     }
 
-    private func createDataSource() -> SimulationModelsTableViewDataSource {
+    private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
         return .init(tableView: tableView) { tableView, _, itemIdentifier in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SmallSimulationModelCell.reuseIdentifier) as? SmallSimulationModelCell {
                 cell.setup(with: itemIdentifier)
