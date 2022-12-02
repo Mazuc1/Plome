@@ -11,6 +11,7 @@
 		CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */; };
 		CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */; };
 		CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */; };
+		CF1BDAA3293A246100E459FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */; };
 		CF208F5228F960E0001F83B1 /* UrbaneRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */; };
 		CF208F5328F960E0001F83B1 /* UrbaneRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */; };
 		CF208F5428F960E0001F83B1 /* UrbaneRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */; };
@@ -90,6 +91,7 @@
 		CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewController.swift; sourceTree = "<group>"; };
 		CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
 		CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Bold.ttf"; sourceTree = "<group>"; };
 		CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Light.ttf"; sourceTree = "<group>"; };
 		CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Medium.ttf"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				CF3B9AA228F3293F00457A44 /* Settings */,
 				CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */,
 				CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */,
+				CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */,
 				CFBF56BB28ECC5F000E4EC7D /* Info.plist */,
 			);
 			path = Plome;
@@ -472,6 +475,7 @@
 				CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */,
 				CF208F5328F960E0001F83B1 /* UrbaneRounded-Light.ttf in Resources */,
 				CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */,
+				CF1BDAA3293A246100E459FD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
