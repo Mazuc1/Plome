@@ -41,6 +41,8 @@ final class AppRouter {
     // MARK: - Methods
 
     func start() {
+        context.defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
+
         tabBarController.viewControllers = [
             simulationsRouter.makeRootViewController(),
             simulationModelsRouter.makeRootViewController(),

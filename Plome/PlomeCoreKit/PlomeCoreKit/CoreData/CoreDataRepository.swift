@@ -106,6 +106,15 @@ public extension CoreDataRepository {
         }
     }
 
+    func deleteAll(where predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor] = []) throws {
+        try list(sortDescriptors: sortDescriptors, predicate: predicate)
+            .forEach {
+                mainContext.delete($0)
+            }
+
+        try mainContext.saveIfNeeded()
+    }
+
     func deleteAll() throws {
         guard let entityName: String = CoreDataEntity.entity().name else {
             throw CoreDataManagerError.entityNameNotFound

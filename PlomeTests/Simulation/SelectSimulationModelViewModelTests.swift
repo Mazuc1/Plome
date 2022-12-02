@@ -26,25 +26,12 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        selectSimulationModelViewModel = SelectSimulationModelViewModel(router: simulationsRouter, defaultSimulationModelsProvider: testContext.defaultSimulationModelsProvider, simulationRepository: simulationRepository)
+        selectSimulationModelViewModel = SelectSimulationModelViewModel(router: simulationsRouter, simulationRepository: simulationRepository)
     }
 
     // MARK: - updateSnapshot
 
-    func testWhenUpdatingSnapshotWithEmptyDatabaseThenSnapshotContainsOnlyDefaultSection() {
-        // Act
-        selectSimulationModelViewModel.updateSnapshot()
-
-        selectSimulationModelViewModel.$snapshot
-            .sink { snapshot in
-                // Assert
-                XCTAssertEqual(snapshot.sectionIdentifiers.count, 1)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], .default)
-            }
-            .store(in: &cancellables)
-    }
-
-    func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsTwoSection() {
+    func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsOneSection() {
         // Arrange
         try! simulationRepository.add { simulation, context in
             simulation.name = "Test"
@@ -61,9 +48,7 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
         selectSimulationModelViewModel.$snapshot
             .sink { snapshot in
                 // Assert
-                XCTAssertEqual(snapshot.sectionIdentifiers.count, 2)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], .default)
-                XCTAssertEqual(snapshot.sectionIdentifiers[1], .coreData)
+                XCTAssertEqual(snapshot.sectionIdentifiers.count, 1)
             }
             .store(in: &cancellables)
     }
@@ -83,27 +68,5 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
 
         // Assert
         XCTAssertEqual(simulation!.name, "Test model")
-    }
-
-    func testWhenGetDefaultSimulationThenDefaultSimulationIsReturned() {
-        // Arrange
-        selectSimulationModelViewModel.updateSnapshot()
-
-        // Act
-        let simulation = selectSimulationModelViewModel.getSimulation(indexPath: .init(row: 2, section: 0))
-
-        // Assert
-        XCTAssertEqual(simulation!.name, "BAC Technologique")
-    }
-
-    func testWhenGetSimulationWithBadIndexPathSectionThenNilIsReturned() {
-        // Arrange
-        selectSimulationModelViewModel.updateSnapshot()
-
-        // Act
-        let simulation = selectSimulationModelViewModel.getSimulation(indexPath: .init(row: 0, section: 3))
-
-        // Assert
-        XCTAssertNil(simulation)
     }
 }

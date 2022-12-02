@@ -34,7 +34,7 @@ final class SimulationListViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let emptySimulationListView: EmptySimulationListView = .init()
+    private let emptySimulationListView: PlaceholderView = .init(frame: .zero, icon: .list, text: "Vous retrouverez ici toutes vos simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.")
 
     // MARK: - Init
 

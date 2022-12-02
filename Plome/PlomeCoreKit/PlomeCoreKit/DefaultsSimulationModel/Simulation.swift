@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 21/10/2022.
 //
 
+import CoreData
 import Foundation
 
 public class Simulation: NSObject, NSCopying {
@@ -75,6 +76,20 @@ public class Simulation: NSObject, NSCopying {
 
     public func add(exam: Exam) {
         exams?.insert(exam)
+    }
+
+    public func mergeAndConvertExams(in context: NSManagedObjectContext, for cdSimulation: CDSimulation) -> Set<CDExam> {
+        var cdExams: Set<CDExam> = .init()
+
+        let trials = exams(of: .trial)
+        let continousControls = exams(of: .continuousControl)
+        let options = exams(of: .option)
+
+        _ = trials.map { cdExams.insert($0.toCoreDataModel(in: context, for: cdSimulation)) }
+        _ = continousControls.map { cdExams.insert($0.toCoreDataModel(in: context, for: cdSimulation)) }
+        _ = options.map { cdExams.insert($0.toCoreDataModel(in: context, for: cdSimulation)) }
+
+        return cdExams
     }
 
     public func copy(with _: NSZone? = nil) -> Any {

@@ -1,23 +1,25 @@
 //
-//  EmptySimulationListView.swift
+//  PlaceholderView.swift
 //  Plome
 //
 //  Created by Loic Mazuc on 30/10/2022.
 //
 
-import PlomeCoreKit
 import UIKit
 
-final class EmptySimulationListView: UIView {
+public final class PlaceholderView: UIView {
+    // MARK: - Properties
+
+    private let icon: Icons
+    private let text: String
+
     // MARK: - UI
 
     private let imageView: UIImageView = .init().configure {
-        $0.image = Icons.list.configure(weight: .regular, color: .pink, size: 50)
         $0.sizeToFit()
     }
 
     private let textLabel: UILabel = .init().configure {
-        $0.text = "Vous retrouverez ici toutes vos simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier."
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .center
@@ -29,17 +31,20 @@ final class EmptySimulationListView: UIView {
         $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
         $0.alignment = .center
-        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public required init(frame: CGRect, icon: Icons, text: String) {
+        self.icon = icon
+        self.text = text
         super.init(frame: frame)
         setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
+        icon = .fail
+        text = "Oups, il y a eu un imprévu..."
         super.init(coder: aDecoder)
         setupView()
     }
@@ -48,6 +53,9 @@ final class EmptySimulationListView: UIView {
 
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
+
+        textLabel.text = text
+        imageView.image = icon.configure(weight: .regular, color: .pink, size: 50)
 
         stackView.addArrangedSubviews([imageView, textLabel])
         stackView.stretchInView(parentView: self)

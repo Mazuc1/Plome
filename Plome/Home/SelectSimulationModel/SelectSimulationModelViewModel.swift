@@ -12,19 +12,17 @@ import UIKit
 final class SelectSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
 
-    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationModelsSection, Simulation>
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
 
     private let router: SimulationsRouter
-    private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     private let simulationRepository: CoreDataRepository<CDSimulation>
 
     @Published var snapshot: TableViewSnapshot = .init()
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, defaultSimulationModelsProvider: DefaultSimulationModelsProvider, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
         self.router = router
-        self.defaultSimulationModelsProvider = defaultSimulationModelsProvider
         self.simulationRepository = simulationRepository
     }
 
@@ -54,12 +52,10 @@ final class SelectSimulationModelViewModel: ObservableObject {
 
     private func makeTableViewSnapshot(with simulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
-        snapshot.appendSections([.default])
-        snapshot.appendItems(defaultSimulationModelsProvider.simulations, toSection: .default)
 
         if let simulations, !simulations.isEmpty {
-            snapshot.appendSections([.coreData])
-            snapshot.appendItems(simulations, toSection: .coreData)
+            snapshot.appendSections([0])
+            snapshot.appendItems(simulations, toSection: 0)
         }
 
         return snapshot
@@ -79,15 +75,9 @@ final class SelectSimulationModelViewModel: ObservableObject {
     }
 
     func getSimulation(indexPath: IndexPath) -> Simulation? {
-        var simulation: Simulation?
+        let simulation: Simulation = snapshot.itemIdentifiers(inSection: 0)[indexPath.row]
 
-        if indexPath.section == 0 {
-            simulation = defaultSimulationModelsProvider.simulations[indexPath.row]
-        } else if indexPath.section == 1 {
-            simulation = snapshot.itemIdentifiers(inSection: .coreData)[indexPath.row]
-        }
-
-        guard let simulationCopy = simulation?.copy() as? Simulation else { return nil }
+        guard let simulationCopy = simulation.copy() as? Simulation else { return nil }
 
         return simulationCopy
     }
