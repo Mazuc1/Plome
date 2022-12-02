@@ -59,21 +59,6 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         XCTAssertTrue(allExams.count > 0)
     }
 
-    func testWhenOpeningAddSimulationModelVCAsEditFromDefaultOpeningModeThenExamsIsNotEmpty() {
-        // Arrange
-        let exam = Exam(name: "Test", coefficient: nil, grade: nil, type: .option)
-        var exams = Set<Exam>.init()
-        exams.insert(exam)
-        let simulation = Simulation(name: "Test", date: nil, exams: exams, type: .custom)
-
-        // Act
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .editFromDefault(simulation))
-
-        // Assert
-        let allExams = addSimulationModelViewModel.trials + addSimulationModelViewModel.continousControls + addSimulationModelViewModel.options
-        XCTAssertTrue(allExams.count > 0)
-    }
-
     // MARK: - Navigation title
 
     func testWhenOpeningAddSimulationModelVCAsAddOpeningModeThenTitleIsDefaultTitle() {
@@ -91,17 +76,6 @@ final class AddSimulationModelViewModelTests: XCTestCase {
 
         // Act
         let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .edit(cdSimulation))
-
-        // Assert
-        XCTAssertEqual(addSimulationModelViewModel.simulationName, "Test")
-    }
-
-    func testWhenOpeningAddSimulationModelVCAsEditFromDefaultOpeningModeThenTitleIsSimulationName() {
-        // Arrange
-        let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
-
-        // Act
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .editFromDefault(simulation))
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.simulationName, "Test")

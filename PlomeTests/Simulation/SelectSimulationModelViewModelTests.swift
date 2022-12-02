@@ -26,7 +26,7 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        selectSimulationModelViewModel = SelectSimulationModelViewModel(router: simulationsRouter, defaultSimulationModelsProvider: testContext.defaultSimulationModelsProvider, simulationRepository: simulationRepository)
+        selectSimulationModelViewModel = SelectSimulationModelViewModel(router: simulationsRouter, simulationRepository: simulationRepository)
     }
 
     // MARK: - updateSnapshot
@@ -39,7 +39,7 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
             .sink { snapshot in
                 // Assert
                 XCTAssertEqual(snapshot.sectionIdentifiers.count, 1)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], .default)
+                XCTAssertEqual(snapshot.sectionIdentifiers[0], 0)
             }
             .store(in: &cancellables)
     }
@@ -62,8 +62,8 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
             .sink { snapshot in
                 // Assert
                 XCTAssertEqual(snapshot.sectionIdentifiers.count, 2)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], .default)
-                XCTAssertEqual(snapshot.sectionIdentifiers[1], .coreData)
+                XCTAssertEqual(snapshot.sectionIdentifiers[0], 0)
+                XCTAssertEqual(snapshot.sectionIdentifiers[1], 0)
             }
             .store(in: &cancellables)
     }
