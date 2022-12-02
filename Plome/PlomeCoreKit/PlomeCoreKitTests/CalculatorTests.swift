@@ -14,7 +14,7 @@ final class CalculatorTests: XCTestCase {
         super.setUp()
     }
 
-    // MARK: - setMention
+    // MARK: - setMentionScore
 
     func testWhenInitCalculatorWithCustomSimulationTypeThenMentionScoreIsSet() {
         // Arrange
@@ -232,5 +232,81 @@ final class CalculatorTests: XCTestCase {
         }!
 
         XCTAssertEqual(firstItem.value, 3)
+    }
+
+    // MARK: - getExamWhereGrade
+
+    func testThatGetWorstGradeReturnsTheWorstGrade() {
+        // Arrange
+        let trials: [Exam] = [
+            .init(name: "", coefficient: 4, grade: "14/20", type: .trial),
+            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
+            .init(name: "", coefficient: 7, grade: "13/20", type: .trial),
+            .init(name: "betterGrade", coefficient: 3, grade: "18/20", type: .trial),
+        ]
+
+        let continuousControl: [Exam] = [
+            .init(name: "worstGrade", coefficient: 2, grade: "02/20", type: .continuousControl),
+            .init(name: "", coefficient: 5, grade: "15/20", type: .continuousControl),
+            .init(name: "", coefficient: 1, grade: "11/20", type: .continuousControl),
+            .init(name: "", coefficient: 8, grade: "13/20", type: .continuousControl),
+        ]
+
+        let options: [Exam] = [
+            .init(name: "", coefficient: 1, grade: "12/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
+        ]
+
+        let simulation = Simulation(name: "", date: nil, exams: .init(), type: .custom)
+        _ = trials.map { simulation.add(exam: $0) }
+        _ = continuousControl.map { simulation.add(exam: $0) }
+        _ = options.map { simulation.add(exam: $0) }
+
+        let calculator = Calculator(simulation: simulation)
+
+        // Act
+        let result = calculator.getExamWhereGrade(is: .worst)
+
+        // Assert
+        XCTAssertEqual(result!.name, "worstGrade")
+    }
+
+    func testThatGetBetterGradeReturnsTheBetterGrade() {
+        // Arrange
+        let trials: [Exam] = [
+            .init(name: "", coefficient: 4, grade: "14/20", type: .trial),
+            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
+            .init(name: "", coefficient: 7, grade: "13/20", type: .trial),
+            .init(name: "betterGrade", coefficient: 3, grade: "18/20", type: .trial),
+        ]
+
+        let continuousControl: [Exam] = [
+            .init(name: "worstGrade", coefficient: 2, grade: "02/20", type: .continuousControl),
+            .init(name: "", coefficient: 5, grade: "15/20", type: .continuousControl),
+            .init(name: "", coefficient: 1, grade: "11/20", type: .continuousControl),
+            .init(name: "", coefficient: 8, grade: "13/20", type: .continuousControl),
+        ]
+
+        let options: [Exam] = [
+            .init(name: "", coefficient: 1, grade: "12/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
+        ]
+
+        let simulation = Simulation(name: "", date: nil, exams: .init(), type: .custom)
+        _ = trials.map { simulation.add(exam: $0) }
+        _ = continuousControl.map { simulation.add(exam: $0) }
+        _ = options.map { simulation.add(exam: $0) }
+
+        let calculator = Calculator(simulation: simulation)
+
+        // Act
+        let result = calculator.getExamWhereGrade(is: .better)
+
+        // Assert
+        XCTAssertEqual(result!.name, "betterGrade")
     }
 }
