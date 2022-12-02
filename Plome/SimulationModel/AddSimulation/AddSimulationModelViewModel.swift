@@ -13,7 +13,6 @@ import PlomeCoreKit
 enum AddSimulationModelOpeningMode {
     case add
     case edit(CDSimulation)
-    case editFromDefault(Simulation)
 }
 
 final class AddSimulationModelViewModel: ObservableObject {
@@ -41,7 +40,6 @@ final class AddSimulationModelViewModel: ObservableObject {
         switch openAs {
         case .add: break
         case let .edit(cdSimulation): setupEditMode(with: cdSimulation)
-        case let .editFromDefault(simulation): setupEditModeFromDefault(with: simulation)
         }
     }
 
@@ -60,15 +58,6 @@ final class AddSimulationModelViewModel: ObservableObject {
 
             options = Array(exams.filter { $0.type == .option })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
-        }
-    }
-
-    private func setupEditModeFromDefault(with simulation: Simulation) {
-        simulationName = simulation.name
-        if let exams = simulation.exams {
-            trials = Array(exams.filter { $0.type == .trial })
-            continousControls = Array(exams.filter { $0.type == .continuousControl })
-            options = Array(exams.filter { $0.type == .option })
         }
     }
 
@@ -102,7 +91,6 @@ final class AddSimulationModelViewModel: ObservableObject {
         switch openAs {
         case .add: saveNewSimulationModel(name: simulationName)
         case .edit: saveEditSimulationModel()
-        case .editFromDefault: saveNewSimulationModel(name: simulationName)
         }
     }
 
