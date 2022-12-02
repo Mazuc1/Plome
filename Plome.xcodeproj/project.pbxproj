@@ -58,7 +58,6 @@
 		CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */; };
 		CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD196192931057D00A06FE7 /* ExamInformationsView.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
-		CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +142,6 @@
 		CFD067AB292FBBE30034EE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CFD196192931057D00A06FE7 /* ExamInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInformationsView.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
-		CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +193,6 @@
 			children = (
 				CFD067AB292FBBE30034EE02 /* Info.plist */,
 				CFBFA087292E4CFC00F36790 /* Simulation */,
-				CFB001CA290C170900EF5A4E /* Mocks */,
 				CF324078290BF8D300FC6666 /* SimulationModel */,
 			);
 			path = PlomeTests;
@@ -313,14 +310,6 @@
 				CF9D0C4C290FC5AF00DA9BC9 /* SmallSimulationModelCell.swift */,
 			);
 			path = SelectSimulationModel;
-			sourceTree = "<group>";
-		};
-		CFB001CA290C170900EF5A4E /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				CFF4DB02290C028D00E3DC86 /* MockCoreData.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		CFBF56A128ECC5F000E4EC7D = {
@@ -482,7 +471,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF4DB03290C028D00E3DC86 /* MockCoreData.swift in Sources */,
 				CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */,
 				CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */,
 				CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */,

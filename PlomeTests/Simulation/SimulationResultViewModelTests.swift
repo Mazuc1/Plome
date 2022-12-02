@@ -7,8 +7,10 @@
 
 @testable import Plome
 @testable import PlomeCoreKit
-import PlomeCoreKitTestsHelpers
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
+
+let testContext = Context()
 
 final class SimulationResultViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
