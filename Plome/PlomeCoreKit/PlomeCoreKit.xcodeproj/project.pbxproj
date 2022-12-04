@@ -12,6 +12,8 @@
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
 		CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E20293D56E100ACFC6A /* FirebaseAnalytics */; };
 		CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */; };
+		CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E24293D581900ACFC6A /* FirebaseCrashlytics */; };
+		CF135E26293D592000ACFC6A /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF18517529342C1C003CB46F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517429342C1C003CB46F /* UIViewController.swift */; };
 		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
@@ -229,6 +231,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF135E26293D592000ACFC6A /* PlomeCoreKit.framework in Frameworks */,
+				CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +584,7 @@
 			);
 			name = PlomeCoreKitTestsHelpers;
 			packageProductDependencies = (
+				CF135E24293D581900ACFC6A /* FirebaseCrashlytics */,
 			);
 			productName = PlomeCoreKitTestsHelpers;
 			productReference = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */;
@@ -1194,6 +1199,11 @@
 			productName = FirebaseAnalytics;
 		};
 		CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		CF135E24293D581900ACFC6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
