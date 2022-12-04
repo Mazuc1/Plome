@@ -5,9 +5,9 @@
 //  Created by Loic Mazuc on 04/10/2022.
 //
 
+import FirebaseCore
 import PlomeCoreKit
 import UIKit
-import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

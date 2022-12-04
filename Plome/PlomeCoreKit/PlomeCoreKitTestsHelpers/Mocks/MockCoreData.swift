@@ -7,7 +7,6 @@
 
 import CoreData
 import Foundation
-@testable import Plome
 @testable import PlomeCoreKit
 
 final class MockCoreData: StorageProvider {
