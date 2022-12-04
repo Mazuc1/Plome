@@ -10,11 +10,11 @@
 		CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BA2905E7760099186E /* CoreDataRepository.swift */; };
 		CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */; };
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
+		CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E20293D56E100ACFC6A /* FirebaseAnalytics */; };
+		CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */; };
 		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF18517529342C1C003CB46F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517429342C1C003CB46F /* UIViewController.swift */; };
 		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
-		CF1BDAA6293A251400E459FD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF1BDAA5293A251400E459FD /* FirebaseAnalytics */; };
-		CF1BDAA8293A251400E459FD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF1BDAA7293A251400E459FD /* FirebaseCrashlytics */; };
 		CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1E28F94810001F83B1 /* CDSimulation.swift */; };
 		CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2428F94C3C001F83B1 /* StorageProvider.swift */; };
 		CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2628F95318001F83B1 /* PrimaryCTA.swift */; };
@@ -71,7 +71,6 @@
 		CF8E3D202923BF7E001B1AC8 /* ALTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
-		CFABB391293D511700C36355 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CFABB390293D511700C36355 /* FirebaseCrashlytics */; };
 		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFBFA095292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -212,8 +211,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1BDAA8293A251400E459FD /* FirebaseCrashlytics in Frameworks */,
-				CF1BDAA6293A251400E459FD /* FirebaseAnalytics in Frameworks */,
+				CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */,
+				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,7 +229,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFABB391293D511700C36355 /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,8 +539,8 @@
 			name = PlomeCoreKit;
 			packageProductDependencies = (
 				CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */,
-				CF1BDAA5293A251400E459FD /* FirebaseAnalytics */,
-				CF1BDAA7293A251400E459FD /* FirebaseCrashlytics */,
+				CF135E20293D56E100ACFC6A /* FirebaseAnalytics */,
+				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -582,7 +580,6 @@
 			);
 			name = PlomeCoreKitTestsHelpers;
 			packageProductDependencies = (
-				CFABB390293D511700C36355 /* FirebaseCrashlytics */,
 			);
 			productName = PlomeCoreKitTestsHelpers;
 			productReference = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */;
@@ -624,7 +621,7 @@
 			mainGroup = CF59EABF28ECD6B30041B33B;
 			packageReferences = (
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1172,7 +1169,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1191,25 +1188,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CF1BDAA5293A251400E459FD /* FirebaseAnalytics */ = {
+		CF135E20293D56E100ACFC6A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		CF1BDAA7293A251400E459FD /* FirebaseCrashlytics */ = {
+		CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 		CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
-		};
-		CFABB390293D511700C36355 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF1BDAA4293A251400E459FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
