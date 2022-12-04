@@ -6,12 +6,11 @@
 //
 
 import Foundation
+import FirebaseCrashlytics
 
 public final class PlomeCoreKit {
     public class func log(error: Error, comment _: String? = nil) {
         let crashlyticsError = NSError(domain: (error as NSError).domain, code: (error as NSError).code)
-
-        // Log to crashlytics
-        // Crashlytics.crashlytics().record(error: crashlyticsError)
+        Crashlytics.crashlytics().record(error: crashlyticsError)
     }
 }
