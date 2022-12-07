@@ -6,7 +6,6 @@
 //
 
 @testable import PlomeCoreKit
-import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class UserDefaultsTests: XCTestCase {
