@@ -78,6 +78,7 @@
 		CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
+		CFDE1CDE29412F440041EF1D /* CalculatorShaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */; };
 		CFE77750293A0B1C00D0A90D /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */; };
 		CFE77752293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */; };
 		CFE77756293A0DB500D0A90D /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77755293A0DB500D0A90D /* MockCoreData.swift */; };
@@ -193,6 +194,7 @@
 		CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKitTestsHelpers.h; sourceTree = "<group>"; };
 		CFD067AC292FBD980034EE02 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
+		CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorShaperTests.swift; sourceTree = "<group>"; };
 		CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
 		CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimulationModelStorageServiceTests.swift; sourceTree = "<group>"; };
 		CFE77755293A0DB500D0A90D /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				CF1B64702925182B0051A7C3 /* CalculatorTests.swift */,
 				CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */,
 				CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */,
+				CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */,
 			);
 			path = PlomeCoreKitTests;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDE1CDE29412F440041EF1D /* CalculatorShaperTests.swift in Sources */,
 				CFE77750293A0B1C00D0A90D /* UserDefaultsTests.swift in Sources */,
 				CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */,
 				CFE77752293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift in Sources */,
