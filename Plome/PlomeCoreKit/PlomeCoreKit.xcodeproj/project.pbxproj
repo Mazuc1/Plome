@@ -13,7 +13,6 @@
 		CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E20293D56E100ACFC6A /* FirebaseAnalytics */; };
 		CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */; };
 		CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E24293D581900ACFC6A /* FirebaseCrashlytics */; };
-		CF135E26293D592000ACFC6A /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF18517529342C1C003CB46F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517429342C1C003CB46F /* UIViewController.swift */; };
 		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
@@ -58,7 +57,6 @@
 		CF52B4A52939FB4400AB6C9E /* PlomeCoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A42939FB4400AB6C9E /* PlomeCoreKit.swift */; };
 		CF52B4A9293A00ED00AB6C9E /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A8293A00ED00AB6C9E /* PlaceholderView.swift */; };
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
-		CF59EAD428ECD6B30041B33B /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CF59EAD928ECD6B30041B33B /* ExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAD828ECD6B30041B33B /* ExamTests.swift */; };
 		CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF59EAEC28ECD6F20041B33B /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE328ECD6F10041B33B /* AppStyles.swift */; };
@@ -74,10 +72,10 @@
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
 		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFBFA095292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
-		CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
+		CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
+		CFDA810B2941385F006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CFDE1CDE29412F440041EF1D /* CalculatorShaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */; };
 		CFE77750293A0B1C00D0A90D /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */; };
 		CFE77752293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */; };
@@ -101,28 +99,7 @@
 			remoteGlobalIDString = CF59EAC828ECD6B30041B33B;
 			remoteInfo = PlomeCoreKit;
 		};
-		CFBFA093292E69B700F36790 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF59EAC028ECD6B30041B33B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CFBFA08E292E69B700F36790;
-			remoteInfo = PlomeCoreKitTestsHelpers;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		CFBFA097292E69B700F36790 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CFBFA096292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CF0A26BA2905E7760099186E /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -207,7 +184,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFBFA095292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF59EAD428ECD6B30041B33B /* PlomeCoreKit.framework in Frameworks */,
+				CFDA810B2941385F006C0D16 /* PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF135E26293D592000ACFC6A /* PlomeCoreKit.framework in Frameworks */,
+				CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */,
 				CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,12 +494,10 @@
 				CF45FA4D2924335C00047B7D /* Sources */,
 				CF45FA4E2924335C00047B7D /* Frameworks */,
 				CF45FA4F2924335C00047B7D /* Resources */,
-				CFBFA097292E69B700F36790 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CFBFA094292E69B700F36790 /* PBXTargetDependency */,
 			);
 			name = PlomeCoreKitApp;
 			productName = PlomeCoreKitApp;
@@ -568,6 +542,8 @@
 				CF45FA602924336800047B7D /* PBXTargetDependency */,
 			);
 			name = PlomeCoreKitTests;
+			packageProductDependencies = (
+			);
 			productName = PlomeCoreKitTests;
 			productReference = CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -783,18 +759,12 @@
 			target = CF59EAC828ECD6B30041B33B /* PlomeCoreKit */;
 			targetProxy = CF59EAD528ECD6B30041B33B /* PBXContainerItemProxy */;
 		};
-		CFBFA094292E69B700F36790 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFBFA08E292E69B700F36790 /* PlomeCoreKitTestsHelpers */;
-			targetProxy = CFBFA093292E69B700F36790 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CF45FA5D2924335D00047B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -808,7 +778,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -825,7 +795,6 @@
 		CF45FA5E2924335D00047B7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -839,7 +808,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
