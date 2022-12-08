@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 04/10/2022.
 //
 
-import FirebaseCore
+import Firebase
 import PlomeCoreKit
 import UIKit
 
@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         AppAppearance.setKeyboardAppearance()
+        Analytics.setAnalyticsCollectionEnabled(true)
+        
         return true
     }
 
