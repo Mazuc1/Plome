@@ -24,6 +24,7 @@
 		CF208F5C28F96EB9001F83B1 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5B28F96EB9001F83B1 /* Exam.swift */; };
 		CF208F5E28F96F8B001F83B1 /* GeneralBACExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5D28F96F8B001F83B1 /* GeneralBACExamsProvider.swift */; };
 		CF236879290AB13000D04AAD /* Collection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF236878290AB13000D04AAD /* Collection+extension.swift */; };
+		CF26194E2941DCE000D0D5CC /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBC729027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift */; };
 		CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBC929027F3600FA14C4 /* Simulation.swift */; };
 		CF2CCBD22902945500FA14C4 /* UIStackView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBD12902945500FA14C4 /* UIStackView+extension.swift */; };
@@ -201,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF26194E2941DCE000D0D5CC /* PlomeCoreKitTestsHelpers.framework in Frameworks */,
 				CFDA810B2941385F006C0D16 /* PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
