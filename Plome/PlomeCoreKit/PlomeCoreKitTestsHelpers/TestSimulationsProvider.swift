@@ -82,3 +82,74 @@ public enum TestSimulations {
             }
     }
 }
+
+enum CalculatorShaperProvider {
+    static func calculatorShaperWithExamSucceed() -> CalculatorShaper {
+        let trials: [Exam] = [
+            .init(name: "", coefficient: 4, grade: "14/20", type: .trial),
+            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
+            .init(name: "", coefficient: 7, grade: "13/20", type: .trial),
+            .init(name: "BetterGrade", coefficient: 3, grade: "18/20", type: .trial),
+        ]
+
+        let continuousControl: [Exam] = [
+            .init(name: "WorstGrade", coefficient: 2, grade: "02/20", type: .continuousControl),
+            .init(name: "", coefficient: 5, grade: "15/20", type: .continuousControl),
+            .init(name: "", coefficient: 1, grade: "11/20", type: .continuousControl),
+            .init(name: "", coefficient: 8, grade: "13/20", type: .continuousControl),
+        ]
+
+        let options: [Exam] = [
+            .init(name: "", coefficient: 1, grade: "12/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
+        ]
+
+        let dateComponent = DateComponents(year: 2012, month: 12, day: 12)
+        let date = Calendar.current.date(from: dateComponent)!
+
+        let simulation = Simulation(name: "", date: date, exams: .init(), type: .brevet)
+        _ = trials.map { simulation.add(exam: $0) }
+        _ = continuousControl.map { simulation.add(exam: $0) }
+        _ = options.map { simulation.add(exam: $0) }
+
+        let calculator = Calculator(simulation: simulation)
+        calculator.calculate()
+
+        return CalculatorShaper(calculator: calculator)
+    }
+
+    static func calculatorShaperWithExamFailure() -> CalculatorShaper {
+        let trials: [Exam] = [
+            .init(name: "", coefficient: 4, grade: "3/20", type: .trial),
+            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
+            .init(name: "", coefficient: 7, grade: "2/20", type: .trial),
+            .init(name: "", coefficient: 3, grade: "4/20", type: .trial),
+        ]
+
+        let continuousControl: [Exam] = [
+            .init(name: "", coefficient: 2, grade: "02/20", type: .continuousControl),
+            .init(name: "", coefficient: 5, grade: "2/20", type: .continuousControl),
+            .init(name: "", coefficient: 1, grade: "1/20", type: .continuousControl),
+            .init(name: "", coefficient: 8, grade: "4/20", type: .continuousControl),
+        ]
+
+        let options: [Exam] = [
+            .init(name: "", coefficient: 1, grade: "1/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
+            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
+        ]
+
+        let simulation = Simulation(name: "", date: nil, exams: .init(), type: .brevet)
+        _ = trials.map { simulation.add(exam: $0) }
+        _ = continuousControl.map { simulation.add(exam: $0) }
+        _ = options.map { simulation.add(exam: $0) }
+
+        let calculator = Calculator(simulation: simulation)
+        calculator.calculate()
+
+        return CalculatorShaper(calculator: calculator)
+    }
+}

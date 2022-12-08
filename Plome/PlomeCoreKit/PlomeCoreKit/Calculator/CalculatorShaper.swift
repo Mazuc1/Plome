@@ -77,7 +77,7 @@ public final class CalculatorShaper {
     /// Get the mention sentence depends of Mention. If there are no mention, returns "Sans mention"
     /// - Returns: Eg: "Mention très bien"
     public func mentionSentence() -> String {
-        guard let mention = calculator.mention else { return "Sans mention" }
+        guard let mention = calculator.mention else { return "Vous ne pouvez pas avoir de mention en dessous de la moyenne" }
         return mention.name
     }
 

@@ -6,202 +6,331 @@
 //
 
 @testable import PlomeCoreKit
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class CalculatorShaperTests: XCTestCase {
-    private var calculatorShaper: CalculatorShaper!
-    
     override func setUp() {
         super.setUp()
-        let trials: [Exam] = [
-            .init(name: "", coefficient: 4, grade: "14/20", type: .trial),
-            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
-            .init(name: "", coefficient: 7, grade: "13/20", type: .trial),
-            .init(name: "", coefficient: 3, grade: "18/20", type: .trial),
-        ]
-
-        let continuousControl: [Exam] = [
-            .init(name: "", coefficient: 2, grade: "02/20", type: .continuousControl),
-            .init(name: "", coefficient: 5, grade: "15/20", type: .continuousControl),
-            .init(name: "", coefficient: 1, grade: "11/20", type: .continuousControl),
-            .init(name: "", coefficient: 8, grade: "13/20", type: .continuousControl),
-        ]
-
-        let options: [Exam] = [
-            .init(name: "", coefficient: 1, grade: "12/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
-        ]
-
-        let simulation = Simulation(name: "", date: nil, exams: .init(), type: .custom)
-        _ = trials.map { simulation.add(exam: $0) }
-        _ = continuousControl.map { simulation.add(exam: $0) }
-        _ = options.map { simulation.add(exam: $0) }
-        
-        let calculator = Calculator(simulation: simulation)
-        calculatorShaper = CalculatorShaper(calculator: calculator)
     }
-    
+
     func testReturnsOfFinalGradeOutOfTwenty() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
         // Act
         let result = calculatorShaper.finalGradeOutOfTwenty()
-        
+
         // Assert
-        XCTAssertEqual(result, "12.40/20")
+        XCTAssertEqual(result, "12.4/20")
     }
 
+    func testReturnsOfFinalGradeProgress() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.finalGradeProgress()
+
+        // Assert
+        XCTAssertEqual(result, 0.62)
+    }
+
+    func testReturnsOfFinalGradeBeforeTwentyConform() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.finalGradeBeforeTwentyConform()
+
+        // Assert
+        XCTAssertEqual(result, "446.67/720.0")
+    }
+
+    func testReturnsOfHasSucceedExamWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.hasSucceedExam()
+
+        // Assert
+        XCTAssertTrue(result)
+    }
+
+    func testReturnsOfHasSucceedExamWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.hasSucceedExam()
+
+        // Assert
+        XCTAssertFalse(result)
+    }
+
+    func testReturnsOfDisplayCatchUpSectionIfNeededWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.displayCatchUpSectionIfNeeded()
+
+        // Assert
+        XCTAssertFalse(result)
+    }
+
+    func testReturnsOfDisplayCatchUpSectionIfNeededWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.displayCatchUpSectionIfNeeded()
+
+        // Assert
+        XCTAssertTrue(result)
+    }
+
+    func testReturnsOfGetCatchUpInformationsWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.getCatchUpInformations()
+
+        // Assert
+        XCTAssertNil(result)
+    }
+
+    func testReturnsOfGetCatchUpInformationsWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.getCatchUpInformations()
+
+        // Assert
+        XCTAssertEqual(result?.grade.truncate(places: 2), 10.07)
+        XCTAssertEqual(result?.difference.count, 11)
+    }
+
+    func testReturnsOfAdmissionSentenceWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.admissionSentence()
+
+        // Assert
+        XCTAssertEqual(result, "Vous êtes admis ! 🥳")
+    }
+
+    func testReturnsOfAdmissionSentenceWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.admissionSentence()
+
+        // Assert
+        XCTAssertEqual(result, "Vous n'êtes pas admis 😕")
+    }
+
+    func testReturnsOfResultSentenceWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.resultSentence()
+
+        // Assert
+        XCTAssertEqual(result, "Félicitation !")
+    }
+
+    func testReturnsOfResultSentenceWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.resultSentence()
+
+        // Assert
+        XCTAssertEqual(result, "Oups...")
+    }
+
+    func testReturnsOfMentionSentenceWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.mentionSentence()
+
+        // Assert
+        XCTAssertEqual(result, "Sans mention")
+    }
+
+    func testReturnsOfMentionSentenceWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.mentionSentence()
+
+        // Assert
+        XCTAssertEqual(result, "Vous ne pouvez pas avoir de mention en dessous de la moyenne")
+    }
+
+    func testReturnsOfTrialsGrade() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.trialsGrade()
+
+        // Assert
+        XCTAssertEqual(result, "13.31/20")
+    }
+
+    func testReturnsOfTrialsGradeProgress() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.trialsGradeProgress()
+
+        // Assert
+        XCTAssertEqual(result?.truncate(places: 2), 0.66)
+    }
+
+    func testReturnsOfContinuousControlGrade() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.continousControlGrade()
+
+        // Assert
+        XCTAssertEqual(result, "12.12/20")
+    }
+
+    func testReturnsOfContinuousControlGradeProgress() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.continuousControlGradeProgress()
+
+        // Assert
+        XCTAssertEqual(result?.truncate(places: 2), 0.60)
+    }
+
+    func testReturnsOfOptionsGrade() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.optionGrade()
+
+        // Assert
+        XCTAssertEqual(result, "9.91/20")
+    }
+
+    func testReturnsOfOptionsGradeProgress() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.optionsGradeProgress()
+
+        // Assert
+        XCTAssertEqual(result?.truncate(places: 2), 0.49)
+    }
+
+    func testReturnsOfSimulationContainTrials() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.simulationContainTrials()
+
+        // Assert
+        XCTAssertTrue(result)
+    }
+
+    func testReturnsOfSimulationContainContinuousControls() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.simulationContainContinousControls()
+
+        // Assert
+        XCTAssertTrue(result)
+    }
+
+    func testReturnsOfSimulationContainOptions() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.simulationContainOptions()
+
+        // Assert
+        XCTAssertTrue(result)
+    }
+
+    func testReturnsOfMentionWithExamSuccess() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.mention()
+
+        // Assert
+        XCTAssertEqual(result, .without)
+    }
+
+    func testReturnsOfMentionWithExamFailure() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamFailure()
+
+        // Act
+        let result = calculatorShaper.mention()
+
+        // Assert
+        XCTAssertNil(result)
+    }
+
+    func testReturnsOfGetExamGradeWhereIsBetter() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.getExamGradeWhere(is: .better)
+
+        // Assert
+        XCTAssertEqual(result?.name, "BetterGrade")
+    }
+
+    func testReturnsOfGetExamGradeWhereIsWorst() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.getExamGradeWhere(is: .worst)
+
+        // Assert
+        XCTAssertEqual(result?.name, "WorstGrade")
+    }
+
+    func testReturnsOfDate() {
+        // Arrange
+        let calculatorShaper = CalculatorShaperProvider.calculatorShaperWithExamSucceed()
+
+        // Act
+        let result = calculatorShaper.date(with: .classicPoint)
+
+        // Assert
+        XCTAssertEqual(result, "12.12.2012")
+    }
 }
-
-/*
- XCTAssertEqual(calculator.finalGrade.truncate(places: 2), 12.40)
-
- XCTAssertEqual(calculator.totalGrade.truncate(places: 2), 446.67)
- XCTAssertEqual(calculator.totalOutOf, 720)
- XCTAssertEqual(calculator.totalCoefficient, 36)
-
- XCTAssertEqual(calculator.trialsGrade, 13.3125)
- XCTAssertEqual(calculator.continousControlGrade, 12.125)
- XCTAssertEqual(calculator.optionsGrade!.truncate(places: 2), 9.91)
- */
-
-/*
- /// Get the final grade out of twenty, truncate by two places
- /// - Returns: Eg: "13.45/20"
- public func finalGradeOutOfTwenty() -> String {
-     "\(calculator.finalGrade.truncate(places: 2))/20"
- }
-
- /// Get the progress of the final grade
- /// - Returns: Eg: 0.63
- public func finalGradeProgress() -> Float {
-     calculator.finalGrade.truncate(places: 2) / 20
- }
-
- /// Get the final grade, truncate by two places
- /// - Returns: Eg: "1200.34/2000.0"
- public func finalGradeBeforeTwentyConform() -> String {
-     "\(calculator.totalGrade.truncate(places: 2))/\(calculator.totalOutOf.truncate(places: 0))"
- }
-
- /// Returns if the exam succeed or failed
- /// - Returns: Bool
- public func hasSucceedExam() -> Bool {
-     calculator.hasSucceed()
- }
-
- /// Returns if the exam need to be catchUp
- /// - Returns: Bool
- public func displayCatchUpSectionIfNeeded() -> Bool {
-     !hasSucceedExam() && calculator.differenceAfterCatchUp != nil && calculator.gradeOutOfTwentyAfterCatchUp != nil
- }
-
- /// Get the catchUp informations. Returns tuple
- /// - Returns: Tuple.grade, the final grade after catchUp. Tuple.difference, dictionnary of Exam & Int. It contains all exam which points has been added and the difference in point between exam before and after catchUp
- public func getCatchUpInformations() -> (grade: Float, difference: [Exam: Int])? {
-     guard let grade = calculator.gradeOutOfTwentyAfterCatchUp,
-           let difference = calculator.differenceAfterCatchUp else { return nil }
-
-     return (grade, difference)
- }
-
- /// Get the admission sentence depends of success of Exam
- /// - Returns: Eg: "Vous êtes admis"
- public func admissionSentence() -> String {
-     hasSucceedExam() ? successAdmissionSentence : failureAdmissionSentence
- }
-
- /// Get the result sentence depends of success of Exam
- /// - Returns: "Féliciation" or "Oups..."
- public func resultSentence() -> String {
-     hasSucceedExam() ? "Félicitation !" : "Oups..."
- }
-
- /// Get the mention sentence depends of Mention. If there are no mention, returns "Sans mention"
- /// - Returns: Eg: "Mention très bien"
- public func mentionSentence() -> String {
-     guard let mention = calculator.mention else { return "Sans mention" }
-     return mention.name
- }
-
- /// Get trials grade out of twenty, truncated by two places
- /// - Returns: Eg: "13.45/20"
- public func trialsGrade() -> String {
-     guard let grade = calculator.trialsGrade else { return "" }
-     return "\(grade.truncate(places: 2))/20"
- }
-
- /// Get the progress of the trials grade
- /// - Returns: Eg: 0.63
- public func trialsGradeProgress() -> Float? {
-     guard let grade = calculator.trialsGrade else { return nil }
-     return grade / 20
- }
-
- /// Get continuousControl grade out of twenty, truncated by two places
- /// - Returns: Eg: "13.45/20"
- public func continousControlGrade() -> String {
-     guard let grade = calculator.continousControlGrade else { return "" }
-     return "\(grade.truncate(places: 2))/20"
- }
-
- /// Get the progress of the continuous control grade
- /// - Returns: Eg: 0.63
- public func continuousControlGradeProgress() -> Float? {
-     guard let grade = calculator.continousControlGrade else { return nil }
-     return grade / 20
- }
-
- /// Get options grade out of twenty, truncated by two places
- /// - Returns: Eg: "13.45/20"
- public func optionGrade() -> String {
-     guard let grade = calculator.optionsGrade else { return "" }
-     return "\(grade.truncate(places: 2))/20"
- }
-
- /// Get the progress of the continuous control grade
- /// - Returns: Eg: 0.63
- public func optionsGradeProgress() -> Float? {
-     guard let grade = calculator.optionsGrade else { return nil }
-     return grade / 20
- }
-
- /// Returns if the simulation contains Trials
- /// - Returns: Bool
- public func simulationContainTrials() -> Bool {
-     calculator.simulation.examsContainTrials()
- }
-
- /// Returns if the simulation contains Continuous control
- /// - Returns: Bool
- public func simulationContainContinousControls() -> Bool {
-     calculator.simulation.examsContainContinuousControls()
- }
-
- /// Returns if the simulation contains Options
- /// - Returns: Bool
- public func simulationContainOptions() -> Bool {
-     calculator.simulation.examsContainOptions()
- }
-
- /// Get the simulation date. If there no date, return current date
- /// - Parameter format: Format of the date
- /// - Returns: Date convert to string with the desire format
- public func date(with format: Date.DateFormat) -> String {
-     guard let date = calculator.simulation.date else { return Date().toString(format: format) }
-     return date.toString(format: format)
- }
-
- /// Returns the mention is there is any one
- /// - Returns: Optional mention
- public func mention() -> Mention? {
-     calculator.mention
- }
-
- /// Get exam depends of paramters
- /// - Parameter type: Type of exam grade: worst or better
- /// - Returns: Returns the better or worst exam grade
- public func getExamGradeWhere(is type: GradeType) -> Exam? {
-     calculator.getExamWhereGrade(is: type)
- }
- */
