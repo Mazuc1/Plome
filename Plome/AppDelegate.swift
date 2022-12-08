@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         AppAppearance.setKeyboardAppearance()
         Analytics.setAnalyticsCollectionEnabled(true)
-        
+
         return true
     }
 
