@@ -34,7 +34,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF59EAD228ECD6B30041B33B"
+               BlueprintIdentifier = "CFD055A12941FC7B000D43BB"
                BuildableName = "PlomeCoreKitTests.xctest"
                BlueprintName = "PlomeCoreKitTests"
                ReferencedContainer = "container:PlomeCoreKit.xcodeproj">

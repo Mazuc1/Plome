@@ -15,7 +15,6 @@
 		CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E24293D581900ACFC6A /* FirebaseCrashlytics */; };
 		CF142A78292ADA5800866408 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF142A77292ADA5800866408 /* TertiaryCTA.swift */; };
 		CF18517529342C1C003CB46F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517429342C1C003CB46F /* UIViewController.swift */; };
-		CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B64702925182B0051A7C3 /* CalculatorTests.swift */; };
 		CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1E28F94810001F83B1 /* CDSimulation.swift */; };
 		CF208F2528F94C3C001F83B1 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2428F94C3C001F83B1 /* StorageProvider.swift */; };
 		CF208F2728F95318001F83B1 /* PrimaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F2628F95318001F83B1 /* PrimaryCTA.swift */; };
@@ -24,7 +23,6 @@
 		CF208F5C28F96EB9001F83B1 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5B28F96EB9001F83B1 /* Exam.swift */; };
 		CF208F5E28F96F8B001F83B1 /* GeneralBACExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F5D28F96F8B001F83B1 /* GeneralBACExamsProvider.swift */; };
 		CF236879290AB13000D04AAD /* Collection+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF236878290AB13000D04AAD /* Collection+extension.swift */; };
-		CF26194E2941DCE000D0D5CC /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBC729027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift */; };
 		CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBC929027F3600FA14C4 /* Simulation.swift */; };
 		CF2CCBD22902945500FA14C4 /* UIStackView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2CCBD12902945500FA14C4 /* UIStackView+extension.swift */; };
@@ -47,7 +45,6 @@
 		CF45FA562924335C00047B7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA552924335C00047B7D /* ContentView.swift */; };
 		CF45FA582924335D00047B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF45FA572924335D00047B7D /* Assets.xcassets */; };
 		CF45FA5B2924335D00047B7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF45FA5A2924335D00047B7D /* Preview Assets.xcassets */; };
-		CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45FA61292445F400047B7D /* SimulationTests.swift */; };
 		CF48938E2915275A00B97147 /* ExamTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */; };
 		CF4B5AEB292940F1005F8D18 /* ALProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */; };
 		CF4B5AEF292946B2005F8D18 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B5AEE292946B1005F8D18 /* Date+extension.swift */; };
@@ -58,7 +55,6 @@
 		CF52B4A52939FB4400AB6C9E /* PlomeCoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A42939FB4400AB6C9E /* PlomeCoreKit.swift */; };
 		CF52B4A9293A00ED00AB6C9E /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A8293A00ED00AB6C9E /* PlaceholderView.swift */; };
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
-		CF59EAD928ECD6B30041B33B /* ExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAD828ECD6B30041B33B /* ExamTests.swift */; };
 		CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF59EAEC28ECD6F20041B33B /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE328ECD6F10041B33B /* AppStyles.swift */; };
 		CF59EAF128ECD6F20041B33B /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59EAE928ECD6F10041B33B /* Icons.swift */; };
@@ -67,6 +63,13 @@
 		CF5B5F2A2921B220002EF9BD /* SecondaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */; };
 		CF5B5F2E2921BA64002EF9BD /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */; };
 		CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5B5F322921BD8C002EF9BD /* confetti.png */; };
+		CF7DED0329420CA7009DC817 /* ExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFD29420CA7009DC817 /* ExamTests.swift */; };
+		CF7DED0429420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFE29420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift */; };
+		CF7DED0529420CA7009DC817 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFF29420CA7009DC817 /* CalculatorTests.swift */; };
+		CF7DED0629420CA7009DC817 /* CalculatorShaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DED0029420CA7009DC817 /* CalculatorShaperTests.swift */; };
+		CF7DED0729420CA7009DC817 /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DED0129420CA7009DC817 /* SimulationTests.swift */; };
+		CF7DED0829420CA7009DC817 /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DED0229420CA7009DC817 /* UserDefaultsTests.swift */; };
+		CF7DED0929420CC3009DC817 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CF82A566290BD560004E2D50 /* AppContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82A565290BD560004E2D50 /* AppContextualAction.swift */; };
 		CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */; };
 		CF8E3D202923BF7E001B1AC8 /* ALTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */; };
@@ -74,26 +77,16 @@
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
 		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
+		CFD055A62941FC7B000D43BB /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
 		CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
-		CFDA810B2941385F006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
-		CFDE1CDE29412F440041EF1D /* CalculatorShaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */; };
-		CFE77750293A0B1C00D0A90D /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */; };
-		CFE77752293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */; };
 		CFE77756293A0DB500D0A90D /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77755293A0DB500D0A90D /* MockCoreData.swift */; };
 		CFEDAD7F2930104E00D56717 /* CalculatorShaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7E2930104E00D56717 /* CalculatorShaper.swift */; };
 		CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFF846F8290AE25800D31F5F /* Plome.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF45FA5F2924336800047B7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF59EAC028ECD6B30041B33B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF45FA502924335C00047B7D;
-			remoteInfo = PlomeCoreKitApp;
-		};
-		CF59EAD528ECD6B30041B33B /* PBXContainerItemProxy */ = {
+		CFD055A72941FC7B000D43BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF59EAC028ECD6B30041B33B /* Project object */;
 			proxyType = 1;
@@ -108,7 +101,6 @@
 		CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+extension.swift"; sourceTree = "<group>"; };
 		CF142A77292ADA5800866408 /* TertiaryCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryCTA.swift; sourceTree = "<group>"; };
 		CF18517429342C1C003CB46F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		CF1B64702925182B0051A7C3 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSimulationsProvider.swift; sourceTree = "<group>"; };
 		CF208F1E28F94810001F83B1 /* CDSimulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDSimulation.swift; sourceTree = "<group>"; };
 		CF208F2428F94C3C001F83B1 /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -142,7 +134,6 @@
 		CF45FA552924335C00047B7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CF45FA572924335D00047B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF45FA5A2924335D00047B7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CF45FA61292445F400047B7D /* SimulationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationTests.swift; sourceTree = "<group>"; };
 		CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypeHeaderView.swift; sourceTree = "<group>"; };
 		CF4893912915548500B97147 /* Plome_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome_2.xcdatamodel; sourceTree = "<group>"; };
 		CF4B5AEA292940F1005F8D18 /* ALProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressRing.swift; sourceTree = "<group>"; };
@@ -155,8 +146,6 @@
 		CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKit.h; sourceTree = "<group>"; };
 		CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = PlomeCoreKit.docc; sourceTree = "<group>"; };
-		CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeCoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF59EAD828ECD6B30041B33B /* ExamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTests.swift; sourceTree = "<group>"; };
 		CF59EAE328ECD6F10041B33B /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		CF59EAE928ECD6F10041B33B /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		CF59EAEA28ECD6F20041B33B /* PlomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlomeFont.swift; sourceTree = "<group>"; };
@@ -164,6 +153,13 @@
 		CF5B5F292921B220002EF9BD /* SecondaryCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryCTA.swift; sourceTree = "<group>"; };
 		CF5B5F2D2921BA64002EF9BD /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		CF5B5F322921BD8C002EF9BD /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
+		CF7DECFC29420CA6009DC817 /* PlomeCoreKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlomeCoreKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF7DECFD29420CA7009DC817 /* ExamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamTests.swift; sourceTree = "<group>"; };
+		CF7DECFE29420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSimulationModelStorageServiceTests.swift; sourceTree = "<group>"; };
+		CF7DECFF29420CA7009DC817 /* CalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		CF7DED0029420CA7009DC817 /* CalculatorShaperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorShaperTests.swift; sourceTree = "<group>"; };
+		CF7DED0129420CA7009DC817 /* SimulationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationTests.swift; sourceTree = "<group>"; };
+		CF7DED0229420CA7009DC817 /* UserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
 		CF82A565290BD560004E2D50 /* AppContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContextualAction.swift; sourceTree = "<group>"; };
 		CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleProtocol.swift; sourceTree = "<group>"; };
 		CF8E3D1F2923BF7E001B1AC8 /* ALTimingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTimingFunction.swift; sourceTree = "<group>"; };
@@ -171,10 +167,8 @@
 		CFA7CAAD29185EE400F941F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKitTestsHelpers.h; sourceTree = "<group>"; };
+		CFD055A22941FC7B000D43BB /* PlomeCoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeCoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD067AC292FBD980034EE02 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
-		CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorShaperTests.swift; sourceTree = "<group>"; };
-		CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
-		CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimulationModelStorageServiceTests.swift; sourceTree = "<group>"; };
 		CFE77755293A0DB500D0A90D /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 		CFEDAD7E2930104E00D56717 /* CalculatorShaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorShaper.swift; sourceTree = "<group>"; };
 		CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
@@ -198,21 +192,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF59EAD028ECD6B30041B33B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF26194E2941DCE000D0D5CC /* PlomeCoreKitTestsHelpers.framework in Frameworks */,
-				CFDA810B2941385F006C0D16 /* PlomeCoreKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CFBFA08C292E69B700F36790 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */,
 				CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFD0559F2941FC7B000D43BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7DED0929420CC3009DC817 /* PlomeCoreKitTestsHelpers.framework in Frameworks */,
+				CFD055A62941FC7B000D43BB /* PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,9 +355,9 @@
 			isa = PBXGroup;
 			children = (
 				CF59EACB28ECD6B30041B33B /* PlomeCoreKit */,
-				CF59EAD728ECD6B30041B33B /* PlomeCoreKitTests */,
 				CF45FA522924335C00047B7D /* PlomeCoreKitApp */,
 				CFBFA090292E69B700F36790 /* PlomeCoreKitTestsHelpers */,
+				CFD055A32941FC7B000D43BB /* PlomeCoreKitTests */,
 				CF59EACA28ECD6B30041B33B /* Products */,
 				CFABB38B293D50D000C36355 /* Frameworks */,
 			);
@@ -373,9 +367,9 @@
 			isa = PBXGroup;
 			children = (
 				CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */,
-				CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */,
 				CF45FA512924335C00047B7D /* PlomeCoreKitApp.app */,
 				CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */,
+				CFD055A22941FC7B000D43BB /* PlomeCoreKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,19 +394,6 @@
 				CF3B9A7C28F1DCBA00457A44 /* Router */,
 			);
 			path = PlomeCoreKit;
-			sourceTree = "<group>";
-		};
-		CF59EAD728ECD6B30041B33B /* PlomeCoreKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				CF59EAD828ECD6B30041B33B /* ExamTests.swift */,
-				CF45FA61292445F400047B7D /* SimulationTests.swift */,
-				CF1B64702925182B0051A7C3 /* CalculatorTests.swift */,
-				CFE7774F293A0B1C00D0A90D /* UserDefaultsTests.swift */,
-				CFE77751293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift */,
-				CFDE1CDD29412F440041EF1D /* CalculatorShaperTests.swift */,
-			);
-			path = PlomeCoreKitTests;
 			sourceTree = "<group>";
 		};
 		CF5B5F312921BD79002EF9BD /* Ressources */ = {
@@ -457,6 +438,20 @@
 				CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */,
 			);
 			path = PlomeCoreKitTestsHelpers;
+			sourceTree = "<group>";
+		};
+		CFD055A32941FC7B000D43BB /* PlomeCoreKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF7DED0029420CA7009DC817 /* CalculatorShaperTests.swift */,
+				CF7DECFF29420CA7009DC817 /* CalculatorTests.swift */,
+				CF7DECFE29420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift */,
+				CF7DECFD29420CA7009DC817 /* ExamTests.swift */,
+				CF7DED0129420CA7009DC817 /* SimulationTests.swift */,
+				CF7DED0229420CA7009DC817 /* UserDefaultsTests.swift */,
+				CF7DECFC29420CA6009DC817 /* PlomeCoreKitTests-Bridging-Header.h */,
+			);
+			path = PlomeCoreKitTests;
 			sourceTree = "<group>";
 		};
 		CFE77754293A0DA300D0A90D /* Mocks */ = {
@@ -529,27 +524,6 @@
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CF59EAD228ECD6B30041B33B /* PlomeCoreKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CF59EAE028ECD6B30041B33B /* Build configuration list for PBXNativeTarget "PlomeCoreKitTests" */;
-			buildPhases = (
-				CF59EACF28ECD6B30041B33B /* Sources */,
-				CF59EAD028ECD6B30041B33B /* Frameworks */,
-				CF59EAD128ECD6B30041B33B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CF59EAD628ECD6B30041B33B /* PBXTargetDependency */,
-				CF45FA602924336800047B7D /* PBXTargetDependency */,
-			);
-			name = PlomeCoreKitTests;
-			packageProductDependencies = (
-			);
-			productName = PlomeCoreKitTests;
-			productReference = CF59EAD328ECD6B30041B33B /* PlomeCoreKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		CFBFA08E292E69B700F36790 /* PlomeCoreKitTestsHelpers */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFBFA09A292E69B700F36790 /* Build configuration list for PBXNativeTarget "PlomeCoreKitTestsHelpers" */;
@@ -571,6 +545,24 @@
 			productReference = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CFD055A12941FC7B000D43BB /* PlomeCoreKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFD055A92941FC7B000D43BB /* Build configuration list for PBXNativeTarget "PlomeCoreKitTests" */;
+			buildPhases = (
+				CFD0559E2941FC7B000D43BB /* Sources */,
+				CFD0559F2941FC7B000D43BB /* Frameworks */,
+				CFD055A02941FC7B000D43BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFD055A82941FC7B000D43BB /* PBXTargetDependency */,
+			);
+			name = PlomeCoreKitTests;
+			productName = PlomeCoreKitTests;
+			productReference = CFD055A22941FC7B000D43BB /* PlomeCoreKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -587,12 +579,12 @@
 					CF59EAC828ECD6B30041B33B = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
-					CF59EAD228ECD6B30041B33B = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = CF45FA502924335C00047B7D;
-					};
 					CFBFA08E292E69B700F36790 = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					CFD055A12941FC7B000D43BB = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -614,9 +606,9 @@
 			projectRoot = "";
 			targets = (
 				CF59EAC828ECD6B30041B33B /* PlomeCoreKit */,
-				CF59EAD228ECD6B30041B33B /* PlomeCoreKitTests */,
 				CF45FA502924335C00047B7D /* PlomeCoreKitApp */,
 				CFBFA08E292E69B700F36790 /* PlomeCoreKitTestsHelpers */,
+				CFD055A12941FC7B000D43BB /* PlomeCoreKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -639,14 +631,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF59EAD128ECD6B30041B33B /* Resources */ = {
+		CFBFA08D292E69B700F36790 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFBFA08D292E69B700F36790 /* Resources */ = {
+		CFD055A02941FC7B000D43BB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -726,19 +718,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF59EACF28ECD6B30041B33B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFDE1CDE29412F440041EF1D /* CalculatorShaperTests.swift in Sources */,
-				CFE77750293A0B1C00D0A90D /* UserDefaultsTests.swift in Sources */,
-				CF45FA62292445F400047B7D /* SimulationTests.swift in Sources */,
-				CFE77752293A0D1700D0A90D /* DefaultSimulationModelStorageServiceTests.swift in Sources */,
-				CF1B64712925182B0051A7C3 /* CalculatorTests.swift in Sources */,
-				CF59EAD928ECD6B30041B33B /* ExamTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CFBFA08B292E69B700F36790 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -748,18 +727,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CFD0559E2941FC7B000D43BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7DED0829420CA7009DC817 /* UserDefaultsTests.swift in Sources */,
+				CF7DED0429420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift in Sources */,
+				CF7DED0729420CA7009DC817 /* SimulationTests.swift in Sources */,
+				CF7DED0529420CA7009DC817 /* CalculatorTests.swift in Sources */,
+				CF7DED0629420CA7009DC817 /* CalculatorShaperTests.swift in Sources */,
+				CF7DED0329420CA7009DC817 /* ExamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF45FA602924336800047B7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF45FA502924335C00047B7D /* PlomeCoreKitApp */;
-			targetProxy = CF45FA5F2924336800047B7D /* PBXContainerItemProxy */;
-		};
-		CF59EAD628ECD6B30041B33B /* PBXTargetDependency */ = {
+		CFD055A82941FC7B000D43BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF59EAC828ECD6B30041B33B /* PlomeCoreKit */;
-			targetProxy = CF59EAD528ECD6B30041B33B /* PBXContainerItemProxy */;
+			targetProxy = CFD055A72941FC7B000D43BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1004,42 +991,6 @@
 			};
 			name = Release;
 		};
-		CF59EAE128ECD6B30041B33B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6L49G5QS6U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeCoreKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlomeCoreKitApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlomeCoreKitApp";
-			};
-			name = Debug;
-		};
-		CF59EAE228ECD6B30041B33B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6L49G5QS6U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeCoreKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlomeCoreKitApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlomeCoreKitApp";
-			};
-			name = Release;
-		};
 		CFBFA098292E69B700F36790 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1098,6 +1049,55 @@
 			};
 			name = Release;
 		};
+		CFD055AA2941FC7B000D43BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6L49G5QS6U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeCoreKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "PlomeCoreKitTests/PlomeCoreKitTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFD055AB2941FC7B000D43BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6L49G5QS6U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Boublo.PlomeCoreKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "PlomeCoreKitTests/PlomeCoreKitTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1128,20 +1128,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CF59EAE028ECD6B30041B33B /* Build configuration list for PBXNativeTarget "PlomeCoreKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CF59EAE128ECD6B30041B33B /* Debug */,
-				CF59EAE228ECD6B30041B33B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CFBFA09A292E69B700F36790 /* Build configuration list for PBXNativeTarget "PlomeCoreKitTestsHelpers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CFBFA098292E69B700F36790 /* Debug */,
 				CFBFA099292E69B700F36790 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFD055A92941FC7B000D43BB /* Build configuration list for PBXNativeTarget "PlomeCoreKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFD055AA2941FC7B000D43BB /* Debug */,
+				CFD055AB2941FC7B000D43BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
