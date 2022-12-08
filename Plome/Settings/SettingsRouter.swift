@@ -39,7 +39,7 @@ final class SettingsRouter: DefaultRouter {
             if let url = createEmailUrl(to: "mazuc.loic@icloud.com", subject: "Plôme", body: "") {
                 UIApplication.shared.open(url)
             } else {
-                alert(title: "Oups...", message: "Vous ne semblez pas avoir d'application d'email.")
+                alert(title: "Oups...", message: "Vous ne semblez pas avoir d'application d'email.\nVous pouvez nous joindre à l'adresse suivante: mazuc.loic@icloud.com")
             }
         }
     }
