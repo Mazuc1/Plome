@@ -1,0 +1,63 @@
+"without_mention" = "Sans mention";
+"quite_well_mention" = "Mention assez bien";
+"great_mention" = "Mention bien";
+"very_great_mention" = "Mention très bien";
+"disable_mention" = "Vous ne pouvez pas avoir de mention en dessous de la moyenne";
+
+"success_admission" = "Vous êtes admis ! 🥳";
+"failure_admission" = "Vous n'êtes pas admis 😕";
+
+"success_result" = "Félicitation !";
+"failure_result" = "Oups...";
+
+"trials_type" = "Épreuve";
+"continuousControls_type" = "Contrôle continue";
+"options_type" = "Option";
+
+"brevet" = "Brevet";
+"general_BAC" = "BAC Général";
+"technological_BAC" = "BAC Technologique";
+
+"french_language" = "Langue française";
+"foreign_language" = "Langue étrangère";
+"scientist_language" = "Langages scientifiques";
+"art_language" = "Langages des arts";
+"learning_tools" = "Outils pour apprendre";
+"citizen_formation" = "Formation du citoyen";
+"natual_technologic_system" = "Systèmes naturels et techniques";
+"world_representation" = "Représentations du monde";
+
+"french" = "Français";
+"math" = "Mathématiques";
+"oral" = "Oral";
+"sciences" = "Sciences";
+"history_geography_EMC" = "Histoire-Géo-EMC";
+
+"french_writting" = "Français écrit";
+"french_oral" = "Français oral";
+"1_abandoned_speciality" = "1ère Spécialité abandonnée";
+"1_scientific_education" = "1ère Enseignement scientifique";
+"1_LVA" = "1ère LVA";
+"1_LVB" = "1ère LVB";
+"1_EPS" = "1ère EPS";
+"1_history_geography" = "1ère Histoire-géo";
+"1_EMC" = "1ère EMC";
+"grand_oral" = "Grand oral";
+"philosophy" = "Philosophie";
+"specialized_education_1" = "Enseignement spécialité 1";
+"specialized_education_2" = "Enseignement spécialité 2";
+"t_scientific_education" = "Terminale Enseignement scientifique";
+"t_LVA" = "Terminale LVA";
+"t_LVB" = "Terminale LVB";
+"t_EPS" = "Terminale EPS";
+"t_history_geography" = "Terminale Histoire-géo";
+"t_EMC" = "Terminale EMC";
+
+"done" = "Terminé";
+"locale" = "FR-fr";
+"ok" = "Ok";
+"yes" = "Oui";
+"no" = "Non";
+"cancel" = "Annuler";
+"write_here" = "Ecrivez ici...";
+"unexpected" = "Oups, il y a eu un imprévu...";

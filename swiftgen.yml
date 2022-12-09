@@ -1,0 +1,8 @@
+strings:
+  inputs: ./Plome/PlomeCoreKit/PlomeCoreKit/Ressources/Localization/en.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift5
+      output: ./Plome/PlomeCoreKit/PlomeCoreKit/Ressources/L10n.swift
+      params:
+          publicAccess: true
