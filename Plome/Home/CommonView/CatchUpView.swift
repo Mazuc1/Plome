@@ -50,7 +50,6 @@ class CatchUpView: UIView {
                                              AppStyles.defaultSpacing(factor: 2),
                                              AppStyles.defaultSpacing(factor: 2),
                                              AppStyles.defaultSpacing(factor: 2)).configure {
-        $0.text = "10.36/20"
         $0.font = PlomeFont.demiBoldM.font
         $0.textAlignment = .center
         $0.textColor = PlomeColor.darkBlue.color

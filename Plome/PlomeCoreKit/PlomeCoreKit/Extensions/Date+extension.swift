@@ -22,7 +22,7 @@ public extension Date {
     func toString(format: DateFormat) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
-        dateFormatter.locale = Locale(identifier: L10n.locale)
+        dateFormatter.locale = Locale(identifier: L10n.General.locale)
 
         return dateFormatter.string(from: self)
     }

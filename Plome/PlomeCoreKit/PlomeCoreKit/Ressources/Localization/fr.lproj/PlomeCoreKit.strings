@@ -53,11 +53,16 @@
 "t_history_geography" = "Terminale Histoire-géo";
 "t_EMC" = "Terminale EMC";
 
-"done" = "Terminé";
-"locale" = "FR-fr";
-"ok" = "Ok";
-"yes" = "Oui";
-"no" = "Non";
-"cancel" = "Annuler";
 "write_here" = "Ecrivez ici...";
 "unexpected" = "Oups, il y a eu un imprévu...";
+
+"general.done" = "Terminé";
+"general.locale" = "FR-fr";
+"general.ok" = "Ok";
+"general.yes" = "Oui";
+"general.no" = "Non";
+"general.cancel" = "Annuler";
+"general.new" = "Nouveau";
+"general.add" = "Ajouter";
+"general.oups" = "Oups";
+"general.common_error_message" = "Une erreur est survenue 😕";

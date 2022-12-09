@@ -54,7 +54,7 @@
 		CF4F184A291D125A003F005B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1849291D125A003F005B /* AppLabel.swift */; };
 		CF52B49E2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B49D2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift */; };
 		CF52B4A02939F72E00AB6C9E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B49F2939F72E00AB6C9E /* UserDefault.swift */; };
-		CF52B4A52939FB4400AB6C9E /* PlomeCoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A42939FB4400AB6C9E /* PlomeCoreKit.swift */; };
+		CF52B4A52939FB4400AB6C9E /* PlomeCoreKitModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A42939FB4400AB6C9E /* PlomeCoreKitModule.swift */; };
 		CF52B4A9293A00ED00AB6C9E /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A8293A00ED00AB6C9E /* PlaceholderView.swift */; };
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
 		CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -146,7 +146,7 @@
 		CF4F1849291D125A003F005B /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		CF52B49D2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimulationModelStorageService.swift; sourceTree = "<group>"; };
 		CF52B49F2939F72E00AB6C9E /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
-		CF52B4A42939FB4400AB6C9E /* PlomeCoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlomeCoreKit.swift; sourceTree = "<group>"; };
+		CF52B4A42939FB4400AB6C9E /* PlomeCoreKitModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlomeCoreKitModule.swift; sourceTree = "<group>"; };
 		CF52B4A8293A00ED00AB6C9E /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKit.h; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 				CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */,
 				CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */,
 				CF3B9A9728F1E84100457A44 /* Configurable.swift */,
-				CF52B4A42939FB4400AB6C9E /* PlomeCoreKit.swift */,
+				CF52B4A42939FB4400AB6C9E /* PlomeCoreKitModule.swift */,
 				CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */,
 				CF52B49F2939F72E00AB6C9E /* UserDefault.swift */,
 				CF5B5F312921BD79002EF9BD /* Ressources */,
@@ -706,7 +706,7 @@
 				CF3B9A9228F1E01A00457A44 /* UIFont+extension.swift in Sources */,
 				CF3B9A8F28F1DFCB00457A44 /* PlomeColor.swift in Sources */,
 				CF3B9A8628F1DCBA00457A44 /* EmptyTransition.swift in Sources */,
-				CF52B4A52939FB4400AB6C9E /* PlomeCoreKit.swift in Sources */,
+				CF52B4A52939FB4400AB6C9E /* PlomeCoreKitModule.swift in Sources */,
 				CF8E3D202923BF7E001B1AC8 /* ALTimingFunction.swift in Sources */,
 				CF3B9A8928F1DCBA00457A44 /* DefaultRouter.swift in Sources */,
 				CF52B4A02939F72E00AB6C9E /* UserDefault.swift in Sources */,

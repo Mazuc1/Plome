@@ -28,16 +28,12 @@ public enum L10n {
     public static let artLanguage = L10n.tr("PlomeCoreKit", "art_language", fallback: "Langages des arts")
     /// Brevet
     public static let brevet = L10n.tr("PlomeCoreKit", "brevet", fallback: "Brevet")
-    /// Annuler
-    public static let cancel = L10n.tr("PlomeCoreKit", "cancel", fallback: "Annuler")
     /// Formation du citoyen
     public static let citizenFormation = L10n.tr("PlomeCoreKit", "citizen_formation", fallback: "Formation du citoyen")
     /// Contrôle continue
     public static let continuousControlsType = L10n.tr("PlomeCoreKit", "continuousControls_type", fallback: "Contrôle continue")
     /// Vous ne pouvez pas avoir de mention en dessous de la moyenne
     public static let disableMention = L10n.tr("PlomeCoreKit", "disable_mention", fallback: "Vous ne pouvez pas avoir de mention en dessous de la moyenne")
-    /// Terminé
-    public static let done = L10n.tr("PlomeCoreKit", "done", fallback: "Terminé")
     /// Vous n'êtes pas admis 😕
     public static let failureAdmission = L10n.tr("PlomeCoreKit", "failure_admission", fallback: "Vous n'êtes pas admis 😕")
     /// Oups...
@@ -62,16 +58,10 @@ public enum L10n {
     public static let historyGeographyEMC = L10n.tr("PlomeCoreKit", "history_geography_EMC", fallback: "Histoire-Géo-EMC")
     /// Outils pour apprendre
     public static let learningTools = L10n.tr("PlomeCoreKit", "learning_tools", fallback: "Outils pour apprendre")
-    /// FR-fr
-    public static let locale = L10n.tr("PlomeCoreKit", "locale", fallback: "FR-fr")
     /// Mathématiques
     public static let math = L10n.tr("PlomeCoreKit", "math", fallback: "Mathématiques")
     /// Systèmes naturels et techniques
     public static let natualTechnologicSystem = L10n.tr("PlomeCoreKit", "natual_technologic_system", fallback: "Systèmes naturels et techniques")
-    /// Non
-    public static let no = L10n.tr("PlomeCoreKit", "no", fallback: "Non")
-    /// Ok
-    public static let ok = L10n.tr("PlomeCoreKit", "ok", fallback: "Ok")
     /// Option
     public static let optionsType = L10n.tr("PlomeCoreKit", "options_type", fallback: "Option")
     /// Oral
@@ -120,8 +110,28 @@ public enum L10n {
     public static let worldRepresentation = L10n.tr("PlomeCoreKit", "world_representation", fallback: "Représentations du monde")
     /// Ecrivez ici...
     public static let writeHere = L10n.tr("PlomeCoreKit", "write_here", fallback: "Ecrivez ici...")
-    /// Oui
-    public static let yes = L10n.tr("PlomeCoreKit", "yes", fallback: "Oui")
+    public enum General {
+        /// Ajouter
+        public static let add = L10n.tr("PlomeCoreKit", "general.add", fallback: "Ajouter")
+        /// Annuler
+        public static let cancel = L10n.tr("PlomeCoreKit", "general.cancel", fallback: "Annuler")
+        /// Une erreur est survenue 😕
+        public static let commonErrorMessage = L10n.tr("PlomeCoreKit", "general.common_error_message", fallback: "Une erreur est survenue 😕")
+        /// Terminé
+        public static let done = L10n.tr("PlomeCoreKit", "general.done", fallback: "Terminé")
+        /// FR-fr
+        public static let locale = L10n.tr("PlomeCoreKit", "general.locale", fallback: "FR-fr")
+        /// Nouveau
+        public static let new = L10n.tr("PlomeCoreKit", "general.new", fallback: "Nouveau")
+        /// Non
+        public static let no = L10n.tr("PlomeCoreKit", "general.no", fallback: "Non")
+        /// Ok
+        public static let ok = L10n.tr("PlomeCoreKit", "general.ok", fallback: "Ok")
+        /// Oups
+        public static let oups = L10n.tr("PlomeCoreKit", "general.oups", fallback: "Oups")
+        /// Oui
+        public static let yes = L10n.tr("PlomeCoreKit", "general.yes", fallback: "Oui")
+    }
 }
 
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

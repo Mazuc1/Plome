@@ -52,7 +52,6 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private let finalGradeBeforeTwentyConformLabel: UILabel = .init().configure {
-        $0.text = "20/20"
         $0.font = PlomeFont.bodyS.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
