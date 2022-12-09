@@ -1,0 +1,8 @@
+strings:
+  inputs: ./Plome/Ressources/Localization/en.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift5
+      output: ./Plome/Ressources/L10n.swift
+      params:
+          publicAccess: true

@@ -67,3 +67,5 @@
 "general.add" = "Ajouter";
 "general.oups" = "Oups";
 "general.common_error_message" = "Une erreur est survenue 😕";
+"general.warning" = "Attention";
+"general.save" = "Enregistrer";

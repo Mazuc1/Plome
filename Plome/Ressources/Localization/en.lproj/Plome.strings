@@ -1,1 +1,77 @@
+// MARK: - General
 
+"tabBar_home" = "Accueil";
+"tabBar_model" = "Modèles";
+"tabBar_settings" = "Réglages";
+
+// MARK: - Home
+
+"home.how_to_catchUp" = "Comment vous rattrapez ?";
+"home.you_will_obtain_your_diploma" = "Vous obtiendrez votre diplôme en obtenant des points supplémentaires:";
+"home.your_grade_will_be" = "Votre note sera alors de";
+
+"home.some_numbers" = "Quelques chiffres";
+"home.remake_simulation" = "Refaire une simulation";
+"home.edit_model_think_to_save" = "Vous avez modifié le modèle utilisé ? Pensez à l'enregistrer.";
+"home.save_model" = "Enregistrer ce modèle";
+"home.return_to_home" = "Retourner à l'accueil";
+"home.result" = "Résultat";
+
+"home.its_done" = "C'est fait !";
+"home.model_has_been_save" = "Le modèle à bien été enregistrer";
+"home.my_simulation" = "Ma simulation";
+
+"home.calculate" = "Calculer";
+"home.how_to_complete_simulation" = "Comment complétez la simulation ?";
+"home.simulation_rules" = "Voici les quelques règles pour bien faire votre simulation.\n\n1. Les nombres à décimaux s'écrivent avec des points.\n\n2. Les notes doivent être séparer avec un /.\n\n3. Si vous n'indiquez pas de coefficient, il sera automatiquement mis à 1 lors du calcul.";
+"home.how_named_your" = "Comment se nomme votre %@";
+
+"home.coeff" = "Coeff.";
+"home.grade" = "Note";
+"home.coeff_placeholder" = "1.0";
+"home.grade_placeholder" = "08/20";
+
+"home.select_a_model" = "Sélectionnez un modèle";
+"home.new_simulation" = "Nouvelle simulation";
+"home.empty_simulation_placeholder" = "Vous retrouverez ici toutes vos simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.";
+"home.my_simulations" = "Mes simulations";
+
+"home.admit" = "Admis";
+"home.unadmit" = "Non admis";
+
+"home.your_grades" = "Vos notes";
+"home.remake_simulation_from_this_one" = "Re simuler à partir de cette simulation";
+"home.final_grade" = "Note final";
+
+"home.simulation_from_date" = "Simulation du %@";
+"home.worst_grade" = "Pire note";
+"home.best_grade" = "Meilleur note";
+
+// MARK: - Settings
+
+"settings.assistance_mail" = "mazuc.loic@icloud.com";
+"settings.app_name" = "Plôme";
+"settings.error_launch_mail_app" = "Vous ne semblez pas avoir d'application d'email.\nVous pouvez nous joindre à l'adresse suivante: mazuc.loic@icloud.com";
+
+"settings.settings" = "Réglages";
+"settings.general" = "Général";
+"settings.add_default_model" = "Ajouter les modèles par défaut";
+"settings.remove_all_simulations" = "Supprimer les simulations";
+"settings.other" = "Autres";
+"settings.contact_assistance" = "Contacter l'assistance";
+"settings.reintialize_app" = "Réinitialiser l'application";
+
+"settings.warning_message_remove_simulations" = "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continuer ?";
+"settings.all_simulation_has_been_deleted" = "Toutes les simulations ont bien été supprimées.";
+"settings.default_model_has_been_added" = "Les modèle de simulation ont bien été ajoutées.";
+"settings.warning_message_reinitialize" = "Vous vous apprêtez à supprimer toutes les données de l'application, êtes-vous sur de vouloir continuer ?";
+"settings.app_has_been_reinitialized" = "L'application à bien été réinitialisé.";
+
+// MARK: - Simulation models
+
+"simulationModels.new_model" = "Nouveau modèle";
+"simulationModels.empty_model_placeholder" = "Vous retrouverez ici tous vos modèles de simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.\n\nVous trouverez également des modèles par défaut dans les réglages de l'application.";
+
+"simulationModels.warning_message_remove_model" = "Vous vous apprêtez à supprimer ce modèle. Êtes vous sur de vouloir le supprimer ?";
+
+"simulationModels.simulation_model_placeholder_name" = "Bac Pro...";

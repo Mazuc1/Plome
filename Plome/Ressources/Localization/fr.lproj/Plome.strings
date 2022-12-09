@@ -1,6 +1,10 @@
+// MARK: - General
+
 "tabBar_home" = "Accueil";
 "tabBar_model" = "Modèles";
 "tabBar_settings" = "Réglages";
+
+// MARK: - Home
 
 "home.how_to_catchUp" = "Comment vous rattrapez ?";
 "home.you_will_obtain_your_diploma" = "Vous obtiendrez votre diplôme en obtenant des points supplémentaires:";
@@ -42,3 +46,32 @@
 "home.simulation_from_date" = "Simulation du %@";
 "home.worst_grade" = "Pire note";
 "home.best_grade" = "Meilleur note";
+
+// MARK: - Settings
+
+"settings.assistance_mail" = "mazuc.loic@icloud.com";
+"settings.app_name" = "Plôme";
+"settings.error_launch_mail_app" = "Vous ne semblez pas avoir d'application d'email.\nVous pouvez nous joindre à l'adresse suivante: mazuc.loic@icloud.com";
+
+"settings.settings" = "Réglages";
+"settings.general" = "Général";
+"settings.add_default_model" = "Ajouter les modèles par défaut";
+"settings.remove_all_simulations" = "Supprimer les simulations";
+"settings.other" = "Autres";
+"settings.contact_assistance" = "Contacter l'assistance";
+"settings.reintialize_app" = "Réinitialiser l'application";
+
+"settings.warning_message_remove_simulations" = "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continuer ?";
+"settings.all_simulation_has_been_deleted" = "Toutes les simulations ont bien été supprimées.";
+"settings.default_model_has_been_added" = "Les modèle de simulation ont bien été ajoutées.";
+"settings.warning_message_reinitialize" = "Vous vous apprêtez à supprimer toutes les données de l'application, êtes-vous sur de vouloir continuer ?";
+"settings.app_has_been_reinitialized" = "L'application à bien été réinitialisé.";
+
+// MARK: - Simulation models
+
+"simulationModels.new_model" = "Nouveau modèle";
+"simulationModels.empty_model_placeholder" = "Vous retrouverez ici tous vos modèles de simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.\n\nVous trouverez également des modèles par défaut dans les réglages de l'application.";
+
+"simulationModels.warning_message_remove_model" = "Vous vous apprêtez à supprimer ce modèle. Êtes vous sur de vouloir le supprimer ?";
+
+"simulationModels.simulation_model_placeholder_name" = "Bac Pro...";
