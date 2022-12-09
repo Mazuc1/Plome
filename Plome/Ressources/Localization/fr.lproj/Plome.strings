@@ -67,6 +67,9 @@
 "settings.warning_message_reinitialize" = "Vous vous apprêtez à supprimer toutes les données de l'application, êtes-vous sur de vouloir continuer ?";
 "settings.app_has_been_reinitialized" = "L'application à bien été réinitialisé.";
 
+"settings.errorAppVersion" = "9.99";
+"settings.version" = "Version %@";
+
 // MARK: - Simulation models
 
 "simulationModels.new_model" = "Nouveau modèle";

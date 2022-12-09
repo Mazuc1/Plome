@@ -14,9 +14,9 @@ enum Tabs {
 
     var item: UITabBarItem {
         switch self {
-        case .home: return UITabBarItem(title: "Accueil", image: .init(systemName: Icons.home.name), tag: 0)
-        case .model: return UITabBarItem(title: "Modèles", image: .init(systemName: Icons.model.name), tag: 1)
-        case .settings: return UITabBarItem(title: "Réglages", image: .init(systemName: Icons.settings.name), tag: 2)
+        case .home: return UITabBarItem(title: L10n.tabBarHome, image: .init(systemName: Icons.home.name), tag: 0)
+        case .model: return UITabBarItem(title: L10n.tabBarModel, image: .init(systemName: Icons.model.name), tag: 1)
+        case .settings: return UITabBarItem(title: L10n.tabBarSettings, image: .init(systemName: Icons.settings.name), tag: 2)
         }
     }
 }
