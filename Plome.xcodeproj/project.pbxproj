@@ -57,6 +57,7 @@
 		CFBFA09F292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */; };
 		CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */; };
+		CFD0BCA02943334A005C898B /* Plome.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFD0BCA22943334A005C898B /* Plome.strings */; };
 		CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD196192931057D00A06FE7 /* ExamInformationsView.swift */; };
 		CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
@@ -143,6 +144,9 @@
 		CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModelTests.swift; sourceTree = "<group>"; };
 		CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
 		CFD067AB292FBBE30034EE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFD0BC9B294332FE005C898B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CFD0BCA12943334A005C898B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Plome.strings; sourceTree = "<group>"; };
+		CFD0BCA32943334C005C898B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Plome.strings; sourceTree = "<group>"; };
 		CFD196192931057D00A06FE7 /* ExamInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInformationsView.swift; sourceTree = "<group>"; };
 		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 				CF3B9A9C28F3287B00457A44 /* MainTabBarController.swift */,
 				CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */,
 				CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */,
+				CFD0BC9C2943330A005C898B /* Ressources */,
 				CF208F5128F960D5001F83B1 /* Fonts */,
 				CF3B9AA028F3292C00457A44 /* Home */,
 				CF3B9AA128F3293000457A44 /* SimulationModel */,
@@ -359,6 +364,22 @@
 				CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */,
 			);
 			path = Simulation;
+			sourceTree = "<group>";
+		};
+		CFD0BC9C2943330A005C898B /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0BC9D2943332A005C898B /* Localization */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		CFD0BC9D2943332A005C898B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0BCA22943334A005C898B /* Plome.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		CFD1961B2931127000A06FE7 /* CommonView */ = {
@@ -445,6 +466,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = CFBF56A128ECC5F000E4EC7D;
 			productRefGroup = CFBF56A128ECC5F000E4EC7D;
@@ -471,6 +493,7 @@
 			files = (
 				CF208F5428F960E0001F83B1 /* UrbaneRounded-Medium.ttf in Resources */,
 				CF208F5528F960E0001F83B1 /* UrbaneRounded-DemiBold.ttf in Resources */,
+				CFD0BCA02943334A005C898B /* Plome.strings in Resources */,
 				CF208F5228F960E0001F83B1 /* UrbaneRounded-Bold.ttf in Resources */,
 				CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */,
 				CF208F5328F960E0001F83B1 /* UrbaneRounded-Light.ttf in Resources */,
@@ -554,8 +577,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				CFBF56B928ECC5F000E4EC7D /* Base */,
+				CFD0BC9B294332FE005C898B /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CFD0BCA22943334A005C898B /* Plome.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFD0BCA12943334A005C898B /* en */,
+				CFD0BCA32943334C005C898B /* fr */,
+			);
+			name = Plome.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -607,6 +640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -667,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
