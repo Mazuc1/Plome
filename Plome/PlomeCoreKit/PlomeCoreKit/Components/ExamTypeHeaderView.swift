@@ -39,17 +39,10 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
         $0.font = PlomeFont.demiBoldL.font
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .left
-        $0.numberOfLines = 1
-        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private var addButton: UIButton = .init().configure {
         $0.setBackgroundImage(Icons.add.configure(weight: .regular, color: .lightViolet, size: 23), for: .normal)
-    }
-
-    private var divider: UIView = .init().configure {
-        $0.backgroundColor = PlomeColor.darkBlue.color
-        $0.frame.size.height = 5
     }
 
     private var stackView: UIStackView = .init().configure {
@@ -59,7 +52,6 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
         $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = AppStyles.defaultRadius
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isLayoutMarginsRelativeArrangement = true
     }
 

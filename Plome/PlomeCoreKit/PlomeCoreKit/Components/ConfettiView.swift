@@ -9,30 +9,34 @@ import QuartzCore
 import UIKit
 
 public class ConfettiView: UIView {
-    var emitter: CAEmitterLayer!
-    public var colors: [UIColor]!
-    public var intensity: Float!
-    private var active: Bool!
+    // MARK: - Properties
+
+    private var emitter: CAEmitterLayer!
+    public var colors: [UIColor]
+    public var intensity: Float
+    private var active: Bool
+
+    // MARK: - Init
 
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    func setup() {
+        intensity = 0.5
         colors = [UIColor(red: 0.95, green: 0.40, blue: 0.27, alpha: 1.0),
                   UIColor(red: 1.00, green: 0.78, blue: 0.36, alpha: 1.0),
                   UIColor(red: 0.48, green: 0.78, blue: 0.64, alpha: 1.0),
                   UIColor(red: 0.30, green: 0.76, blue: 0.85, alpha: 1.0),
                   UIColor(red: 0.58, green: 0.39, blue: 0.55, alpha: 1.0)]
-        intensity = 0.5
         active = false
+        super.init(coder: aDecoder)
     }
+
+    public required init(frame: CGRect, intensity: Float = 0.5, colors: [UIColor]) {
+        self.colors = colors
+        self.intensity = intensity
+        active = false
+        super.init(frame: frame)
+    }
+
+    // MARK: - Methods
 
     public func startConfetti() {
         emitter = CAEmitterLayer()
@@ -56,7 +60,7 @@ public class ConfettiView: UIView {
         active = false
     }
 
-    func imageForType() -> UIImage? {
+    private func imageForType() -> UIImage? {
         guard let path = Module.bundle.path(forResource: "confetti", ofType: "png") else { return nil }
 
         let url = URL(fileURLWithPath: path)
@@ -71,7 +75,7 @@ public class ConfettiView: UIView {
         return nil
     }
 
-    func confettiWithColor(color: UIColor) -> CAEmitterCell {
+    private func confettiWithColor(color: UIColor) -> CAEmitterCell {
         let confetti = CAEmitterCell()
         confetti.birthRate = 6.0 * intensity
         confetti.lifetime = 14.0 * intensity

@@ -9,10 +9,14 @@ import CoreData
 import Foundation
 
 public class Simulation: NSObject, NSCopying {
+    // MARK: - Properties
+
     public let name: String
     public var date: Date?
     public var exams: Set<Exam>?
     public var type: SimulationType
+
+    // MARK: - Init
 
     public init(name: String, date: Date?, exams: Set<Exam>?, type: SimulationType) {
         self.name = name
@@ -20,6 +24,8 @@ public class Simulation: NSObject, NSCopying {
         self.exams = exams
         self.type = type
     }
+
+    // MARK: - Methods
 
     public func number(of type: ExamType) -> Int {
         guard let exams else { return 0 }

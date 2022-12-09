@@ -15,7 +15,7 @@ public enum AppContextualAction {
             completion(true)
         }.configure {
             $0.backgroundColor = PlomeColor.background.color
-            $0.image = Icons.trash.configure(weight: .regular, color: .fail, size: 25)
+            $0.image = Icons.trash.configure(weight: .regular, color: .fail, size: 20)
         }
     }
 }

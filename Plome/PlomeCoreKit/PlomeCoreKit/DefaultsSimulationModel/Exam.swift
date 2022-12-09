@@ -9,6 +9,8 @@ import CoreData
 import Foundation
 
 public class Exam: NSObject, NSCopying {
+    // MARK: - Properties
+
     public enum Rule {
         case grade
         case coeff
@@ -26,12 +28,16 @@ public class Exam: NSObject, NSCopying {
     public var grade: String?
     public var type: ExamType
 
+    // MARK: - Init
+
     public init(name: String, coefficient: Float?, grade: String?, type: ExamType) {
         self.name = name
         self.coefficient = coefficient
         self.grade = grade
         self.type = type
     }
+
+    // MARK: - Methods
 
     public func toCoreDataModel(in context: NSManagedObjectContext, for simulation: CDSimulation) -> CDExam {
         let cdExam = CDExam(context: context)
@@ -57,29 +63,28 @@ public class Exam: NSObject, NSCopying {
         }
     }
 
-    public func getGradeInformation() -> (lhs: Float, rhs: Float, coeff: Float) {
+    func splittedGrade() -> (lhs: Float, rhs: Float)? {
         guard let grade = grade?.split(separator: "/"),
               let lhsFloat = Float(grade[0]),
-              let rhsFloat = Float(grade[1]) else { return (-1, -1, -1) }
+              let rhsFloat = Float(grade[1]) else { return nil }
+        return (lhsFloat, rhsFloat)
+    }
 
-        return (lhsFloat, rhsFloat, coefficient ?? 1)
+    public func getGradeInformation() -> (lhs: Float, rhs: Float, coeff: Float) {
+        guard let splittedGrade = splittedGrade() else { return (-1, -1, -1) }
+        return (splittedGrade.lhs, splittedGrade.rhs, coefficient ?? 1)
     }
 
     func isGradeLowerThanItsOutOf() -> Bool {
-        guard let grade = grade?.split(separator: "/"),
-              let lhsFloat = Float(grade[0]),
-              let rhsFloat = Float(grade[1]) else { return false }
-
-        return lhsFloat < (rhsFloat / 2)
+        guard let splittedGrade = splittedGrade() else { return false }
+        return splittedGrade.lhs < (splittedGrade.rhs / 2)
     }
 
     func addOnePoint() {
-        guard let grade = grade?.split(separator: "/"),
-              let lhsFloat = Float(grade[0]),
-              let rhsFloat = Float(grade[1]) else { return }
-        if lhsFloat + 1 > rhsFloat { return }
+        guard let splittedGrade = splittedGrade() else { return }
+        if splittedGrade.lhs + 1 > splittedGrade.rhs { return }
 
-        self.grade = "\(lhsFloat + 1)/\(rhsFloat)"
+        grade = "\(splittedGrade.lhs + 1)/\(splittedGrade.rhs)"
     }
 
     func checkRatioFor(_ text: String) -> Bool {
@@ -91,11 +96,9 @@ public class Exam: NSObject, NSCopying {
     }
 
     public func truncatedGrade() -> String? {
-        guard let grade = grade?.split(separator: "/"),
-              let lhsFloat = Float(grade[0]),
-              let rhsFloat = Float(grade[1]) else { return nil }
+        guard let splittedGrade = splittedGrade() else { return nil }
 
-        let gradeOutOfTwenty = (lhsFloat / rhsFloat) * 20
+        let gradeOutOfTwenty = (splittedGrade.lhs / splittedGrade.rhs) * 20
         return "\(gradeOutOfTwenty.truncate(places: 2))/20"
     }
 

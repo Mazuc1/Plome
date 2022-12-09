@@ -37,20 +37,13 @@ public enum GradeType {
     case better
 }
 
-protocol MentionScores: AnyObject {
-    var withoutMentionScore: Float { get }
-    var ABMentionScore: Float { get }
-    var BMentionScore: Float { get }
-    var TBMentionScore: Float { get }
-}
-
-public class Calculator: MentionScores {
+public class Calculator {
     // MARK: - Properties
 
-    public var withoutMentionScore: Float = 0
-    public var ABMentionScore: Float = 0
-    public var BMentionScore: Float = 0
-    public var TBMentionScore: Float = 0
+    public private(set) var withoutMentionScore: Float = 0
+    public private(set) var ABMentionScore: Float = 0
+    public private(set) var BMentionScore: Float = 0
+    public private(set) var TBMentionScore: Float = 0
 
     public let simulation: Simulation
 
@@ -84,10 +77,6 @@ public class Calculator: MentionScores {
     }
 
     public func calculate() {
-        totalGrade = 0
-        totalOutOf = 0
-        totalCoefficient = 0
-
         if simulation.number(of: .trial) > 0 {
             let (grade, outOf, coefficient) = calculateGrade(for: .trial)
             totalGrade += grade
@@ -111,7 +100,7 @@ public class Calculator: MentionScores {
 
         setMention()
 
-        let finalGradeOutOfTwenty = rateOufOfTwenty(totalGrade / totalOutOf)
+        let finalGradeOutOfTwenty = gradeOufOfTwenty(totalGrade / totalOutOf)
         catchUpIfNeeded(grade: finalGradeOutOfTwenty)
 
         finalGrade = finalGradeOutOfTwenty
@@ -133,15 +122,15 @@ public class Calculator: MentionScores {
             }
 
         switch type {
-        case .trial: trialsGrade = rateOufOfTwenty(totalGrade / totalOn)
-        case .option: optionsGrade = rateOufOfTwenty(totalGrade / totalOn)
-        case .continuousControl: continousControlGrade = rateOufOfTwenty(totalGrade / totalOn)
+        case .trial: trialsGrade = gradeOufOfTwenty(totalGrade / totalOn)
+        case .option: optionsGrade = gradeOufOfTwenty(totalGrade / totalOn)
+        case .continuousControl: continousControlGrade = gradeOufOfTwenty(totalGrade / totalOn)
         }
 
         return (totalGrade, totalOn, totalCoefficient)
     }
 
-    private func rateOufOfTwenty(_ value: Float) -> Float {
+    private func gradeOufOfTwenty(_ value: Float) -> Float {
         value * 20
     }
 
@@ -184,12 +173,12 @@ public class Calculator: MentionScores {
         guard let exams = simulation.exams else { return nil }
         return exams
             .sorted {
-                let aInformations = $0.getGradeInformation()
-                let bInformation = $1.getGradeInformation()
+                let firstGradeInformations = $0.getGradeInformation()
+                let secondGradeInformations = $1.getGradeInformation()
 
                 switch type {
-                case .worst: return (aInformations.lhs / aInformations.rhs) <= (bInformation.lhs / bInformation.rhs)
-                case .better: return (aInformations.lhs / aInformations.rhs) >= (bInformation.lhs / bInformation.rhs)
+                case .worst: return (firstGradeInformations.lhs / firstGradeInformations.rhs) <= (secondGradeInformations.lhs / secondGradeInformations.rhs)
+                case .better: return (firstGradeInformations.lhs / firstGradeInformations.rhs) >= (secondGradeInformations.lhs / secondGradeInformations.rhs)
                 }
             }
             .first
@@ -246,7 +235,7 @@ extension Calculator {
                 totalOutOf += $0.rhs * $0.coeff
             }
 
-        return rateOufOfTwenty(totalGrade / totalOutOf)
+        return gradeOufOfTwenty(totalGrade / totalOutOf)
     }
 
     /// Compare catchUp simulation grade with simulation grade to extract all exams where points have been added

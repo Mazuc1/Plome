@@ -18,6 +18,5 @@ public enum AppStyles {
     public static let secondaryCTAHeight: CGFloat = 50
     public static let tertiaryCTAHeight: CGFloat = 35
 
-    public static let secondaryIconCTAHeight: CGFloat = 48
     public static let defaultCellHeight: CGFloat = 44
 }

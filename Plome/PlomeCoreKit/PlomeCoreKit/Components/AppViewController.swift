@@ -10,6 +10,6 @@ import UIKit
 open class AppViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .init(color: .background)
+        view.backgroundColor = PlomeColor.background.color
     }
 }

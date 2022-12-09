@@ -28,6 +28,8 @@ protocol Router: Routable {
 }
 
 protocol Alertable {
+    func errorAlert()
     func alert(title: String, message: String)
     func alertWithAction(title: String, message: String, completion: @escaping () -> Void)
+    func alertWithTextField(title: String, message: String, buttonActionName: String, returnedValue: @escaping (String) -> Void)
 }
