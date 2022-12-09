@@ -26,7 +26,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     @Published var continousControls: [Exam] = []
     @Published var options: [Exam] = []
 
-    var simulationName: String = "Nouveau modèle"
+    var simulationName: String = L10n.SimulationModels.newModel
 
     var cdSimulation: CDSimulation?
 
@@ -110,7 +110,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
             router.dismiss()
         } catch {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
         }
     }
 
@@ -124,7 +124,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
             router.dismiss()
         } catch {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
         }
     }
 
@@ -141,9 +141,9 @@ final class AddSimulationModelViewModel: ObservableObject {
 
 extension AddSimulationModelViewModel: ExamTypeHeaderViewOutput {
     func userDidTapAddExam(for section: ExamTypeSection) {
-        router.alertWithTextField(title: "Nouveau",
-                                  message: "Comment se nomme votre \(section.title) ?",
-                                  buttonActionName: "Ajouter") { [weak self] in
+        router.alertWithTextField(title: PlomeCoreKit.L10n.General.new,
+                                  message: L10n.howNamedYour(section.title),
+                                  buttonActionName: PlomeCoreKit.L10n.General.add) { [weak self] in
             self?.addExam(name: $0, in: section)
         }
     }

@@ -27,12 +27,12 @@ final class SimulationModelsViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var primaryCTAAddModel: PrimaryCTA = .init(title: "Nouveau modèle").configure { [weak self] in
+    private lazy var primaryCTAAddModel: PrimaryCTA = .init(title: L10n.SimulationModels.newModel).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapAddModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let emptySimulationModelListView: PlaceholderView = .init(frame: .zero, icon: .model, text: "Vous retrouverez ici tous vos modèles de simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.\n\nVous trouverez également des modèles par défaut dans les réglages de l'application.")
+    private let emptySimulationModelListView: PlaceholderView = .init(frame: .zero, icon: .model, text: L10n.SimulationModels.emptyModelPlaceholder)
 
     // MARK: - Init
 

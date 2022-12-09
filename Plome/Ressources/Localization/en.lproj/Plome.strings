@@ -4,6 +4,8 @@
 "tabBar_model" = "Modèles";
 "tabBar_settings" = "Réglages";
 
+"how_named_your" = "Comment se nomme votre %@";
+
 // MARK: - Home
 
 "home.how_to_catchUp" = "Comment vous rattrapez ?";
@@ -24,7 +26,6 @@
 "home.calculate" = "Calculer";
 "home.how_to_complete_simulation" = "Comment complétez la simulation ?";
 "home.simulation_rules" = "Voici les quelques règles pour bien faire votre simulation.\n\n1. Les nombres à décimaux s'écrivent avec des points.\n\n2. Les notes doivent être séparer avec un /.\n\n3. Si vous n'indiquez pas de coefficient, il sera automatiquement mis à 1 lors du calcul.";
-"home.how_named_your" = "Comment se nomme votre %@";
 
 "home.coeff" = "Coeff.";
 "home.grade" = "Note";
@@ -78,3 +79,7 @@
 "simulationModels.warning_message_remove_model" = "Vous vous apprêtez à supprimer ce modèle. Êtes vous sur de vouloir le supprimer ?";
 
 "simulationModels.simulation_model_placeholder_name" = "Bac Pro...";
+
+"simulationModels.number_of_trials" = "%d Epreuves";
+"simulationModels.number_of_continous_controls" = "%d Contrôles continue";
+"simulationModels.number_of_options" = "%d Options";
