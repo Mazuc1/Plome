@@ -66,7 +66,7 @@ final class SimulationResultViewModel {
                 router.alert(title: L10n.Home.itsDone, message: L10n.Home.modelHasBeenSave)
             }
         } catch {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
         }
     }
 
@@ -81,7 +81,7 @@ final class SimulationResultViewModel {
 
     func userDidTapShareResult(screenshot: UIImage) {
         guard let url = screenshot.url(name: L10n.Home.mySimulation) else {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
             return
         }
         router.openActivityController(with: [url])

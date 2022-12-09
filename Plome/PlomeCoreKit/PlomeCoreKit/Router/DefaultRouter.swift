@@ -54,6 +54,10 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
 
     // MARK: - Alertable
 
+    public func errorAlert() {
+        alert(title: L10n.General.oups, message: L10n.General.commonErrorMessage)
+    }
+
     public func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: L10n.General.ok, style: .cancel))

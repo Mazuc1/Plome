@@ -110,7 +110,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
             router.dismiss()
         } catch {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
         }
     }
 
@@ -124,7 +124,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
             router.dismiss()
         } catch {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
         }
     }
 

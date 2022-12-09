@@ -71,7 +71,7 @@ final class SimulationModelsViewModel: ObservableObject {
         if let simulation = coreDataSimulationModels?[index.row] {
             router.openAddSimulationModel(openAs: .edit(simulation))
         } else {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
         }
     }
 
@@ -87,7 +87,7 @@ final class SimulationModelsViewModel: ObservableObject {
                 try simulationRepository.delete(with: simulation.objectID)
             }
         } catch {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
         }
     }
 }

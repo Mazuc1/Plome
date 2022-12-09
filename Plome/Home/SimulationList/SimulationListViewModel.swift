@@ -74,7 +74,7 @@ final class SimulationListViewModel {
 
     func userDidSelectSimulation(at index: IndexPath) {
         guard let cdSimulation = coreDataSimulationModels?[index.row] else {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
             return
         }
 
@@ -88,7 +88,7 @@ final class SimulationListViewModel {
                 try simulationRepository.delete(with: simulation.objectID)
             }
         } catch {
-            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            router.errorAlert()
         }
     }
 }
