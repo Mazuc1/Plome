@@ -122,7 +122,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.admissionSentence()
 
         // Assert
-        XCTAssertEqual(result, "Vous êtes admis ! 🥳")
+        XCTAssertEqual(result, "You are admitted! 🥳")
     }
 
     func testReturnsOfAdmissionSentenceWithExamFailure() {
@@ -133,7 +133,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.admissionSentence()
 
         // Assert
-        XCTAssertEqual(result, "Vous n'êtes pas admis 😕")
+        XCTAssertEqual(result, "You are not admitted 😕")
     }
 
     func testReturnsOfResultSentenceWithExamSuccess() {
@@ -144,7 +144,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.resultSentence()
 
         // Assert
-        XCTAssertEqual(result, "Félicitation !")
+        XCTAssertEqual(result, "Congratulation !")
     }
 
     func testReturnsOfResultSentenceWithExamFailure() {
@@ -155,7 +155,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.resultSentence()
 
         // Assert
-        XCTAssertEqual(result, "Oups...")
+        XCTAssertEqual(result, "Whoops...")
     }
 
     func testReturnsOfMentionSentenceWithExamSuccess() {
@@ -166,7 +166,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.mentionSentence()
 
         // Assert
-        XCTAssertEqual(result, "Sans mention")
+        XCTAssertEqual(result, "Without mention")
     }
 
     func testReturnsOfMentionSentenceWithExamFailure() {
@@ -177,7 +177,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.mentionSentence()
 
         // Assert
-        XCTAssertEqual(result, "Vous ne pouvez pas avoir de mention en dessous de la moyenne")
+        XCTAssertEqual(result, "You cannot have a mention below the average")
     }
 
     func testReturnsOfTrialsGrade() {
