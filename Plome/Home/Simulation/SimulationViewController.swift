@@ -32,7 +32,7 @@ final class SimulationViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var primaryCTACalculate: PrimaryCTA = .init(title: "Calculer").configure { [weak self] in
+    private lazy var primaryCTACalculate: PrimaryCTA = .init(title: L10n.Home.calculate).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapCalculate), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -97,10 +97,10 @@ final class SimulationViewController: AppViewController {
     }
 
     @objc private func userDidTapInfo() {
-        let alertController = UIAlertController(title: "Comment complétez la simulation ?",
-                                                message: "Voici les quelques règles pour bien faire votre simulation.\n\n1. Les nombres à décimaux s'écrivent avec des points.\n\n2. Les notes doivent être séparer avec un /.\n\n3. Si vous n'indiquez pas de coefficient, il sera automatiquement mis à 1 lors du calcul.",
+        let alertController = UIAlertController(title: L10n.Home.howToCompleteSimulation,
+                                                message: L10n.Home.simulationRules,
                                                 preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alertController.addAction(UIAlertAction(title: PlomeCoreKit.L10n.General.ok, style: .cancel))
         alertController.view.tintColor = PlomeColor.pink.color
 
         present(alertController, animated: true)

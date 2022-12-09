@@ -36,7 +36,7 @@ final class ExamCell: UITableViewCell {
     }
 
     private var labelCoeff: UILabel = .init().configure {
-        $0.text = "Coeff."
+        $0.text = L10n.Home.coeff
         $0.font = PlomeFont.bodyS.font
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .left
@@ -44,7 +44,7 @@ final class ExamCell: UITableViewCell {
     }
 
     private var labelGrade: UILabel = .init().configure {
-        $0.text = "Note"
+        $0.text = L10n.Home.grade
         $0.font = PlomeFont.bodyS.font
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .left
@@ -52,7 +52,7 @@ final class ExamCell: UITableViewCell {
     }
 
     private var textFieldCoeff: UITextField = .init().configure {
-        $0.placeholder = "1.0"
+        $0.placeholder = L10n.Home.coeffPlaceholder
         $0.font = PlomeFont.bodyM.font
         $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect
@@ -62,7 +62,7 @@ final class ExamCell: UITableViewCell {
     }
 
     private var textFieldGrade: UITextField = .init().configure {
-        $0.placeholder = "08/20"
+        $0.placeholder = L10n.Home.gradePlaceholder
         $0.font = PlomeFont.bodyM.font
         $0.keyboardType = .numbersAndPunctuation
         $0.borderStyle = .roundedRect

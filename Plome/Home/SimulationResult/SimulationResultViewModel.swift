@@ -63,10 +63,10 @@ final class SimulationResultViewModel {
             }
 
             if type == .simulationModel {
-                router.alert(title: "C'est fait !", message: "Le modèle à bien été enregistrer")
+                router.alert(title: L10n.Home.itsDone, message: L10n.Home.modelHasBeenSave)
             }
         } catch {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
         }
     }
 
@@ -80,8 +80,8 @@ final class SimulationResultViewModel {
     }
 
     func userDidTapShareResult(screenshot: UIImage) {
-        guard let url = screenshot.url(name: "Ma simulation") else {
-            router.alert(title: "Oups...", message: "Impossible de partager.")
+        guard let url = screenshot.url(name: L10n.Home.mySimulation) else {
+            router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
             return
         }
         router.openActivityController(with: [url])

@@ -20,7 +20,7 @@ final class SelectSimulationModelViewController: AppViewController {
     // MARK: - UI
 
     private let labelActionDescription: UILabel = .init().configure {
-        $0.text = "Sélectionnez un modèle"
+        $0.text = L10n.Home.selectAModel
         $0.font = PlomeFont.demiBoldS.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -60,7 +60,7 @@ final class SelectSimulationModelViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Nouvelle simulation"
+        navigationItem.title = L10n.Home.newSimulation
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.backButtonDisplayMode = .minimal
 

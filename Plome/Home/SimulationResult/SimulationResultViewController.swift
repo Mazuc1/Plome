@@ -74,7 +74,7 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private let someNumbersLabel: UILabel = .init().configure {
-        $0.text = "Quelques chiffres"
+        $0.text = L10n.Home.someNumbers
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
@@ -89,25 +89,25 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var primaryCTARemakeSimulation: PrimaryCTA = .init(title: "Refaire une simulation").configure { [weak self] in
+    private lazy var primaryCTARemakeSimulation: PrimaryCTA = .init(title: L10n.Home.remakeSimulation).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private let saveModelLabel: UILabel = .init().configure {
-        $0.text = "Vous avez modifié le modèle utilisé ? Pensez à l'enregistrer."
+        $0.text = L10n.Home.editModelThinkToSave
         $0.font = PlomeFont.bodyS.font
         $0.numberOfLines = 0
         $0.textAlignment = .center
         $0.textColor = PlomeColor.darkGray.color
     }
 
-    private lazy var tertiaryCTASaveModel: TertiaryCTA = .init(title: "Enregistrer ce modèle").configure { [weak self] in
+    private lazy var tertiaryCTASaveModel: TertiaryCTA = .init(title: L10n.Home.saveModel).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapSaveModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: "Retourner à l'accueil").configure { [weak self] in
+    private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: L10n.Home.returnToHome).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapBackToHome), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -174,7 +174,7 @@ final class SimulationResultViewController: AppViewController {
         super.viewDidLoad()
         scrollViewWidth = view.frame.width - AppStyles.defaultSpacing(factor: 4)
 
-        navigationItem.title = "Résultat"
+        navigationItem.title = L10n.Home.result
         navigationItem.rightBarButtonItem = createShareResultBarButton()
 
         viewModel.save(.simulation)
@@ -244,15 +244,15 @@ final class SimulationResultViewController: AppViewController {
         var views: [UIView] = []
 
         if viewModel.shaper.simulationContainTrials() {
-            views.append(GradeInformationCell(frame: .zero, title: "Epreuves", grade: viewModel.shaper.trialsGrade()))
+            views.append(GradeInformationCell(frame: .zero, title: PlomeCoreKit.L10n.trialsType, grade: viewModel.shaper.trialsGrade()))
         }
 
         if viewModel.shaper.simulationContainContinousControls() {
-            views.append(GradeInformationCell(frame: .zero, title: "Contrôle continue", grade: viewModel.shaper.continousControlGrade()))
+            views.append(GradeInformationCell(frame: .zero, title: PlomeCoreKit.L10n.continuousControlsType, grade: viewModel.shaper.continousControlGrade()))
         }
 
         if viewModel.shaper.simulationContainOptions() {
-            views.append(GradeInformationCell(frame: .zero, title: "Options", grade: viewModel.shaper.optionGrade()))
+            views.append(GradeInformationCell(frame: .zero, title: PlomeCoreKit.L10n.optionsType, grade: viewModel.shaper.optionGrade()))
         }
 
         someNumbersStackView.addArrangedSubview(someNumbersLabel)

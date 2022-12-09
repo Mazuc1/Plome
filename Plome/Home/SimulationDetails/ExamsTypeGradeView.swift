@@ -153,7 +153,7 @@ final class ExamsTypeGradeView: UIView {
 
         if shaper.simulationContainTrials() {
             let titleExamTypeLabel: UILabel = .init().configure {
-                $0.text = "Epreuves"
+                $0.text = PlomeCoreKit.L10n.trialsType
                 $0.font = PlomeFont.bodyM.font
                 $0.textColor = PlomeColor.darkBlue.color
             }
@@ -175,7 +175,7 @@ final class ExamsTypeGradeView: UIView {
 
         if shaper.simulationContainContinousControls() {
             let titleExamTypeLabel: UILabel = .init().configure {
-                $0.text = "Contrôles continue"
+                $0.text = PlomeCoreKit.L10n.continuousControlsType
                 $0.font = PlomeFont.bodyM.font
                 $0.textColor = PlomeColor.darkBlue.color
             }
@@ -197,7 +197,7 @@ final class ExamsTypeGradeView: UIView {
 
         if shaper.simulationContainOptions() {
             let titleExamTypeLabel: UILabel = .init().configure {
-                $0.text = "Options"
+                $0.text = PlomeCoreKit.L10n.optionsType
                 $0.font = PlomeFont.bodyM.font
                 $0.textColor = PlomeColor.darkBlue.color
             }

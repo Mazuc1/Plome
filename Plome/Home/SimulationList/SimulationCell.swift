@@ -76,8 +76,8 @@ final class SimulationCell: UITableViewCell {
     func setup(with shaper: CalculatorShaper) {
         setupLayout()
 
-        shaper.successAdmissionSentence = "Admis"
-        shaper.failureAdmissionSentence = "Non admis"
+        shaper.successAdmissionSentence = L10n.Home.admit
+        shaper.failureAdmissionSentence = L10n.Home.unadmit
         shaper.calculator.calculate()
 
         dateLabel.text = shaper.date(with: .classicPoint)

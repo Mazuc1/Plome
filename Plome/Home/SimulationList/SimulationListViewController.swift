@@ -29,12 +29,12 @@ final class SimulationListViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var primaryCTANewSimulation: PrimaryCTA = .init(title: "Nouvelle simulation").configure { [weak self] in
+    private lazy var primaryCTANewSimulation: PrimaryCTA = .init(title: L10n.Home.newSimulation).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapNewSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let emptySimulationListView: PlaceholderView = .init(frame: .zero, icon: .list, text: "Vous retrouverez ici toutes vos simulations d’examens.\n\nVous pouvez reprendre une existante pour la modifier.")
+    private let emptySimulationListView: PlaceholderView = .init(frame: .zero, icon: .list, text: L10n.Home.emptySimulationPlaceholder)
 
     // MARK: - Init
 
@@ -52,7 +52,7 @@ final class SimulationListViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Mes simulations"
+        navigationItem.title = L10n.Home.mySimulations
 
         setupLayout()
 
