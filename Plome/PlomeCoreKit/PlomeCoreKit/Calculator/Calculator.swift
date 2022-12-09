@@ -15,10 +15,10 @@ public enum Mention {
 
     public var name: String {
         switch self {
-        case .without: return "Sans mention"
-        case .AB: return "Mention assez bien"
-        case .B: return "Mention bien"
-        case .TB: return "Mention très bien"
+        case .without: return L10n.withoutMention
+        case .AB: return L10n.quiteWellMention
+        case .B: return L10n.greatMention
+        case .TB: return L10n.veryGreatMention
         }
     }
 
