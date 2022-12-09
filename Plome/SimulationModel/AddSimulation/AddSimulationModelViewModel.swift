@@ -143,8 +143,7 @@ extension AddSimulationModelViewModel: ExamTypeHeaderViewOutput {
     func userDidTapAddExam(for section: ExamTypeSection) {
         router.alertWithTextField(title: "Nouveau",
                                   message: "Comment se nomme votre \(section.title) ?",
-                                  buttonActionName: "Ajouter")
-        { [weak self] in
+                                  buttonActionName: "Ajouter") { [weak self] in
             self?.addExam(name: $0, in: section)
         }
     }

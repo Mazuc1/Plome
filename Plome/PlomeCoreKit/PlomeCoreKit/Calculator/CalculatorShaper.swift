@@ -12,8 +12,8 @@ public final class CalculatorShaper {
 
     public let calculator: Calculator
 
-    public var successAdmissionSentence: String = "Vous êtes admis ! 🥳"
-    public var failureAdmissionSentence: String = "Vous n'êtes pas admis 😕"
+    public var successAdmissionSentence: String = L10n.successAdmission
+    public var failureAdmissionSentence: String = L10n.failureAdmission
 
     // MARK: - Init
 
@@ -71,13 +71,13 @@ public final class CalculatorShaper {
     /// Get the result sentence depends of success of Exam
     /// - Returns: "Féliciation" or "Oups..."
     public func resultSentence() -> String {
-        hasSucceedExam() ? "Félicitation !" : "Oups..."
+        hasSucceedExam() ? L10n.successResult : L10n.failureResult
     }
 
     /// Get the mention sentence depends of Mention. If there are no mention, returns "Sans mention"
     /// - Returns: Eg: "Mention très bien"
     public func mentionSentence() -> String {
-        guard let mention = calculator.mention else { return "Vous ne pouvez pas avoir de mention en dessous de la moyenne" }
+        guard let mention = calculator.mention else { return L10n.disableMention }
         return mention.name
     }
 

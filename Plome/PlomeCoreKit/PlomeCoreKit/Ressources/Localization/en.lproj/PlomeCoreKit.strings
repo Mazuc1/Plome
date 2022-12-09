@@ -52,6 +52,7 @@
 "t_EPS" = "Terminale EPS";
 "t_history_geography" = "Terminale Histoire-géo";
 "t_EMC" = "Terminale EMC";
+"t_math" = "Terminale mathématique";
 
 "done" = "Terminé";
 "locale" = "FR-fr";

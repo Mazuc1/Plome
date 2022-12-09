@@ -33,7 +33,7 @@ public enum AppAppearance {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         IQKeyboardManager.shared.toolbarTintColor = PlomeColor.pink.color
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Terminé"
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = L10n.done
         IQKeyboardManager.shared.previousNextDisplayMode = .default
         IQKeyboardManager.shared.toolbarNextBarButtonItemImage = Icons.arrowDown.configure(weight: .regular, color: .pink, size: 20)
         IQKeyboardManager.shared.toolbarPreviousBarButtonItemImage = Icons.arrowUp.configure(weight: .regular, color: .pink, size: 20)
