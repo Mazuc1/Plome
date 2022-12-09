@@ -27,16 +27,16 @@ public final class DefaultSimulationModelsProvider {
 
     private func buildBrevetSimluationModel() -> Simulation {
         let examsSet = Set(BrevetExamsProvider.allExams().map { $0 })
-        return Simulation(name: "Brevet", date: nil, exams: examsSet, type: .brevet)
+        return Simulation(name: L10n.brevet, date: nil, exams: examsSet, type: .brevet)
     }
 
     private func buildGeneralBACSimluationModel() -> Simulation {
         let examsSet = Set(GeneralBACExamsProvider.allExams().map { $0 })
-        return Simulation(name: "BAC Général", date: nil, exams: examsSet, type: .generalBAC)
+        return Simulation(name: L10n.generalBAC, date: nil, exams: examsSet, type: .generalBAC)
     }
 
     private func buildTechnologicalBACSimluationModel() -> Simulation {
         let examsSet = Set(TechnologicalBACExamsProvider.allExams().map { $0 })
-        return Simulation(name: "BAC Technologique", date: nil, exams: examsSet, type: .technologicalBAC)
+        return Simulation(name: L10n.technologicalBAC, date: nil, exams: examsSet, type: .technologicalBAC)
     }
 }

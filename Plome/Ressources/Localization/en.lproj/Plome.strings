@@ -1,0 +1,85 @@
+// MARK: - General
+
+"tabBar_home" = "Home";
+"tabBar_model" = "Model";
+"tabBar_settings" = "Settings";
+
+"how_named_your" = "What is the name of your %@";
+
+// MARK: - Home
+
+"home.how_to_catchUp" = "How you catch up ?";
+"home.you_will_obtain_your_diploma" = "You will graduate by earning extra points:";
+"home.your_grade_will_be" = "Your score will then be";
+
+"home.some_numbers" = "Some numbers";
+"home.remake_simulation" = "Remake a simulation";
+"home.edit_model_think_to_save" = "Have you changed the template used? Consider saving it.";
+"home.save_model" = "Save this model";
+"home.return_to_home" = "Back to home";
+"home.result" = "Result";
+
+"home.its_done" = "It's done !";
+"home.model_has_been_save" = "The model has been saved";
+"home.my_simulation" = "My simulation";
+
+"home.calculate" = "Calculate";
+"home.how_to_complete_simulation" = "How to complete the simulation?";
+"home.simulation_rules" = "Here are a few rules for doing your simulation well.\n\n1. Decimal numbers are written with dots.\n\n2. Notes must be separated with a /.\n\n3. If you do not indicate a coefficient, it will be automatically set to 1 during the calculation.";
+
+"home.coeff" = "Coeff.";
+"home.grade" = "Grade";
+"home.coeff_placeholder" = "1.0";
+"home.grade_placeholder" = "08/20";
+
+"home.select_a_model" = "Select a model";
+"home.new_simulation" = "New simulation";
+"home.empty_simulation_placeholder" = "You will find here all your exam simulations.\n\nYou can take an existing one to modify it.";
+"home.my_simulations" = "My simulations";
+
+"home.admit" = "Admit";
+"home.unadmit" = "Unadmit";
+
+"home.your_grades" = "Your grades";
+"home.remake_simulation_from_this_one" = "Re-simulate from this simulation";
+"home.final_grade" = "Final grade";
+
+"home.simulation_from_date" = "Simulation from %@";
+"home.worst_grade" = "Worst grade";
+"home.best_grade" = "Best grade";
+
+// MARK: - Settings
+
+"settings.assistance_mail" = "mazuc.loic@icloud.com";
+"settings.app_name" = "Plôme";
+"settings.error_launch_mail_app" = "You don't seem to have an email application.\nYou can reach us at: mazuc.loic@icloud.com";
+
+"settings.settings" = "Settings";
+"settings.general" = "General";
+"settings.add_default_model" = "Add the default models";
+"settings.remove_all_simulations" = "Remove all simulations";
+"settings.other" = "Other";
+"settings.contact_assistance" = "Contact assistance";
+"settings.reintialize_app" = "Reset app";
+
+"settings.warning_message_remove_simulations" = "You are about to delete all simulations, are you sure you want to continue?";
+"settings.all_simulation_has_been_deleted" = "All simulations have been deleted.";
+"settings.default_model_has_been_added" = "The simulation models have been added.";
+"settings.warning_message_reinitialize" = "You are about to delete all app data, are you sure you want to continue?";
+"settings.app_has_been_reinitialized" = "The application has been successfully reset.";
+
+"settings.errorAppVersion" = "9.99";
+"settings.version" = "Version %@";
+
+// MARK: - Simulation models
+
+"simulationModels.new_model" = "New model";
+"simulationModels.empty_model_placeholder" = "Here you will find all your exam simulation templates.\n\nYou can use an existing one to modify it.\n\nYou will also find default templates in the application settings.";
+
+"simulationModels.warning_message_remove_model" = "You are about to delete this model. Are you sure you want to delete it?";
+
+"simulationModels.simulation_model_placeholder_name" = "Bac Pro...";
+
+"simulationModels.number_of_trials" = "%d Trials";
+"simulationModels.number_of_continous_controls" = "%d Continuous controls";
+"simulationModels.number_of_options" = "%d Options";

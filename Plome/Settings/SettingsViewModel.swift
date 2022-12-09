@@ -27,8 +27,8 @@ final class SettingsViewModel {
     // MARK: - Methods
 
     func getVersion() -> String {
-        let bundleShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "9.99"
-        return "Version \(bundleShortVersion)"
+        let bundleShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? L10n.Settings.errorAppVersion
+        return L10n.Settings.version(bundleShortVersion)
     }
 
     func userDidTapContactAssistance() {
@@ -36,7 +36,7 @@ final class SettingsViewModel {
     }
 
     func userDidTapDeleteSimulations() {
-        router.alertWithAction(title: "Attention", message: "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continuer ?") { [weak self] in
+        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageRemoveSimulations) { [weak self] in
             self?.deleteSimulations()
         }
     }
@@ -44,9 +44,9 @@ final class SettingsViewModel {
     func deleteSimulations() {
         do {
             try simulationRepository.deleteAll(where: CDSimulation.withDatePredicate, sortDescriptors: [])
-            router.alert(title: "Toutes les simulations ont bien été supprimées.", message: "")
+            router.alert(title: L10n.Settings.allSimulationHasBeenDeleted, message: "")
         } catch {
-            router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
+            router.errorAlert()
         }
     }
 
@@ -59,15 +59,15 @@ final class SettingsViewModel {
                         cdSimulation.type = simulation.type
                         cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
                     }
-                    router.alert(title: "Les modèle de simulation ont bien été ajoutées.", message: "")
+                    router.alert(title: L10n.Settings.defaultModelHasBeenAdded, message: "")
                 } catch {
-                    router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
+                    router.errorAlert()
                 }
             }
     }
 
     func userDidTapReinitializeApplication() {
-        router.alertWithAction(title: "Attention", message: "Vous vous apprêtez à supprimer toutes les données de l'application, êtes-vous sur de vouloir continuer ?") { [weak self] in
+        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageReinitialize) { [weak self] in
             self?.deleteAllSimulations()
         }
     }
@@ -75,9 +75,9 @@ final class SettingsViewModel {
     func deleteAllSimulations() {
         do {
             try simulationRepository.deleteAll()
-            router.alert(title: "L'application à bien été réinitialisé.", message: "")
+            router.alert(title: L10n.Settings.appHasBeenReinitialized, message: "")
         } catch {
-            router.alert(title: "Oups...", message: "Une erreur est survenu 😕")
+            router.errorAlert()
         }
     }
 }

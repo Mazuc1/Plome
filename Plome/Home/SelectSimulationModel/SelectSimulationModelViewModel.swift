@@ -67,7 +67,7 @@ final class SelectSimulationModelViewModel: ObservableObject {
 
     func userDidSelectSimulationModel(at indexPath: IndexPath) {
         guard let simulation = getSimulation(indexPath: indexPath) else {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.errorAlert()
             return
         }
 

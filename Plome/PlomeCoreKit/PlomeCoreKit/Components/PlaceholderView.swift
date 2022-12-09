@@ -44,7 +44,7 @@ public final class PlaceholderView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         icon = .fail
-        text = "Oups, il y a eu un imprévu..."
+        text = L10n.unexpected
         super.init(coder: aDecoder)
         setupView()
     }

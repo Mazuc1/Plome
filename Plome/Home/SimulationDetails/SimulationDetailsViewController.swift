@@ -18,7 +18,7 @@ class SimulationDetailsViewController: AppViewController {
     // MARK: - UI
 
     private let detailsSectionLabel: UILabel = .init().configure {
-        $0.text = "Vos notes"
+        $0.text = L10n.Home.yourGrades
         $0.font = PlomeFont.demiBoldM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
@@ -38,7 +38,7 @@ class SimulationDetailsViewController: AppViewController {
         $0.alignment = .center
     }
 
-    private lazy var secondaryCTARemakeSimulation: SecondaryCTA = .init(title: "Re simuler à partir de cette simulation").configure { [weak self] in
+    private lazy var secondaryCTARemakeSimulation: SecondaryCTA = .init(title: L10n.Home.remakeSimulationFromThisOne).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -91,7 +91,7 @@ class SimulationDetailsViewController: AppViewController {
         let detailsHeaderView = DetailsHeaderView(frame: .zero, shaper: viewModel.shaper)
         scrollViewContainerStackView.addArrangedSubviews([detailsHeaderView, detailsSectionLabel])
 
-        let gradeInformationView = GradeInformationCell(frame: .zero, title: "Note final", grade: viewModel.shaper.finalGradeOutOfTwenty())
+        let gradeInformationView = GradeInformationCell(frame: .zero, title: L10n.Home.finalGrade, grade: viewModel.shaper.finalGradeOutOfTwenty())
         gradeInformationsStackView.addArrangedSubview(gradeInformationView)
 
         let examsTypeGradeView = ExamsTypeGradeView(frame: .zero, shaper: viewModel.shaper)

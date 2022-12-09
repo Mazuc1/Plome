@@ -17,7 +17,7 @@ class CatchUpView: UIView {
     // MARK: - UI
 
     private let titleLabel: UILabel = .init().configure {
-        $0.text = "Comment vous rattrapez ?"
+        $0.text = L10n.Home.howToCatchUp
         $0.font = PlomeFont.demiBoldM.font
         $0.numberOfLines = 0
         $0.textAlignment = .left
@@ -25,7 +25,7 @@ class CatchUpView: UIView {
     }
 
     private let descriptionLabel: UILabel = .init().configure {
-        $0.text = "Vous obtiendrez votre diplôme en obtenant des points supplémentaires:"
+        $0.text = L10n.Home.youWillObtainYourDiploma
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkGray.color
         $0.textAlignment = .left
@@ -40,7 +40,7 @@ class CatchUpView: UIView {
     }
 
     private let resultLabel: UILabel = .init().configure {
-        $0.text = "Votre note sera alors de"
+        $0.text = L10n.Home.yourGradeWillBe
         $0.font = PlomeFont.bodyM.font
         $0.textAlignment = .center
         $0.textColor = PlomeColor.darkBlue.color
@@ -50,7 +50,6 @@ class CatchUpView: UIView {
                                              AppStyles.defaultSpacing(factor: 2),
                                              AppStyles.defaultSpacing(factor: 2),
                                              AppStyles.defaultSpacing(factor: 2)).configure {
-        $0.text = "10.36/20"
         $0.font = PlomeFont.demiBoldM.font
         $0.textAlignment = .center
         $0.textColor = PlomeColor.darkBlue.color

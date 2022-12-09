@@ -64,7 +64,7 @@ final class DetailsHeaderView: UIView {
         backgroundColor = .white
         layer.cornerRadius = AppStyles.defaultRadius
 
-        dateLabel.text = "Simulation du \(shaper.date(with: .classicPoint))"
+        dateLabel.text = L10n.Home.simulationFromDate(shaper.date(with: .classicPoint))
         admissionLabel.text = shaper.admissionSentence()
 
         let informationStackView: UIStackView = .init().configure {

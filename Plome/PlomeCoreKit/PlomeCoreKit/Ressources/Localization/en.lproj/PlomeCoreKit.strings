@@ -1,0 +1,71 @@
+"without_mention" = "Without mention";
+"quite_well_mention" = "Quite well mention";
+"great_mention" = "Great mention";
+"very_great_mention" = "Very great mention";
+"disable_mention" = "You cannot have a mention below the average";
+
+"success_admission" = "You are admitted! 🥳";
+"failure_admission" = "You are not admitted 😕";
+
+"success_result" = "Congratulation !";
+"failure_result" = "Whoops...";
+
+"trials_type" = "Trials";
+"continuousControls_type" = "Continuous controls";
+"options_type" = "Options";
+
+"brevet" = "Brevet";
+"general_BAC" = "BAC Général";
+"technological_BAC" = "BAC Technologique";
+
+"french_language" = "French language";
+"foreign_language" = "Foreign language";
+"scientist_language" = "Scientist language";
+"art_language" = "Arts language";
+"learning_tools" = "Learning tools";
+"citizen_formation" = "Citizen formation";
+"natual_technologic_system" = "Natural and technological system";
+"world_representation" = "World representation";
+
+"french" = "French";
+"math" = "Mathematics";
+"oral" = "Oral";
+"sciences" = "Sciences";
+"history_geography_EMC" = "History-Geography-EMC";
+
+"french_writting" = "French writting";
+"french_oral" = "French oral";
+"1_abandoned_speciality" = "1ère Abandonned speciality";
+"1_scientific_education" = "1ère Scientific education";
+"1_LVA" = "1ère LVA";
+"1_LVB" = "1ère LVB";
+"1_EPS" = "1ère EPS";
+"1_history_geography" = "1ère History-geography";
+"1_EMC" = "1ère EMC";
+"grand_oral" = "Grand oral";
+"philosophy" = "Philosophy";
+"specialized_education_1" = "Specialized education 1";
+"specialized_education_2" = "Specialized education 2";
+"t_scientific_education" = "Terminale scientific education";
+"t_LVA" = "Terminale LVA";
+"t_LVB" = "Terminale LVB";
+"t_EPS" = "Terminale EPS";
+"t_history_geography" = "Terminale History-geography";
+"t_EMC" = "Terminale EMC";
+"t_math" = "Terminale mathematics";
+
+"write_here" = "Write here...";
+"unexpected" = "Whoops, there was an unexpected error...";
+
+"general.done" = "Done";
+"general.locale" = "En-en";
+"general.ok" = "Ok";
+"general.yes" = "Yes";
+"general.no" = "No";
+"general.cancel" = "Cancel";
+"general.new" = "New";
+"general.add" = "Add";
+"general.oups" = "Whoops";
+"general.common_error_message" = "An error has occurred 😕";
+"general.warning" = "Warning";
+"general.save" = "Save";

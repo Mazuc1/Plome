@@ -54,7 +54,7 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
                         cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
                     }
                 } catch {
-                    PlomeCoreKit.log(error: Error.failedToAddDefaultSimulationModels)
+                    PlomeCoreKitModule.log(error: Error.failedToAddDefaultSimulationModels)
                 }
             }
     }

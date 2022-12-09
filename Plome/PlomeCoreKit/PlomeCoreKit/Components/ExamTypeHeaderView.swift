@@ -14,9 +14,9 @@ public enum ExamTypeSection: Int, CaseIterable {
 
     public var title: String {
         switch self {
-        case .trial: return "Épreuve"
-        case .continuousControl: return "Contrôle continue"
-        case .option: return "Option"
+        case .trial: return L10n.trialsType
+        case .continuousControl: return L10n.continuousControlsType
+        case .option: return L10n.optionsType
         }
     }
 }

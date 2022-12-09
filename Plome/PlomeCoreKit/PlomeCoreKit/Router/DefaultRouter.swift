@@ -54,17 +54,21 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
 
     // MARK: - Alertable
 
+    public func errorAlert() {
+        alert(title: L10n.General.oups, message: L10n.General.commonErrorMessage)
+    }
+
     public func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alertController.addAction(UIAlertAction(title: L10n.General.ok, style: .cancel))
         alertController.view.tintColor = PlomeColor.pink.color
         rootViewController?.present(alertController, animated: true)
     }
 
     public func alertWithAction(title: String, message: String, completion: @escaping () -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Non", style: .cancel))
-        alertController.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: L10n.General.no, style: .cancel))
+        alertController.addAction(UIAlertAction(title: L10n.General.yes, style: .default, handler: { _ in
             completion()
         }))
         alertController.view.tintColor = PlomeColor.pink.color
@@ -74,8 +78,8 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     public func alertWithTextField(title: String, message: String, buttonActionName: String, returnedValue: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        alertController.addTextField { $0.placeholder = "Ecrivez ici..." }
-        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel))
+        alertController.addTextField { $0.placeholder = L10n.writeHere }
+        alertController.addAction(UIAlertAction(title: L10n.General.cancel, style: .cancel))
         alertController.addAction(UIAlertAction(title: buttonActionName, style: .default, handler: { _ in
             guard let value = alertController.textFields?[0].text,
                   !value.isEmpty else { return }

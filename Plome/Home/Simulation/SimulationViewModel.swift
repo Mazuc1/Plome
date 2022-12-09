@@ -49,7 +49,7 @@ final class SimulationViewModel: ObservableObject {
         }
 
         guard let exam else {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.errorAlert()
             return
         }
 
@@ -77,10 +77,9 @@ final class SimulationViewModel: ObservableObject {
 
 extension SimulationViewModel: ExamTypeHeaderViewOutput {
     func userDidTapAddExam(for section: ExamTypeSection) {
-        router.alertWithTextField(title: "Nouveau",
-                                  message: "Comment se nomme votre \(section.title) ?",
-                                  buttonActionName: "Ajouter")
-        { [weak self] in
+        router.alertWithTextField(title: PlomeCoreKit.L10n.General.new,
+                                  message: L10n.howNamedYour(section.title),
+                                  buttonActionName: PlomeCoreKit.L10n.General.add) { [weak self] in
             self?.addExam(name: $0, in: section)
         }
     }

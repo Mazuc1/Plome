@@ -28,14 +28,14 @@ final class AddSimulationModelViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private lazy var primaryCTARegisterModel: PrimaryCTA = .init(title: "Enregistrer").configure { [weak self] in
+    private lazy var primaryCTARegisterModel: PrimaryCTA = .init(title: PlomeCoreKit.L10n.General.save).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapSaveSimulationModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private lazy var textFieldTitle: UITextField = .init().configure { [weak self] in
         $0.delegate = self
-        $0.placeholder = "Bac Pro..."
+        $0.placeholder = L10n.SimulationModels.simulationModelPlaceholderName
         $0.returnKeyType = .done
         $0.textAlignment = .center
         $0.font = PlomeFont.demiBoldM.font
@@ -200,7 +200,7 @@ extension AddSimulationModelViewController: UITextFieldDelegate {
         {
             viewModel.simulationName = text
         } else {
-            textField.text = "Nouveau modèle"
+            textField.text = L10n.SimulationModels.newModel
         }
     }
 

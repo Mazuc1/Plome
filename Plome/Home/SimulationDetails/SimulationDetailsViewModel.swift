@@ -30,8 +30,8 @@ final class SimulationDetailsViewModel {
         calculator = Calculator(simulation: simulation)
 
         shaper = CalculatorShaper(calculator: calculator)
-        shaper.successAdmissionSentence = "Admis"
-        shaper.failureAdmissionSentence = "Non admis"
+        shaper.successAdmissionSentence = L10n.Home.admit
+        shaper.failureAdmissionSentence = L10n.Home.unadmit
 
         calculator.calculate()
     }
@@ -43,7 +43,7 @@ final class SimulationDetailsViewModel {
             try simulationRepository.delete(with: cdSimulation.objectID)
             router.popViewController()
         } catch {
-            router.alert(title: "Oups...", message: "Impossible de supprimer la simulation pour le moment.")
+            router.errorAlert()
         }
     }
 

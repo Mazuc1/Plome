@@ -71,12 +71,12 @@ final class SimulationModelsViewModel: ObservableObject {
         if let simulation = coreDataSimulationModels?[index.row] {
             router.openAddSimulationModel(openAs: .edit(simulation))
         } else {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.errorAlert()
         }
     }
 
     func userDidTapDeleteSimulationModel(at index: Int) {
-        router.alertWithAction(title: "Attention", message: "Vous vous apprêtez à supprimer ce modèle. Êtes vous sur de vouloir le supprimer ?") { [weak self] in
+        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.SimulationModels.warningMessageRemoveModel) { [weak self] in
             self?.deleteSimulationModel(at: index)
         }
     }
@@ -87,7 +87,7 @@ final class SimulationModelsViewModel: ObservableObject {
                 try simulationRepository.delete(with: simulation.objectID)
             }
         } catch {
-            router.alert(title: "Oups", message: "Une erreur est survenue 😕")
+            router.errorAlert()
         }
     }
 }

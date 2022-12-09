@@ -67,9 +67,9 @@ final class SimulationModelCell: UITableViewCell {
         setupLayout()
 
         labelSimulationName.text = simulation.name
-        labelTrials.text = "\(simulation.number(of: .trial)) Epreuve(s)"
-        labelContinuousControls.text = "\(simulation.number(of: .continuousControl)) Contrôle(s) continue"
-        labelOptions.text = "\(simulation.number(of: .option)) Option(s)"
+        labelTrials.text = L10n.SimulationModels.numberOfTrials(simulation.number(of: .trial))
+        labelContinuousControls.text = L10n.SimulationModels.numberOfContinousControls(simulation.number(of: .trial))
+        labelOptions.text = L10n.SimulationModels.numberOfOptions(simulation.number(of: .trial))
 
         backgroundColor = .clear
         selectionStyle = .none

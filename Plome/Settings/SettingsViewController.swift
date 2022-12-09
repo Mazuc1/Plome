@@ -53,7 +53,7 @@ final class SettingsViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Réglages"
+        navigationItem.title = L10n.Settings.settings
 
         setupLayout()
         configureDatasource()
@@ -66,10 +66,10 @@ final class SettingsViewController: AppViewController {
     }
 
     private func configureDatasource() {
-        let generalSection = SettingsSection(title: "Général", cells: [
+        let generalSection = SettingsSection(title: L10n.Settings.general, cells: [
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
-                cell.textLabel?.text = "Ajouter les modèles par défaut"
+                cell.textLabel?.text = L10n.Settings.addDefaultModel
                 cell.textLabel?.font = PlomeFont.bodyM.font
                 cell.imageView?.image = Icons.addRectangleStack.configure(weight: .light, color: .black, size: 20)
                 cell.selectionStyle = .none
@@ -80,7 +80,7 @@ final class SettingsViewController: AppViewController {
 
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
-                cell.textLabel?.text = "Supprimer les simulations"
+                cell.textLabel?.text = L10n.Settings.removeAllSimulations
                 cell.textLabel?.font = PlomeFont.bodyM.font
                 cell.imageView?.image = Icons.trash.configure(weight: .light, color: .black, size: 20)
                 cell.selectionStyle = .none
@@ -90,10 +90,10 @@ final class SettingsViewController: AppViewController {
             }),
         ])
 
-        let otherSection = SettingsSection(title: "Autres", cells: [
+        let otherSection = SettingsSection(title: L10n.Settings.other, cells: [
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
-                cell.textLabel?.text = "Contacter l'assistance"
+                cell.textLabel?.text = L10n.Settings.contactAssistance
                 cell.textLabel?.font = PlomeFont.bodyM.font
                 cell.imageView?.image = Icons.envelope.configure(weight: .light, color: .black, size: 20)
                 cell.selectionStyle = .none
@@ -106,7 +106,7 @@ final class SettingsViewController: AppViewController {
         let reinitializeSection = SettingsSection(title: "", footer: viewModel.getVersion(), cells: [
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
-                cell.textLabel?.text = "Réinitialiser l'application"
+                cell.textLabel?.text = L10n.Settings.reintializeApp
                 cell.textLabel?.font = PlomeFont.bodyM.font
                 cell.textLabel?.textColor = PlomeColor.fail.color
                 cell.selectionStyle = .none

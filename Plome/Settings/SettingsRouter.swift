@@ -36,10 +36,10 @@ final class SettingsRouter: DefaultRouter {
         if MFMailComposeViewController.canSendMail() {
             launchMailApp()
         } else {
-            if let url = createEmailUrl(to: "mazuc.loic@icloud.com", subject: "Plôme", body: "") {
+            if let url = createEmailUrl(to: L10n.Settings.assistanceMail, subject: L10n.Settings.appName, body: "") {
                 UIApplication.shared.open(url)
             } else {
-                alert(title: "Oups...", message: "Vous ne semblez pas avoir d'application d'email.\nVous pouvez nous joindre à l'adresse suivante: mazuc.loic@icloud.com")
+                alert(title: PlomeCoreKit.L10n.General.oups, message: L10n.Settings.errorLaunchMailApp)
             }
         }
     }
@@ -47,9 +47,9 @@ final class SettingsRouter: DefaultRouter {
 
 extension SettingsRouter: MFMailComposeViewControllerDelegate {
     private func launchMailApp() {
-        let emailTitle = "Plôme"
+        let emailTitle = L10n.Settings.appName
         let messageBody = ""
-        let toRecipents = ["mazuc.loic@icloud.com"]
+        let toRecipents = [L10n.Settings.assistanceMail]
         let mc = MFMailComposeViewController()
 
         mc.mailComposeDelegate = self

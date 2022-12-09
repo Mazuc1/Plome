@@ -83,10 +83,10 @@ final class ExamInformationsView: UIView {
         switch gradeType {
         case .worst:
             imageView.image = Self.worstGradeImage
-            gradeTypeTitleLabel.text = "Pire note"
+            gradeTypeTitleLabel.text = L10n.Home.worstGrade
         case .better:
             imageView.image = Self.betterGradeImage
-            gradeTypeTitleLabel.text = "Meilleur note"
+            gradeTypeTitleLabel.text = L10n.Home.bestGrade
         }
 
         guard let exam = shaper.getExamGradeWhere(is: gradeType) else { return }
