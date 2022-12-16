@@ -16,19 +16,28 @@ enum OnboardingPages: Int, CaseIterable {
 
     var text: String {
         switch self {
-        case .presentation: return "1"
-        case .model: return "2"
-        case .simulation: return "3"
-        case .start: return "4"
+        case .presentation: return "Bienvenue sur Plôme, l'application qui vous permet de simuler vos examens."
+        case .model: return "Créez vos propres modèles d'examen en plus de ce déjà disponible."
+        case .simulation: return "Rentrez vos notes et coefficients pour avoir le résultat."
+        case .start: return "Vous savez tout !"
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .presentation: return "Hello !"
+        case .model: return "Créez tes modèles"
+        case .simulation: return "Fait des simulations"
+        case .start: return "Let's go !"
         }
     }
 
     var image: UIImage {
         switch self {
-        case .presentation: return UIImage(named: "model.png")!
-        case .model: return .init()
-        case .simulation: return .init()
-        case .start: return .init()
+        case .presentation: return Asset.student.image
+        case .model: return Asset.model.image
+        case .simulation: return Asset.calcul.image
+        case .start: return Asset.target.image
         }
     }
 }
@@ -45,7 +54,7 @@ final class OnboardingViewController: AppViewController {
     private lazy var pageController: UIPageViewController = .init(transitionStyle: .scroll, navigationOrientation: .horizontal).configure {
         $0.delegate = self
         $0.dataSource = self
-        $0.view.backgroundColor = .black
+        $0.view.backgroundColor = .clear
     }
 
     // MARK: - Init
@@ -85,9 +94,7 @@ final class OnboardingViewController: AppViewController {
 
 extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentVC = viewController as? OnboardingPageViewController else {
-            return nil
-        }
+        guard let currentVC = viewController as? OnboardingPageViewController else { return nil }
 
         var index = currentVC.page.rawValue
 
@@ -97,15 +104,11 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
 
         index -= 1
 
-        let vc = OnboardingPageViewController(page: pages[index])
-
-        return vc
+        return OnboardingPageViewController(page: pages[index])
     }
 
     func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentVC = viewController as? OnboardingPageViewController else {
-            return nil
-        }
+        guard let currentVC = viewController as? OnboardingPageViewController else { return nil }
 
         var index = currentVC.page.rawValue
 
@@ -115,9 +118,7 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
 
         index += 1
 
-        let vc = OnboardingPageViewController(page: pages[index])
-
-        return vc
+        return OnboardingPageViewController(page: pages[index])
     }
 
     func presentationCount(for _: UIPageViewController) -> Int {
@@ -133,13 +134,30 @@ final class OnboardingPageViewController: AppViewController {
     // MARK: - Properties
 
     let page: OnboardingPages
+    private static let imageSize: CGSize = .init(width: 250, height: 250)
 
     // MARK: - UI
 
-    private let label: UILabel = .init().configure {
-        $0.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel: UILabel = .init().configure {
+        $0.font = PlomeFont.demiBoldL.font
+        $0.textColor = PlomeColor.darkBlue.color
+    }
+
+    private let descriptionLabel: UILabel = .init().configure {
         $0.font = PlomeFont.bodyL.font
         $0.textColor = PlomeColor.darkBlue.color
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+    }
+
+    private let imageView: UIImageView = .init()
+
+    private let stackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fillProportionally
+        $0.spacing = AppStyles.defaultSpacing(factor: 3)
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     // MARK: - Init
@@ -160,16 +178,23 @@ final class OnboardingPageViewController: AppViewController {
         super.viewDidLoad()
 
         setupLayout()
+        fillUI()
+    }
+
+    private func fillUI() {
+        titleLabel.text = page.title
+        descriptionLabel.text = page.text
+        imageView.image = page.image.imageResize(sizeChange: OnboardingPageViewController.imageSize)
     }
 
     private func setupLayout() {
-        label.text = page.text
+        stackView.addArrangedSubviews([imageView, titleLabel, descriptionLabel])
 
-        view.addSubview(label)
-
+        view.addSubview(stackView)
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 250),
         ])
     }
 }
