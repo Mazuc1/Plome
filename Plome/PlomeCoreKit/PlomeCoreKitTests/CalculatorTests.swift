@@ -18,17 +18,25 @@ final class CalculatorTests: XCTestCase {
 
     func testWhenInitCalculatorWithCustomSimulationTypeThenMentionScoreIsSet() {
         // Arrange
-        let simulation = Simulation(name: "", date: nil, exams: nil, type: .custom)
+        let trials: [Exam] = [
+            .init(name: "", coefficient: 1, grade: "14/20", type: .trial),
+            .init(name: "", coefficient: 1, grade: "6/20", type: .trial),
+            .init(name: "", coefficient: 1, grade: "13/20", type: .trial),
+            .init(name: "", coefficient: 1, grade: "18/20", type: .trial),
+            .init(name: "", coefficient: 1, grade: "15/20", type: .trial),
+        ]
+        let simulation = Simulation(name: "", date: nil, exams: .init(), type: .custom)
+        _ = trials.map { simulation.add(exam: $0) }
 
         // Act
         let calculator = Calculator(simulation: simulation)
+        calculator.calculate()
 
         // Assert
-
-        XCTAssertEqual(calculator.withoutMentionScore, 1000)
-        XCTAssertEqual(calculator.ABMentionScore, 1200)
-        XCTAssertEqual(calculator.BMentionScore, 1400)
-        XCTAssertEqual(calculator.TBMentionScore, 1600)
+        XCTAssertEqual(calculator.withoutMentionScore, 50)
+        XCTAssertEqual(calculator.ABMentionScore, 60)
+        XCTAssertEqual(calculator.BMentionScore, 70)
+        XCTAssertEqual(calculator.TBMentionScore, 80)
     }
 
     func testWhenInitCalculatorWithGeneralBACSimulationTypeThenMentionScoreIsSet() {
@@ -37,9 +45,9 @@ final class CalculatorTests: XCTestCase {
 
         // Act
         let calculator = Calculator(simulation: simulation)
+        calculator.calculate()
 
         // Assert
-
         XCTAssertEqual(calculator.withoutMentionScore, 1000)
         XCTAssertEqual(calculator.ABMentionScore, 1200)
         XCTAssertEqual(calculator.BMentionScore, 1400)
@@ -52,9 +60,9 @@ final class CalculatorTests: XCTestCase {
 
         // Act
         let calculator = Calculator(simulation: simulation)
+        calculator.calculate()
 
         // Assert
-
         XCTAssertEqual(calculator.withoutMentionScore, 1000)
         XCTAssertEqual(calculator.ABMentionScore, 1200)
         XCTAssertEqual(calculator.BMentionScore, 1400)
@@ -67,9 +75,9 @@ final class CalculatorTests: XCTestCase {
 
         // Act
         let calculator = Calculator(simulation: simulation)
+        calculator.calculate()
 
         // Assert
-
         XCTAssertEqual(calculator.withoutMentionScore, 400)
         XCTAssertEqual(calculator.ABMentionScore, 480)
         XCTAssertEqual(calculator.BMentionScore, 560)

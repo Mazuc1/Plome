@@ -66,8 +66,6 @@ public class Calculator {
 
     public init(simulation: Simulation) {
         self.simulation = simulation
-
-        setMentionScores()
     }
 
     // MARK: - Methods
@@ -98,6 +96,7 @@ public class Calculator {
             totalCoefficient += coefficient
         }
 
+        setMentionScores()
         setMention()
 
         let finalGradeOutOfTwenty = gradeOufOfTwenty(totalGrade / totalOutOf)
@@ -147,10 +146,10 @@ public class Calculator {
     private func setMentionScores() {
         switch simulation.type {
         case .custom:
-            withoutMentionScore = 1000
-            ABMentionScore = 1200
-            BMentionScore = 1400
-            TBMentionScore = 1600
+            withoutMentionScore = (50 * totalOutOf) / 100
+            ABMentionScore = (60 * totalOutOf) / 100
+            BMentionScore = (70 * totalOutOf) / 100
+            TBMentionScore = (80 * totalOutOf) / 100
         case .brevet:
             withoutMentionScore = 400
             ABMentionScore = 480
