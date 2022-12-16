@@ -1,0 +1,8 @@
+ xcassets:
+   inputs:
+     - Plome/Ressources/Assets.xcassets
+   outputs:
+     - templateName: swift5
+       params:
+         forceProvidesNamespaces: true
+       output: Plome/Ressources/Assets+Generated.swift

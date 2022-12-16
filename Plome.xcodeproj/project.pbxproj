@@ -29,6 +29,7 @@
 		CF3B9AA828F32BA600457A44 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3B9AA728F32BA600457A44 /* SettingsViewController.swift */; };
 		CF3B9AA928F32C3300457A44 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */; };
 		CF3B9AAA28F32C3300457A44 /* PlomeCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF41B57B294CAE7F00491486 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF41B57A294CAE7F00491486 /* Assets+Generated.swift */; };
 		CF4893902915439100B97147 /* ExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48938F2915439100B97147 /* ExamCell.swift */; };
 		CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */; };
 		CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */; };
@@ -115,6 +116,7 @@
 		CF3B9AA528F32B8C00457A44 /* SimulationModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelsViewController.swift; sourceTree = "<group>"; };
 		CF3B9AA728F32BA600457A44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CF3B9AAB28F5762000457A44 /* Plome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF41B57A294CAE7F00491486 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
 		CF48938F2915439100B97147 /* ExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCell.swift; sourceTree = "<group>"; };
 		CF49EBD12902A2E700693A85 /* AddSimulationModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelViewController.swift; sourceTree = "<group>"; };
 		CF49EBD32902A33500693A85 /* AddSimulationModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelViewModel.swift; sourceTree = "<group>"; };
@@ -368,7 +370,6 @@
 				CF3B9AA028F3292C00457A44 /* Home */,
 				CF3B9AA128F3293000457A44 /* SimulationModel */,
 				CF3B9AA228F3293F00457A44 /* Settings */,
-				CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */,
 				CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */,
 				CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */,
 				CFBF56BB28ECC5F000E4EC7D /* Info.plist */,
@@ -391,6 +392,8 @@
 		CFD0BC9C2943330A005C898B /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */,
+				CF41B57A294CAE7F00491486 /* Assets+Generated.swift */,
 				CFD0BCA429433FA7005C898B /* L10n.swift */,
 				CFD0BC9D2943332A005C898B /* Localization */,
 			);
@@ -573,6 +576,7 @@
 				CFD0BCA529433FA7005C898B /* L10n.swift in Sources */,
 				CF888F7B290F2F9600D2D3E5 /* SelectSimulationModelViewController.swift in Sources */,
 				CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */,
+				CF41B57B294CAE7F00491486 /* Assets+Generated.swift in Sources */,
 				CFA04DAC2934DE9C00DFF2F5 /* SettingsRouter.swift in Sources */,
 				CFB5123A294C7B6900979309 /* OnboardingViewController.swift in Sources */,
 				CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */,

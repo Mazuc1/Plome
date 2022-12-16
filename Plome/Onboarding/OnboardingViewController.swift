@@ -25,7 +25,7 @@ enum OnboardingPages: Int, CaseIterable {
 
     var image: UIImage {
         switch self {
-        case .presentation: return .init()
+        case .presentation: return UIImage(named: "model.png")!
         case .model: return .init()
         case .simulation: return .init()
         case .start: return .init()
