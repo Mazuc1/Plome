@@ -123,6 +123,8 @@ public enum L10n {
         public static let locale = L10n.tr("PlomeCoreKit", "general.locale", fallback: "En-en")
         /// New
         public static let new = L10n.tr("PlomeCoreKit", "general.new", fallback: "New")
+        /// Next
+        public static let next = L10n.tr("PlomeCoreKit", "general.next", fallback: "Next")
         /// No
         public static let no = L10n.tr("PlomeCoreKit", "general.no", fallback: "No")
         /// Ok
@@ -131,6 +133,8 @@ public enum L10n {
         public static let oups = L10n.tr("PlomeCoreKit", "general.oups", fallback: "Whoops")
         /// Save
         public static let save = L10n.tr("PlomeCoreKit", "general.save", fallback: "Save")
+        /// Skip
+        public static let skip = L10n.tr("PlomeCoreKit", "general.skip", fallback: "Skip")
         /// Warning
         public static let warning = L10n.tr("PlomeCoreKit", "general.warning", fallback: "Warning")
         /// Yes

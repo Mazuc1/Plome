@@ -69,3 +69,5 @@
 "general.common_error_message" = "An error has occurred 😕";
 "general.warning" = "Warning";
 "general.save" = "Save";
+"general.skip" = "Skip";
+"general.next" = "Next";

@@ -90,3 +90,13 @@ extension Screens {
         return UINavigationController(rootViewController: settingsViewController)
     }
 }
+
+// MARK: - Onboarding
+
+extension Screens {
+    func createOnboarding(router: OnboardingRouter) -> UIViewController {
+        let onboardingViewModel = OnboardingViewModel(router: router)
+        let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
+        return onboardingViewController
+    }
+}

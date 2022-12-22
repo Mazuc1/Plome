@@ -20,3 +20,16 @@ public extension UIImage {
         }
     }
 }
+
+public extension UIImage {
+    func imageResize(sizeChange: CGSize) -> UIImage {
+        let hasAlpha = true
+        let scale: CGFloat = 0.0
+
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage!
+    }
+}

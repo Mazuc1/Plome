@@ -10,6 +10,7 @@ import Foundation
 
 public enum UserDefaultKeys: String, CaseIterable {
     case isSimulationModelRegister
+    case hasOnboardingBeenSeen
 
     /// Key for test
     case userDefaultTest

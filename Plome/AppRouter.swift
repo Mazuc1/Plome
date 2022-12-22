@@ -13,16 +13,17 @@ final class AppRouter {
     // MARK: - Properties
 
     private let context: ContextProtocol
-    let screens: Screens
+    private let screens: Screens
 
     // MARK: - UI
 
-    let window: UIWindow
-    let tabBarController = MainTabBarController()
+    private let window: UIWindow
+    private let tabBarController = MainTabBarController()
 
-    let simulationModelsRouter: SimulationModelsRouter
-    let simulationsRouter: SimulationsRouter
-    let settingsRouter: SettingsRouter
+    private let simulationModelsRouter: SimulationModelsRouter
+    private let simulationsRouter: SimulationsRouter
+    private let settingsRouter: SettingsRouter
+    private let onboardingFlowController: OnboardingFlowController
 
     // MARK: - Initializer
 
@@ -36,11 +37,21 @@ final class AppRouter {
         simulationsRouter = SimulationsRouter(screens: screens, rootTransition: EmptyTransition())
         simulationModelsRouter = SimulationModelsRouter(screens: screens, rootTransition: EmptyTransition())
         settingsRouter = SettingsRouter(screens: screens, rootTransition: EmptyTransition())
+
+        onboardingFlowController = OnboardingFlowController(screens: screens, userDefaults: context.userDefaults)
     }
 
     // MARK: - Methods
 
     func start() {
+        if !onboardingFlowController.shouldPresentOnboarding() {
+            presentOnboardingIfNeeded()
+        } else {
+            startMainNavigation()
+        }
+    }
+
+    private func startMainNavigation() {
         context.defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
 
         tabBarController.viewControllers = [
@@ -51,5 +62,14 @@ final class AppRouter {
 
         tabBarController.selectedIndex = 0
         window.rootViewController = tabBarController
+    }
+
+    private func presentOnboardingIfNeeded() {
+        onboardingFlowController.onFinished = { [weak self] in
+            self?.context.userDefaults.setData(value: true, key: .hasOnboardingBeenSeen)
+            self?.startMainNavigation()
+        }
+
+        window.rootViewController = onboardingFlowController.start()
     }
 }

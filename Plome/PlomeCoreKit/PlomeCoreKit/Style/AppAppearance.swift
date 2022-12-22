@@ -27,6 +27,11 @@ public enum AppAppearance {
         UINavigationBar.appearance().tintColor = PlomeColor.pink.color
 
         UITableView.appearance().sectionHeaderTopPadding = 0
+
+        //  Page Control
+        let appearance = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
+        appearance.pageIndicatorTintColor = PlomeColor.darkBlue.color.withAlphaComponent(0.4)
+        appearance.currentPageIndicatorTintColor = PlomeColor.darkBlue.color
     }
 
     public static func setKeyboardAppearance() {
