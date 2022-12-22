@@ -38,7 +38,7 @@ class SimulationDetailsViewController: AppViewController {
         $0.alignment = .center
     }
 
-    private lazy var secondaryCTARemakeSimulation: SecondaryCTA = .init(title: L10n.Home.remakeSimulationFromThisOne).configure { [weak self] in
+    private lazy var tertiaryCTARemakeSimulation: TertiaryCTA = .init(title: L10n.Home.remakeSimulationFromThisOne).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -113,7 +113,7 @@ class SimulationDetailsViewController: AppViewController {
             ])
         }
 
-        scrollViewContainerStackView.addArrangedSubview(secondaryCTARemakeSimulation)
+        scrollViewContainerStackView.addArrangedSubview(tertiaryCTARemakeSimulation)
 
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
@@ -130,8 +130,8 @@ class SimulationDetailsViewController: AppViewController {
             gradeInformationView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examsTypeGradeView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examGradeTypeStackView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
-            secondaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
-            secondaryCTARemakeSimulation.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
+            tertiaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
+            tertiaryCTARemakeSimulation.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
     }
 
