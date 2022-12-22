@@ -68,3 +68,5 @@
 "general.common_error_message" = "Une erreur est survenue 😕";
 "general.warning" = "Attention";
 "general.save" = "Enregistrer";
+"general.skip" = "Passer";
+"general.next" = "Suivant";

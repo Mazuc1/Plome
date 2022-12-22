@@ -30,13 +30,13 @@ final class OnboardingViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private lazy var tertiaryCTASkip: TertiaryCTA = .init(title: "Passer").configure { [weak self] in
+    private lazy var tertiaryCTASkip: TertiaryCTA = .init(title: PlomeCoreKit.L10n.General.skip).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapSkip), for: .touchUpInside)
         $0.setTitleColor(PlomeColor.darkGray.color, for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private lazy var primaryCTANext: PrimaryCTA = .init(title: "Suivant").configure { [weak self] in
+    private lazy var primaryCTANext: PrimaryCTA = .init(title: PlomeCoreKit.L10n.General.next).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapNext), for: .touchUpInside)
         $0.contentEdgeInsets = .init(top: AppStyles.defaultSpacing,
                                      left: AppStyles.defaultSpacing,
@@ -116,7 +116,7 @@ final class OnboardingViewController: AppViewController {
     private func updateNextButtonTitleIfNeeded() {
         guard let page = OnboardingPage(rawValue: pageControl.currentPage) else { return }
         if page == .start {
-            primaryCTANext.setTitle("Terminé", for: .normal)
+            primaryCTANext.setTitle(PlomeCoreKit.L10n.General.done, for: .normal)
         }
     }
 }

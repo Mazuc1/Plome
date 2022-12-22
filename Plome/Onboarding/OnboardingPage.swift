@@ -15,19 +15,19 @@ enum OnboardingPage: Int, CaseIterable {
 
     var text: String {
         switch self {
-        case .presentation: return "Bienvenue sur Plôme, l'application qui vous permet de simuler vos examens."
-        case .model: return "Créez vos propres modèles d'examen en plus de ce déjà disponible."
-        case .simulation: return "Rentrez vos notes et coefficients pour avoir le résultat."
-        case .start: return "Vous savez tout !"
+        case .presentation: return L10n.Onboarding.presentationText
+        case .model: return L10n.Onboarding.modelText
+        case .simulation: return L10n.Onboarding.simulationText
+        case .start: return L10n.Onboarding.startText
         }
     }
 
     var title: String {
         switch self {
-        case .presentation: return "Hello !"
-        case .model: return "Créez tes modèles"
-        case .simulation: return "Fait des simulations"
-        case .start: return "Let's go !"
+        case .presentation: return L10n.Onboarding.presentationTitle
+        case .model: return L10n.Onboarding.modelTitle
+        case .simulation: return L10n.Onboarding.simulationTitle
+        case .start: return L10n.Onboarding.startTitle
         }
     }
 

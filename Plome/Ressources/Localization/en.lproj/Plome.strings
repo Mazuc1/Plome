@@ -83,3 +83,15 @@
 "simulationModels.number_of_trials" = "%d Trials";
 "simulationModels.number_of_continous_controls" = "%d Continuous controls";
 "simulationModels.number_of_options" = "%d Options";
+
+// MARK: - Onboarding
+
+"onboarding.presentationTitle" = "Hello !";
+"onboarding.modelTitle" = "Create your models";
+"onboarding.simulationTitle" = "Make simulations";
+"onboarding.startTitle" = "Let's go !";
+
+"onboarding.presentationText" = "Welcome to Plôme, the application that allows you to simulate your exams.";
+"onboarding.modelText" = "Create your own exam templates in addition to what is already available.";
+"onboarding.simulationText" = "Enter your scores and coefficients to get the result.";
+"onboarding.startText" = "You know everything !";
