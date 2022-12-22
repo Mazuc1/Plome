@@ -11,7 +11,7 @@ import PlomeCoreKit
 final class OnboardingPageViewController: AppViewController {
     // MARK: - Properties
 
-    let page: OnboardingPages
+    let page: OnboardingPage
     private static let imageSize: CGSize = .init(width: 250, height: 250)
 
     // MARK: - UI
@@ -40,7 +40,7 @@ final class OnboardingPageViewController: AppViewController {
 
     // MARK: - Init
 
-    required init(page: OnboardingPages) {
+    required init(page: OnboardingPage) {
         self.page = page
         super.init(nibName: nil, bundle: nil)
     }
