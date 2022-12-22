@@ -80,6 +80,7 @@
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
 		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
+		CFC133B72954FC31001A84B1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CFC133B62954FC31001A84B1 /* Lottie */; };
 		CFD055A62941FC7B000D43BB /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
 		CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
@@ -196,6 +197,7 @@
 				CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */,
 				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
+				CFC133B72954FC31001A84B1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +539,7 @@
 				CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */,
 				CF135E20293D56E100ACFC6A /* FirebaseAnalytics */,
 				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
+				CFC133B62954FC31001A84B1 /* Lottie */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -619,6 +622,7 @@
 			packageReferences = (
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1203,6 +1207,14 @@
 				version = 6.5.0;
 			};
 		};
+		CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1225,6 +1237,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		CFC133B62954FC31001A84B1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 
