@@ -47,7 +47,6 @@ final class OnboardingViewController: AppViewController {
 
     private let viewModel: OnboardingViewModel
     private var pages: [OnboardingPages] = OnboardingPages.allCases
-    private var currentIndex: Int = 0
 
     // MARK: - UI
 
@@ -55,6 +54,14 @@ final class OnboardingViewController: AppViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.view.backgroundColor = .clear
+        $0.isPagingEnabled = false
+    }
+    
+    private var pageControl: UIPageControl = .init().configure {
+        $0.pageIndicatorTintColor = PlomeColor.darkBlue.color.withAlphaComponent(0.4)
+        $0.currentPageIndicatorTintColor = PlomeColor.darkBlue.color
+        $0.numberOfPages = 4
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private lazy var tertiaryCTASkip: TertiaryCTA = .init(title: "Passer").configure { [weak self] in
@@ -95,6 +102,8 @@ final class OnboardingViewController: AppViewController {
     // MARK: - Methods
 
     private func setupLayout() {
+        pageControl.currentPage = 0
+        
         addChild(pageController)
         pageController.view.stretchInView(parentView: view)
 
@@ -116,6 +125,13 @@ final class OnboardingViewController: AppViewController {
             pageController.view.trailingAnchor.constraint(equalTo: primaryCTANext.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             pageController.view.layoutMarginsGuide.bottomAnchor.constraint(equalTo: primaryCTANext.bottomAnchor, constant: AppStyles.defaultSpacing),
         ])
+        
+        pageController.view.addSubview(pageControl)
+        
+        NSLayoutConstraint.activate([
+            pageControl.centerXAnchor.constraint(equalTo: pageController.view.centerXAnchor),
+            pageController.view.layoutMarginsGuide.bottomAnchor.constraint(equalTo: pageControl.bottomAnchor),
+        ])
     }
     
     @objc private func userDidTapSkip() {
@@ -124,6 +140,7 @@ final class OnboardingViewController: AppViewController {
     
     @objc private func userDidTapNext() {
         print("Next")
+        pageController.goToNextPage()
     }
 }
 
@@ -131,120 +148,18 @@ final class OnboardingViewController: AppViewController {
 
 extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentVC = viewController as? OnboardingPageViewController else { return nil }
-
-        var index = currentVC.page.rawValue
-
-        if index == 0 {
-            return nil
-        }
-
-        index -= 1
-
-        return OnboardingPageViewController(page: pages[index])
+        return nil
     }
 
     func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentVC = viewController as? OnboardingPageViewController else { return nil }
 
         var index = currentVC.page.rawValue
-
-        if index >= pages.count - 1 {
-            return nil
-        }
-
+        if index >= pages.count - 1 { return nil }
         index += 1
+        
+        pageControl.currentPage = index
 
         return OnboardingPageViewController(page: pages[index])
-    }
-
-    func presentationCount(for _: UIPageViewController) -> Int {
-        pages.count
-    }
-
-    func presentationIndex(for _: UIPageViewController) -> Int {
-        currentIndex
-    }
-}
-
-extension UIPageViewController {
-    func goToNextPage(animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
-        if let currentViewController = viewControllers?[0] {
-            if let nextPage = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
-                setViewControllers([nextPage], direction: .forward, animated: animated, completion: completion)
-            }
-        }
-    }
-}
-
-
-
-
-final class OnboardingPageViewController: AppViewController {
-    // MARK: - Properties
-
-    let page: OnboardingPages
-    private static let imageSize: CGSize = .init(width: 250, height: 250)
-
-    // MARK: - UI
-
-    private let titleLabel: UILabel = .init().configure {
-        $0.font = PlomeFont.demiBoldL.font
-        $0.textColor = PlomeColor.darkBlue.color
-    }
-
-    private let descriptionLabel: UILabel = .init().configure {
-        $0.font = PlomeFont.bodyL.font
-        $0.textColor = PlomeColor.darkBlue.color
-        $0.numberOfLines = 0
-        $0.textAlignment = .center
-    }
-
-    private let imageView: UIImageView = .init()
-
-    private let stackView: UIStackView = .init().configure {
-        $0.axis = .vertical
-        $0.alignment = .center
-        $0.distribution = .fillProportionally
-        $0.spacing = AppStyles.defaultSpacing(factor: 3)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    // MARK: - Init
-
-    required init(page: OnboardingPages) {
-        self.page = page
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Life cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupLayout()
-        fillUI()
-    }
-
-    private func fillUI() {
-        titleLabel.text = page.title
-        descriptionLabel.text = page.text
-        imageView.image = page.image.imageResize(sizeChange: OnboardingPageViewController.imageSize)
-    }
-
-    private func setupLayout() {
-        stackView.addArrangedSubviews([imageView, titleLabel, descriptionLabel])
-
-        view.addSubview(stackView)
-        NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.widthAnchor.constraint(equalToConstant: 250),
-        ])
     }
 }
