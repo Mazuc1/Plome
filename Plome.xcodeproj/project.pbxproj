@@ -14,6 +14,7 @@
 		CF1BDAA3293A246100E459FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */; };
 		CF1C16FE2954852300E9EF03 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C16FD2954852300E9EF03 /* OnboardingPageViewController.swift */; };
 		CF1C170029548A1300E9EF03 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C16FF29548A1300E9EF03 /* OnboardingPage.swift */; };
+		CF1C170329548E2000E9EF03 /* OnboardingFlowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C170229548E2000E9EF03 /* OnboardingFlowControllerTests.swift */; };
 		CF208F5228F960E0001F83B1 /* UrbaneRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */; };
 		CF208F5328F960E0001F83B1 /* UrbaneRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */; };
 		CF208F5428F960E0001F83B1 /* UrbaneRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */; };
@@ -103,6 +104,7 @@
 		CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF1C16FD2954852300E9EF03 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		CF1C16FF29548A1300E9EF03 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		CF1C170229548E2000E9EF03 /* OnboardingFlowControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowControllerTests.swift; sourceTree = "<group>"; };
 		CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Bold.ttf"; sourceTree = "<group>"; };
 		CF208F4E28F960D5001F83B1 /* UrbaneRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Light.ttf"; sourceTree = "<group>"; };
 		CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Medium.ttf"; sourceTree = "<group>"; };
@@ -200,6 +202,14 @@
 			path = SimulationDetails;
 			sourceTree = "<group>";
 		};
+		CF1C170129548DFF00E9EF03 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CF1C170229548E2000E9EF03 /* OnboardingFlowControllerTests.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		CF208F5128F960D5001F83B1 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD067AB292FBBE30034EE02 /* Info.plist */,
+				CF1C170129548DFF00E9EF03 /* Onboarding */,
 				CFE77757293A10F800D0A90D /* Settings */,
 				CFBFA087292E4CFC00F36790 /* Simulation */,
 				CF324078290BF8D300FC6666 /* SimulationModel */,
@@ -541,6 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1C170329548E2000E9EF03 /* OnboardingFlowControllerTests.swift in Sources */,
 				CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */,
 				CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */,
 				CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */,
