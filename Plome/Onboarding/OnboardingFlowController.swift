@@ -17,11 +17,11 @@ protocol MainRouterDelegate: AnyObject {
 final class OnboardingFlowController {
     // MARK: - Properties
 
-    let screens: Screens
-    let userDefaults: Defaults
+    private let screens: Screens
+    private let userDefaults: Defaults
     var onFinished: (() -> Void)?
 
-    var mainRouter: OnboardingRouter
+    private var mainRouter: OnboardingRouter
 
     // MARK: - Init
 
