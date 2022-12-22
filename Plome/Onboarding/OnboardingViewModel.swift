@@ -19,4 +19,8 @@ final class OnboardingViewModel {
     }
 
     // MARK: - Methods
+    
+    func userDidFinishOnboarding() {
+        router.mainRouterDelegate?.didFinishPresentOnboarding()
+    }
 }

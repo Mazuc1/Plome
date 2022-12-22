@@ -61,6 +61,7 @@ final class OnboardingViewController: AppViewController {
         $0.pageIndicatorTintColor = PlomeColor.darkBlue.color.withAlphaComponent(0.4)
         $0.currentPageIndicatorTintColor = PlomeColor.darkBlue.color
         $0.numberOfPages = 4
+        $0.currentPage = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -102,8 +103,6 @@ final class OnboardingViewController: AppViewController {
     // MARK: - Methods
 
     private func setupLayout() {
-        pageControl.currentPage = 0
-        
         addChild(pageController)
         pageController.view.stretchInView(parentView: view)
 
@@ -135,18 +134,32 @@ final class OnboardingViewController: AppViewController {
     }
     
     @objc private func userDidTapSkip() {
-        print("Skip")
+        viewModel.userDidFinishOnboarding()
     }
     
     @objc private func userDidTapNext() {
-        print("Next")
-        pageController.goToNextPage()
+        guard let page = OnboardingPages(rawValue: pageControl.currentPage) else { return }
+
+        switch page {
+        case .start: viewModel.userDidFinishOnboarding()
+        default: pageController.goToNextPage()
+        }
+        
+        updateNextButtonTitleIfNeeded()
+    }
+    
+    private func updateNextButtonTitleIfNeeded() {
+        guard let page = OnboardingPages(rawValue: pageControl.currentPage) else { return }
+        if page == .start {
+            primaryCTANext.setTitle("Terminé", for: .normal)
+        }
     }
 }
 
 // MARK: PageViewController delegate & data source
 
 extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    // No need to implement this method because we disable to go back
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return nil
     }
