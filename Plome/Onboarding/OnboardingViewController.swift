@@ -56,6 +56,21 @@ final class OnboardingViewController: AppViewController {
         $0.dataSource = self
         $0.view.backgroundColor = .clear
     }
+    
+    private lazy var tertiaryCTASkip: TertiaryCTA = .init(title: "Passer").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapSkip), for: .touchUpInside)
+        $0.setTitleColor(PlomeColor.darkGray.color, for: .normal)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private lazy var primaryCTANext: PrimaryCTA = .init(title: "Suivant").configure { [weak self] in
+        $0.addTarget(self, action: #selector(userDidTapNext), for: .touchUpInside)
+        $0.contentEdgeInsets = .init(top: AppStyles.defaultSpacing,
+                                     left: AppStyles.defaultSpacing,
+                                     bottom: AppStyles.defaultSpacing,
+                                     right: AppStyles.defaultSpacing)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     // MARK: - Init
 
@@ -87,6 +102,28 @@ final class OnboardingViewController: AppViewController {
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
 
         pageController.didMove(toParent: self)
+        
+        pageController.view.addSubview(tertiaryCTASkip)
+        
+        NSLayoutConstraint.activate([
+            tertiaryCTASkip.leadingAnchor.constraint(equalTo: pageController.view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            tertiaryCTASkip.topAnchor.constraint(equalTo: pageController.view.layoutMarginsGuide.topAnchor),
+        ])
+        
+        pageController.view.addSubview(primaryCTANext)
+        
+        NSLayoutConstraint.activate([
+            pageController.view.trailingAnchor.constraint(equalTo: primaryCTANext.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            pageController.view.layoutMarginsGuide.bottomAnchor.constraint(equalTo: primaryCTANext.bottomAnchor, constant: AppStyles.defaultSpacing),
+        ])
+    }
+    
+    @objc private func userDidTapSkip() {
+        print("Skip")
+    }
+    
+    @objc private func userDidTapNext() {
+        print("Next")
     }
 }
 
@@ -129,6 +166,19 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
         currentIndex
     }
 }
+
+extension UIPageViewController {
+    func goToNextPage(animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
+        if let currentViewController = viewControllers?[0] {
+            if let nextPage = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+                setViewControllers([nextPage], direction: .forward, animated: animated, completion: completion)
+            }
+        }
+    }
+}
+
+
+
 
 final class OnboardingPageViewController: AppViewController {
     // MARK: - Properties
