@@ -13,6 +13,14 @@ final class OnboardingViewController: AppViewController {
 
     private let viewModel: OnboardingViewModel
 
+    private let gradient: CAGradientLayer = .init().configure {
+        $0.startPoint = CGPoint(x: 0.0, y: 0.0)
+        $0.endPoint = CGPoint(x: 1.0, y: 1.0)
+    }
+
+    private let gradientColorSet: [[CGColor]] = PlomeColor.onboardingGradient
+    private var colorIndex: Int = 0
+
     // MARK: - UI
 
     private lazy var pageController: UIPageViewController = .init(transitionStyle: .scroll, navigationOrientation: .horizontal).configure {
@@ -63,6 +71,8 @@ final class OnboardingViewController: AppViewController {
         super.viewDidLoad()
 
         setupLayout()
+        setupGradient()
+        animateGradient()
     }
 
     // MARK: - Methods
@@ -96,6 +106,11 @@ final class OnboardingViewController: AppViewController {
             pageControl.centerXAnchor.constraint(equalTo: pageController.view.centerXAnchor),
             pageController.view.layoutMarginsGuide.bottomAnchor.constraint(equalTo: pageControl.bottomAnchor),
         ])
+    }
+
+    private func setupGradient() {
+        gradient.frame = pageController.view.bounds
+        pageController.view.layer.insertSublayer(gradient, at: 0)
     }
 
     @objc private func userDidTapSkip() {
@@ -139,5 +154,39 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
         pageControl.currentPage = index
 
         return OnboardingPageViewController(page: viewModel.pages[index])
+    }
+}
+
+// MARK: - Animation delegate
+
+extension OnboardingViewController: CAAnimationDelegate {
+    func animationDidStop(_: CAAnimation, finished flag: Bool) {
+        if flag {
+            animateGradient()
+        }
+    }
+
+    private func animateGradient() {
+        gradient.colors = gradientColorSet[colorIndex]
+
+        let gradientAnimation = CABasicAnimation(keyPath: "colors")
+        gradientAnimation.duration = 3.0
+        gradientAnimation.delegate = self
+
+        updateColorIndex()
+
+        gradientAnimation.toValue = gradientColorSet[colorIndex]
+        gradientAnimation.fillMode = .forwards
+        gradientAnimation.isRemovedOnCompletion = false
+
+        gradient.add(gradientAnimation, forKey: "colors")
+    }
+
+    private func updateColorIndex() {
+        if colorIndex < gradientColorSet.count - 1 {
+            colorIndex += 1
+        } else {
+            colorIndex = 0
+        }
     }
 }

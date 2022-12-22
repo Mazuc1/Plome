@@ -95,4 +95,12 @@ public enum PlomeColor {
             .init(red: 242 / 255, green: 121 / 255, blue: 109 / 255, alpha: 1),
         ]
     }
+
+    public static var onboardingGradient: [[CGColor]] {
+        [
+            [PlomeColor.pink.color.withAlphaComponent(0.2).cgColor, PlomeColor.lightViolet.color.withAlphaComponent(0.2).cgColor],
+            [PlomeColor.lightViolet.color.withAlphaComponent(0.2).cgColor, PlomeColor.background.color.withAlphaComponent(0.2).cgColor],
+            [PlomeColor.background.color.withAlphaComponent(0.2).cgColor, PlomeColor.pink.color.withAlphaComponent(0.2).cgColor],
+        ]
+    }
 }
