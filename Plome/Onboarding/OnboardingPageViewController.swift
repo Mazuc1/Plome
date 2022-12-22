@@ -5,8 +5,8 @@
 //  Created by Loic Mazuc on 22/12/2022.
 //
 
-import UIKit
 import PlomeCoreKit
+import UIKit
 
 final class OnboardingPageViewController: AppViewController {
     // MARK: - Properties
