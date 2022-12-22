@@ -60,6 +60,8 @@ final class OnboardingPageViewController: AppViewController {
     }
 
     private func fillUI() {
+        view.backgroundColor = .clear
+
         titleLabel.text = page.title
         descriptionLabel.text = page.text
         imageView.image = page.image.imageResize(sizeChange: OnboardingPageViewController.imageSize)

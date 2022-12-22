@@ -137,7 +137,7 @@ private final class MentionView: UIView {
         imageView.image = Icons.medal.configure(weight: .regular, color: mention.plomeColor, size: 15)
         titleLabel.text = mention.name
         titleLabel.textColor = mention.plomeColor.color
-        backgroundColor = mention.plomeColor.color.withAlphaComponent(0.2)
+        backgroundColor = mention.plomeColor.color.withAlphaComponent(0.1)
         layer.cornerRadius = AppStyles.defaultRadius
 
         stackView.addArrangedSubviews([imageView, titleLabel])
