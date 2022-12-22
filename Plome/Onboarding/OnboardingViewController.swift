@@ -12,7 +12,6 @@ final class OnboardingViewController: AppViewController {
     // MARK: - Properties
 
     private let viewModel: OnboardingViewModel
-    private var pages: [OnboardingPage] = OnboardingPage.allCases
 
     // MARK: - UI
 
@@ -23,7 +22,7 @@ final class OnboardingViewController: AppViewController {
         $0.isPagingEnabled = false
     }
     
-    private var pageControl: UIPageControl = .init().configure {
+    private let pageControl: UIPageControl = .init().configure {
         $0.pageIndicatorTintColor = PlomeColor.darkBlue.color.withAlphaComponent(0.4)
         $0.currentPageIndicatorTintColor = PlomeColor.darkBlue.color
         $0.numberOfPages = 4
@@ -72,7 +71,7 @@ final class OnboardingViewController: AppViewController {
         addChild(pageController)
         pageController.view.stretchInView(parentView: view)
 
-        let initialVC = OnboardingPageViewController(page: pages[0])
+        let initialVC = OnboardingPageViewController(page: viewModel.pages[0])
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
 
         pageController.didMove(toParent: self)
@@ -134,11 +133,11 @@ extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewCo
         guard let currentVC = viewController as? OnboardingPageViewController else { return nil }
 
         var index = currentVC.page.rawValue
-        if index >= pages.count - 1 { return nil }
+        if index >= viewModel.pages.count - 1 { return nil }
         index += 1
         
         pageControl.currentPage = index
 
-        return OnboardingPageViewController(page: pages[index])
+        return OnboardingPageViewController(page: viewModel.pages[index])
     }
 }

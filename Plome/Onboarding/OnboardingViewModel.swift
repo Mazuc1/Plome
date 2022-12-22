@@ -11,6 +11,7 @@ final class OnboardingViewModel {
     // MARK: - Properties
 
     let router: OnboardingRouter
+    let pages: [OnboardingPage] = OnboardingPage.allCases
 
     // MARK: - Init
 
