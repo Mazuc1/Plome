@@ -43,7 +43,7 @@ public class PrimaryCTA: UIButton {
             backgroundColor = .init(color: .darkGray, alpha: 0.2)
         case .enabled:
             setTitleColor(.init(color: .lightGreen), for: .normal)
-            backgroundColor = .init(color: .lightGreen, alpha: 0.2)
+            backgroundColor = .init(color: .lightGreen, alpha: 0.1)
         }
     }
 }
