@@ -42,7 +42,7 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
     }
 
     private var addButton: UIButton = .init().configure {
-        $0.setBackgroundImage(Icons.add.configure(weight: .regular, color: .lightViolet, size: 23), for: .normal)
+        $0.setBackgroundImage(Icons.add.configure(weight: .regular, color: .lightGreen, size: 23), for: .normal)
     }
 
     private var stackView: UIStackView = .init().configure {

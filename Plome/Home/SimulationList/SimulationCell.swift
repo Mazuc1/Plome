@@ -41,8 +41,8 @@ final class SimulationCell: UITableViewCell {
     }
 
     private var progressRing: ALProgressRing = .init().configure {
-        $0.startColor = PlomeColor.pink.color
-        $0.endColor = PlomeColor.lightViolet.color
+        $0.startColor = PlomeColor.lagoon.color
+        $0.endColor = PlomeColor.lightGreen.color
         $0.lineWidth = 10
         $0.translatesAutoresizingMaskIntoConstraints = false
     }

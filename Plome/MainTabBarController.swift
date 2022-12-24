@@ -24,7 +24,7 @@ enum Tabs {
 final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = .init(color: .pink)
+        tabBar.tintColor = .init(color: .lagoon)
         tabBar.unselectedItemTintColor = .gray
     }
 }

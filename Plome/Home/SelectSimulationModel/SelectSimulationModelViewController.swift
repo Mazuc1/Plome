@@ -40,7 +40,7 @@ final class SelectSimulationModelViewController: AppViewController {
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapCloseButton)
-        $0.image = Icons.xmark.configure(weight: .regular, color: .pink, size: 20)
+        $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 20)
     }
 
     // MARK: - Init
