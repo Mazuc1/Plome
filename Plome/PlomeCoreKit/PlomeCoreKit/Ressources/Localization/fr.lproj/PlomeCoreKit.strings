@@ -11,7 +11,7 @@
 "failure_result" = "Oups...";
 
 "trials_type" = "Épreuve";
-"continuousControls_type" = "Contrôle continue";
+"continuousControls_type" = "Contrôle continu";
 "options_type" = "Option";
 
 "brevet" = "Brevet";

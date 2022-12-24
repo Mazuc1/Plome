@@ -62,10 +62,10 @@
 "settings.contact_assistance" = "Contacter l'assistance";
 "settings.reintialize_app" = "Réinitialiser l'application";
 
-"settings.warning_message_remove_simulations" = "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continuer ?";
+"settings.warning_message_remove_simulations" = "Vous vous apprêtez à supprimer toutes les simulations, êtes-vous sur de vouloir continur ?";
 "settings.all_simulation_has_been_deleted" = "Toutes les simulations ont bien été supprimées.";
 "settings.default_model_has_been_added" = "Les modèle de simulation ont bien été ajoutées.";
-"settings.warning_message_reinitialize" = "Vous vous apprêtez à supprimer toutes les données de l'application, êtes-vous sur de vouloir continuer ?";
+"settings.warning_message_reinitialize" = "Vous vous apprêtez à supprimer toutes les données de l'application, êtes-vous sur de vouloir continur ?";
 "settings.app_has_been_reinitialized" = "L'application à bien été réinitialisé.";
 
 "settings.errorAppVersion" = "9.99";
@@ -81,7 +81,7 @@
 "simulationModels.simulation_model_placeholder_name" = "Bac Pro...";
 
 "simulationModels.number_of_trials" = "%d Epreuves";
-"simulationModels.number_of_continous_controls" = "%d Contrôles continue";
+"simulationModels.number_of_continous_controls" = "%d Contrôles continu";
 "simulationModels.number_of_options" = "%d Options";
 
 // MARK: - Onboarding
