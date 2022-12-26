@@ -37,7 +37,7 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
 
     private var titleLabel: UILabel = .init().configure {
         $0.font = PlomeFont.demiBoldL.font
-        $0.textColor = PlomeColor.darkGray.color
+        $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
     }
 
@@ -83,7 +83,7 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
         stackView.addArrangedSubviews([titleLabel, UIView(), addButton])
         stackView.stretchInView(parentView: contentView)
 
-        stackView.addSeparator(at: .bottom, color: PlomeColor.darkBlue.color, weight: 3)
+        stackView.addSeparator(at: .bottom, color: UIColor.lightGray, weight: 0.5)
 
         stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                         left: AppStyles.defaultSpacing,

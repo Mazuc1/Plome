@@ -191,7 +191,7 @@ extension AddSimulationModelViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: - UITextFieldDelegate
 
 extension AddSimulationModelViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
