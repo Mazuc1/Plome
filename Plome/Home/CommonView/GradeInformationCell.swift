@@ -21,7 +21,6 @@ class GradeInformationCell: UIView {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .center
-        $0.numberOfLines = 1
     }
 
     private let gradeLabel: UILabel = .init().configure {

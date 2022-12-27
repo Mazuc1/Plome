@@ -84,7 +84,7 @@ final class SelectSimulationModelViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: labelActionDescription.bottomAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: labelActionDescription.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),

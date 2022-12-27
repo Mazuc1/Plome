@@ -68,7 +68,7 @@ final class SimulationViewController: AppViewController {
 
         NSLayoutConstraint.activate([
             primaryCTACalculate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTACalculate.bottomAnchor, constant: 0),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTACalculate.bottomAnchor),
             view.trailingAnchor.constraint(equalTo: primaryCTACalculate.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             primaryCTACalculate.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
         ])
