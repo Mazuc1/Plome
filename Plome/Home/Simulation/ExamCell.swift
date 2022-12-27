@@ -90,10 +90,10 @@ final class ExamCell: UITableViewCell {
         super.prepareForReuse()
         textFieldGrade.text = nil
         textFieldCoeff.text = nil
-        
+
         textFieldGrade.setOutlineColor(.lightGray, for: .normal)
         textFieldGrade.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
-        
+
         textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
         textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
@@ -158,7 +158,7 @@ extension ExamCell: UITextFieldDelegate {
 
     private func setStyle(for textField: UITextField, dependOf result: Bool) {
         guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
-        
+
         if !result {
             mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
             mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
