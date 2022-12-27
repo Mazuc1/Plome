@@ -17,6 +17,14 @@ final class ExamCell: UITableViewCell {
     private var exam: Exam?
 
     weak var simulationViewModelInput: SimulationViewModelInput?
+    
+    private let defaultScheme = MDCContainerScheme().configure {
+        $0.colorScheme.primaryColor = PlomeColor.black.color
+    }
+    
+    private let errorScheme = MDCContainerScheme().configure {
+        $0.colorScheme.primaryColor = PlomeColor.fail.color
+    }
 
     // MARK: - UI
 
@@ -35,6 +43,8 @@ final class ExamCell: UITableViewCell {
         $0.placeholder = L10n.Home.coeffPlaceholder
         $0.font = PlomeFont.bodyM.font
         $0.verticalDensity = 30
+        $0.setOutlineColor(.lightGray, for: .normal)
+        $0.setNormalLabelColor(.lightGray, for: .normal)
         $0.sizeToFit()
         $0.keyboardType = .numbersAndPunctuation
         $0.returnKeyType = .done
@@ -42,11 +52,13 @@ final class ExamCell: UITableViewCell {
         $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
-    private var textFieldGrade: MDCOutlinedTextField = .init().configure {
+    private let textFieldGrade: MDCOutlinedTextField = .init().configure {
         $0.label.text = L10n.Home.grade
         $0.placeholder = L10n.Home.gradePlaceholder
         $0.font = PlomeFont.bodyM.font
         $0.verticalDensity = 30
+        $0.setOutlineColor(.lightGray, for: .normal)
+        $0.setNormalLabelColor(.lightGray, for: .normal)
         $0.sizeToFit()
         $0.keyboardType = .numbersAndPunctuation
         $0.returnKeyType = .done
@@ -86,12 +98,12 @@ final class ExamCell: UITableViewCell {
         super.prepareForReuse()
         textFieldGrade.text = nil
         textFieldCoeff.text = nil
-
-        textFieldGrade.backgroundColor = nil
-        textFieldCoeff.backgroundColor = nil
-
-        textFieldGrade.font = PlomeFont.bodyM.font
-        textFieldCoeff.font = PlomeFont.bodyM.font
+        
+        textFieldGrade.setOutlineColor(.lightGray, for: .normal)
+        textFieldGrade.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+        
+        textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
+        textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
 
     // MARK: - Methods
@@ -134,17 +146,8 @@ extension ExamCell: UITextFieldDelegate {
         return true
     }
 
-    // Set default style of textField when start editing to avoid error style when user entry new correct value during editing
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textColor = .black
-        textField.backgroundColor = nil
-        textField.font = PlomeFont.bodyM.font
-    }
-
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text,
-           !text.isEmpty
-        {
+        if let text = textField.text, !text.isEmpty {
             var checkResult: Bool?
 
             if textField.placeholder == "08/20" {
@@ -162,14 +165,14 @@ extension ExamCell: UITextFieldDelegate {
     }
 
     private func setStyle(for textField: UITextField, dependOf result: Bool) {
+        guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
+        
         if !result {
-            textField.textColor = .red
-            textField.font = PlomeFont.demiBoldM.font
-            textField.backgroundColor = .red.withAlphaComponent(0.1)
+            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
         } else {
-            textField.textColor = .black
-            textField.backgroundColor = nil
-            textField.font = PlomeFont.bodyM.font
+            mdcTextField.setOutlineColor(.lightGray, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
         }
     }
 }
