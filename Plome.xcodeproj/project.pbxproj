@@ -233,8 +233,7 @@
 				CF208F4F28F960D5001F83B1 /* UrbaneRounded-Medium.ttf */,
 				CF208F5028F960D5001F83B1 /* UrbaneRounded-DemiBold.ttf */,
 			);
-			name = Fonts;
-			path = PlomeCoreKit/PlomeCoreKit/../../Fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CF324070290BF82D00FC6666 /* PlomeTests */ = {
@@ -400,7 +399,6 @@
 				CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */,
 				CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */,
 				CFD0BC9C2943330A005C898B /* Ressources */,
-				CF208F5128F960D5001F83B1 /* Fonts */,
 				CFB51232294C78FB00979309 /* Onboarding */,
 				CF3B9AA028F3292C00457A44 /* Home */,
 				CF3B9AA128F3293000457A44 /* SimulationModel */,
@@ -430,6 +428,7 @@
 				CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */,
 				CF41B57A294CAE7F00491486 /* Assets+Generated.swift */,
 				CFD0BCA429433FA7005C898B /* L10n.swift */,
+				CF208F5128F960D5001F83B1 /* Fonts */,
 				CFD0BC9D2943332A005C898B /* Localization */,
 			);
 			path = Ressources;
