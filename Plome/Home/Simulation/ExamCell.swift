@@ -17,14 +17,6 @@ final class ExamCell: UITableViewCell {
     private var exam: Exam?
 
     weak var simulationViewModelInput: SimulationViewModelInput?
-    
-    private let defaultScheme = MDCContainerScheme().configure {
-        $0.colorScheme.primaryColor = PlomeColor.black.color
-    }
-    
-    private let errorScheme = MDCContainerScheme().configure {
-        $0.colorScheme.primaryColor = PlomeColor.fail.color
-    }
 
     // MARK: - UI
 
