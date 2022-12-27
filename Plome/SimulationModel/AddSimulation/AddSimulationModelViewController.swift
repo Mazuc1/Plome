@@ -79,7 +79,9 @@ final class AddSimulationModelViewController: AppViewController {
         navigationItem.rightBarButtonItem = buttonEditTitle
 
         setupConstraint()
+
         subscribeToExams()
+        subscribeToCanRegister()
     }
 
     // MARK: - Methods
@@ -127,6 +129,15 @@ final class AddSimulationModelViewController: AppViewController {
             .store(in: &cancellables)
     }
 
+    private func subscribeToCanRegister() {
+        viewModel.$canRegister
+            .receive(on: RunLoop.main)
+            .sink { [primaryCTARegisterModel] in
+                primaryCTARegisterModel.isEnabled = $0
+            }
+            .store(in: &cancellables)
+    }
+
     @objc private func userDidTapSaveSimulationModel() {
         viewModel.userDidTapSaveSimulationModel()
     }
@@ -169,6 +180,7 @@ extension AddSimulationModelViewController: UITableViewDataSource {
            let exam = viewModel.exam(for: indexPath)
         {
             cell.setup(exam: exam)
+            cell.addSimulationModelViewModelInput = viewModel
             return cell
         }
 

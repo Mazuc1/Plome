@@ -13,7 +13,9 @@ final class ModelExamCell: UITableViewCell {
     // MARK: - Properties
 
     static let reuseIdentifier: String = "ModelExamCell"
-    static let modelExamCellHeight: CGFloat = 40
+
+    private var exam: Exam?
+    weak var addSimulationModelViewModelInput: AddSimulationModelViewModelInput?
 
     // MARK: - UI
 
@@ -54,19 +56,31 @@ final class ModelExamCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        textFieldCoeff.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textFieldCoeff.text = nil
+
+        textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
+        textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+    }
+
     // MARK: - Methods
 
     func setup(exam: Exam) {
+        self.exam = exam
         setupLayout()
 
         labelExamName.text = exam.name
-        textFieldCoeff.text = "\(exam.coefficient ?? 1.0)"
+        if let coeff = exam.coefficient {
+            textFieldCoeff.text = "\(coeff)"
+        }
 
         backgroundColor = .clear
         selectionStyle = .none
@@ -87,5 +101,40 @@ final class ModelExamCell: UITableViewCell {
                                         left: AppStyles.defaultSpacing,
                                         bottom: AppStyles.defaultSpacing,
                                         right: AppStyles.defaultSpacing)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension ModelExamCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text, !text.isEmpty {
+            var checkResult: Bool?
+
+            checkResult = exam?.save(text, ifIsConformTo: .coeff)
+
+            setStyle(for: textField, dependOf: checkResult ?? false)
+        } else {
+            exam?.coefficient = nil
+        }
+
+        addSimulationModelViewModelInput?.userDidChangeValue()
+    }
+
+    private func setStyle(for textField: UITextField, dependOf result: Bool) {
+        guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
+
+        if !result {
+            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
+        } else {
+            mdcTextField.setOutlineColor(.lightGray, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+        }
     }
 }
