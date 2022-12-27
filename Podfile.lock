@@ -32,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - "MaterialComponents/TextControls+OutlinedTextFields"
+  - MDFInternationalization
 
 SPEC REPOS:
   trunk:
@@ -42,6 +43,6 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
 
-PODFILE CHECKSUM: cf4ae3a2ff2a0d6d37e8b0e3422e772994023bf3
+PODFILE CHECKSUM: 9b69ae77eae18cce34062169305fd9a910457f54
 
 COCOAPODS: 1.11.3

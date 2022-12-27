@@ -7,4 +7,10 @@
    <FileRef
       location = "container:Plome.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Plome.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -11,7 +11,9 @@ end
 
 target 'PlomeCoreKit' do
   project project_path("PlomeCoreKit")
+  
   pod 'MaterialComponents/TextControls+OutlinedTextFields'
+  pod 'MDFInternationalization'
 end
 
 target 'Plome' do
