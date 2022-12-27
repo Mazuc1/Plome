@@ -145,6 +145,7 @@
 		CF888F7A290F2F9600D2D3E5 /* SelectSimulationModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewController.swift; sourceTree = "<group>"; };
 		CF888F7C290F300300D2D3E5 /* SelectSimulationModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewModel.swift; sourceTree = "<group>"; };
 		CF907B2A292F7B2100DEA169 /* SimulationListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationListViewModelTests.swift; sourceTree = "<group>"; };
+		CF968169295AFD410000DA6F /* Pods_PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9D0C4C290FC5AF00DA9BC9 /* SmallSimulationModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSimulationModelCell.swift; sourceTree = "<group>"; };
 		CFA04DAB2934DE9C00DFF2F5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		CFA04DAD2934DF7400DFF2F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -201,7 +202,6 @@
 				FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */,
 				68B02028B66FFAB401AFC34E /* Pods-Plome.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -324,6 +324,7 @@
 		CF59EA3F28ECCE260041B33B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF968169295AFD410000DA6F /* Pods_PlomeCoreKit.framework */,
 				CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */,
 				CFBFA09C292E6A7200F36790 /* PlomeCoreKitTestsHelpers.framework */,
 				CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */,
@@ -489,6 +490,7 @@
 				CFBF56A728ECC5F000E4EC7D /* Frameworks */,
 				CFBF56A828ECC5F000E4EC7D /* Resources */,
 				CF2747CA28ECCB8A00CCAF76 /* Embed Frameworks */,
+				62A3B2E26E9DA076C67A870C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -584,6 +586,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62A3B2E26E9DA076C67A870C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plome/Pods-Plome-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plome/Pods-Plome-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plome/Pods-Plome-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

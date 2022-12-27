@@ -8,9 +8,9 @@
       location = "container:Plome.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Plome.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:Plome.xcodeproj">
    </FileRef>
 </Workspace>
