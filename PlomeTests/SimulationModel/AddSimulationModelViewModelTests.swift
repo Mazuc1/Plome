@@ -67,7 +67,7 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
 
         // Assert
-        XCTAssertEqual(addSimulationModelViewModel.simulationName, "Nouveau modèle")
+        XCTAssertEqual(addSimulationModelViewModel.simulationName, "New model")
     }
 
     func testWhenOpeningAddSimulationModelVCAsEditOpeningModeThenTitleIsCDSimulationName() {
