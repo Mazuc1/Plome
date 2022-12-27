@@ -16,5 +16,6 @@ end
 
 target 'Plome' do
   pod 'MaterialComponents/TextControls+OutlinedTextFields'
+  pod 'MaterialComponents/TextControls+OutlinedTextFieldsTheming'
   pod 'MDFInternationalization'
 end
