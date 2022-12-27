@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DD698738BEE02B69DC77D6 /* Pods_PlomeCoreKit.framework */; };
 		CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BA2905E7760099186E /* CoreDataRepository.swift */; };
 		CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */; };
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3DD698738BEE02B69DC77D6 /* Pods_PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0A26BA2905E7760099186E /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerError.swift; sourceTree = "<group>"; };
 		CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+extension.swift"; sourceTree = "<group>"; };
@@ -180,6 +182,8 @@
 		CFE77755293A0DB500D0A90D /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 		CFEDAD7E2930104E00D56717 /* CalculatorShaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorShaper.swift; sourceTree = "<group>"; };
 		CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
+		D35ACA5817005CB0401A334A /* Pods-PlomeCoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlomeCoreKit.release.xcconfig"; path = "Target Support Files/Pods-PlomeCoreKit/Pods-PlomeCoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		FE3D2C5F7369A41DDD3105C1 /* Pods-PlomeCoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlomeCoreKit.debug.xcconfig"; path = "Target Support Files/Pods-PlomeCoreKit/Pods-PlomeCoreKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 				CFC133B72954FC31001A84B1 /* Lottie in Frameworks */,
+				8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +227,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95D15205379464F973C31C34 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE3D2C5F7369A41DDD3105C1 /* Pods-PlomeCoreKit.debug.xcconfig */,
+				D35ACA5817005CB0401A334A /* Pods-PlomeCoreKit.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
 		CF0C7A6A292FDC2E00E49803 /* CTA */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +393,7 @@
 				CFD055A32941FC7B000D43BB /* PlomeCoreKitTests */,
 				CF59EACA28ECD6B30041B33B /* Products */,
 				CFABB38B293D50D000C36355 /* Frameworks */,
+				95D15205379464F973C31C34 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -446,6 +462,7 @@
 		CFABB38B293D50D000C36355 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3DD698738BEE02B69DC77D6 /* Pods_PlomeCoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -525,6 +542,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF59EADD28ECD6B30041B33B /* Build configuration list for PBXNativeTarget "PlomeCoreKit" */;
 			buildPhases = (
+				4BEA06601C9A23BF99C77D88 /* [CP] Check Pods Manifest.lock */,
 				CF59EAC428ECD6B30041B33B /* Headers */,
 				CF59EAC528ECD6B30041B33B /* Sources */,
 				CF59EAC628ECD6B30041B33B /* Frameworks */,
@@ -620,9 +638,9 @@
 			);
 			mainGroup = CF59EABF28ECD6B30041B33B;
 			packageReferences = (
-				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
+				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios.git" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -670,6 +688,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BEA06601C9A23BF99C77D88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlomeCoreKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CF45FA4D2924335C00047B7D /* Sources */ = {
@@ -971,6 +1014,7 @@
 		};
 		CF59EADE28ECD6B30041B33B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE3D2C5F7369A41DDD3105C1 /* Pods-PlomeCoreKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1005,6 +1049,7 @@
 		};
 		CF59EADF28ECD6B30041B33B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D35ACA5817005CB0401A334A /* Pods-PlomeCoreKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1191,7 +1236,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1199,7 +1244,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -1207,7 +1252,7 @@
 				version = 6.5.0;
 			};
 		};
-		CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -1220,27 +1265,27 @@
 /* Begin XCSwiftPackageProductDependency section */
 		CF135E20293D56E100ACFC6A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAnalytics;
 		};
 		CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseCrashlytics;
 		};
 		CF135E24293D581900ACFC6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseCrashlytics;
 		};
 		CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
 			productName = IQKeyboardManagerSwift;
 		};
 		CFC133B62954FC31001A84B1 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios.git" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

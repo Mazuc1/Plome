@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3828C928FF2B9619652D481F /* Pods_Plome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448906EE445F0E0C85196E7E /* Pods_Plome.framework */; };
 		CF0C7A6D292FDDBC00E49803 /* SimulationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */; };
 		CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */; };
 		CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */; };
@@ -97,6 +98,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		448906EE445F0E0C85196E7E /* Pods_Plome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B02028B66FFAB401AFC34E /* Pods-Plome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.release.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.release.xcconfig"; sourceTree = "<group>"; };
 		CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewModel.swift; sourceTree = "<group>"; };
 		CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewController.swift; sourceTree = "<group>"; };
 		CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
@@ -168,6 +171,7 @@
 		CFD196192931057D00A06FE7 /* ExamInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInformationsView.swift; sourceTree = "<group>"; };
 		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
+		FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.debug.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,12 +188,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF3B9AA928F32C3300457A44 /* PlomeCoreKit.framework in Frameworks */,
+				3828C928FF2B9619652D481F /* Pods_Plome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1140E44961E5C136A6E1FC2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */,
+				68B02028B66FFAB401AFC34E /* Pods-Plome.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CF0C7A6B292FDDA500E49803 /* SimulationDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +329,7 @@
 				CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */,
 				CF59EABD28ECD3580041B33B /* PlomeCoreKit.framework */,
 				CF59EA4028ECCE260041B33B /* PlomeCoreKit.framework */,
+				448906EE445F0E0C85196E7E /* Pods_Plome.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -369,6 +385,7 @@
 				CF59EA3F28ECCE260041B33B /* Frameworks */,
 				CF3B9AAB28F5762000457A44 /* Plome.app */,
 				CF32406F290BF82D00FC6666 /* PlomeTests.xctest */,
+				1140E44961E5C136A6E1FC2C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -467,6 +484,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFBF56BE28ECC5F000E4EC7D /* Build configuration list for PBXNativeTarget "Plome" */;
 			buildPhases = (
+				559B654E843B5DB57082811A /* [CP] Check Pods Manifest.lock */,
 				CFBF56A628ECC5F000E4EC7D /* Sources */,
 				CFBF56A728ECC5F000E4EC7D /* Frameworks */,
 				CFBF56A828ECC5F000E4EC7D /* Resources */,
@@ -477,8 +495,6 @@
 			dependencies = (
 			);
 			name = Plome;
-			packageProductDependencies = (
-			);
 			productName = Plome;
 			productReference = CF3B9AAB28F5762000457A44 /* Plome.app */;
 			productType = "com.apple.product-type.application";
@@ -546,6 +562,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		559B654E843B5DB57082811A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CF32406B290BF82D00FC6666 /* Sources */ = {
@@ -806,6 +847,7 @@
 		};
 		CFBF56BF28ECC5F000E4EC7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -838,6 +880,7 @@
 		};
 		CFBF56C028ECC5F000E4EC7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68B02028B66FFAB401AFC34E /* Pods-Plome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
