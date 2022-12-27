@@ -14,8 +14,8 @@ public enum PlomeColor {
     case darkGray
 
     // Main
-    case pink
-    case lightViolet
+    case lagoon
+    case lightGreen
     case darkBlue
 
     // Background
@@ -42,8 +42,8 @@ public enum PlomeColor {
         case .darkGray: return (0.43, 0.43, 0.43)
 
         case .darkBlue: return (0.07, 0.03, 0.35)
-        case .pink: return (0.95, 0.34, 0.48)
-        case .lightViolet: return (0.47, 0.40, 0.97)
+        case .lagoon: return (0.05, 0.79, 0.69)
+        case .lightGreen: return (0.14, 0.78, 0.25)
 
         case .background: return (0.94, 0.95, 0.99)
 
@@ -67,8 +67,8 @@ public enum PlomeColor {
         case .darkGray: return UIColor(color: .darkGray)
 
         case .darkBlue: return UIColor(color: .darkBlue)
-        case .pink: return UIColor(color: .pink)
-        case .lightViolet: return UIColor(color: .lightViolet)
+        case .lagoon: return UIColor(color: .lagoon)
+        case .lightGreen: return UIColor(color: .lightGreen)
 
         case .background: return UIColor(color: .background)
 
@@ -98,9 +98,9 @@ public enum PlomeColor {
 
     public static var onboardingGradient: [[CGColor]] {
         [
-            [PlomeColor.pink.color.withAlphaComponent(0.2).cgColor, PlomeColor.lightViolet.color.withAlphaComponent(0.2).cgColor],
-            [PlomeColor.lightViolet.color.withAlphaComponent(0.2).cgColor, PlomeColor.background.color.withAlphaComponent(0.2).cgColor],
-            [PlomeColor.background.color.withAlphaComponent(0.2).cgColor, PlomeColor.pink.color.withAlphaComponent(0.2).cgColor],
+            [PlomeColor.lagoon.color.withAlphaComponent(0.2).cgColor, PlomeColor.lightGreen.color.withAlphaComponent(0.2).cgColor],
+            [PlomeColor.lightGreen.color.withAlphaComponent(0.2).cgColor, PlomeColor.background.color.withAlphaComponent(0.2).cgColor],
+            [PlomeColor.background.color.withAlphaComponent(0.2).cgColor, PlomeColor.lagoon.color.withAlphaComponent(0.2).cgColor],
         ]
     }
 }

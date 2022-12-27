@@ -234,4 +234,34 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         XCTAssertEqual(cdSimulationFromCD?.name, "New test")
         XCTAssertTrue(cdSimulationFromCD?.exams?.count == 0)
     }
+    
+    // MARK: - AddSimulationModelViewModelInput
+    
+    func testWhenMissingOneOrMoreExamCoefficientThenRegistrationIsDisabled() {
+        // Arrange
+        let simulationViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        simulationViewModel.trials.append(.init(name: "", coefficient: nil, grade: "13/20", type: .trial))
+        simulationViewModel.options.append(.init(name: "", coefficient: 1, grade: "13/20", type: .option))
+        simulationViewModel.continousControls.append(.init(name: "", coefficient: 1, grade: "13/20", type: .continuousControl))
+
+        // Act
+        simulationViewModel.userDidChangeValue()
+
+        // Assert
+        XCTAssertFalse(simulationViewModel.canRegister)
+    }
+    
+    func testWhenAllExamCoefficientAreFillsThenRegistrationIsEnabled() {
+        // Arrange
+        let simulationViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        simulationViewModel.trials.append(.init(name: "", coefficient: 1, grade: "13/20", type: .trial))
+        simulationViewModel.options.append(.init(name: "", coefficient: 1, grade: "13/20", type: .option))
+        simulationViewModel.continousControls.append(.init(name: "", coefficient: 1, grade: "13/20", type: .continuousControl))
+
+        // Act
+        simulationViewModel.userDidChangeValue()
+
+        // Assert
+        XCTAssertTrue(simulationViewModel.canRegister)
+    }
 }

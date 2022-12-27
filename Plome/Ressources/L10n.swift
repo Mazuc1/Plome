@@ -151,10 +151,10 @@ public enum L10n {
             return L10n.tr("Plome", "settings.version", String(describing: p1), fallback: "Version %@")
         }
 
-        /// You are about to delete all app data, are you sure you want to continue?
-        public static let warningMessageReinitialize = L10n.tr("Plome", "settings.warning_message_reinitialize", fallback: "You are about to delete all app data, are you sure you want to continue?")
-        /// You are about to delete all simulations, are you sure you want to continue?
-        public static let warningMessageRemoveSimulations = L10n.tr("Plome", "settings.warning_message_remove_simulations", fallback: "You are about to delete all simulations, are you sure you want to continue?")
+        /// You are about to delete all app data, are you sure you want to continu?
+        public static let warningMessageReinitialize = L10n.tr("Plome", "settings.warning_message_reinitialize", fallback: "You are about to delete all app data, are you sure you want to continu?")
+        /// You are about to delete all simulations, are you sure you want to continu?
+        public static let warningMessageRemoveSimulations = L10n.tr("Plome", "settings.warning_message_remove_simulations", fallback: "You are about to delete all simulations, are you sure you want to continu?")
     }
 
     public enum SimulationModels {

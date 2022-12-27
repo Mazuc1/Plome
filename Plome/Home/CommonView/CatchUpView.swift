@@ -65,6 +65,10 @@ class CatchUpView: UIView {
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isLayoutMarginsRelativeArrangement = true
+        $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                 left: AppStyles.defaultSpacing,
+                                 bottom: AppStyles.defaultSpacing,
+                                 right: AppStyles.defaultSpacing)
     }
 
     // MARK: - Init

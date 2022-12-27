@@ -15,6 +15,10 @@ enum AddSimulationModelOpeningMode {
     case edit(CDSimulation)
 }
 
+protocol AddSimulationModelViewModelInput: AnyObject {
+    func userDidChangeValue()
+}
+
 final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
 
@@ -25,6 +29,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []
     @Published var options: [Exam] = []
+    @Published var canRegister: Bool = true
 
     var simulationName: String = L10n.SimulationModels.newModel
 
@@ -146,5 +151,13 @@ extension AddSimulationModelViewModel: ExamTypeHeaderViewOutput {
                                   buttonActionName: PlomeCoreKit.L10n.General.add) { [weak self] in
             self?.addExam(name: $0, in: section)
         }
+    }
+}
+
+extension AddSimulationModelViewModel: AddSimulationModelViewModelInput {
+    func userDidChangeValue() {
+        canRegister = [trials, continousControls, options]
+            .flatMap { $0 }
+            .allSatisfy { $0.coefficient != nil }
     }
 }

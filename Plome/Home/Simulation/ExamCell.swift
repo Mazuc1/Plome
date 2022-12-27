@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 04/11/2022.
 //
 
+import MaterialComponents
 import PlomeCoreKit
 import UIKit
 
@@ -12,7 +13,6 @@ final class ExamCell: UITableViewCell {
     // MARK: - Properties
 
     static let reuseIdentifier: String = "ExamCell"
-    static let modelExamCellHeight: CGFloat = 40
 
     private var exam: Exam?
 
@@ -26,69 +26,51 @@ final class ExamCell: UITableViewCell {
                                                 AppStyles.defaultSpacing).configure {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
-        $0.backgroundColor = .white
         $0.textAlignment = .left
-        $0.numberOfLines = 1
-        $0.layer.cornerRadius = AppStyles.defaultRadius
-        $0.layer.masksToBounds = true
-        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        $0.addSeparator(at: .bottom, color: PlomeColor.darkGray.color.withAlphaComponent(0.5), weight: 1.5, insets: .init(top: 0, left: 5, bottom: 0, right: 5))
+        $0.numberOfLines = 0
     }
 
-    private var labelCoeff: UILabel = .init().configure {
-        $0.text = L10n.Home.coeff
-        $0.font = PlomeFont.bodyS.font
-        $0.textColor = PlomeColor.darkGray.color
-        $0.textAlignment = .left
-        $0.numberOfLines = 1
-    }
-
-    private var labelGrade: UILabel = .init().configure {
-        $0.text = L10n.Home.grade
-        $0.font = PlomeFont.bodyS.font
-        $0.textColor = PlomeColor.darkGray.color
-        $0.textAlignment = .left
-        $0.numberOfLines = 1
-    }
-
-    private var textFieldCoeff: UITextField = .init().configure {
+    private let textFieldCoeff: MDCOutlinedTextField = .init().configure {
+        $0.label.text = L10n.Home.coeff
         $0.placeholder = L10n.Home.coeffPlaceholder
         $0.font = PlomeFont.bodyM.font
+        $0.verticalDensity = 30
+        $0.setOutlineColor(.lightGray, for: .normal)
+        $0.setNormalLabelColor(.lightGray, for: .normal)
+        $0.sizeToFit()
         $0.keyboardType = .numbersAndPunctuation
-        $0.borderStyle = .roundedRect
         $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+        $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
-    private var textFieldGrade: UITextField = .init().configure {
+    private let textFieldGrade: MDCOutlinedTextField = .init().configure {
+        $0.label.text = L10n.Home.grade
         $0.placeholder = L10n.Home.gradePlaceholder
         $0.font = PlomeFont.bodyM.font
+        $0.verticalDensity = 30
+        $0.setOutlineColor(.lightGray, for: .normal)
+        $0.setNormalLabelColor(.lightGray, for: .normal)
+        $0.sizeToFit()
         $0.keyboardType = .numbersAndPunctuation
-        $0.borderStyle = .roundedRect
         $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
-    }
-
-    private var stackViewTextFields: UIStackView = .init().configure {
-        $0.axis = .horizontal
-        $0.alignment = .center
-        $0.spacing = AppStyles.defaultSpacing
-        $0.distribution = .equalSpacing
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = AppStyles.defaultRadius
-        $0.layer.masksToBounds = true
-        $0.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
-        $0.isLayoutMarginsRelativeArrangement = true
+        $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
     private var stackView: UIStackView = .init().configure {
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.distribution = .equalSpacing
+        $0.axis = .horizontal
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = AppStyles.defaultRadius
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isLayoutMarginsRelativeArrangement = true
+        $0.layoutMargins = .init(top: AppStyles.defaultSpacing(factor: 0.5),
+                                 left: AppStyles.defaultSpacing,
+                                 bottom: AppStyles.defaultSpacing(factor: 0.5),
+                                 right: AppStyles.defaultSpacing)
     }
 
     // MARK: - Init
@@ -109,11 +91,11 @@ final class ExamCell: UITableViewCell {
         textFieldGrade.text = nil
         textFieldCoeff.text = nil
 
-        textFieldGrade.backgroundColor = nil
-        textFieldCoeff.backgroundColor = nil
+        textFieldGrade.setOutlineColor(.lightGray, for: .normal)
+        textFieldGrade.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
 
-        textFieldGrade.font = PlomeFont.bodyM.font
-        textFieldCoeff.font = PlomeFont.bodyM.font
+        textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
+        textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
 
     // MARK: - Methods
@@ -136,25 +118,19 @@ final class ExamCell: UITableViewCell {
     }
 
     private func setupLayout() {
-        stackViewTextFields.layoutMargins = .init(top: AppStyles.defaultSpacing(factor: 0.5),
-                                                  left: AppStyles.defaultSpacing,
-                                                  bottom: AppStyles.defaultSpacing(factor: 0.5),
-                                                  right: AppStyles.defaultSpacing)
+        contentView.addSubview(stackView)
+        stackView.addArrangedSubviews([labelExamName, textFieldCoeff, textFieldGrade])
 
-        stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                        left: 0,
-                                        bottom: AppStyles.defaultSpacing,
-                                        right: 0)
-
-        stackViewTextFields.addArrangedSubviews([labelCoeff, textFieldCoeff, labelGrade, textFieldGrade])
-        stackView.addArrangedSubviews([labelExamName, stackViewTextFields])
-
-        stackViewTextFields.attachToSides(parentView: stackView)
-        stackView.stretchInView(parentView: contentView)
+        NSLayoutConstraint.activate([
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: AppStyles.defaultSpacing),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: - UITextFieldDelegate
 
 extension ExamCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -162,17 +138,8 @@ extension ExamCell: UITextFieldDelegate {
         return true
     }
 
-    // Set default style of textField when start editing to avoid error style when user entry new correct value during editing
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textColor = .black
-        textField.backgroundColor = nil
-        textField.font = PlomeFont.bodyM.font
-    }
-
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text,
-           !text.isEmpty
-        {
+        if let text = textField.text, !text.isEmpty {
             var checkResult: Bool?
 
             if textField.placeholder == "08/20" {
@@ -190,14 +157,14 @@ extension ExamCell: UITextFieldDelegate {
     }
 
     private func setStyle(for textField: UITextField, dependOf result: Bool) {
+        guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
+
         if !result {
-            textField.textColor = .red
-            textField.font = PlomeFont.demiBoldM.font
-            textField.backgroundColor = .red.withAlphaComponent(0.1)
+            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
         } else {
-            textField.textColor = .black
-            textField.backgroundColor = nil
-            textField.font = PlomeFont.bodyM.font
+            mdcTextField.setOutlineColor(.lightGray, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
         }
     }
 }

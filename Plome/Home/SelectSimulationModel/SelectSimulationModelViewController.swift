@@ -40,7 +40,7 @@ final class SelectSimulationModelViewController: AppViewController {
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapCloseButton)
-        $0.image = Icons.xmark.configure(weight: .regular, color: .pink, size: 20)
+        $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 20)
     }
 
     // MARK: - Init
@@ -84,7 +84,7 @@ final class SelectSimulationModelViewController: AppViewController {
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: labelActionDescription.bottomAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: labelActionDescription.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),

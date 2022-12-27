@@ -15,8 +15,8 @@ public class SecondaryCTA: UIButton {
         titleLabel?.numberOfLines = 0
         titleLabel?.textAlignment = .center
         layer.cornerRadius = AppStyles.defaultRadius
-        setTitleColor(.init(color: .pink), for: .normal)
-        backgroundColor = .init(color: .pink, alpha: 0.2)
+        setTitleColor(.init(color: .lagoon), for: .normal)
+        backgroundColor = .init(color: .lagoon, alpha: 0.1)
     }
 
     @available(*, unavailable)

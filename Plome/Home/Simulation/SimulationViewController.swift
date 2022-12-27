@@ -68,7 +68,7 @@ final class SimulationViewController: AppViewController {
 
         NSLayoutConstraint.activate([
             primaryCTACalculate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTACalculate.bottomAnchor, constant: 0),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: primaryCTACalculate.bottomAnchor),
             view.trailingAnchor.constraint(equalTo: primaryCTACalculate.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             primaryCTACalculate.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
         ])
@@ -93,7 +93,7 @@ final class SimulationViewController: AppViewController {
     }
 
     private func createInfoBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.info.configure(weight: .regular, color: .pink, size: 20), style: .plain, target: self, action: #selector(userDidTapInfo))
+        UIBarButtonItem(image: Icons.info.configure(weight: .regular, color: .lagoon, size: 20), style: .plain, target: self, action: #selector(userDidTapInfo))
     }
 
     @objc private func userDidTapInfo() {
@@ -101,7 +101,7 @@ final class SimulationViewController: AppViewController {
                                                 message: L10n.Home.simulationRules,
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: PlomeCoreKit.L10n.General.ok, style: .cancel))
-        alertController.view.tintColor = PlomeColor.pink.color
+        alertController.view.tintColor = PlomeColor.lagoon.color
 
         present(alertController, animated: true)
     }

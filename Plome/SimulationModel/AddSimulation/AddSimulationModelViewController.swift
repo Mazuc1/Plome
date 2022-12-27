@@ -46,14 +46,14 @@ final class AddSimulationModelViewController: AppViewController {
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapCloseButton)
-        $0.image = Icons.xmark.configure(weight: .regular, color: .pink, size: 20)
+        $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 20)
     }
 
     private lazy var buttonEditTitle: UIBarButtonItem = .init().configure { [weak self] in
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapEditTitleButton)
-        $0.image = Icons.pencil.configure(weight: .regular, color: .pink, size: 20)
+        $0.image = Icons.pencil.configure(weight: .regular, color: .lagoon, size: 20)
     }
 
     // MARK: - Init
@@ -79,7 +79,9 @@ final class AddSimulationModelViewController: AppViewController {
         navigationItem.rightBarButtonItem = buttonEditTitle
 
         setupConstraint()
+
         subscribeToExams()
+        subscribeToCanRegister()
     }
 
     // MARK: - Methods
@@ -127,6 +129,15 @@ final class AddSimulationModelViewController: AppViewController {
             .store(in: &cancellables)
     }
 
+    private func subscribeToCanRegister() {
+        viewModel.$canRegister
+            .receive(on: RunLoop.main)
+            .sink { [primaryCTARegisterModel] in
+                primaryCTARegisterModel.isEnabled = $0
+            }
+            .store(in: &cancellables)
+    }
+
     @objc private func userDidTapSaveSimulationModel() {
         viewModel.userDidTapSaveSimulationModel()
     }
@@ -169,6 +180,7 @@ extension AddSimulationModelViewController: UITableViewDataSource {
            let exam = viewModel.exam(for: indexPath)
         {
             cell.setup(exam: exam)
+            cell.addSimulationModelViewModelInput = viewModel
             return cell
         }
 
@@ -191,7 +203,7 @@ extension AddSimulationModelViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: - UITextFieldDelegate
 
 extension AddSimulationModelViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {

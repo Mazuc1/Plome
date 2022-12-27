@@ -61,7 +61,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     public func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: L10n.General.ok, style: .cancel))
-        alertController.view.tintColor = PlomeColor.pink.color
+        alertController.view.tintColor = PlomeColor.lagoon.color
         rootViewController?.present(alertController, animated: true)
     }
 
@@ -71,7 +71,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         alertController.addAction(UIAlertAction(title: L10n.General.yes, style: .default, handler: { _ in
             completion()
         }))
-        alertController.view.tintColor = PlomeColor.pink.color
+        alertController.view.tintColor = PlomeColor.lagoon.color
         rootViewController?.present(alertController, animated: true)
     }
 
@@ -86,7 +86,7 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
             returnedValue(value)
         }))
 
-        alertController.view.tintColor = PlomeColor.pink.color
+        alertController.view.tintColor = PlomeColor.lagoon.color
         rootViewController?.present(alertController, animated: true)
     }
 }

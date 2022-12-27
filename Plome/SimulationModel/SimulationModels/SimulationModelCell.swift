@@ -17,7 +17,6 @@ final class SimulationModelCell: UITableViewCell {
 
     private var labelSimulationName: UILabel = .init().configure {
         $0.font = PlomeFont.demiBoldM.font
-        $0.numberOfLines = 1
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkBlue.color
     }
@@ -80,10 +79,10 @@ final class SimulationModelCell: UITableViewCell {
         stackView.addArrangedSubviews([labelSimulationName, labelTrials, labelContinuousControls, labelOptions])
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: AppStyles.defaultSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
 
         stackView.layoutMargins = .init(top: AppStyles.defaultSpacing,

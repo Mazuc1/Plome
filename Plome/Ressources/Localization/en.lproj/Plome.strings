@@ -62,10 +62,10 @@
 "settings.contact_assistance" = "Contact assistance";
 "settings.reintialize_app" = "Reset app";
 
-"settings.warning_message_remove_simulations" = "You are about to delete all simulations, are you sure you want to continue?";
+"settings.warning_message_remove_simulations" = "You are about to delete all simulations, are you sure you want to continu?";
 "settings.all_simulation_has_been_deleted" = "All simulations have been deleted.";
 "settings.default_model_has_been_added" = "The simulation models have been added.";
-"settings.warning_message_reinitialize" = "You are about to delete all app data, are you sure you want to continue?";
+"settings.warning_message_reinitialize" = "You are about to delete all app data, are you sure you want to continu?";
 "settings.app_has_been_reinitialized" = "The application has been successfully reset.";
 
 "settings.errorAppVersion" = "9.99";

@@ -24,7 +24,7 @@ public enum AppAppearance {
 
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        UINavigationBar.appearance().tintColor = PlomeColor.pink.color
+        UINavigationBar.appearance().tintColor = PlomeColor.lagoon.color
 
         UITableView.appearance().sectionHeaderTopPadding = 0
 
@@ -37,10 +37,10 @@ public enum AppAppearance {
     public static func setKeyboardAppearance() {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.toolbarTintColor = PlomeColor.pink.color
+        IQKeyboardManager.shared.toolbarTintColor = PlomeColor.lagoon.color
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = L10n.General.done
         IQKeyboardManager.shared.previousNextDisplayMode = .default
-        IQKeyboardManager.shared.toolbarNextBarButtonItemImage = Icons.arrowDown.configure(weight: .regular, color: .pink, size: 20)
-        IQKeyboardManager.shared.toolbarPreviousBarButtonItemImage = Icons.arrowUp.configure(weight: .regular, color: .pink, size: 20)
+        IQKeyboardManager.shared.toolbarNextBarButtonItemImage = Icons.arrowDown.configure(weight: .regular, color: .lagoon, size: 20)
+        IQKeyboardManager.shared.toolbarPreviousBarButtonItemImage = Icons.arrowUp.configure(weight: .regular, color: .lagoon, size: 20)
     }
 }

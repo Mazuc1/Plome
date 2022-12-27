@@ -55,7 +55,7 @@ public final class PlaceholderView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         textLabel.text = text
-        imageView.image = icon.configure(weight: .regular, color: .pink, size: 50)
+        imageView.image = icon.configure(weight: .regular, color: .lagoon, size: 50)
 
         stackView.addArrangedSubviews([imageView, textLabel])
         stackView.stretchInView(parentView: self)
