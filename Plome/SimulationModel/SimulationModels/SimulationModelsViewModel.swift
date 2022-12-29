@@ -16,6 +16,7 @@ final class SimulationModelsViewModel: ObservableObject {
 
     private let router: SimulationModelsRouter
     private let simulationRepository: CoreDataRepository<CDSimulation>
+    private let shareSimulationModelService: ShareSimulationModelServiceProtocol
 
     var coreDataSimulationModels: [CDSimulation]?
 
@@ -23,9 +24,10 @@ final class SimulationModelsViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: SimulationModelsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationModelsRouter, simulationRepository: CoreDataRepository<CDSimulation>, shareSimulationModelService: ShareSimulationModelServiceProtocol) {
         self.router = router
         self.simulationRepository = simulationRepository
+        self.shareSimulationModelService = shareSimulationModelService
     }
 
     // MARK: - Methods
@@ -78,6 +80,12 @@ final class SimulationModelsViewModel: ObservableObject {
     func userDidTapDeleteSimulationModel(at index: Int) {
         router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.SimulationModels.warningMessageRemoveModel) { [weak self] in
             self?.deleteSimulationModel(at: index)
+        }
+    }
+    
+    func userDidTapShareSimulationModel(at index: Int) {
+        Task {
+            try await shareSimulationModelService.upload(simulationModel: Simulation(name: "", date: nil, exams: nil, type: .brevet))
         }
     }
 

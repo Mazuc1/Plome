@@ -11,23 +11,24 @@ enum HttpError: Swift.Error {
     case cantBuildURL
 }
 
-struct HttpRequest {
-    typealias HTTPHeaders = [String: String]
+public struct HttpRequest {
+    public typealias HTTPHeaders = [String: String]
 
     var endPoint: EndPoint
     var headers: HTTPHeaders?
 
-    init(endPoint: EndPoint, headers: HTTPHeaders? = nil) {
+    public init(endPoint: EndPoint, headers: HTTPHeaders? = nil) {
         self.endPoint = endPoint
         self.headers = headers
     }
 
-    func build() throws -> URLRequest {
+    public func build() throws -> URLRequest {
         guard let url = endPoint.buildURL() else {
             throw HttpError.cantBuildURL
         }
 
         var request = URLRequest(url: url)
+        request.httpMethod = endPoint.method.rawValue
 
         _ = headers?.map { key, value in
             request.addValue(value, forHTTPHeaderField: key)

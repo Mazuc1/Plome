@@ -12,10 +12,10 @@ enum HTTPMethod: String {
     case POST
 }
 
-struct EndPoint {
+public struct EndPoint {
     typealias Parameters = KeyValuePairs<String, Any>?
 
-    private let method: HTTPMethod
+    let method: HTTPMethod
     private let host: String
     private let path: String
     private let parameters: Parameters?

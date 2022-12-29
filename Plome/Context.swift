@@ -16,6 +16,7 @@ protocol ContextProtocol: AnyObject {
     var defaultSimulationModelsProvider: DefaultSimulationModelsProvider { get }
     var storageProvider: StorageProvider { get }
     var simulationRepository: CoreDataRepository<CDSimulation> { get }
+    var shareSimulationModelService: ShareSimulationModelServiceProtocol { get }
 }
 
 final class Context: ContextProtocol {
@@ -24,6 +25,7 @@ final class Context: ContextProtocol {
     let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
     let simulationRepository: CoreDataRepository<CDSimulation>
     let storageProvider: StorageProvider
+    let shareSimulationModelService: ShareSimulationModelServiceProtocol
 
     init() {
         userDefaults = Defaults()
@@ -33,5 +35,7 @@ final class Context: ContextProtocol {
         simulationRepository = CoreDataRepository(storageProvider: storageProvider)
 
         defaultSimulationModelStorageService = DefaultSimulationModelStorageService(userDefault: userDefaults, simulationRepository: simulationRepository)
+        
+        shareSimulationModelService = ShareSimulationModelService()
     }
 }

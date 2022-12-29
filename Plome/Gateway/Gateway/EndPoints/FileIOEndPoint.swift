@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum FileIOEndPoint {
-    case upload(file: Data, expireAt: Date)
+public enum FileIOEndPoint {
+    case upload(file: String, expireAt: String)
     case download(key: String)
 
-    var endPoint: EndPoint {
+    public var endPoint: EndPoint {
         switch self {
         case let .upload(file, expireAt):
             return .init(method: .POST,
