@@ -40,7 +40,7 @@ final class SettingsViewModel {
             self?.deleteSimulations()
         }
     }
-    
+
     func userDidTapDownloadModel() {
         // Call gateway service + add to core data
     }

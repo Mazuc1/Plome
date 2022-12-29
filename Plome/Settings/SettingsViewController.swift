@@ -88,7 +88,7 @@ final class SettingsViewController: AppViewController {
             }, action: { [viewModel] in
                 viewModel.userDidTapDeleteSimulations()
             }),
-            
+
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
                 cell.textLabel?.text = "Télécharger un modèle"

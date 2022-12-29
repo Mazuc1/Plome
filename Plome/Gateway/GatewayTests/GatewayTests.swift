@@ -5,11 +5,10 @@
 //  Created by Loic Mazuc on 28/12/2022.
 //
 
-import XCTest
 @testable import Gateway
+import XCTest
 
 final class GatewayTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -28,9 +27,8 @@ final class GatewayTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

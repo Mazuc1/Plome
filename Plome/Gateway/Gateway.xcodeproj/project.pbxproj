@@ -10,6 +10,9 @@
 		CF02ABB5295BBD8100B5FCC9 /* Gateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF02ABAC295BBD8100B5FCC9 /* Gateway.framework */; };
 		CF02ABBA295BBD8100B5FCC9 /* GatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABB9295BBD8100B5FCC9 /* GatewayTests.swift */; };
 		CF02ABBB295BBD8100B5FCC9 /* Gateway.h in Headers */ = {isa = PBXBuildFile; fileRef = CF02ABAF295BBD8100B5FCC9 /* Gateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */; };
+		CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */; };
+		CF02ABCA295D0B6700B5FCC9 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,9 @@
 		CF02ABAF295BBD8100B5FCC9 /* Gateway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gateway.h; sourceTree = "<group>"; };
 		CF02ABB4295BBD8100B5FCC9 /* GatewayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatewayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF02ABB9295BBD8100B5FCC9 /* GatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayTests.swift; sourceTree = "<group>"; };
+		CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
+		CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				CF02ABAF295BBD8100B5FCC9 /* Gateway.h */,
+				CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */,
+				CF02ABC6295D03C100B5FCC9 /* EndPoints */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -80,6 +88,15 @@
 				CF02ABB9295BBD8100B5FCC9 /* GatewayTests.swift */,
 			);
 			path = GatewayTests;
+			sourceTree = "<group>";
+		};
+		CF02ABC6295D03C100B5FCC9 /* EndPoints */ = {
+			isa = PBXGroup;
+			children = (
+				CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */,
+				CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */,
+			);
+			path = EndPoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +161,7 @@
 				TargetAttributes = {
 					CF02ABAB295BBD8100B5FCC9 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 					CF02ABB3295BBD8100B5FCC9 = {
 						CreatedOnToolsVersion = 14.2;
@@ -191,6 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */,
+				CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */,
+				CF02ABCA295D0B6700B5FCC9 /* HttpRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +357,7 @@
 		CF02ABBF295BBD8100B5FCC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -357,6 +379,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +388,7 @@
 		CF02ABC0295BBD8100B5FCC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -394,6 +418,7 @@
 		CF02ABC2295BBD8100B5FCC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L49G5QS6U;
@@ -410,6 +435,7 @@
 		CF02ABC3295BBD8100B5FCC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L49G5QS6U;
