@@ -13,6 +13,18 @@
 		CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */; };
 		CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */; };
 		CF02ABCA295D0B6700B5FCC9 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */; };
+		CF02ABDE295F0F6A00B5FCC9 /* MultipartFormData+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD2295F0F6A00B5FCC9 /* MultipartFormData+Builder.swift */; };
+		CF02ABDF295F0F6A00B5FCC9 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD3295F0F6A00B5FCC9 /* MultipartFormData.swift */; };
+		CF02ABE0295F0F6A00B5FCC9 /* Dash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD4295F0F6A00B5FCC9 /* Dash.swift */; };
+		CF02ABE1295F0F6A00B5FCC9 /* MIMEType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD5295F0F6A00B5FCC9 /* MIMEType.swift */; };
+		CF02ABE2295F0F6A00B5FCC9 /* MultipartFormData+Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD6295F0F6A00B5FCC9 /* MultipartFormData+Part.swift */; };
+		CF02ABE3295F0F6A00B5FCC9 /* CRLF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD7295F0F6A00B5FCC9 /* CRLF.swift */; };
+		CF02ABE4295F0F6A00B5FCC9 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD8295F0F6A00B5FCC9 /* Name.swift */; };
+		CF02ABE5295F0F6A00B5FCC9 /* BoundaryGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABD9295F0F6A00B5FCC9 /* BoundaryGenerator.swift */; };
+		CF02ABE6295F0F6A00B5FCC9 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABDA295F0F6A00B5FCC9 /* ContentType.swift */; };
+		CF02ABE7295F0F6A00B5FCC9 /* Filename.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABDB295F0F6A00B5FCC9 /* Filename.swift */; };
+		CF02ABE8295F0F6A00B5FCC9 /* ContentDisposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABDC295F0F6A00B5FCC9 /* ContentDisposition.swift */; };
+		CF02ABE9295F0F6A00B5FCC9 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABDD295F0F6A00B5FCC9 /* ValidationResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +45,18 @@
 		CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
 		CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		CF02ABD2295F0F6A00B5FCC9 /* MultipartFormData+Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MultipartFormData+Builder.swift"; sourceTree = "<group>"; };
+		CF02ABD3295F0F6A00B5FCC9 /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		CF02ABD4295F0F6A00B5FCC9 /* Dash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dash.swift; sourceTree = "<group>"; };
+		CF02ABD5295F0F6A00B5FCC9 /* MIMEType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMEType.swift; sourceTree = "<group>"; };
+		CF02ABD6295F0F6A00B5FCC9 /* MultipartFormData+Part.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MultipartFormData+Part.swift"; sourceTree = "<group>"; };
+		CF02ABD7295F0F6A00B5FCC9 /* CRLF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLF.swift; sourceTree = "<group>"; };
+		CF02ABD8295F0F6A00B5FCC9 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		CF02ABD9295F0F6A00B5FCC9 /* BoundaryGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundaryGenerator.swift; sourceTree = "<group>"; };
+		CF02ABDA295F0F6A00B5FCC9 /* ContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		CF02ABDB295F0F6A00B5FCC9 /* Filename.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filename.swift; sourceTree = "<group>"; };
+		CF02ABDC295F0F6A00B5FCC9 /* ContentDisposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDisposition.swift; sourceTree = "<group>"; };
+		CF02ABDD295F0F6A00B5FCC9 /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +102,7 @@
 				CF02ABAF295BBD8100B5FCC9 /* Gateway.h */,
 				CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */,
 				CF02ABC6295D03C100B5FCC9 /* EndPoints */,
+				CF02ABD1295F0F6A00B5FCC9 /* MultipartFormData */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -97,6 +122,25 @@
 				CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */,
 			);
 			path = EndPoints;
+			sourceTree = "<group>";
+		};
+		CF02ABD1295F0F6A00B5FCC9 /* MultipartFormData */ = {
+			isa = PBXGroup;
+			children = (
+				CF02ABD2295F0F6A00B5FCC9 /* MultipartFormData+Builder.swift */,
+				CF02ABD3295F0F6A00B5FCC9 /* MultipartFormData.swift */,
+				CF02ABD4295F0F6A00B5FCC9 /* Dash.swift */,
+				CF02ABD5295F0F6A00B5FCC9 /* MIMEType.swift */,
+				CF02ABD6295F0F6A00B5FCC9 /* MultipartFormData+Part.swift */,
+				CF02ABD7295F0F6A00B5FCC9 /* CRLF.swift */,
+				CF02ABD8295F0F6A00B5FCC9 /* Name.swift */,
+				CF02ABD9295F0F6A00B5FCC9 /* BoundaryGenerator.swift */,
+				CF02ABDA295F0F6A00B5FCC9 /* ContentType.swift */,
+				CF02ABDB295F0F6A00B5FCC9 /* Filename.swift */,
+				CF02ABDC295F0F6A00B5FCC9 /* ContentDisposition.swift */,
+				CF02ABDD295F0F6A00B5FCC9 /* ValidationResult.swift */,
+			);
+			path = MultipartFormData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,9 +253,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF02ABE3295F0F6A00B5FCC9 /* CRLF.swift in Sources */,
+				CF02ABDE295F0F6A00B5FCC9 /* MultipartFormData+Builder.swift in Sources */,
+				CF02ABE2295F0F6A00B5FCC9 /* MultipartFormData+Part.swift in Sources */,
+				CF02ABE0295F0F6A00B5FCC9 /* Dash.swift in Sources */,
+				CF02ABE4295F0F6A00B5FCC9 /* Name.swift in Sources */,
+				CF02ABE8295F0F6A00B5FCC9 /* ContentDisposition.swift in Sources */,
+				CF02ABE6295F0F6A00B5FCC9 /* ContentType.swift in Sources */,
 				CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */,
+				CF02ABE9295F0F6A00B5FCC9 /* ValidationResult.swift in Sources */,
 				CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */,
 				CF02ABCA295D0B6700B5FCC9 /* HttpRequest.swift in Sources */,
+				CF02ABE5295F0F6A00B5FCC9 /* BoundaryGenerator.swift in Sources */,
+				CF02ABE7295F0F6A00B5FCC9 /* Filename.swift in Sources */,
+				CF02ABE1295F0F6A00B5FCC9 /* MIMEType.swift in Sources */,
+				CF02ABDF295F0F6A00B5FCC9 /* MultipartFormData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,5 +38,6 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
         
         //print("🐛", result.0, result.1)
         print(String(decoding: result.0, as: UTF8.self))
+        print(String(decoding: request.httpBody!, as: UTF8.self))
     }
 }
