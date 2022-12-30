@@ -35,7 +35,7 @@ final class Context: ContextProtocol {
         simulationRepository = CoreDataRepository(storageProvider: storageProvider)
 
         defaultSimulationModelStorageService = DefaultSimulationModelStorageService(userDefault: userDefaults, simulationRepository: simulationRepository)
-        
+
         shareSimulationModelService = ShareSimulationModelService()
     }
 }

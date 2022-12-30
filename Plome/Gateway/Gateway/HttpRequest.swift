@@ -34,13 +34,6 @@ public struct HttpRequest {
             request.addValue(value, forHTTPHeaderField: key)
         }
 
-        var bodyData: Data?
-        if let body = endPoint.body {
-            bodyData = try JSONSerialization.data(withJSONObject: body)
-        }
-
-        request.httpBody = bodyData
-
         return request
     }
 }

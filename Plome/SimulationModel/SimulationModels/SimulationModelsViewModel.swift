@@ -82,8 +82,8 @@ final class SimulationModelsViewModel: ObservableObject {
             self?.deleteSimulationModel(at: index)
         }
     }
-    
-    func userDidTapShareSimulationModel(at index: Int) {
+
+    func userDidTapShareSimulationModel(at _: Int) {
         Task {
             try await shareSimulationModelService.upload(simulationModel: Simulation(name: "", date: nil, exams: nil, type: .brevet))
         }

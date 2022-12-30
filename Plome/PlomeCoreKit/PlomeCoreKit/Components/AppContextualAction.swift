@@ -18,7 +18,7 @@ public enum AppContextualAction {
             $0.image = Icons.trash.configure(weight: .regular, color: .fail, size: 20)
         }
     }
-    
+
     public static func shareAction(action: @escaping () -> Void) -> UIContextualAction {
         UIContextualAction(style: .normal, title: nil) { _, _, completion in
             action()

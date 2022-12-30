@@ -8,7 +8,7 @@
 import Foundation
 
 public enum FileIOEndPoint {
-    case upload(file: String, expireAt: String)
+    case upload(file: Data, expireAt: String)
     case download(key: String)
 
     public var endPoint: EndPoint {

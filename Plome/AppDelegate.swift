@@ -12,9 +12,9 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //FirebaseApp.configure()
+        // FirebaseApp.configure()
         AppAppearance.setKeyboardAppearance()
-        //Analytics.setAnalyticsCollectionEnabled(true)
+        // Analytics.setAnalyticsCollectionEnabled(true)
 
         return true
     }
