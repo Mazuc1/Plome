@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-@objc public enum SimulationType: Int16 {
+@objc public enum SimulationType: Int16, Codable {
     case custom
     case brevet
     case generalBAC
