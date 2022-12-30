@@ -83,9 +83,11 @@ final class SimulationModelsViewModel: ObservableObject {
         }
     }
 
-    func userDidTapShareSimulationModel(at _: Int) {
+    func userDidTapShareSimulationModel(at index: Int) {
         Task {
-            try await shareSimulationModelService.upload(simulationModel: Simulation(name: "", date: nil, exams: nil, type: .brevet))
+            if let simulation = coreDataSimulationModels?[index] {
+                try await shareSimulationModelService.upload(simulationModel: simulation.toModelObject())
+            }
         }
     }
 

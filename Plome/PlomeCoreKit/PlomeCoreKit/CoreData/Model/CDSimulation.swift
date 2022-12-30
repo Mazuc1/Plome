@@ -28,6 +28,16 @@ public extension CDSimulation {
     @NSManaged var date: Date?
     @NSManaged var exams: Set<CDExam>?
     @NSManaged var type: SimulationType
+    
+    func toModelObject() -> Simulation {
+        let simulation = Simulation(name: name, date: date, exams: .init(), type: type)
+        let exams = exams?.map {
+            Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type)
+        }
+        simulation.exams = Set(exams ?? [])
+        
+        return simulation
+    }
 }
 
 // MARK: Generated accessors for exams
