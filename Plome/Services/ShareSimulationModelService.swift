@@ -38,9 +38,5 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
         let request = try MultipartFormDataRequest(endPoint: fileIOEndPoint.endPoint).build()
 
         let result = try await urlSession.data(for: request)
-
-        // print("🐛", result.0, result.1)
-        print(String(decoding: result.0, as: UTF8.self))
-        // print(String(decoding: request.httpBody!, as: UTF8.self))
     }
 }

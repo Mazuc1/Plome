@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum HttpError: Swift.Error {
+    case cantBuildURL
+}
+
 enum MIMEType {
     case json
 
@@ -24,6 +28,24 @@ public struct MultipartFormDataRequest {
 
     public init(endPoint: EndPoint) {
         self.endPoint = endPoint
+    }
+
+    public func build() throws -> URLRequest {
+        guard let url = endPoint.buildURL() else {
+            throw HttpError.cantBuildURL
+        }
+
+        addBodyField()
+
+        var request = URLRequest(url: url)
+
+        request.httpMethod = endPoint.method.rawValue
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+        httpBody.appendString("--\(boundary)--")
+        request.httpBody = httpBody as Data
+
+        return request
     }
 
     private func addTextField(named name: String, value: String) {
@@ -56,24 +78,6 @@ public struct MultipartFormDataRequest {
         fieldData.appendString("\r\n")
 
         return fieldData as Data
-    }
-
-    public func build() throws -> URLRequest {
-        guard let url = endPoint.buildURL() else {
-            throw HttpError.cantBuildURL
-        }
-
-        addBodyField()
-
-        var request = URLRequest(url: url)
-
-        request.httpMethod = endPoint.method.rawValue
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-
-        httpBody.appendString("--\(boundary)--")
-        request.httpBody = httpBody as Data
-
-        return request
     }
 
     private func addBodyField() {

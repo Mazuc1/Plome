@@ -12,7 +12,6 @@
 		CF02ABBB295BBD8100B5FCC9 /* Gateway.h in Headers */ = {isa = PBXBuildFile; fileRef = CF02ABAF295BBD8100B5FCC9 /* Gateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */; };
 		CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */; };
-		CF02ABCA295D0B6700B5FCC9 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */; };
 		CF02ABEB295F169B00B5FCC9 /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		CF02ABB9295BBD8100B5FCC9 /* GatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayTests.swift; sourceTree = "<group>"; };
 		CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
-		CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,9 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				CF02ABAF295BBD8100B5FCC9 /* Gateway.h */,
-				CF02ABC9295D0B6700B5FCC9 /* HttpRequest.swift */,
+				CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */,
 				CF02ABC6295D03C100B5FCC9 /* EndPoints */,
-				CF02ABD1295F0F6A00B5FCC9 /* MultipartFormData */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -100,14 +97,6 @@
 				CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */,
 			);
 			path = EndPoints;
-			sourceTree = "<group>";
-		};
-		CF02ABD1295F0F6A00B5FCC9 /* MultipartFormData */ = {
-			isa = PBXGroup;
-			children = (
-				CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */,
-			);
-			path = MultipartFormData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +212,6 @@
 				CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */,
 				CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */,
 				CF02ABEB295F169B00B5FCC9 /* MultipartFormDataRequest.swift in Sources */,
-				CF02ABCA295D0B6700B5FCC9 /* HttpRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
