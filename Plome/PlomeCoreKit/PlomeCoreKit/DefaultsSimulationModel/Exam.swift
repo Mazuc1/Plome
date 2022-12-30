@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-public class Exam: NSObject, NSCopying {
+public class Exam: NSObject, NSCopying, Codable {
     // MARK: - Properties
 
     public enum Rule {
@@ -21,6 +21,10 @@ public class Exam: NSObject, NSCopying {
             case .coeff: return "^[0-9]+(?:\\.[0-9]{1,2})?$"
             }
         }
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case name, coefficient, grade, type
     }
 
     public var name: String
@@ -37,7 +41,23 @@ public class Exam: NSObject, NSCopying {
         self.type = type
     }
 
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        coefficient = try? container.decode(Float.self, forKey: .coefficient)
+        grade = try? container.decode(String.self, forKey: .grade)
+        type = try container.decode(ExamType.self, forKey: .type)
+    }
+
     // MARK: - Methods
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(coefficient, forKey: .coefficient)
+        try container.encode(grade, forKey: .grade)
+        try container.encode(type, forKey: .type)
+    }
 
     public func toCoreDataModel(in context: NSManagedObjectContext, for simulation: CDSimulation) -> CDExam {
         let cdExam = CDExam(context: context)
@@ -106,7 +126,3 @@ public class Exam: NSObject, NSCopying {
         Exam(name: name, coefficient: coefficient, grade: grade, type: type)
     }
 }
-
-/*
- https://stackoverflow.com/questions/29399685/regex-for-numbers-with-optional-decimal-value-fixed-to-two-positions
- */
