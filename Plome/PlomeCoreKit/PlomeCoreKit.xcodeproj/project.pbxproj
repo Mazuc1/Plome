@@ -85,7 +85,6 @@
 		CFD055A62941FC7B000D43BB /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
 		CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
-		CFE4EA03296232A000BC6DB2 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4EA02296232A000BC6DB2 /* LoadingViewController.swift */; };
 		CFE77756293A0DB500D0A90D /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77755293A0DB500D0A90D /* MockCoreData.swift */; };
 		CFEDAD7F2930104E00D56717 /* CalculatorShaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7E2930104E00D56717 /* CalculatorShaper.swift */; };
 		CFF846FA290AE25800D31F5F /* Plome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFF846F8290AE25800D31F5F /* Plome.xcdatamodeld */; };
@@ -180,7 +179,6 @@
 		CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKitTestsHelpers.h; sourceTree = "<group>"; };
 		CFD055A22941FC7B000D43BB /* PlomeCoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeCoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD067AC292FBD980034EE02 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
-		CFE4EA02296232A000BC6DB2 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		CFE77755293A0DB500D0A90D /* MockCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
 		CFEDAD7E2930104E00D56717 /* CalculatorShaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorShaper.swift; sourceTree = "<group>"; };
 		CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plome.xcdatamodel; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 				CF0C7A6A292FDC2E00E49803 /* CTA */,
 				CF8E3D212923BF83001B1AC8 /* ALProgress */,
 				CF3B9A9A28F3280900457A44 /* AppViewController.swift */,
-				CFE4EA02296232A000BC6DB2 /* LoadingViewController.swift */,
 				CF82A565290BD560004E2D50 /* AppContextualAction.swift */,
 				CF48938D2915275A00B97147 /* ExamTypeHeaderView.swift */,
 				CF52B4A8293A00ED00AB6C9E /* PlaceholderView.swift */,
@@ -742,7 +739,6 @@
 				CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */,
 				CF3870542942B61C00593400 /* L10n.swift in Sources */,
 				CF52B4A9293A00ED00AB6C9E /* PlaceholderView.swift in Sources */,
-				CFE4EA03296232A000BC6DB2 /* LoadingViewController.swift in Sources */,
 				CF3B9A8528F1DCBA00457A44 /* Transition.swift in Sources */,
 				CF5B5F2E2921BA64002EF9BD /* ConfettiView.swift in Sources */,
 				CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */,
