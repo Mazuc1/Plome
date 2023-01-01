@@ -13,6 +13,7 @@
 		CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */; };
 		CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */; };
 		CF02ABEB295F169B00B5FCC9 /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */; };
+		CFE4EA052962346100BC6DB2 /* TaskLoaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4EA042962346100BC6DB2 /* TaskLoaderManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
 		CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		CFE4EA042962346100BC6DB2 /* TaskLoaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLoaderManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				CF02ABAF295BBD8100B5FCC9 /* Gateway.h */,
 				CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */,
+				CFE4EA042962346100BC6DB2 /* TaskLoaderManager.swift */,
 				CF02ABC6295D03C100B5FCC9 /* EndPoints */,
 			);
 			path = Gateway;
@@ -212,6 +215,7 @@
 				CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */,
 				CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */,
 				CF02ABEB295F169B00B5FCC9 /* MultipartFormDataRequest.swift in Sources */,
+				CFE4EA052962346100BC6DB2 /* TaskLoaderManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

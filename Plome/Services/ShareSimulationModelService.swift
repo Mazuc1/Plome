@@ -33,21 +33,28 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
     // MARK: - Methods
 
     func upload(simulationModel: Simulation) async throws -> SimulationModelUploadResponse {
+        await TaskLoaderManager.shared.addTask()
+
         let fileIOEndPoint = try createUploadEndpoint(with: simulationModel)
         let request = try MultipartFormDataRequest(endPoint: fileIOEndPoint.endPoint).build()
 
         let (data, _) = try await urlSession.data(for: request)
 
+        await TaskLoaderManager.shared.endTask()
+
         return try JSONDecoder().decode(SimulationModelUploadResponse.self, from: data)
     }
 
     func download(with key: String) async throws -> Simulation {
+        await TaskLoaderManager.shared.addTask()
+
         let fileIOEndPoint = FileIOEndPoint.download(key: key).endPoint
         guard let url = fileIOEndPoint.buildURL() else {
             throw ShareSimulationModelServiceError.cantBuildURL
         }
 
         let (data, _) = try await urlSession.data(from: url)
+        await TaskLoaderManager.shared.endTask()
 
         return try JSONDecoder().decode(Simulation.self, from: data)
     }
