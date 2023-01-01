@@ -22,7 +22,7 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
         case cantBuildURL
     }
 
-    let urlSession: URLSession
+    private let urlSession: URLSession
 
     // MARK: - Init
 

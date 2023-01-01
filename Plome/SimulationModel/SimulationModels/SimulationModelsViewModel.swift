@@ -84,9 +84,14 @@ final class SimulationModelsViewModel: ObservableObject {
     }
 
     func userDidTapShareSimulationModel(at index: Int) {
-        Task {
+        Task { @MainActor in
             if let simulation = coreDataSimulationModels?[index] {
-                try await shareSimulationModelService.upload(simulationModel: simulation.toModelObject())
+                do {
+                    let response = try await shareSimulationModelService.upload(simulationModel: simulation.toModelObject())
+                    router.alert(title: response.key, message: L10n.SimulationModels.sharingCodeMessage)
+                } catch {
+                    router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+                }
             }
         }
     }
