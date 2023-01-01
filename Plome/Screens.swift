@@ -83,7 +83,7 @@ extension Screens {
 
 extension Screens {
     func createSettingsTab(router: SettingsRouter) -> UIViewController {
-        let settingsViewModel = SettingsViewModel(router: router, simulationRepository: context.simulationRepository, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider)
+        let settingsViewModel = SettingsViewModel(router: router, simulationRepository: context.simulationRepository, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider, shareSimulationModelService: context.shareSimulationModelService)
         let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
         settingsViewController.tabBarItem = Tabs.settings.item
 
