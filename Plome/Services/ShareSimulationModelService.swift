@@ -10,14 +10,16 @@ import Gateway
 import PlomeCoreKit
 
 protocol ShareSimulationModelServiceProtocol {
-    func upload(simulationModel: Simulation) async throws
+    func upload(simulationModel: Simulation) async throws -> SimulationModelUploadResponse
+    func download(with key: String) async throws -> Simulation
 }
 
 final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
     //  MARK: - Properties
 
     enum ShareSimulationModelServiceError: Error {
-        // case invalidURL
+        case cantBuildExpirationDate
+        case cantBuildURL
     }
 
     let urlSession: URLSession
@@ -30,13 +32,32 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
 
     // MARK: - Methods
 
-    func upload(simulationModel _: Simulation) async throws {
-        let dataTest = "Test".data(using: .utf8)!
-        let modifiedDate = Calendar.current.date(byAdding: .hour, value: 5, to: Date())!
-
-        let fileIOEndPoint = FileIOEndPoint.upload(file: dataTest, expireAt: Date.ISOStringFromDate(date: modifiedDate))
+    func upload(simulationModel: Simulation) async throws -> SimulationModelUploadResponse {
+        let fileIOEndPoint = try createUploadEndpoint(with: simulationModel)
         let request = try MultipartFormDataRequest(endPoint: fileIOEndPoint.endPoint).build()
 
-        let result = try await urlSession.data(for: request)
+        let (data, _) = try await urlSession.data(for: request)
+                
+        return try JSONDecoder().decode(SimulationModelUploadResponse.self, from: data)
+    }
+    
+    func download(with key: String) async throws -> Simulation {
+        let fileIOEndPoint = FileIOEndPoint.download(key: key).endPoint
+        guard let url = fileIOEndPoint.buildURL() else {
+            throw ShareSimulationModelServiceError.cantBuildURL
+        }
+        
+        let (data, _) = try await urlSession.data(from: url)
+        
+        return try JSONDecoder().decode(Simulation.self, from: data)
+    }
+    
+    private func createUploadEndpoint(with simulation: Simulation) throws -> FileIOEndPoint {
+        guard let expirationDate = Date.nowPlus(2, timeUnit: .hour) else {
+            throw ShareSimulationModelServiceError.cantBuildExpirationDate
+        }
+        
+        let jsonData = try JSONEncoder().encode(simulation)
+        return FileIOEndPoint.upload(file: jsonData, expireAt: Date.ISOStringFromDate(date: expirationDate))
     }
 }

@@ -29,7 +29,7 @@ public struct EndPoint {
         self.body = body
     }
 
-    func buildURL() -> URL? {
+    public func buildURL() -> URL? {
         var components = URLComponents()
         components.host = host
         components.scheme = "https"

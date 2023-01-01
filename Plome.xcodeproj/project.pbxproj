@@ -72,6 +72,7 @@
 		CFD0BCA02943334A005C898B /* Plome.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFD0BCA22943334A005C898B /* Plome.strings */; };
 		CFD0BCA529433FA7005C898B /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0BCA429433FA7005C898B /* L10n.swift */; };
 		CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD196192931057D00A06FE7 /* ExamInformationsView.swift */; };
+		CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */; };
 		CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
 /* End PBXBuildFile section */
@@ -176,6 +177,7 @@
 		CFD0BCA32943334C005C898B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Plome.strings; sourceTree = "<group>"; };
 		CFD0BCA429433FA7005C898B /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		CFD196192931057D00A06FE7 /* ExamInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInformationsView.swift; sourceTree = "<group>"; };
+		CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelUploadResponse.swift; sourceTree = "<group>"; };
 		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
 		FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.debug.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				CF02ABCC295D141900B5FCC9 /* ShareSimulationModelService.swift */,
+				CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				CF3B9A9F28F3287B00457A44 /* AppRouter.swift in Sources */,
 				CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */,
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
+				CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */,
 				CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */,
 				CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */,
 				CF888F73290F234C00D2D3E5 /* SimulationsRouter.swift in Sources */,
