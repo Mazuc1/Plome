@@ -84,6 +84,8 @@
 "simulationModels.number_of_continous_controls" = "%d Contrôles continu";
 "simulationModels.number_of_options" = "%d Options";
 
+"simulationModels.sharing_code_message" = "Entrer ce code dans les paramètres de l'application pour télécharger le modèle partager. Attention, ce code est valide uniquement pendant 2 heures.";
+
 // MARK: - Onboarding
 
 "onboarding.presentationTitle" = "Hello !";
