@@ -38,3 +38,9 @@ public extension Date {
         return dateFormatter.string(from: date).appending("Z")
     }
 }
+
+public extension Date {
+    static func nowPlus(_ numbers: Int, timeUnit: Calendar.Component) -> Date? {
+        Calendar.current.date(bySetting: timeUnit, value: numbers, of: Date())
+    }
+}
