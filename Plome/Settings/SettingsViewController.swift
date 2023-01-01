@@ -91,7 +91,7 @@ final class SettingsViewController: AppViewController {
 
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
-                cell.textLabel?.text = "Télécharger un modèle"
+                cell.textLabel?.text = L10n.SimulationModels.downloadModel
                 cell.textLabel?.font = PlomeFont.bodyM.font
                 cell.imageView?.image = Icons.download.configure(weight: .light, color: .lagoon, size: 20)
                 cell.selectionStyle = .none

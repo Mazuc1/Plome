@@ -44,7 +44,7 @@ final class SettingsViewModel {
     }
 
     func userDidTapDownloadModel() {
-        router.alertWithTextField(title: "Télécharger un modèle", message: "Saississez le code qui vous à été partagé.", buttonActionName: PlomeCoreKit.L10n.General.ok) { [weak self] key in
+        router.alertWithTextField(title: L10n.SimulationModels.downloadModel, message: L10n.SimulationModels.writeCode, buttonActionName: PlomeCoreKit.L10n.General.ok) { [weak self] key in
             self?.dowloadSimuationModel(with: key)
         }
     }
@@ -60,7 +60,7 @@ final class SettingsViewModel {
                     cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
                 }
                 
-                router.alert(title: "Bravo", message: "Le modèle à été ajouter au votre. Retrouvez le dans la partie modèles de l'application.")
+                router.alert(title: L10n.SimulationModels.successDownloadTitle, message: L10n.SimulationModels.successDownloadMessage)
             } catch {
                 router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
             }

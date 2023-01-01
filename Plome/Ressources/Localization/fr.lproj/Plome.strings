@@ -85,6 +85,10 @@
 "simulationModels.number_of_options" = "%d Options";
 
 "simulationModels.sharing_code_message" = "Entrer ce code dans les paramètres de l'application pour télécharger le modèle partager. Attention, ce code est valide uniquement pendant 2 heures.";
+"simulationModels.download_model" = "Télécharger un modèle";
+"simulationModels.write_code" = "Saississez le code qui vous à été partagé.";
+"simulationModels.success_download_title" = "C'est bon !";
+"simulationModels.success_download_message" = "Le modèle à bien été ajouté.";
 
 // MARK: - Onboarding
 
