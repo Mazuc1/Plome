@@ -37,26 +37,26 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
         let request = try MultipartFormDataRequest(endPoint: fileIOEndPoint.endPoint).build()
 
         let (data, _) = try await urlSession.data(for: request)
-                
+
         return try JSONDecoder().decode(SimulationModelUploadResponse.self, from: data)
     }
-    
+
     func download(with key: String) async throws -> Simulation {
         let fileIOEndPoint = FileIOEndPoint.download(key: key).endPoint
         guard let url = fileIOEndPoint.buildURL() else {
             throw ShareSimulationModelServiceError.cantBuildURL
         }
-        
+
         let (data, _) = try await urlSession.data(from: url)
-        
+
         return try JSONDecoder().decode(Simulation.self, from: data)
     }
-    
+
     private func createUploadEndpoint(with simulation: Simulation) throws -> FileIOEndPoint {
         guard let expirationDate = Date.nowPlus(2, timeUnit: .hour) else {
             throw ShareSimulationModelServiceError.cantBuildExpirationDate
         }
-        
+
         let jsonData = try JSONEncoder().encode(simulation)
         return FileIOEndPoint.upload(file: jsonData, expireAt: Date.ISOStringFromDate(date: expirationDate))
     }

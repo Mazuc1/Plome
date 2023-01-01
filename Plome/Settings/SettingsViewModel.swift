@@ -48,7 +48,7 @@ final class SettingsViewModel {
             self?.dowloadSimuationModel(with: key)
         }
     }
-    
+
     func dowloadSimuationModel(with key: String) {
         Task { @MainActor in
             do {
@@ -59,7 +59,7 @@ final class SettingsViewModel {
                     cdSimulation.type = simulation.type
                     cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
                 }
-                
+
                 router.alert(title: L10n.SimulationModels.successDownloadTitle, message: L10n.SimulationModels.successDownloadMessage)
             } catch {
                 router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
