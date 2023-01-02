@@ -16,14 +16,17 @@ public class TaskLoaderManager {
 
     private weak var rootViewController: UIViewController?
 
-    private let taskLoaderView = TaskLoaderView(frame: .zero)
+    let taskLoaderView = TaskLoaderView(frame: .zero)
+    
+    /// Needed for testing purpose
+    private let subsituteViewController = UIViewController()
 
     // MARK: - Init
 
-    private init() {
+    init() {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
-        rootViewController = windowScene?.windows.last?.rootViewController ?? UIViewController()
+        rootViewController = windowScene?.windows.last?.rootViewController ?? subsituteViewController
     }
 
     // MARK: - Methods
