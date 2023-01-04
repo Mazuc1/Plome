@@ -26,7 +26,7 @@ final class SimulationModelsViewModelTests: XCTestCase {
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         simulationModelsRouter = SimulationModelsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository)
+        simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, shareSimulationModelService: ShareSimulationModelService())
     }
 
     func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsOneSection() {
@@ -46,7 +46,8 @@ final class SimulationModelsViewModelTests: XCTestCase {
             .store(in: &cancellables)
     }
 
-    func testWhenDeletingSimulationThenSimulationIsDeleted() {
+    @MainActor
+    func testWhenDeletingSimulationThenSimulationIsDeleted() async {
         // Arrange
         var simulationID: NSManagedObjectID?
 
@@ -62,6 +63,6 @@ final class SimulationModelsViewModelTests: XCTestCase {
         simulationModelsViewModel.updateSnapshot()
 
         // Assert
-        XCTAssertThrowsError(try simulationRepository.get(with: simulationID!))
+        await XCTAssertThrowsError(try simulationRepository.get(with: simulationID!))
     }
 }

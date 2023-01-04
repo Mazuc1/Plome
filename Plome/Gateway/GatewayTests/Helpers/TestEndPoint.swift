@@ -20,7 +20,7 @@ enum TestEndPoint {
                          path: "/\(someParameter)",
                          parameters: nil,
                          body: ["bodyName": "bodyContent"])
-            
+
         case .dataTest:
             return .init(method: .GET,
                          host: "google.com",

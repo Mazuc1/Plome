@@ -17,7 +17,7 @@ public class TaskLoaderManager {
     private weak var rootViewController: UIViewController?
 
     let taskLoaderView = TaskLoaderView(frame: .zero)
-    
+
     /// Needed for testing purpose
     private let subsituteViewController = UIViewController()
 

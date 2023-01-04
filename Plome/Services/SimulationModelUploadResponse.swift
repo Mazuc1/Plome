@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct SimulationModelUploadResponse: Decodable {
+struct SimulationModelUploadResponse: Codable {
     let key: String
 }
