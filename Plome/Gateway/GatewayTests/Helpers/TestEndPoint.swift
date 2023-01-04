@@ -11,6 +11,8 @@ import Foundation
 enum TestEndPoint {
     case test(someParameter: String)
     case dataTest
+    case failedBuild
+    case successBuild
 
     var endPoint: EndPoint {
         switch self {
@@ -27,6 +29,20 @@ enum TestEndPoint {
                          path: "/",
                          parameters: nil,
                          body: ["bodyName": Data("Data".utf8)])
+
+        case .failedBuild:
+            return .init(method: .GET,
+                         host: "google.com",
+                         path: "somePath",
+                         parameters: nil,
+                         body: nil)
+
+        case .successBuild:
+            return .init(method: .GET,
+                         host: "google.com",
+                         path: "/somePath",
+                         parameters: ["parameter": "value"],
+                         body: nil)
         }
     }
 }
