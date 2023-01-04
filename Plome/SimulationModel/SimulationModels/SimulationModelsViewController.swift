@@ -145,9 +145,16 @@ extension SimulationModelsViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = AppContextualAction.deleteAction { [weak self] in
-            self?.viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
+        let deleteAction = AppContextualAction.deleteAction { [viewModel] in
+            viewModel.userDidTapDeleteSimulationModel(at: indexPath.row)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+
+    func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let shareAction = AppContextualAction.shareAction { [viewModel] in
+            viewModel.userDidTapShareSimulationModel(at: indexPath.row)
+        }
+        return UISwipeActionsConfiguration(actions: [shareAction])
     }
 }

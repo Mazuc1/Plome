@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3828C928FF2B9619652D481F /* Pods_Plome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448906EE445F0E0C85196E7E /* Pods_Plome.framework */; };
+		CF02ABCD295D141900B5FCC9 /* ShareSimulationModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABCC295D141900B5FCC9 /* ShareSimulationModelService.swift */; };
+		CF02ABCF295D154C00B5FCC9 /* Gateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF02ABCE295D154C00B5FCC9 /* Gateway.framework */; };
+		CF02ABD0295D190800B5FCC9 /* Gateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF02ABCE295D154C00B5FCC9 /* Gateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF0C7A6D292FDDBC00E49803 /* SimulationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */; };
 		CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */; };
 		CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */; };
@@ -69,6 +72,10 @@
 		CFD0BCA02943334A005C898B /* Plome.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFD0BCA22943334A005C898B /* Plome.strings */; };
 		CFD0BCA529433FA7005C898B /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0BCA429433FA7005C898B /* L10n.swift */; };
 		CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD196192931057D00A06FE7 /* ExamInformationsView.swift */; };
+		CFD7EF6D296624FF0039E3A8 /* ShareSimulationModelServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF6C296624FF0039E3A8 /* ShareSimulationModelServiceTests.swift */; };
+		CFD7EF70296625A60039E3A8 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF6F296625A60039E3A8 /* MockURLProtocol.swift */; };
+		CFD7EF76296637310039E3A8 /* XCTest+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF75296637310039E3A8 /* XCTest+extension.swift */; };
+		CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */; };
 		CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CF02ABD0295D190800B5FCC9 /* Gateway.framework in Embed Frameworks */,
 				CF3B9AAA28F32C3300457A44 /* PlomeCoreKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -100,6 +108,8 @@
 /* Begin PBXFileReference section */
 		448906EE445F0E0C85196E7E /* Pods_Plome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B02028B66FFAB401AFC34E /* Pods-Plome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.release.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.release.xcconfig"; sourceTree = "<group>"; };
+		CF02ABCC295D141900B5FCC9 /* ShareSimulationModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSimulationModelService.swift; sourceTree = "<group>"; };
+		CF02ABCE295D154C00B5FCC9 /* Gateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Gateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewModel.swift; sourceTree = "<group>"; };
 		CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewController.swift; sourceTree = "<group>"; };
 		CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
@@ -170,6 +180,10 @@
 		CFD0BCA32943334C005C898B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Plome.strings; sourceTree = "<group>"; };
 		CFD0BCA429433FA7005C898B /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		CFD196192931057D00A06FE7 /* ExamInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInformationsView.swift; sourceTree = "<group>"; };
+		CFD7EF6C296624FF0039E3A8 /* ShareSimulationModelServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSimulationModelServiceTests.swift; sourceTree = "<group>"; };
+		CFD7EF6F296625A60039E3A8 /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		CFD7EF75296637310039E3A8 /* XCTest+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+extension.swift"; sourceTree = "<group>"; };
+		CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelUploadResponse.swift; sourceTree = "<group>"; };
 		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
 		FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.debug.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF02ABCF295D154C00B5FCC9 /* Gateway.framework in Frameworks */,
 				CF3B9AA928F32C3300457A44 /* PlomeCoreKit.framework in Frameworks */,
 				3828C928FF2B9619652D481F /* Pods_Plome.framework in Frameworks */,
 			);
@@ -203,6 +218,15 @@
 				68B02028B66FFAB401AFC34E /* Pods-Plome.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF02ABCB295D138500B5FCC9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CF02ABCC295D141900B5FCC9 /* ShareSimulationModelService.swift */,
+				CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CF0C7A6B292FDDA500E49803 /* SimulationDetails */ = {
@@ -240,10 +264,13 @@
 			isa = PBXGroup;
 			children = (
 				CFD067AB292FBBE30034EE02 /* Info.plist */,
+				CFD7EF6B296624E50039E3A8 /* Services */,
 				CF1C170129548DFF00E9EF03 /* Onboarding */,
 				CFE77757293A10F800D0A90D /* Settings */,
 				CFBFA087292E4CFC00F36790 /* Simulation */,
 				CF324078290BF8D300FC6666 /* SimulationModel */,
+				CFD7EF6E296625850039E3A8 /* Mocks */,
+				CFD7EF74296637180039E3A8 /* Helpers */,
 			);
 			path = PlomeTests;
 			sourceTree = "<group>";
@@ -323,6 +350,7 @@
 		CF59EA3F28ECCE260041B33B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF02ABCE295D154C00B5FCC9 /* Gateway.framework */,
 				CF968169295AFD410000DA6F /* Pods_PlomeCoreKit.framework */,
 				CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */,
 				CFBFA09C292E6A7200F36790 /* PlomeCoreKitTestsHelpers.framework */,
@@ -398,6 +426,7 @@
 				CF3B9A9C28F3287B00457A44 /* MainTabBarController.swift */,
 				CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */,
 				CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */,
+				CF02ABCB295D138500B5FCC9 /* Services */,
 				CFD0BC9C2943330A005C898B /* Ressources */,
 				CFB51232294C78FB00979309 /* Onboarding */,
 				CF3B9AA028F3292C00457A44 /* Home */,
@@ -449,6 +478,30 @@
 				CF4B5AE629279FAB005F8D18 /* CatchUpView.swift */,
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		CFD7EF6B296624E50039E3A8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CFD7EF6C296624FF0039E3A8 /* ShareSimulationModelServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CFD7EF6E296625850039E3A8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				CFD7EF6F296625A60039E3A8 /* MockURLProtocol.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		CFD7EF74296637180039E3A8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CFD7EF75296637310039E3A8 /* XCTest+extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CFE77757293A10F800D0A90D /* Settings */ = {
@@ -611,10 +664,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD7EF76296637310039E3A8 /* XCTest+extension.swift in Sources */,
 				CF1C170329548E2000E9EF03 /* OnboardingFlowControllerTests.swift in Sources */,
 				CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */,
+				CFD7EF70296625A60039E3A8 /* MockURLProtocol.swift in Sources */,
 				CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */,
 				CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */,
+				CFD7EF6D296624FF0039E3A8 /* ShareSimulationModelServiceTests.swift in Sources */,
 				CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */,
 				CF907B2B292F7B2100DEA169 /* SimulationListViewModelTests.swift in Sources */,
 				CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */,
@@ -637,6 +693,7 @@
 				CF852676290FF51800D58B2A /* SimulationViewModel.swift in Sources */,
 				CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */,
 				CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */,
+				CF02ABCD295D141900B5FCC9 /* ShareSimulationModelService.swift in Sources */,
 				CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */,
 				CFB51236294C7AD800979309 /* OnboardingRouter.swift in Sources */,
 				CF3B9A9E28F3287B00457A44 /* MainTabBarController.swift in Sources */,
@@ -647,6 +704,7 @@
 				CF3B9A9F28F3287B00457A44 /* AppRouter.swift in Sources */,
 				CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */,
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
+				CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */,
 				CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */,
 				CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */,
 				CF888F73290F234C00D2D3E5 /* SimulationsRouter.swift in Sources */,

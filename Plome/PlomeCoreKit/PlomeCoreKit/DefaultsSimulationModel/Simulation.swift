@@ -8,13 +8,17 @@
 import CoreData
 import Foundation
 
-public class Simulation: NSObject, NSCopying {
+public class Simulation: NSObject, NSCopying, Codable {
     // MARK: - Properties
 
     public let name: String
     public var date: Date?
     public var exams: Set<Exam>?
     public var type: SimulationType
+
+    private enum CodingKeys: String, CodingKey {
+        case name, date, exams, type
+    }
 
     // MARK: - Init
 
@@ -25,7 +29,23 @@ public class Simulation: NSObject, NSCopying {
         self.type = type
     }
 
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        date = try? container.decode(Date.self, forKey: .date)
+        exams = try? container.decode(Set<Exam>.self, forKey: .exams)
+        type = try container.decode(SimulationType.self, forKey: .type)
+    }
+
     // MARK: - Methods
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(date, forKey: .date)
+        try container.encode(exams, forKey: .exams)
+        try container.encode(type, forKey: .type)
+    }
 
     public func number(of type: ExamType) -> Int {
         guard let exams else { return 0 }

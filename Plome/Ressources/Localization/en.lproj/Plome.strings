@@ -84,6 +84,12 @@
 "simulationModels.number_of_continous_controls" = "%d Continuous controls";
 "simulationModels.number_of_options" = "%d Options";
 
+"simulationModels.sharing_code_message" = "Enter this code in the application settings to download the shared template. Warning, this code is only valid for 2 hours.";
+"simulationModels.download_model" = "Download a template";
+"simulationModels.write_code" = "Enter the code that was shared with you.";
+"simulationModels.success_download_title" = "That's good!";
+"simulationModels.success_download_message" = "The template has been added.";
+
 // MARK: - Onboarding
 
 "onboarding.presentationTitle" = "Hello !";

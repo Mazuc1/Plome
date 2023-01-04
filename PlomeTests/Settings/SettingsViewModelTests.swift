@@ -23,7 +23,7 @@ final class SettingsViewModelTests: XCTestCase {
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        settingsViewModel = SettingsViewModel(router: .init(screens: .init(context: testContext), rootTransition: EmptyTransition()), simulationRepository: simulationRepository, defaultSimulationModelsProvider: DefaultSimulationModelsProvider())
+        settingsViewModel = SettingsViewModel(router: .init(screens: .init(context: testContext), rootTransition: EmptyTransition()), simulationRepository: simulationRepository, defaultSimulationModelsProvider: DefaultSimulationModelsProvider(), shareSimulationModelService: ShareSimulationModelService())
     }
 
     func testWhenDeleteSimulationsThenSimulationIsDeleted() {

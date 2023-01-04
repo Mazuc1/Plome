@@ -15,13 +15,15 @@ final class SettingsViewModel {
     private let router: SettingsRouter
     private let simulationRepository: CoreDataRepository<CDSimulation>
     private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
+    private let shareSimulationModelService: ShareSimulationModelServiceProtocol
 
     // MARK: - Init
 
-    init(router: SettingsRouter, simulationRepository: CoreDataRepository<CDSimulation>, defaultSimulationModelsProvider: DefaultSimulationModelsProvider) {
+    init(router: SettingsRouter, simulationRepository: CoreDataRepository<CDSimulation>, defaultSimulationModelsProvider: DefaultSimulationModelsProvider, shareSimulationModelService: ShareSimulationModelServiceProtocol) {
         self.router = router
         self.simulationRepository = simulationRepository
         self.defaultSimulationModelsProvider = defaultSimulationModelsProvider
+        self.shareSimulationModelService = shareSimulationModelService
     }
 
     // MARK: - Methods
@@ -38,6 +40,30 @@ final class SettingsViewModel {
     func userDidTapDeleteSimulations() {
         router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageRemoveSimulations) { [weak self] in
             self?.deleteSimulations()
+        }
+    }
+
+    func userDidTapDownloadModel() {
+        router.alertWithTextField(title: L10n.SimulationModels.downloadModel, message: L10n.SimulationModels.writeCode, buttonActionName: PlomeCoreKit.L10n.General.ok) { [weak self] key in
+            self?.dowloadSimuationModel(with: key)
+        }
+    }
+
+    func dowloadSimuationModel(with key: String) {
+        Task { @MainActor in
+            do {
+                let simulation = try await shareSimulationModelService.download(with: key)
+                try simulationRepository.add { cdSimulation, context in
+                    cdSimulation.name = simulation.name
+                    cdSimulation.date = simulation.date
+                    cdSimulation.type = simulation.type
+                    cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
+                }
+
+                router.alert(title: L10n.SimulationModels.successDownloadTitle, message: L10n.SimulationModels.successDownloadMessage)
+            } catch {
+                router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
+            }
         }
     }
 

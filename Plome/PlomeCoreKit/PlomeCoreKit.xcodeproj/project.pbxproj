@@ -638,9 +638,9 @@
 			);
 			mainGroup = CF59EABF28ECD6B30041B33B;
 			packageReferences = (
-				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
-				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
-				CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios.git" */,
+				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1236,7 +1236,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1244,7 +1244,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+		CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -1252,7 +1252,7 @@
 				version = 6.5.0;
 			};
 		};
-		CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios.git" */ = {
+		CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -1265,27 +1265,27 @@
 /* Begin XCSwiftPackageProductDependency section */
 		CF135E20293D56E100ACFC6A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
 		CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 		CF135E24293D581900ACFC6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 		CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
+			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 		CFC133B62954FC31001A84B1 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios.git" */;
+			package = CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

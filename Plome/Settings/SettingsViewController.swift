@@ -71,22 +71,33 @@ final class SettingsViewController: AppViewController {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
                 cell.textLabel?.text = L10n.Settings.addDefaultModel
                 cell.textLabel?.font = PlomeFont.bodyM.font
-                cell.imageView?.image = Icons.addRectangleStack.configure(weight: .light, color: .black, size: 20)
+                cell.imageView?.image = Icons.addRectangleStack.configure(weight: .light, color: .lagoon, size: 20)
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] in
-                self?.viewModel.userDidTapAddDefaultSimulationModel()
+            }, action: { [viewModel] in
+                viewModel.userDidTapAddDefaultSimulationModel()
             }),
 
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
                 cell.textLabel?.text = L10n.Settings.removeAllSimulations
                 cell.textLabel?.font = PlomeFont.bodyM.font
-                cell.imageView?.image = Icons.trash.configure(weight: .light, color: .black, size: 20)
+                cell.imageView?.image = Icons.trash.configure(weight: .light, color: .lagoon, size: 20)
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] in
-                self?.viewModel.userDidTapDeleteSimulations()
+            }, action: { [viewModel] in
+                viewModel.userDidTapDeleteSimulations()
+            }),
+
+            SettingsItem(createdCell: {
+                let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
+                cell.textLabel?.text = L10n.SimulationModels.downloadModel
+                cell.textLabel?.font = PlomeFont.bodyM.font
+                cell.imageView?.image = Icons.download.configure(weight: .light, color: .lagoon, size: 20)
+                cell.selectionStyle = .none
+                return cell
+            }, action: { [viewModel] in
+                viewModel.userDidTapDownloadModel()
             }),
         ])
 
@@ -95,11 +106,11 @@ final class SettingsViewController: AppViewController {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
                 cell.textLabel?.text = L10n.Settings.contactAssistance
                 cell.textLabel?.font = PlomeFont.bodyM.font
-                cell.imageView?.image = Icons.envelope.configure(weight: .light, color: .black, size: 20)
+                cell.imageView?.image = Icons.envelope.configure(weight: .light, color: .lagoon, size: 20)
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] in
-                self?.viewModel.userDidTapContactAssistance()
+            }, action: { [viewModel] in
+                viewModel.userDidTapContactAssistance()
             }),
         ])
 
@@ -111,8 +122,8 @@ final class SettingsViewController: AppViewController {
                 cell.textLabel?.textColor = PlomeColor.fail.color
                 cell.selectionStyle = .none
                 return cell
-            }, action: { [weak self] in
-                self?.viewModel.userDidTapReinitializeApplication()
+            }, action: { [viewModel] in
+                viewModel.userDidTapReinitializeApplication()
             }),
         ])
 

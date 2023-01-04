@@ -158,6 +158,8 @@ public enum L10n {
     }
 
     public enum SimulationModels {
+        /// Download a template
+        public static let downloadModel = L10n.tr("Plome", "simulationModels.download_model", fallback: "Download a template")
         /// Here you will find all your exam simulation templates.
         ///
         /// You can use an existing one to modify it.
@@ -181,10 +183,18 @@ public enum L10n {
             return L10n.tr("Plome", "simulationModels.number_of_trials", p1, fallback: "%d Trials")
         }
 
+        /// Enter this code in the application settings to download the shared template. Warning, this code is only valid for 2 hours.
+        public static let sharingCodeMessage = L10n.tr("Plome", "simulationModels.sharing_code_message", fallback: "Enter this code in the application settings to download the shared template. Warning, this code is only valid for 2 hours.")
         /// Bac Pro...
         public static let simulationModelPlaceholderName = L10n.tr("Plome", "simulationModels.simulation_model_placeholder_name", fallback: "Bac Pro...")
+        /// The template has been added.
+        public static let successDownloadMessage = L10n.tr("Plome", "simulationModels.success_download_message", fallback: "The template has been added.")
+        /// That's good!
+        public static let successDownloadTitle = L10n.tr("Plome", "simulationModels.success_download_title", fallback: "That's good!")
         /// You are about to delete this model. Are you sure you want to delete it?
         public static let warningMessageRemoveModel = L10n.tr("Plome", "simulationModels.warning_message_remove_model", fallback: "You are about to delete this model. Are you sure you want to delete it?")
+        /// Enter the code that was shared with you.
+        public static let writeCode = L10n.tr("Plome", "simulationModels.write_code", fallback: "Enter the code that was shared with you.")
     }
 }
 

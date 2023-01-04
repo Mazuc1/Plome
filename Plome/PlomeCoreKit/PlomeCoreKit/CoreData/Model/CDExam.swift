@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-@objc public enum ExamType: Int16 {
+@objc public enum ExamType: Int16, Codable {
     case trial
     case option
     case continuousControl
