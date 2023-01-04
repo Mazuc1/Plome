@@ -13,6 +13,8 @@
 		CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */; };
 		CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */; };
 		CF02ABEB295F169B00B5FCC9 /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */; };
+		CFD7EF68296375960039E3A8 /* TestEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF67296375960039E3A8 /* TestEndPoint.swift */; };
+		CFD7EF6A2963766D0039E3A8 /* MultipartFormDataRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF692963766D0039E3A8 /* MultipartFormDataRequestTests.swift */; };
 		CFE4EA052962346100BC6DB2 /* TaskLoaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4EA042962346100BC6DB2 /* TaskLoaderManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
 		CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		CFD7EF67296375960039E3A8 /* TestEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEndPoint.swift; sourceTree = "<group>"; };
+		CFD7EF692963766D0039E3A8 /* MultipartFormDataRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequestTests.swift; sourceTree = "<group>"; };
 		CFE4EA042962346100BC6DB2 /* TaskLoaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLoaderManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				CF02ABB9295BBD8100B5FCC9 /* TaskLoaderManagerTests.swift */,
+				CFD7EF692963766D0039E3A8 /* MultipartFormDataRequestTests.swift */,
+				CFD7EF66296375840039E3A8 /* Helpers */,
 			);
 			path = GatewayTests;
 			sourceTree = "<group>";
@@ -100,6 +106,14 @@
 				CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */,
 			);
 			path = EndPoints;
+			sourceTree = "<group>";
+		};
+		CFD7EF66296375840039E3A8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CFD7EF67296375960039E3A8 /* TestEndPoint.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD7EF6A2963766D0039E3A8 /* MultipartFormDataRequestTests.swift in Sources */,
 				CF02ABBA295BBD8100B5FCC9 /* TaskLoaderManagerTests.swift in Sources */,
+				CFD7EF68296375960039E3A8 /* TestEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
