@@ -49,6 +49,10 @@ final class SettingsViewModel {
         }
     }
 
+    func userDidTapPineapple() {
+        router.openPineappleURL()
+    }
+
     func dowloadSimuationModel(with key: String) {
         Task { @MainActor in
             do {

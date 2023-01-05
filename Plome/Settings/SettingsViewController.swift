@@ -119,7 +119,7 @@ final class SettingsViewController: AppViewController {
             SettingsItem(createdCell: {
                 PineappleCell(style: .default, reuseIdentifier: PineappleCell.reuseIdentifier)
             }, action: { [viewModel] in
-                // viewModel.userDidTapContactAssistance()
+                viewModel.userDidTapPineapple()
             }),
         ])
 
