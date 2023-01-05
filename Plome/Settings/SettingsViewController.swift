@@ -115,7 +115,7 @@ final class SettingsViewController: AppViewController {
             }),
         ])
 
-        let pineappleSection = SettingsSection(title: "Pineapple", cells: [
+        let pineappleSection = SettingsSection(title: L10n.Settings.pineapple, cells: [
             SettingsItem(createdCell: {
                 PineappleCell(style: .default, reuseIdentifier: PineappleCell.reuseIdentifier)
             }, action: { [viewModel] in

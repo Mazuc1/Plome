@@ -127,6 +127,8 @@ public enum L10n {
         public static let appName = L10n.tr("Plome", "settings.app_name", fallback: "Plôme")
         /// mazuc.loic@icloud.com
         public static let assistanceMail = L10n.tr("Plome", "settings.assistance_mail", fallback: "mazuc.loic@icloud.com")
+        /// Unable to open the link.
+        public static let cantOpenLink = L10n.tr("Plome", "settings.cant_open_link", fallback: "Unable to open the link.")
         /// Contact assistance
         public static let contactAssistance = L10n.tr("Plome", "settings.contact_assistance", fallback: "Contact assistance")
         /// The simulation models have been added.
@@ -138,8 +140,14 @@ public enum L10n {
         public static let errorAppVersion = L10n.tr("Plome", "settings.errorAppVersion", fallback: "9.99")
         /// General
         public static let general = L10n.tr("Plome", "settings.general", fallback: "General")
+        /// Need to get organized?
+        public static let needOrganization = L10n.tr("Plome", "settings.need_organization", fallback: "Need to get organized?")
         /// Other
         public static let other = L10n.tr("Plome", "settings.other", fallback: "Other")
+        /// Pineapple
+        public static let pineapple = L10n.tr("Plome", "settings.pineapple", fallback: "Pineapple")
+        /// Download Pineapple to keep track of your grades, assignments, tests and schedule!
+        public static let pineappleCaption = L10n.tr("Plome", "settings.pineapple_caption", fallback: "Download Pineapple to keep track of your grades, assignments, tests and schedule!")
         /// Reset app
         public static let reintializeApp = L10n.tr("Plome", "settings.reintialize_app", fallback: "Reset app")
         /// Remove all simulations

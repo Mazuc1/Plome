@@ -16,14 +16,14 @@ final class PineappleCell: UITableViewCell {
     // MARK: - UI
 
     private var labelTitle: UILabel = .init().configure {
-        $0.text = "Besoin d'organisation ?"
+        $0.text = L10n.Settings.needOrganization
         $0.font = PlomeFont.demiBoldM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkBlue.color
     }
 
     private var labelCaption: UILabel = .init().configure {
-        $0.text = "Télécharger Pineapple pour noter vos notes, devoirs, contrôles et emploi du temps !"
+        $0.text = L10n.Settings.pineappleCaption
         $0.font = PlomeFont.bodyS.font
         $0.textAlignment = .left
         $0.numberOfLines = 0

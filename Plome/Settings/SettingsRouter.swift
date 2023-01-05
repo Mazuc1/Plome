@@ -50,7 +50,7 @@ final class SettingsRouter: DefaultRouter {
         {
             UIApplication.shared.open(url)
         } else {
-            alert(title: PlomeCoreKit.L10n.General.oups, message: "Impossible d'ouvrir le lien.")
+            alert(title: PlomeCoreKit.L10n.General.oups, message: L10n.Settings.cantOpenLink)
         }
     }
 }
