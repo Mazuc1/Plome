@@ -12,17 +12,18 @@ final class PineappleCell: UITableViewCell {
     // MARK: - Properties
 
     static let reuseIdentifier: String = "PineappleCell"
+    private static let imagePineappleSize = CGSize(width: 80, height: 80)
 
     // MARK: - UI
 
-    private var labelTitle: UILabel = .init().configure {
+    private let labelTitle: UILabel = .init().configure {
         $0.text = L10n.Settings.needOrganization
         $0.font = PlomeFont.demiBoldM.font
         $0.textAlignment = .left
         $0.textColor = PlomeColor.darkBlue.color
     }
 
-    private var labelCaption: UILabel = .init().configure {
+    private let labelCaption: UILabel = .init().configure {
         $0.text = L10n.Settings.pineappleCaption
         $0.font = PlomeFont.bodyS.font
         $0.textAlignment = .left
@@ -30,11 +31,11 @@ final class PineappleCell: UITableViewCell {
         $0.textColor = PlomeColor.darkGray.color
     }
 
-    private var imagePineapple: UIImageView = .init().configure {
-        $0.image = Asset.pineapple.image.imageResize(sizeChange: .init(width: 80, height: 80))
+    private lazy var imagePineapple: UIImageView = .init().configure {
+        $0.image = Asset.pineapple.image.imageResize(sizeChange: Self.imagePineappleSize)
     }
 
-    private var stackView: UIStackView = .init().configure {
+    private let stackView: UIStackView = .init().configure {
         $0.axis = .horizontal
         $0.alignment = .center
         $0.distribution = .equalSpacing
