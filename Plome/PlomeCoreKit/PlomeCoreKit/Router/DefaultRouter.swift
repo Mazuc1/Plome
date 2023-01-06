@@ -89,4 +89,11 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         alertController.view.tintColor = PlomeColor.lagoon.color
         rootViewController?.present(alertController, animated: true)
     }
+    
+    // MARK: - Activity controller
+    
+    public func openActivityController(with items: [Any]) {
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        rootViewController?.present(activityController, animated: true)
+    }
 }

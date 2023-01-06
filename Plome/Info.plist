@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>UrbaneRounded-Light.ttf</string>

@@ -88,7 +88,7 @@ final class SimulationModelsViewModel: ObservableObject {
             if let simulation = coreDataSimulationModels?[index] {
                 do {
                     let response = try await shareSimulationModelService.upload(simulationModel: simulation.toModelObject())
-                    router.alert(title: response.key, message: L10n.SimulationModels.sharingCodeMessage)
+                    router.openActivityController(with: ["Plome", L10n.SimulationModels.sharingCodeMessage, response.key])
                 } catch {
                     router.alert(title: PlomeCoreKit.L10n.General.oups, message: PlomeCoreKit.L10n.General.commonErrorMessage)
                 }
