@@ -43,6 +43,16 @@ final class SettingsRouter: DefaultRouter {
             }
         }
     }
+
+    func openPineappleURL() {
+        if let url = URL(string: "https://apps.apple.com/fr/app/pineapple/id1468320348"),
+           UIApplication.shared.canOpenURL(url)
+        {
+            UIApplication.shared.open(url)
+        } else {
+            alert(title: PlomeCoreKit.L10n.General.oups, message: L10n.Settings.cantOpenLink)
+        }
+    }
 }
 
 extension SettingsRouter: MFMailComposeViewControllerDelegate {

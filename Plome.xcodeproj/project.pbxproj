@@ -69,6 +69,7 @@
 		CFBFA09F292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */; };
 		CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */; };
 		CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */; };
+		CFC030B7296772A500C7F1B0 /* PineappleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030B6296772A500C7F1B0 /* PineappleCell.swift */; };
 		CFD0BCA02943334A005C898B /* Plome.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFD0BCA22943334A005C898B /* Plome.strings */; };
 		CFD0BCA529433FA7005C898B /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0BCA429433FA7005C898B /* L10n.swift */; };
 		CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD196192931057D00A06FE7 /* ExamInformationsView.swift */; };
@@ -174,6 +175,7 @@
 		CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModelTests.swift; sourceTree = "<group>"; };
 		CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
+		CFC030B6296772A500C7F1B0 /* PineappleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PineappleCell.swift; sourceTree = "<group>"; };
 		CFD067AB292FBBE30034EE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CFD0BC9B294332FE005C898B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CFD0BCA12943334A005C898B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Plome.strings; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				CFA04DAB2934DE9C00DFF2F5 /* SettingsRouter.swift */,
 				CF3B9AA728F32BA600457A44 /* SettingsViewController.swift */,
 				CFA04DAD2934DF7400DFF2F5 /* SettingsViewModel.swift */,
+				CFC030B6296772A500C7F1B0 /* PineappleCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				CF4B5AE729279FAB005F8D18 /* CatchUpView.swift in Sources */,
 				CF4893902915439100B97147 /* ExamCell.swift in Sources */,
 				CF2CCBD029028F2C00FA14C4 /* SimulationModelCell.swift in Sources */,
+				CFC030B7296772A500C7F1B0 /* PineappleCell.swift in Sources */,
 				CF3B9AA428F32AE900457A44 /* SimulationListViewController.swift in Sources */,
 				CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */,
 				CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */,

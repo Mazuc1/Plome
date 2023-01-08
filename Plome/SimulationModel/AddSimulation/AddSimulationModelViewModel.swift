@@ -33,7 +33,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     var simulationName: String = L10n.SimulationModels.newModel
 
-    var cdSimulation: CDSimulation?
+    private var cdSimulation: CDSimulation?
 
     // MARK: - Init
 
@@ -57,12 +57,15 @@ final class AddSimulationModelViewModel: ObservableObject {
         if let exams = cdSimulation.exams {
             trials = Array(exams.filter { $0.type == .trial })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
+                .sorted { $0.name < $1.name }
 
             continousControls = Array(exams.filter { $0.type == .continuousControl })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
+                .sorted { $0.name < $1.name }
 
             options = Array(exams.filter { $0.type == .option })
                 .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
+                .sorted { $0.name < $1.name }
         }
     }
 

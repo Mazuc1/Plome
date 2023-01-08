@@ -35,6 +35,7 @@ final class SettingsViewController: AppViewController {
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.register(PineappleCell.self, forCellReuseIdentifier: PineappleCell.reuseIdentifier)
     }
 
     // MARK: - Init
@@ -114,6 +115,14 @@ final class SettingsViewController: AppViewController {
             }),
         ])
 
+        let pineappleSection = SettingsSection(title: L10n.Settings.pineapple, cells: [
+            SettingsItem(createdCell: {
+                PineappleCell(style: .default, reuseIdentifier: PineappleCell.reuseIdentifier)
+            }, action: { [viewModel] in
+                viewModel.userDidTapPineapple()
+            }),
+        ])
+
         let reinitializeSection = SettingsSection(title: "", footer: viewModel.getVersion(), cells: [
             SettingsItem(createdCell: {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.reuseIdentifier)
@@ -127,7 +136,7 @@ final class SettingsViewController: AppViewController {
             }),
         ])
 
-        tableViewSections = [generalSection, otherSection, reinitializeSection]
+        tableViewSections = [generalSection, otherSection, pineappleSection, reinitializeSection]
         tableView.reloadData()
     }
 }

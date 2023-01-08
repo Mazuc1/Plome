@@ -27,6 +27,7 @@ internal enum Asset {
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let calcul = ImageAsset(name: "calcul")
     internal static let model = ImageAsset(name: "model")
+    internal static let pineapple = ImageAsset(name: "pineapple")
     internal static let student = ImageAsset(name: "student")
     internal static let target = ImageAsset(name: "target")
 }

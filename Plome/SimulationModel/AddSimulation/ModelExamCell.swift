@@ -20,10 +20,9 @@ final class ModelExamCell: UITableViewCell {
     // MARK: - UI
 
     private var labelExamName: UILabel = .init().configure {
-        $0.font = PlomeFont.bodyL.font
+        $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
-        $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 

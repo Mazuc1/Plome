@@ -71,6 +71,11 @@
 "settings.errorAppVersion" = "9.99";
 "settings.version" = "Version %@";
 
+"settings.cant_open_link" = "Impossible d'ouvrir le lien.";
+"settings.pineapple" = "Pineapple";
+"settings.need_organization" = "Besoin d'organisation ?";
+"settings.pineapple_caption" = "Télécharger Pineapple pour noter vos notes, devoirs, contrôles et emploi du temps !";
+
 // MARK: - Simulation models
 
 "simulationModels.new_model" = "Nouveau modèle";

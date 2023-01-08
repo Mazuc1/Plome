@@ -18,7 +18,7 @@ final class SimulationViewModel: ObservableObject {
 
     private let router: SimulationsRouter
 
-    var simulation: Simulation
+    let simulation: Simulation
     @Published var canCalculate: Bool = false
 
     weak var viewControllerDelegate: SimulationViewControllerOutput?
