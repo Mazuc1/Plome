@@ -14,3 +14,10 @@ public extension String {
         return regex.firstMatch(in: lhs, options: [], range: range) != nil
     }
 }
+
+public extension String {
+    static func random(length: Int = 7) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0 ..< length).map { _ in letters.randomElement()! })
+    }
+}

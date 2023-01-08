@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PlomeCoreKit
 
 enum HttpError: Swift.Error {
     case cantBuildURL
@@ -95,20 +96,5 @@ public struct MultipartFormDataRequest {
 
     private func fileName() -> String {
         return String.random()
-    }
-}
-
-extension NSMutableData {
-    func appendString(_ string: String) {
-        if let data = string.data(using: .utf8) {
-            append(data)
-        }
-    }
-}
-
-extension String {
-    static func random(length: Int = 7) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0 ..< length).map { _ in letters.randomElement()! })
     }
 }

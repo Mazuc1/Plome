@@ -13,6 +13,8 @@
 		CF02ABC5295D02E000B5FCC9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */; };
 		CF02ABC8295D03DA00B5FCC9 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */; };
 		CF02ABEB295F169B00B5FCC9 /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */; };
+		CF77E102296B35D30028E4C9 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF77E101296B35D30028E4C9 /* PlomeCoreKit.framework */; };
+		CF77E103296B35D30028E4C9 /* PlomeCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF77E101296B35D30028E4C9 /* PlomeCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFD7EF68296375960039E3A8 /* TestEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF67296375960039E3A8 /* TestEndPoint.swift */; };
 		CFD7EF6A2963766D0039E3A8 /* MultipartFormDataRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF692963766D0039E3A8 /* MultipartFormDataRequestTests.swift */; };
 		CFD7EF7829663AB20039E3A8 /* EndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF7729663AB20039E3A8 /* EndPointTests.swift */; };
@@ -29,6 +31,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CF77E104296B35D30028E4C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF77E103296B35D30028E4C9 /* PlomeCoreKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CF02ABAC295BBD8100B5FCC9 /* Gateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF02ABAF295BBD8100B5FCC9 /* Gateway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gateway.h; sourceTree = "<group>"; };
@@ -37,6 +53,7 @@
 		CF02ABC4295D02E000B5FCC9 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
 		CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		CF77E101296B35D30028E4C9 /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD7EF67296375960039E3A8 /* TestEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEndPoint.swift; sourceTree = "<group>"; };
 		CFD7EF692963766D0039E3A8 /* MultipartFormDataRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequestTests.swift; sourceTree = "<group>"; };
 		CFD7EF7729663AB20039E3A8 /* EndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTests.swift; sourceTree = "<group>"; };
@@ -48,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF77E102296B35D30028E4C9 /* PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +86,7 @@
 				CF02ABAE295BBD8100B5FCC9 /* Gateway */,
 				CF02ABB8295BBD8100B5FCC9 /* GatewayTests */,
 				CF02ABAD295BBD8100B5FCC9 /* Products */,
+				CF77E100296B35D30028E4C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +130,14 @@
 			path = EndPoints;
 			sourceTree = "<group>";
 		};
+		CF77E100296B35D30028E4C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF77E101296B35D30028E4C9 /* PlomeCoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CFD7EF66296375840039E3A8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +168,7 @@
 				CF02ABA8295BBD8100B5FCC9 /* Sources */,
 				CF02ABA9295BBD8100B5FCC9 /* Frameworks */,
 				CF02ABAA295BBD8100B5FCC9 /* Resources */,
+				CF77E104296B35D30028E4C9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
