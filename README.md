@@ -19,6 +19,10 @@ Librairies utilisées:
 - IQKeyboardManager (https://github.com/hackiftekhar/IQKeyboardManager)
 - Material Component (https://github.com/material-components/material-components-ios)
 
+Service utilisé:
+
+- FileIO pour l'hébergement des modèles de simulation partager (https://www.file.io/developers/)
+
 ## Dev
 
 Pour générer les strings de PlomeCoreKit
