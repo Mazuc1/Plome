@@ -90,7 +90,7 @@ public class Exam: NSObject, NSCopying, Codable {
         return (grade, ratio, coefficient ?? 1)
     }
 
-    func isGradeLowerThanItsOutOf() -> Bool {
+    func isGradeLowerThanAverageRatio() -> Bool {
         guard let grade, let ratio else { return false }
         return grade < (ratio / 2)
     }
@@ -100,14 +100,6 @@ public class Exam: NSObject, NSCopying, Codable {
         if grade + 1 > ratio { return }
 
         self.grade = grade + 1
-    }
-
-    func checkRatioFor(_ text: String) -> Bool {
-        let values = text.split(separator: "/")
-        guard let lhsFloat = Float(values[0]),
-              let rhsFloat = Float(values[1]) else { return false }
-
-        return lhsFloat <= rhsFloat
     }
 
     public func truncatedGrade() -> String? {
