@@ -6,6 +6,7 @@
 //
 
 @testable import PlomeCoreKit
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class ExamTests: XCTestCase {
@@ -136,5 +137,25 @@ final class ExamTests: XCTestCase {
 
         // Assert
         XCTAssertNotNil(result)
+    }
+
+    func testWhenEncodingExamThenEncodeSucceed() {
+        // Arrange
+        let exam = Exam(name: "Test", coefficient: 1, grade: 4, ratio: 6, type: .trial)
+
+        // Assert
+        XCTAssertNoThrow(try JSONEncoder().encode(exam))
+    }
+
+    func testThatExamCreateFromJSON() {
+        // Act
+        let exam = Exam.createFromJson(sender: self)
+
+        // Assert
+        XCTAssertEqual(exam.name, "Test")
+        XCTAssertEqual(exam.coefficient, 1)
+        XCTAssertEqual(exam.type, .trial)
+        XCTAssertEqual(exam.grade, 12)
+        XCTAssertEqual(exam.ratio, 20)
     }
 }

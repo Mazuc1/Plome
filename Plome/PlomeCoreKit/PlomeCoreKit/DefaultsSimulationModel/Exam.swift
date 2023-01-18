@@ -15,14 +15,6 @@ public class Exam: NSObject, NSCopying, Codable {
         case grade
         case ratio
         case coeff
-
-        public var regex: String {
-            switch self {
-            case .grade: return "^[0-9]+(?:\\.[0-9]{1,2})?[/][0-9]+(?:\\.[0-9]{1,2})?$"
-            case .coeff: return "^[0-9]+(?:\\.[0-9]{1,2})?$"
-            case .ratio: return ""
-            }
-        }
     }
 
     private enum CodingKeys: String, CodingKey {
