@@ -54,6 +54,7 @@
 		CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5B5F322921BD8C002EF9BD /* confetti.png */; };
 		CF744C122978912500275447 /* ExamTests_testThatExamCreateFromJSON().json in Resources */ = {isa = PBXBuildFile; fileRef = CF744C112978912400275447 /* ExamTests_testThatExamCreateFromJSON().json */; };
 		CF744C152978936700275447 /* Decodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF744C0F2978910D00275447 /* Decodable+extension.swift */; };
+		CF744C192978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json in Resources */ = {isa = PBXBuildFile; fileRef = CF744C182978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json */; };
 		CF77E106296B36090028E4C9 /* NSMutableData+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77E105296B36090028E4C9 /* NSMutableData+extensions.swift */; };
 		CF7DED0329420CA7009DC817 /* ExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFD29420CA7009DC817 /* ExamTests.swift */; };
 		CF7DED0429420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFE29420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift */; };
@@ -154,6 +155,7 @@
 		CF744C0D29787C0600275447 /* Plome_ 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Plome_ 3.xcdatamodel"; sourceTree = "<group>"; };
 		CF744C0F2978910D00275447 /* Decodable+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decodable+extension.swift"; sourceTree = "<group>"; };
 		CF744C112978912400275447 /* ExamTests_testThatExamCreateFromJSON().json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ExamTests_testThatExamCreateFromJSON().json"; sourceTree = "<group>"; };
+		CF744C182978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "SimulationTests_testThatSimulationCreateFromJSON().json"; sourceTree = "<group>"; };
 		CF77E105296B36090028E4C9 /* NSMutableData+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableData+extensions.swift"; sourceTree = "<group>"; };
 		CF7DECFC29420CA6009DC817 /* PlomeCoreKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlomeCoreKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF7DECFD29420CA7009DC817 /* ExamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamTests.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				CF744C112978912400275447 /* ExamTests_testThatExamCreateFromJSON().json */,
+				CF744C182978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json */,
 			);
 			path = JSONModel;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF744C122978912500275447 /* ExamTests_testThatExamCreateFromJSON().json in Resources */,
+				CF744C192978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

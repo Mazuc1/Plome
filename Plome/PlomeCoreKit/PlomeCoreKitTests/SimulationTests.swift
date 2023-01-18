@@ -6,6 +6,7 @@
 //
 
 @testable import PlomeCoreKit
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class SimulationTests: XCTestCase {
@@ -323,5 +324,24 @@ final class SimulationTests: XCTestCase {
 
         // Assert
         XCTAssertNil(result)
+    }
+
+    func testWhenEncodingSimulationThenEncodeSucceed() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: Date(), exams: .init(), type: .brevet)
+
+        // Assert
+        XCTAssertNoThrow(try JSONEncoder().encode(simulation))
+    }
+
+    func testThatSimulationCreateFromJSON() {
+        // Act
+        let simulation = Simulation.createFromJson(sender: self)
+
+        // Assert
+        XCTAssertEqual(simulation.name, "Test")
+        XCTAssertEqual(simulation.date, nil)
+        XCTAssertEqual(simulation.exams, [])
+        XCTAssertEqual(simulation.type, .brevet)
     }
 }
