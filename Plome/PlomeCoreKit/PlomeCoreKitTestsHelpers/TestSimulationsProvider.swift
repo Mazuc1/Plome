@@ -36,6 +36,7 @@ public enum TestSimulations {
         _ = GeneralBACExamsProvider.allExams()
             .map {
                 $0.grade = setRandomGrade(targetedMention: targetedMention)
+                $0.ratio = 20
                 simulation.add(exam: $0)
             }
 
