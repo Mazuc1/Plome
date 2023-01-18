@@ -11,33 +11,37 @@ import Foundation
 public class Exam: NSObject, NSCopying, Codable {
     // MARK: - Properties
 
-    public enum Rule {
+    public enum Field {
         case grade
+        case ratio
         case coeff
 
         public var regex: String {
             switch self {
             case .grade: return "^[0-9]+(?:\\.[0-9]{1,2})?[/][0-9]+(?:\\.[0-9]{1,2})?$"
             case .coeff: return "^[0-9]+(?:\\.[0-9]{1,2})?$"
+            case .ratio: return ""
             }
         }
     }
 
     private enum CodingKeys: String, CodingKey {
-        case name, coefficient, grade, type
+        case name, coefficient, grade, ratio, type
     }
 
     public var name: String
     public var coefficient: Float?
-    public var grade: String?
     public var type: ExamType
+    public var grade: Float?
+    public var ratio: Float?
 
     // MARK: - Init
 
-    public init(name: String, coefficient: Float?, grade: String?, type: ExamType) {
+    public init(name: String, coefficient: Float?, grade: Float?, ratio: Float?, type: ExamType) {
         self.name = name
         self.coefficient = coefficient
         self.grade = grade
+        self.ratio = ratio
         self.type = type
     }
 
@@ -45,7 +49,8 @@ public class Exam: NSObject, NSCopying, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
         coefficient = try? container.decode(Float.self, forKey: .coefficient)
-        grade = try? container.decode(String.self, forKey: .grade)
+        grade = try? container.decode(Float.self, forKey: .grade)
+        ratio = try? container.decode(Float.self, forKey: .ratio)
         type = try container.decode(ExamType.self, forKey: .type)
     }
 
@@ -56,6 +61,7 @@ public class Exam: NSObject, NSCopying, Codable {
         try container.encode(name, forKey: .name)
         try container.encode(coefficient, forKey: .coefficient)
         try container.encode(grade, forKey: .grade)
+        try container.encode(ratio, forKey: .ratio)
         try container.encode(type, forKey: .type)
     }
 
@@ -63,48 +69,37 @@ public class Exam: NSObject, NSCopying, Codable {
         let cdExam = CDExam(context: context)
         cdExam.name = name
         cdExam.coefficient = coefficient ?? 0
-        cdExam.grade = grade ?? ""
+        cdExam.grade = grade ?? 0.0
+        cdExam.ratio = ratio ?? 0.0
         cdExam.type = type
         cdExam.simulation = simulation
 
         return cdExam
     }
 
-    public func save(_ text: String, ifIsConformTo rule: Rule) -> Bool {
-        switch rule {
-        case .grade:
-            let isConform = text ~= rule.regex && checkRatioFor(text)
-            if isConform { grade = text } else { grade = nil }
-            return isConform
-        case .coeff:
-            let isConform = text ~= rule.regex
-            if isConform { coefficient = Float(text) } else { coefficient = nil }
-            return isConform
+    public func save(_ value: Float, in field: Field) {
+        switch field {
+        case .grade: grade = value
+        case .coeff: coefficient = value
+        case .ratio: ratio = value
         }
     }
 
-    func splittedGrade() -> (lhs: Float, rhs: Float)? {
-        guard let grade = grade?.split(separator: "/"),
-              let lhsFloat = Float(grade[0]),
-              let rhsFloat = Float(grade[1]) else { return nil }
-        return (lhsFloat, rhsFloat)
-    }
-
     public func getGradeInformation() -> (lhs: Float, rhs: Float, coeff: Float) {
-        guard let splittedGrade = splittedGrade() else { return (-1, -1, -1) }
-        return (splittedGrade.lhs, splittedGrade.rhs, coefficient ?? 1)
+        guard let grade, let ratio else { return (-1, -1, -1) }
+        return (grade, ratio, coefficient ?? 1)
     }
 
     func isGradeLowerThanItsOutOf() -> Bool {
-        guard let splittedGrade = splittedGrade() else { return false }
-        return splittedGrade.lhs < (splittedGrade.rhs / 2)
+        guard let grade, let ratio else { return false }
+        return grade < (ratio / 2)
     }
 
     func addOnePoint() {
-        guard let splittedGrade = splittedGrade() else { return }
-        if splittedGrade.lhs + 1 > splittedGrade.rhs { return }
+        guard let grade, let ratio else { return }
+        if grade + 1 > ratio { return }
 
-        grade = "\(splittedGrade.lhs + 1)/\(splittedGrade.rhs)"
+        self.grade = grade + 1
     }
 
     func checkRatioFor(_ text: String) -> Bool {
@@ -116,13 +111,13 @@ public class Exam: NSObject, NSCopying, Codable {
     }
 
     public func truncatedGrade() -> String? {
-        guard let splittedGrade = splittedGrade() else { return nil }
+        guard let grade, let ratio else { return nil }
 
-        let gradeOutOfTwenty = (splittedGrade.lhs / splittedGrade.rhs) * 20
+        let gradeOutOfTwenty = (grade / ratio) * 20
         return "\(gradeOutOfTwenty.truncate(places: 2))/20"
     }
 
     public func copy(with _: NSZone? = nil) -> Any {
-        Exam(name: name, coefficient: coefficient, grade: grade, type: type)
+        Exam(name: name, coefficient: coefficient, grade: grade, ratio: ratio, type: type)
     }
 }

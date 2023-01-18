@@ -149,6 +149,7 @@
 		CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKit.h; sourceTree = "<group>"; };
 		CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = PlomeCoreKit.docc; sourceTree = "<group>"; };
 		CF5B5F322921BD8C002EF9BD /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
+		CF744C0D29787C0600275447 /* Plome_ 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Plome_ 3.xcdatamodel"; sourceTree = "<group>"; };
 		CF77E105296B36090028E4C9 /* NSMutableData+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableData+extensions.swift"; sourceTree = "<group>"; };
 		CF7DECFC29420CA6009DC817 /* PlomeCoreKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlomeCoreKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF7DECFD29420CA7009DC817 /* ExamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamTests.swift; sourceTree = "<group>"; };
@@ -1298,10 +1299,11 @@
 		CFF846F8290AE25800D31F5F /* Plome.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CF744C0D29787C0600275447 /* Plome_ 3.xcdatamodel */,
 				CF4893912915548500B97147 /* Plome_2.xcdatamodel */,
 				CFF846F9290AE25800D31F5F /* Plome.xcdatamodel */,
 			);
-			currentVersion = CF4893912915548500B97147 /* Plome_2.xcdatamodel */;
+			currentVersion = CF744C0D29787C0600275447 /* Plome_ 3.xcdatamodel */;
 			path = Plome.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

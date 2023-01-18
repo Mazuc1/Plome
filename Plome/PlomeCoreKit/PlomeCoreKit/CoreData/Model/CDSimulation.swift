@@ -32,7 +32,7 @@ public extension CDSimulation {
     func toModelObject() -> Simulation {
         let simulation = Simulation(name: name, date: date, exams: .init(), type: type)
         let exams = exams?.map {
-            Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type)
+            Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, ratio: $0.ratio, type: $0.type)
         }
         simulation.exams = Set(exams ?? [])
 

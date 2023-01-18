@@ -63,10 +63,7 @@ public class Simulation: NSObject, NSCopying, Codable {
 
     public func gradeIsSetForAllExams() -> Bool {
         guard let exams else { return false }
-        return exams.allSatisfy {
-            guard let grade = $0.grade else { return false }
-            return !grade.isEmpty
-        }
+        return exams.allSatisfy { $0.grade != nil }
     }
 
     public func examsContainTrials() -> Bool {

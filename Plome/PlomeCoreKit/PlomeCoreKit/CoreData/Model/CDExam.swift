@@ -24,7 +24,8 @@ public extension CDExam {
     }
 
     @NSManaged var coefficient: Float
-    @NSManaged var grade: String
+    @NSManaged var grade: Float
+    @NSManaged var ratio: Float
     @NSManaged var name: String
     @NSManaged var type: ExamType
     @NSManaged var simulation: CDSimulation?
