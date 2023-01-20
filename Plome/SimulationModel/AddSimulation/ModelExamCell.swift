@@ -23,6 +23,7 @@ final class ModelExamCell: UITableViewCell {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
+        $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -37,7 +38,21 @@ final class ModelExamCell: UITableViewCell {
         $0.keyboardType = .numbersAndPunctuation
         $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
+    }
+
+    private let textFieldDenominator: MDCOutlinedTextField = .init().configure {
+        $0.label.text = "Dénominateur"
+        $0.placeholder = "/20"
+        $0.font = PlomeFont.bodyM.font
+        $0.verticalDensity = 30
+        $0.setOutlineColor(.lightGray, for: .normal)
+        $0.setNormalLabelColor(.lightGray, for: .normal)
+        $0.sizeToFit()
+        $0.keyboardType = .numbersAndPunctuation
+        $0.returnKeyType = .done
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
     private var stackView: UIStackView = .init().configure {
@@ -56,6 +71,7 @@ final class ModelExamCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldCoeff.delegate = self
+        textFieldDenominator.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,9 +81,13 @@ final class ModelExamCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         textFieldCoeff.text = nil
+        textFieldDenominator.text = nil
 
         textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
         textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+
+        textFieldDenominator.setOutlineColor(.lightGray, for: .normal)
+        textFieldDenominator.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
 
     // MARK: - Methods
@@ -81,13 +101,17 @@ final class ModelExamCell: UITableViewCell {
             textFieldCoeff.text = "\(coeff)"
         }
 
+        if let ratio = exam.ratio {
+            textFieldDenominator.text = "\(ratio)"
+        }
+
         backgroundColor = .clear
         selectionStyle = .none
     }
 
     private func setupLayout() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubviews([labelExamName, textFieldCoeff])
+        stackView.addArrangedSubviews([labelExamName, textFieldCoeff, textFieldDenominator])
 
         NSLayoutConstraint.activate([
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -114,12 +138,18 @@ extension ModelExamCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text,
            !text.isEmpty,
-           let coeff = Float(text)
+           let value = Float(text)
         {
-            exam?.save(coeff, in: .coeff)
+            if let placeholder = textField.placeholder,
+               placeholder == "/20"
+            {
+                exam?.save(value, in: .ratio)
+            } else {
+                exam?.save(value, in: .coeff)
+            }
+
             setNormalStyle(for: textField)
         } else {
-            exam?.coefficient = nil
             setErrorStyle(for: textField)
         }
 
