@@ -27,6 +27,7 @@ final class SimulationViewController: AppViewController {
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
+        $0.estimatedRowHeight = 50
         $0.register(ExamTypeHeaderView.self, forHeaderFooterViewReuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
         $0.register(ExamCell.self, forCellReuseIdentifier: ExamCell.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
