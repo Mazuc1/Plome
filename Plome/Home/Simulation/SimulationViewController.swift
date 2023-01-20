@@ -22,6 +22,7 @@ final class SimulationViewController: AppViewController {
     // MARK: - UI
 
     private lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
+        $0.delegate = self
         $0.dataSource = self
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
@@ -117,13 +118,6 @@ extension SimulationViewController: UITableViewDataSource {
         ExamTypeSection.allCases.count
     }
 
-    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let section = ExamTypeSection(rawValue: section) else { return nil }
-        let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
-        simulationHeaderView.setup()
-        return simulationHeaderView
-    }
-
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return viewModel.simulation.number(of: .trial)
@@ -145,6 +139,17 @@ extension SimulationViewController: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+// MARK: -  UITableViewDelegate
+
+extension SimulationViewController: UITableViewDelegate {
+    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let section = ExamTypeSection(rawValue: section) else { return nil }
+        let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
+        simulationHeaderView.setup()
+        return simulationHeaderView
     }
 }
 
