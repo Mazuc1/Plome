@@ -112,28 +112,31 @@ extension ModelExamCell: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text, !text.isEmpty {
-            var checkResult: Bool?
-
-            checkResult = exam?.save(text, ifIsConformTo: .coeff)
-
-            setStyle(for: textField, dependOf: checkResult ?? false)
+        if let text = textField.text,
+           !text.isEmpty,
+           let coeff = Float(text)
+        {
+            exam?.save(coeff, in: .coeff)
+            setNormalStyle(for: textField)
         } else {
             exam?.coefficient = nil
+            setErrorStyle(for: textField)
         }
 
         addSimulationModelViewModelInput?.userDidChangeValue()
     }
 
-    private func setStyle(for textField: UITextField, dependOf result: Bool) {
+    private func setNormalStyle(for textField: UITextField) {
         guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
 
-        if !result {
-            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
-            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
-        } else {
-            mdcTextField.setOutlineColor(.lightGray, for: .normal)
-            mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
-        }
+        mdcTextField.setOutlineColor(.lightGray, for: .normal)
+        mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+    }
+
+    private func setErrorStyle(for textField: UITextField) {
+        guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
+
+        mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+        mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
     }
 }

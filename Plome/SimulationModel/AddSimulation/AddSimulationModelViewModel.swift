@@ -56,15 +56,15 @@ final class AddSimulationModelViewModel: ObservableObject {
 
         if let exams = cdSimulation.exams {
             trials = Array(exams.filter { $0.type == .trial })
-                .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
+                .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, ratio: 20, type: $0.type) }
                 .sorted { $0.name < $1.name }
 
             continousControls = Array(exams.filter { $0.type == .continuousControl })
-                .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
+                .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, ratio: 20, type: $0.type) }
                 .sorted { $0.name < $1.name }
 
             options = Array(exams.filter { $0.type == .option })
-                .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }
+                .map { Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, ratio: 20, type: $0.type) }
                 .sorted { $0.name < $1.name }
         }
     }
@@ -89,9 +89,9 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     func addExam(name: String, in section: ExamTypeSection) {
         switch section {
-        case .trial: trials.append(.init(name: name, coefficient: 1, grade: nil, type: .trial))
-        case .continuousControl: continousControls.append(.init(name: name, coefficient: 1, grade: nil, type: .continuousControl))
-        case .option: options.append(.init(name: name, coefficient: 1, grade: nil, type: .option))
+        case .trial: trials.append(.init(name: name, coefficient: 1, grade: nil, ratio: 20, type: .trial))
+        case .continuousControl: continousControls.append(.init(name: name, coefficient: 1, grade: nil, ratio: 20, type: .continuousControl))
+        case .option: options.append(.init(name: name, coefficient: 1, grade: nil, ratio: 20, type: .option))
         }
     }
 

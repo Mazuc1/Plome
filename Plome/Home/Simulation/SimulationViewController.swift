@@ -22,7 +22,6 @@ final class SimulationViewController: AppViewController {
     // MARK: - UI
 
     private lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
-        $0.delegate = self
         $0.dataSource = self
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
@@ -122,7 +121,6 @@ extension SimulationViewController: UITableViewDataSource {
         guard let section = ExamTypeSection(rawValue: section) else { return nil }
         let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
         simulationHeaderView.setup()
-        simulationHeaderView.examTypeHeaderViewOutput = viewModel
         return simulationHeaderView
     }
 
@@ -147,21 +145,6 @@ extension SimulationViewController: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
-    }
-}
-
-// MARK: -  Table view delegate
-
-extension SimulationViewController: UITableViewDelegate {
-    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
-        true
-    }
-
-    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = AppContextualAction.deleteAction { [weak self] in
-            self?.viewModel.userDidTapDeleteExam(at: indexPath)
-        }
-        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 

@@ -38,50 +38,8 @@ final class SimulationViewModel: ObservableObject {
 
     // MARK: - Methods
 
-    func userDidTapDeleteExam(at indexPath: IndexPath) {
-        var exam: Exam?
-
-        switch indexPath.section {
-        case 0: exam = simulation.exams(of: .trial)[indexPath.row]
-        case 1: exam = simulation.exams(of: .continuousControl)[indexPath.row]
-        case 2: exam = simulation.exams(of: .option)[indexPath.row]
-        default: break
-        }
-
-        guard let exam else {
-            router.errorAlert()
-            return
-        }
-
-        simulation.remove(exam: exam)
-
-        viewControllerDelegate?.reloadTableView()
-    }
-
-    func addExam(name: String, in section: ExamTypeSection) {
-        switch section {
-        case .trial: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .trial))
-        case .continuousControl: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .continuousControl))
-        case .option: simulation.add(exam: .init(name: name, coefficient: 1, grade: nil, type: .option))
-        }
-
-        viewControllerDelegate?.reloadTableView()
-    }
-
     func userDidTapCalculate() {
         router.openSimulationResult(with: simulation)
-    }
-}
-
-// MARK: - ExamTypeHeaderViewOutput
-
-extension SimulationViewModel: ExamTypeHeaderViewOutput {
-    func userDidTapAddExam(for section: ExamTypeSection) {
-        router.alertWithTextField(title: PlomeCoreKit.L10n.General.new,
-                                  message: L10n.howNamedYour(section.title),
-                                  buttonActionName: PlomeCoreKit.L10n.General.add) { [weak self] in
-            self?.addExam(name: $0, in: section)
-        }
     }
 }
 
