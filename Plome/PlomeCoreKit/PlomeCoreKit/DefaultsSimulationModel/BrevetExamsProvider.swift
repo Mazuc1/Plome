@@ -13,21 +13,21 @@ struct BrevetExamsProvider {
     }
 
     private static var continuousControls: [Exam] = [
-        .init(name: L10n.frenchLanguage, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.foreignLanguage, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.scientistLanguage, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.artLanguage, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.learningTools, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.citizenFormation, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.natualTechnologicSystem, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
-        .init(name: L10n.worldRepresentation, coefficient: 1, grade: nil, ratio: nil, type: .continuousControl),
+        .init(name: L10n.frenchLanguage, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.foreignLanguage, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.scientistLanguage, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.artLanguage, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.learningTools, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.citizenFormation, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.natualTechnologicSystem, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
+        .init(name: L10n.worldRepresentation, coefficient: 1, grade: nil, ratio: 50, type: .continuousControl),
     ]
 
     private static var trials: [Exam] = [
-        .init(name: L10n.french, coefficient: 1, grade: nil, ratio: nil, type: .trial),
-        .init(name: L10n.math, coefficient: 1, grade: nil, ratio: nil, type: .trial),
-        .init(name: L10n.oral, coefficient: 1, grade: nil, ratio: nil, type: .trial),
-        .init(name: L10n.sciences, coefficient: 1, grade: nil, ratio: nil, type: .trial),
-        .init(name: L10n.historyGeographyEMC, coefficient: 1, grade: nil, ratio: nil, type: .trial),
+        .init(name: L10n.french, coefficient: 1, grade: nil, ratio: 100, type: .trial),
+        .init(name: L10n.math, coefficient: 1, grade: nil, ratio: 100, type: .trial),
+        .init(name: L10n.oral, coefficient: 1, grade: nil, ratio: 100, type: .trial),
+        .init(name: L10n.sciences, coefficient: 1, grade: nil, ratio: 50, type: .trial),
+        .init(name: L10n.historyGeographyEMC, coefficient: 1, grade: nil, ratio: 50, type: .trial),
     ]
 }
