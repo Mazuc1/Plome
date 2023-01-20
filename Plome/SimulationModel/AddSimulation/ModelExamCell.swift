@@ -41,9 +41,9 @@ final class ModelExamCell: UITableViewCell {
         $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
-    private let textFieldDenominator: MDCOutlinedTextField = .init().configure {
-        $0.label.text = "Dénominateur"
-        $0.placeholder = "/20"
+    private let textFieldRatio: MDCOutlinedTextField = .init().configure {
+        $0.label.text = L10n.SimulationModels.ratio
+        $0.placeholder = L10n.SimulationModels.ratioPlaceholer
         $0.font = PlomeFont.bodyM.font
         $0.verticalDensity = 30
         $0.setOutlineColor(.lightGray, for: .normal)
@@ -71,7 +71,7 @@ final class ModelExamCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldCoeff.delegate = self
-        textFieldDenominator.delegate = self
+        textFieldRatio.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -81,13 +81,13 @@ final class ModelExamCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         textFieldCoeff.text = nil
-        textFieldDenominator.text = nil
+        textFieldRatio.text = nil
 
         textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
         textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
 
-        textFieldDenominator.setOutlineColor(.lightGray, for: .normal)
-        textFieldDenominator.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+        textFieldRatio.setOutlineColor(.lightGray, for: .normal)
+        textFieldRatio.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
 
     // MARK: - Methods
@@ -102,7 +102,7 @@ final class ModelExamCell: UITableViewCell {
         }
 
         if let ratio = exam.ratio {
-            textFieldDenominator.text = "\(ratio)"
+            textFieldRatio.text = "\(ratio)"
         }
 
         backgroundColor = .clear
@@ -111,7 +111,7 @@ final class ModelExamCell: UITableViewCell {
 
     private func setupLayout() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubviews([labelExamName, textFieldCoeff, textFieldDenominator])
+        stackView.addArrangedSubviews([labelExamName, textFieldCoeff, textFieldRatio])
 
         NSLayoutConstraint.activate([
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -141,7 +141,7 @@ extension ModelExamCell: UITextFieldDelegate {
            let value = Float(text)
         {
             if let placeholder = textField.placeholder,
-               placeholder == "/20"
+               placeholder == L10n.SimulationModels.ratioPlaceholer
             {
                 exam?.save(value, in: .ratio)
             } else {

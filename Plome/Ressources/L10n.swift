@@ -191,6 +191,10 @@ public enum L10n {
             return L10n.tr("Plome", "simulationModels.number_of_trials", p1, fallback: "%d Trials")
         }
 
+        /// Denominator
+        public static let ratio = L10n.tr("Plome", "simulationModels.ratio", fallback: "Denominator")
+        /// 20
+        public static let ratioPlaceholer = L10n.tr("Plome", "simulationModels.ratio_placeholer", fallback: "20")
         /// Enter this code in the application settings to download the shared template. Warning, this code is only valid for 2 hours.
         public static let sharingCodeMessage = L10n.tr("Plome", "simulationModels.sharing_code_message", fallback: "Enter this code in the application settings to download the shared template. Warning, this code is only valid for 2 hours.")
         /// Bac Pro...
