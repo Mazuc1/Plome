@@ -136,37 +136,30 @@ extension ModelExamCell: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text,
-           !text.isEmpty,
-           let value = Float(text)
+        var saveResult: Bool?
+        
+        if let placeholder = textField.placeholder,
+           placeholder == L10n.SimulationModels.ratioPlaceholer
         {
-            if let placeholder = textField.placeholder,
-               placeholder == L10n.SimulationModels.ratioPlaceholer
-            {
-                exam?.save(value, in: .ratio)
-            } else {
-                exam?.save(value, in: .coeff)
-            }
-
-            setNormalStyle(for: textField)
+            saveResult = exam?.save(textField.text, in: .ratio)
         } else {
-            setErrorStyle(for: textField)
+            saveResult = exam?.save(textField.text, in: .coeff)
         }
+
+        setStyle(for: textField, saveSucceed: saveResult ?? false)
 
         addSimulationModelViewModelInput?.userDidChangeValue()
     }
 
-    private func setNormalStyle(for textField: UITextField) {
+    private func setStyle(for textField: UITextField, saveSucceed: Bool) {
         guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
 
-        mdcTextField.setOutlineColor(.lightGray, for: .normal)
-        mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
-    }
-
-    private func setErrorStyle(for textField: UITextField) {
-        guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
-
-        mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
-        mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
+        if saveSucceed {
+            mdcTextField.setOutlineColor(.lightGray, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+        } else {
+            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
+        }
     }
 }
