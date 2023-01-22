@@ -80,7 +80,10 @@ public final class ExamTypeHeaderView: UITableViewHeaderFooterView {
     }
 
     private func setupLayout() {
-        stackView.addArrangedSubviews([titleLabel, UIView(), addButton])
+        stackView.addArrangedSubview(titleLabel)
+        if examTypeHeaderViewOutput != nil {
+            stackView.addArrangedSubviews([UIView(), addButton])
+        }
         stackView.stretchInView(parentView: contentView)
 
         stackView.addSeparator(at: .bottom, color: UIColor.lightGray, weight: 0.5)

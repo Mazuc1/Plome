@@ -171,8 +171,8 @@ extension AddSimulationModelViewController: UITableViewDataSource {
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let section = ExamTypeSection(rawValue: section) else { return nil }
         let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
-        simulationHeaderView.setup()
         simulationHeaderView.examTypeHeaderViewOutput = viewModel
+        simulationHeaderView.setup()
         return simulationHeaderView
     }
 
