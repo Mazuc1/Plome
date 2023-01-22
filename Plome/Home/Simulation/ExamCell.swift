@@ -161,7 +161,7 @@ extension ExamCell: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        var saveResult = exam?.save(textField.text, in: .grade)
+        let saveResult = exam?.save(textField.text, in: .grade)
         
         setStyle(for: textField, saveSucceed: saveResult ?? false)
 
