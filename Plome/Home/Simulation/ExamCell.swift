@@ -162,12 +162,12 @@ extension ExamCell: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         let saveResult = exam?.save(textField.text, in: .grade)
-        
+
         setStyle(for: textField, saveSucceed: saveResult ?? false)
 
         simulationViewModelInput?.userDidChangeValue()
     }
-    
+
     private func setStyle(for textField: UITextField, saveSucceed: Bool) {
         guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
 

@@ -24,7 +24,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertEqual(exam.grade, 1)
     }
-    
+
     func testThatGradeIsNotSavedWhenTheSaveValueIsNotConform() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
@@ -46,7 +46,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertEqual(exam.ratio, 1)
     }
-    
+
     func testThatRatioIsNotSavedWhenTheSaveValueIsNotConform() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
@@ -68,7 +68,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertEqual(exam.coefficient, 1)
     }
-    
+
     func testThatCoefficientIsNotSavedWhenTheSaveValueIsNotConform() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)

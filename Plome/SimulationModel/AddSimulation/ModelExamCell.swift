@@ -137,7 +137,7 @@ extension ModelExamCell: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         var saveResult: Bool?
-        
+
         if let placeholder = textField.placeholder,
            placeholder == L10n.SimulationModels.ratioPlaceholer
         {

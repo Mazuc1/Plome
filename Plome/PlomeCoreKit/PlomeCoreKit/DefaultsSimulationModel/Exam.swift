@@ -68,18 +68,18 @@ public class Exam: NSObject, NSCopying, Codable {
 
         return cdExam
     }
-    
+
     public func save(_ text: String?, in field: Field) -> Bool {
         guard let text = text,
               !text.isEmpty,
               let value = Float(text) else { return false }
-        
+
         switch field {
         case .grade: grade = value
         case .coeff: coefficient = value
         case .ratio: ratio = value
         }
-        
+
         return true
     }
 
