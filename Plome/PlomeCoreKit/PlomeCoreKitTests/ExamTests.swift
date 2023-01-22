@@ -19,7 +19,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        exam.save(1, in: .grade)
+        _ = exam.save("1", in: .grade)
 
         // Assert
         XCTAssertEqual(exam.grade, 1)
@@ -30,7 +30,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        exam.save(1, in: .ratio)
+        _ = exam.save("1", in: .ratio)
 
         // Assert
         XCTAssertEqual(exam.ratio, 1)
@@ -41,7 +41,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        exam.save(1, in: .coeff)
+        _ = exam.save("1", in: .coeff)
 
         // Assert
         XCTAssertEqual(exam.coefficient, 1)
