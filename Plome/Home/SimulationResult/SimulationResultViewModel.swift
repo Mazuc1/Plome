@@ -20,11 +20,6 @@ final class SimulationResultViewModel {
     let simulation: Simulation
     let shaper: CalculatorShaper
 
-    enum Save {
-        case simulation
-        case simulationModel
-    }
-
     // MARK: - Init
 
     init(router: SimulationsRouter, simulation: Simulation, simulationRepository: CoreDataRepository<CDSimulation>) {
@@ -48,7 +43,7 @@ final class SimulationResultViewModel {
         router.popToRootViewController()
     }
 
-    func save(_ type: Save) {
+    func save() {
         let _mergeAndConvertExams = mergeAndConvertExams
         do {
             try simulationRepository.add { [simulation] cdSimulation, context in
@@ -56,14 +51,7 @@ final class SimulationResultViewModel {
                 cdSimulation.exams = _mergeAndConvertExams(context, cdSimulation)
                 cdSimulation.type = simulation.type
 
-                switch type {
-                case .simulation: cdSimulation.date = Date()
-                case .simulationModel: cdSimulation.date = nil
-                }
-            }
-
-            if type == .simulationModel {
-                router.alert(title: L10n.Home.itsDone, message: L10n.Home.modelHasBeenSave)
+                cdSimulation.date = Date()
             }
         } catch {
             router.errorAlert()

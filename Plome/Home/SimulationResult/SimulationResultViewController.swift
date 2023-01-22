@@ -94,19 +94,6 @@ final class SimulationResultViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let saveModelLabel: UILabel = .init().configure {
-        $0.text = L10n.Home.editModelThinkToSave
-        $0.font = PlomeFont.bodyS.font
-        $0.numberOfLines = 0
-        $0.textAlignment = .center
-        $0.textColor = PlomeColor.darkGray.color
-    }
-
-    private lazy var tertiaryCTASaveModel: TertiaryCTA = .init(title: L10n.Home.saveModel).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapSaveModel), for: .touchUpInside)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
     private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: L10n.Home.returnToHome).configure { [weak self] in
         $0.addTarget(self, action: #selector(userDidTapBackToHome), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -174,7 +161,7 @@ final class SimulationResultViewController: AppViewController {
         navigationItem.title = L10n.Home.result
         navigationItem.rightBarButtonItem = createShareResultBarButton()
 
-        viewModel.save(.simulation)
+        viewModel.save()
 
         setCalculatorInformation()
         setupLayout()
@@ -201,7 +188,7 @@ final class SimulationResultViewController: AppViewController {
     private func setupLayout() {
         createSomeNumbersView()
 
-        ctaStackView.addArrangedSubviews([primaryCTARemakeSimulation, saveModelLabel, tertiaryCTASaveModel])
+        ctaStackView.addArrangedSubview(primaryCTARemakeSimulation)
         if !isModal { ctaStackView.addArrangedSubview(tertiaryCTABackToHome) }
         ctaStackView.setWidthConstraint(constant: scrollViewWidth)
 
@@ -231,7 +218,6 @@ final class SimulationResultViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             resultStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             primaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
-            tertiaryCTASaveModel.heightAnchor.constraint(equalToConstant: AppStyles.tertiaryCTAHeight),
         ])
 
         resultStackView.addSubview(confettiView)
@@ -268,10 +254,6 @@ final class SimulationResultViewController: AppViewController {
 
     @objc private func userDidTapRemakeSimulation() {
         viewModel.userDidTapRemakeSimulate()
-    }
-
-    @objc private func userDidTapSaveModel() {
-        viewModel.save(.simulationModel)
     }
 
     @objc private func userDidTapShareResult() {
