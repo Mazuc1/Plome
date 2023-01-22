@@ -36,22 +36,7 @@ final class SimulationResultViewModelTests: XCTestCase {
         let cdSimulationsBeforeAddingNewSimulation = try! simulationRepository.list()
 
         // Act
-        simulationResultViewModel.save(.simulation)
-
-        // Assert
-        let cdSimulationsAfterAddingNewSimulation = try! simulationRepository.list()
-        XCTAssertTrue((cdSimulationsBeforeAddingNewSimulation.count + 1) == cdSimulationsAfterAddingNewSimulation.count)
-    }
-
-    func testWhenAddingSimulationModelToCoreDataThenSimulationModelIsAdded() {
-        // Arrange
-        let simulation = TestSimulations.generalBACSimulation(targetedMention: .mediumFailure)
-        let simulationResultViewModel = SimulationResultViewModel(router: simulationsRouter, simulation: simulation, simulationRepository: simulationRepository)
-
-        let cdSimulationsBeforeAddingNewSimulation = try! simulationRepository.list()
-
-        // Act
-        simulationResultViewModel.save(.simulationModel)
+        simulationResultViewModel.save()
 
         // Assert
         let cdSimulationsAfterAddingNewSimulation = try! simulationRepository.list()
