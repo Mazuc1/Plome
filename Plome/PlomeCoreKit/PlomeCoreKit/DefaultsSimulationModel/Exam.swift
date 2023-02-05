@@ -10,6 +10,8 @@ import Foundation
 
 public class Exam: NSObject, NSCopying, Codable {
     // MARK: - Properties
+    
+    public static let defaultGradeValue: Float = -1.0
 
     public enum Field {
         case grade
@@ -61,7 +63,7 @@ public class Exam: NSObject, NSCopying, Codable {
         let cdExam = CDExam(context: context)
         cdExam.name = name
         cdExam.coefficient = coefficient ?? 0
-        cdExam.grade = grade ?? 0.0
+        cdExam.grade = grade ?? Self.defaultGradeValue
         cdExam.ratio = ratio ?? 0.0
         cdExam.type = type
         cdExam.simulation = simulation
