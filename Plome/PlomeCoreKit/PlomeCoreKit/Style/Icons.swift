@@ -37,6 +37,9 @@ public enum Icons {
     case download
     case upload
 
+    // Debug
+    case hare
+    
     public var uiImage: UIImage {
         UIImage(systemName: name)!
     }
@@ -66,6 +69,8 @@ public enum Icons {
         case .addRectangleStack: return "rectangle.stack.badge.plus"
         case .download: return "square.and.arrow.down"
         case .upload: return "square.and.arrow.up"
+            
+        case .hare: return "hare"
         }
     }
 

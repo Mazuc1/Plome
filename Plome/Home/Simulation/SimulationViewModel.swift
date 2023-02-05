@@ -32,14 +32,17 @@ final class SimulationViewModel: ObservableObject {
         // Needed when user remake a simulation from details to allow calculation.
         // Without this, the user need to edit one field to enable button
         userDidChangeValue()
-
-//         simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
     }
 
     // MARK: - Methods
 
     func userDidTapCalculate() {
         router.openSimulationResult(with: simulation)
+    }
+    
+    func autoFillExams() {
+        _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
+        userDidChangeValue()
     }
 }
 
