@@ -9,6 +9,7 @@ import Combine
 import CoreData
 import Foundation
 import PlomeCoreKit
+import Dependencies
 
 enum AddSimulationModelOpeningMode {
     case add
@@ -23,7 +24,7 @@ final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
 
     private let router: SimulationModelsRouter
-    private let simulationRepository: CoreDataRepository<CDSimulation>
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
     private let openAs: AddSimulationModelOpeningMode
 
     @Published var trials: [Exam] = []
@@ -37,9 +38,8 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: SimulationModelsRouter, simulationRepository: CoreDataRepository<CDSimulation>, openAs: AddSimulationModelOpeningMode) {
+    init(router: SimulationModelsRouter, openAs: AddSimulationModelOpeningMode) {
         self.router = router
-        self.simulationRepository = simulationRepository
         self.openAs = openAs
 
         switch openAs {

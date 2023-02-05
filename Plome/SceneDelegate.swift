@@ -10,7 +10,6 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    private var context: ContextProtocol!
     private var appRouter: AppRouter!
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
@@ -22,9 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         AppAppearance.setAppearance()
 
         /// Creation of Context, Screens and AppRouter
-        context = Context()
-        let screens = Screens(context: context)
-        appRouter = AppRouter(window: window!, context: context, screens: screens)
+        let screens = Screens()
+        appRouter = AppRouter(window: window!, screens: screens)
 
         /// Starts app flow
         appRouter.start()

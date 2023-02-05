@@ -8,6 +8,7 @@
 import Foundation
 import Gateway
 import PlomeCoreKit
+import Dependencies
 
 protocol ShareSimulationModelServiceProtocol {
     func upload(simulationModel: Simulation) async throws -> SimulationModelUploadResponse
@@ -66,5 +67,16 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
 
         let jsonData = try JSONEncoder().encode(simulation)
         return FileIOEndPoint.upload(file: jsonData, expireAt: Date.ISOStringFromDate(date: expirationDate))
+    }
+}
+
+private enum ShareSimulationModelServiceKey: DependencyKey {
+    static var liveValue: ShareSimulationModelServiceProtocol = ShareSimulationModelService()
+}
+
+extension DependencyValues {
+    var shareSimulationModelService: ShareSimulationModelServiceProtocol {
+        get { self[ShareSimulationModelServiceKey.self] }
+        set { self[ShareSimulationModelServiceKey.self] = newValue }
     }
 }

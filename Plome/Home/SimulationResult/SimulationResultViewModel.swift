@@ -9,12 +9,13 @@ import CoreData
 import Foundation
 import PlomeCoreKit
 import UIKit
+import Dependencies
 
 final class SimulationResultViewModel {
     // MARK: - Properties
 
     private let router: SimulationsRouter
-    private let simulationRepository: CoreDataRepository<CDSimulation>
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
 
     private let calculator: Calculator
     let simulation: Simulation
@@ -22,10 +23,9 @@ final class SimulationResultViewModel {
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulation: Simulation, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationsRouter, simulation: Simulation) {
         self.router = router
         self.simulation = simulation
-        self.simulationRepository = simulationRepository
 
         calculator = .init(simulation: simulation)
         calculator.calculate()

@@ -8,6 +8,7 @@
 import Foundation
 import PlomeCoreKit
 import UIKit
+import Dependencies
 
 final class SelectSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
@@ -15,15 +16,14 @@ final class SelectSimulationModelViewModel: ObservableObject {
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
 
     private let router: SimulationsRouter
-    private let simulationRepository: CoreDataRepository<CDSimulation>
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
 
     @Published var snapshot: TableViewSnapshot = .init()
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationsRouter) {
         self.router = router
-        self.simulationRepository = simulationRepository
     }
 
     // MARK: - Methods

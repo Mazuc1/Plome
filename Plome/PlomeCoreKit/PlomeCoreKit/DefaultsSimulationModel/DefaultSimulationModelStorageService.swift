@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Dependencies
 
 public protocol DefaultSimulationModelStorageServiceProtocol {
     func addDefaultSimulationModelIfNeeded()
@@ -22,17 +23,13 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
         }
     }
 
-    private let userDefault: DefaultsProtocol
-    private let simulationRepository: CoreDataRepository<CDSimulation>
-    private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
+    @Dependency(\.userDefault) var userDefault
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
+    @Dependency(\.defaultSimulationModelsProvider) private var defaultSimulationModelsProvider
 
     // MARK: - Init
 
-    public init(userDefault: DefaultsProtocol, simulationRepository: CoreDataRepository<CDSimulation>) {
-        self.userDefault = userDefault
-        self.simulationRepository = simulationRepository
-        defaultSimulationModelsProvider = DefaultSimulationModelsProvider()
-    }
+    public init() {}
 
     // MARK: - Methods
 
@@ -57,5 +54,16 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
                     PlomeCoreKitModule.log(error: Error.failedToAddDefaultSimulationModels)
                 }
             }
+    }
+}
+
+private enum DefaultSimulationModelStorageServiceKey: DependencyKey {
+    static var liveValue: DefaultSimulationModelStorageServiceProtocol = DefaultSimulationModelStorageService()
+}
+
+public extension DependencyValues {
+    var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol {
+        get { self[DefaultSimulationModelStorageServiceKey.self] }
+        set { self[DefaultSimulationModelStorageServiceKey.self] = newValue }
     }
 }

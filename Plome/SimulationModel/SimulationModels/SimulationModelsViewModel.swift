@@ -8,6 +8,7 @@
 import Foundation
 import PlomeCoreKit
 import UIKit
+import Dependencies
 
 final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Properties
@@ -15,8 +16,8 @@ final class SimulationModelsViewModel: ObservableObject {
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
 
     private let router: SimulationModelsRouter
-    private let simulationRepository: CoreDataRepository<CDSimulation>
-    private let shareSimulationModelService: ShareSimulationModelServiceProtocol
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
+    @Dependency(\.shareSimulationModelService) private var shareSimulationModelService
 
     var coreDataSimulationModels: [CDSimulation]?
 
@@ -24,10 +25,8 @@ final class SimulationModelsViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: SimulationModelsRouter, simulationRepository: CoreDataRepository<CDSimulation>, shareSimulationModelService: ShareSimulationModelServiceProtocol) {
+    init(router: SimulationModelsRouter) {
         self.router = router
-        self.simulationRepository = simulationRepository
-        self.shareSimulationModelService = shareSimulationModelService
     }
 
     // MARK: - Methods

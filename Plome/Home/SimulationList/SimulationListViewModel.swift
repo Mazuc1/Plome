@@ -8,6 +8,7 @@
 import Foundation
 import PlomeCoreKit
 import UIKit
+import Dependencies
 
 final class SimulationListViewModel {
     // MARK: - Properties
@@ -16,7 +17,7 @@ final class SimulationListViewModel {
 
     let router: SimulationsRouter
 
-    private let simulationRepository: CoreDataRepository<CDSimulation>
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
 
     var coreDataSimulationModels: [CDSimulation]?
 
@@ -24,9 +25,8 @@ final class SimulationListViewModel {
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationsRouter) {
         self.router = router
-        self.simulationRepository = simulationRepository
     }
 
     // MARK: - Methods

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Dependencies
 
 public class PersistentContainer: NSPersistentContainer {}
 
@@ -38,4 +39,17 @@ public class StorageProvider {
     // MARK: - Init
 
     public init() {}
+}
+
+private enum StorageProviderKey: DependencyKey {
+    static var liveValue: StorageProvider {
+        StorageProvider()
+    }
+}
+
+public extension DependencyValues {
+    var storageProvider: StorageProvider {
+        get { self[StorageProviderKey.self] }
+        set { self[StorageProviderKey.self] = newValue }
+    }
 }
