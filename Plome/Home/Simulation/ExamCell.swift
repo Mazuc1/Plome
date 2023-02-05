@@ -43,7 +43,6 @@ final class ExamCell: UITableViewCell {
         $0.layer.cornerRadius = AppStyles.defaultRadius
         $0.clipsToBounds = true
         $0.backgroundColor = PlomeColor.darkGray.color.withAlphaComponent(0.2)
-        $0.numberOfLines = 2
     }
 
     private let textFieldGrade: MDCOutlinedTextField = .init().configure {
@@ -120,8 +119,6 @@ final class ExamCell: UITableViewCell {
     }
 
     private func setupLayout() {
-        contentView.addSubview(stackView)
-
         let leftStackView = UIStackView().configure {
             $0.axis = .vertical
             $0.alignment = .leading
@@ -140,6 +137,7 @@ final class ExamCell: UITableViewCell {
         }
 
         stackView.addArrangedSubviews([leftStackView, rightStackView])
+        contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
