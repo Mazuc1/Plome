@@ -9,19 +9,20 @@
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
+import Dependencies
 
 final class SimulationDetailsViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
-    private var mockCoreData: MockCoreData!
+    private var mockCoreData: MockStorageProvider!
 
     override func setUp() {
         super.setUp()
 
-        mockCoreData = MockCoreData()
+        mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
+        simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
     }
 
     func testWhenDeleteSimulationThenSimulationIsDeleted() {
@@ -35,7 +36,12 @@ final class SimulationDetailsViewModelTests: XCTestCase {
             cdSimulationTest = cdSimulation
         }
 
-        let viewModel = SimulationDetailsViewModel(router: simulationsRouter, simulation: simulation, cdSimulation: cdSimulationTest!, simulationRepository: simulationRepository)
+        let viewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            SimulationDetailsViewModel(router: simulationsRouter, simulation: simulation, cdSimulation: cdSimulationTest!)
+        }
+
 
         // Act
         viewModel.userDidTapDeleteSimulation()

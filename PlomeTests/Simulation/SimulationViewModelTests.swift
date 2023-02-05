@@ -9,13 +9,14 @@
 @testable import PlomeCoreKit
 import PlomeCoreKitTestsHelpers
 import XCTest
+import Dependencies
 
 final class SimulationViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
 
     override func setUp() {
         super.setUp()
-        simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
+        simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
     }
 
     // MARK: - userDidChangeValue

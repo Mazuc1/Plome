@@ -7,7 +7,6 @@
 
 import Combine
 import CoreData
-import Dependencies
 
 public final class CoreDataRepository<CoreDataEntity: NSManagedObject> {
     // MARK: - Properties
@@ -128,20 +127,5 @@ public extension CoreDataRepository {
             try mainContext.deleteAndMergeChanges(using: deleteRequest)
             try mainContext.saveIfNeeded()
         }
-    }
-}
-
-private enum CoreDataSimulationRepositoryKey: DependencyKey {
-    static var liveValue: CoreDataRepository<CDSimulation> {
-        @Dependency(\.storageProvider) var storageProvider
-        
-        return .init(storageProvider: storageProvider)
-    }
-}
-
-public extension DependencyValues {
-    var coreDataSimulationRepository: CoreDataRepository<CDSimulation> {
-        get { self[CoreDataSimulationRepositoryKey.self] }
-        set { self[CoreDataSimulationRepositoryKey.self] = newValue }
     }
 }

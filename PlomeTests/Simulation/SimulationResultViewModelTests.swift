@@ -9,21 +9,20 @@
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
-
-let testContext = Context()
+import Dependencies
 
 final class SimulationResultViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
-    private var mockCoreData: MockCoreData!
+    private var mockCoreData: MockStorageProvider!
 
     override func setUp() {
         super.setUp()
 
-        mockCoreData = MockCoreData()
+        mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationsRouter = SimulationsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
+        simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
     }
 
     // MARK: - Save
@@ -31,7 +30,12 @@ final class SimulationResultViewModelTests: XCTestCase {
     func testWhenAddingSimulationToCoreDataThenSimulationIsAdded() {
         // Arrange
         let simulation = TestSimulations.generalBACSimulation(targetedMention: .mediumFailure)
-        let simulationResultViewModel = SimulationResultViewModel(router: simulationsRouter, simulation: simulation, simulationRepository: simulationRepository)
+        let simulationResultViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            SimulationResultViewModel(router: simulationsRouter, simulation: simulation)
+        }
+
 
         let cdSimulationsBeforeAddingNewSimulation = try! simulationRepository.list()
 

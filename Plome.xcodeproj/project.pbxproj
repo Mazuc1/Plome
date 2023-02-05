@@ -76,6 +76,7 @@
 		CFD7EF70296625A60039E3A8 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF6F296625A60039E3A8 /* MockURLProtocol.swift */; };
 		CFD7EF76296637310039E3A8 /* XCTest+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EF75296637310039E3A8 /* XCTest+extension.swift */; };
 		CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */; };
+		CFE77011299062EC0079ABC2 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77010299062EC0079ABC2 /* Dependencies.swift */; };
 		CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
 /* End PBXBuildFile section */
@@ -184,6 +185,7 @@
 		CFD7EF6F296625A60039E3A8 /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		CFD7EF75296637310039E3A8 /* XCTest+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+extension.swift"; sourceTree = "<group>"; };
 		CFE4E9FE2962267E00BC6DB2 /* SimulationModelUploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModelUploadResponse.swift; sourceTree = "<group>"; };
+		CFE77010299062EC0079ABC2 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
 		FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.debug.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		CFBF56AC28ECC5F000E4EC7D /* Plome */ = {
 			isa = PBXGroup;
 			children = (
+				CFE77010299062EC0079ABC2 /* Dependencies.swift */,
 				CF3B9A8A28F1DD1400457A44 /* Screens.swift */,
 				CF3B9A9D28F3287B00457A44 /* AppRouter.swift */,
 				CF3B9A9C28F3287B00457A44 /* MainTabBarController.swift */,
@@ -703,6 +706,7 @@
 				CFA04DAE2934DF7400DFF2F5 /* SettingsViewModel.swift in Sources */,
 				CF3B9A9F28F3287B00457A44 /* AppRouter.swift in Sources */,
 				CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */,
+				CFE77011299062EC0079ABC2 /* Dependencies.swift in Sources */,
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
 				CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */,
 				CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */,

@@ -1,15 +1,14 @@
 //
-//  MockCoreData.swift
-//  RecipleaseTests
+//  MockStorageProvider.swift
+//  PlomeCoreKit
 //
-//  Created by Loic Mazuc on 25/09/2022.
+//  Created by Loic Mazuc on 06/02/2023.
 //
 
 import CoreData
 import Foundation
-@testable import PlomeCoreKit
 
-final class MockCoreData: StorageProvider {
+final class MockStorageProvider: StorageProvider {
     override init() {
         super.init()
 
@@ -28,3 +27,4 @@ final class MockCoreData: StorageProvider {
         persistentContainer = container
     }
 }
+

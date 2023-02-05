@@ -7,7 +7,6 @@
 
 import CoreData
 import Foundation
-import Dependencies
 
 public final class DefaultSimulationModelsProvider {
     // MARK: - Properties
@@ -39,16 +38,5 @@ public final class DefaultSimulationModelsProvider {
     private func buildTechnologicalBACSimluationModel() -> Simulation {
         let examsSet = Set(TechnologicalBACExamsProvider.allExams().map { $0 })
         return Simulation(name: L10n.technologicalBAC, date: nil, exams: examsSet, type: .technologicalBAC)
-    }
-}
-
-private enum DefaultSimulationModelsProviderKey: DependencyKey {
-    static var liveValue: DefaultSimulationModelsProvider = DefaultSimulationModelsProvider()
-}
-
-public extension DependencyValues {
-    var defaultSimulationModelsProvider: DefaultSimulationModelsProvider {
-        get { self[DefaultSimulationModelsProviderKey.self] }
-        set { self[DefaultSimulationModelsProviderKey.self] = newValue }
     }
 }

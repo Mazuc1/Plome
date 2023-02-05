@@ -11,29 +11,39 @@ import CoreData
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
+import Dependencies
 
 final class AddSimulationModelViewModelTests: XCTestCase {
     private var simulationModelsRouter: SimulationModelsRouter!
     private var addSimulationModelViewModel: AddSimulationModelViewModel!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
-    private var mockCoreData: MockCoreData!
+    private var mockCoreData: MockStorageProvider!
     private var cancellables: Set<AnyCancellable> = []
 
     override func setUp() {
         super.setUp()
 
-        mockCoreData = MockCoreData()
+        mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        simulationModelsRouter = SimulationModelsRouter(screens: .init(), rootTransition: EmptyTransition())
+        
+        addSimulationModelViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .add)
+        }
     }
 
     // MARK: - Init default value
 
     func testWhenOpeningAddSimulationModelVCAsAddOpeningModeThenExamsAreEmpty() {
         // Act
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        let addSimulationModelViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .add)
+        }
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.trials.count, 0)
@@ -53,7 +63,11 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         cdSimulation.exams?.insert(cdExam)
 
         // Act
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .edit(cdSimulation))
+        let addSimulationModelViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .edit(cdSimulation))
+        }
 
         // Assert
         let allExams = addSimulationModelViewModel.trials + addSimulationModelViewModel.continousControls + addSimulationModelViewModel.options
@@ -64,7 +78,11 @@ final class AddSimulationModelViewModelTests: XCTestCase {
 
     func testWhenOpeningAddSimulationModelVCAsAddOpeningModeThenTitleIsDefaultTitle() {
         // Act
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        let addSimulationModelViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .add)
+        }
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.simulationName, "New model")
@@ -76,7 +94,11 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         cdSimulation.name = "Test"
 
         // Act
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .edit(cdSimulation))
+        let addSimulationModelViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .edit(cdSimulation))
+        }
 
         // Assert
         XCTAssertEqual(addSimulationModelViewModel.simulationName, "Test")
@@ -220,7 +242,11 @@ final class AddSimulationModelViewModelTests: XCTestCase {
         cdSimulation.exams = .init()
         cdSimulation.exams?.insert(cdExam)
 
-        let addSimulationModelViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .edit(cdSimulation))
+        let addSimulationModelViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .edit(cdSimulation))
+        }
 
         addSimulationModelViewModel.simulationName = "New test"
         addSimulationModelViewModel.trials.removeAll()
@@ -239,7 +265,12 @@ final class AddSimulationModelViewModelTests: XCTestCase {
     
     func testWhenMissingOneOrMoreExamCoefficientThenRegistrationIsDisabled() {
         // Arrange
-        let simulationViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        let simulationViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .add)
+        }
+        
         simulationViewModel.trials.append(.init(name: "", coefficient: nil, grade: 13, ratio: 20, type: .trial))
         simulationViewModel.options.append(.init(name: "", coefficient: 1, grade: 13, ratio: 20, type: .option))
         simulationViewModel.continousControls.append(.init(name: "", coefficient: 1, grade: 13, ratio: 20, type: .continuousControl))
@@ -253,7 +284,12 @@ final class AddSimulationModelViewModelTests: XCTestCase {
     
     func testWhenAllExamCoefficientAreFillsThenRegistrationIsEnabled() {
         // Arrange
-        let simulationViewModel = AddSimulationModelViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, openAs: .add)
+        let simulationViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            AddSimulationModelViewModel(router: simulationModelsRouter, openAs: .add)
+        }
+        
         simulationViewModel.trials.append(.init(name: "", coefficient: 1, grade: 13, ratio: 20, type: .trial))
         simulationViewModel.options.append(.init(name: "", coefficient: 1, grade: 13, ratio: 20, type: .option))
         simulationViewModel.continousControls.append(.init(name: "", coefficient: 1, grade: 13, ratio: 20, type: .continuousControl))

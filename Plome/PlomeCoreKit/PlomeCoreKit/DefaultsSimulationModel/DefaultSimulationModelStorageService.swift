@@ -24,8 +24,8 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
     }
 
     @Dependency(\.userDefault) var userDefault
-    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
-    @Dependency(\.defaultSimulationModelsProvider) private var defaultSimulationModelsProvider
+    @Dependency(\.coreDataSimulationRepository) var simulationRepository
+    @Dependency(\.defaultSimulationModelsProvider) var defaultSimulationModelsProvider
 
     // MARK: - Init
 
@@ -54,16 +54,5 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
                     PlomeCoreKitModule.log(error: Error.failedToAddDefaultSimulationModels)
                 }
             }
-    }
-}
-
-private enum DefaultSimulationModelStorageServiceKey: DependencyKey {
-    static var liveValue: DefaultSimulationModelStorageServiceProtocol = DefaultSimulationModelStorageService()
-}
-
-public extension DependencyValues {
-    var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol {
-        get { self[DefaultSimulationModelStorageServiceKey.self] }
-        set { self[DefaultSimulationModelStorageServiceKey.self] = newValue }
     }
 }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Dependencies
 
 public enum UserDefaultKeys: String, CaseIterable {
     case isSimulationModelRegister
@@ -47,16 +46,5 @@ public class Defaults: DefaultsProtocol {
 
     public func removeData(key: UserDefaultKeys) {
         userDefaults.removeObject(forKey: key.rawValue)
-    }
-}
-
-private enum DefaultKey: DependencyKey {
-    static var liveValue: DefaultsProtocol = Defaults()
-}
-
-public extension DependencyValues {
-    var userDefault: DefaultsProtocol {
-        get { self[DefaultKey.self] }
-        set { self[DefaultKey.self] = newValue }
     }
 }

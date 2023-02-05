@@ -8,6 +8,7 @@
 @testable import Plome
 @testable import PlomeCoreKit
 import XCTest
+import Dependencies
 
 final class OnboardingFlowControllerTests: XCTestCase {
     override func setUp() {
@@ -18,7 +19,12 @@ final class OnboardingFlowControllerTests: XCTestCase {
         // Arrange
         let userDefault = Defaults(userDefaults: .init())
         userDefault.setData(value: false, key: .hasOnboardingBeenSeen)
-        let onboardingFlowController = OnboardingFlowController(screens: .init(context: testContext), userDefaults: userDefault)
+        let onboardingFlowController = withDependencies {
+            $0.userDefault = userDefault
+        } operation: {
+            OnboardingFlowController(screens: .init())
+        }
+
         
         // Act
         let result = onboardingFlowController.shouldPresentOnboarding()
@@ -31,7 +37,11 @@ final class OnboardingFlowControllerTests: XCTestCase {
         // Arrange
         let userDefault = Defaults(userDefaults: .init())
         userDefault.setData(value: true, key: .hasOnboardingBeenSeen)
-        let onboardingFlowController = OnboardingFlowController(screens: .init(context: testContext), userDefaults: userDefault)
+        let onboardingFlowController = withDependencies {
+            $0.userDefault = userDefault
+        } operation: {
+            OnboardingFlowController(screens: .init())
+        }
         
         // Act
         let result = onboardingFlowController.shouldPresentOnboarding()
@@ -44,7 +54,12 @@ final class OnboardingFlowControllerTests: XCTestCase {
         // Arrange
         let expectation = expectation(description: #function)
         
-        let onboardingFlowController = OnboardingFlowController(screens: .init(context: testContext), userDefaults: testContext.userDefaults)
+        let onboardingFlowController = withDependencies {
+            $0.userDefault = Defaults()
+        } operation: {
+            OnboardingFlowController(screens: .init())
+        }
+        
         onboardingFlowController.onFinished = {
             expectation.fulfill()
         }
