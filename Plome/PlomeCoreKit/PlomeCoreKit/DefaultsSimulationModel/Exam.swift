@@ -77,7 +77,9 @@ public class Exam: NSObject, NSCopying, Codable {
               let value = Float(text) else { return false }
 
         switch field {
-        case .grade: grade = value
+        case .grade:
+            guard let ratio, value <= ratio else { return false }
+            grade = value
         case .coeff: coefficient = value
         case .ratio: ratio = value
         }
