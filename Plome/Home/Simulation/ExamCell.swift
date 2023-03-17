@@ -61,10 +61,15 @@ final class ExamCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
-
-    private let containerView: UIView = .init().configure {
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = AppStyles.defaultRadius
+    
+    private let separator: UIView = .init().configure {
+        $0.backgroundColor = .black
+        $0.layer.cornerRadius = 1.5
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            $0.heightAnchor.constraint(equalToConstant: 3),
+            $0.widthAnchor.constraint(equalToConstant: 70),
+        ])
     }
     
     private lazy var leftStackView = UIStackView().configure {
@@ -80,9 +85,14 @@ final class ExamCell: UITableViewCell {
         $0.axis = .vertical
         $0.alignment = .center
         $0.distribution = .equalSpacing
-        $0.spacing = AppStyles.defaultSpacing
-        $0.addArrangedSubviews([textFieldGrade, labelRatio])
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.addArrangedSubviews([textFieldGrade, separator, labelRatio])
         $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private let containerView: UIView = .init().configure {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = AppStyles.defaultRadius
     }
 
     // MARK: - Init
