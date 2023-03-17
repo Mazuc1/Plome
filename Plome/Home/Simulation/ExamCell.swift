@@ -17,6 +17,9 @@ final class ExamCell: UITableViewCell {
     private var exam: Exam?
 
     weak var simulationViewModelInput: SimulationViewModelInput?
+    
+    private static let cellHeight: CGFloat = 70
+    private static let textFieldGradeWidth: CGFloat = 80
 
     // MARK: - UI
 
@@ -24,7 +27,7 @@ final class ExamCell: UITableViewCell {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
-        $0.numberOfLines = 0
+        $0.numberOfLines = 1
     }
 
     private let labelRatio: UILabel = .init().configure {
@@ -59,19 +62,27 @@ final class ExamCell: UITableViewCell {
         $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
-    private let stackView: UIStackView = .init().configure {
-        $0.axis = .horizontal
+    private let containerView: UIView = .init().configure {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
-        $0.alignment = .center
+    }
+    
+    private lazy var leftStackView = UIStackView().configure {
+        $0.axis = .vertical
+        $0.alignment = .leading
         $0.distribution = .fill
-        $0.spacing = AppStyles.defaultSpacing
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.addArrangedSubviews([labelExamName, labelCoefficient])
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isLayoutMarginsRelativeArrangement = true
-        $0.layoutMargins = .init(top: AppStyles.defaultSpacing(factor: 0.5),
-                                 left: AppStyles.defaultSpacing,
-                                 bottom: AppStyles.defaultSpacing(factor: 0.5),
-                                 right: AppStyles.defaultSpacing)
+    }
+    
+    private lazy var rightStackView = UIStackView().configure {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .equalSpacing
+        $0.spacing = AppStyles.defaultSpacing
+        $0.addArrangedSubviews([textFieldGrade, labelRatio])
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     // MARK: - Init
@@ -119,33 +130,24 @@ final class ExamCell: UITableViewCell {
     }
 
     private func setupLayout() {
-        let leftStackView = UIStackView().configure {
-            $0.axis = .vertical
-            $0.alignment = .leading
-            $0.distribution = .fill
-            $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
-            $0.addArrangedSubviews([labelExamName, labelCoefficient])
-        }
-
-        let rightStackView = UIStackView().configure {
-            $0.axis = .vertical
-            $0.alignment = .center
-            $0.distribution = .equalSpacing
-            $0.spacing = AppStyles.defaultSpacing
-            $0.addArrangedSubviews([textFieldGrade, labelRatio])
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-
-        stackView.addArrangedSubviews([leftStackView, rightStackView])
-        contentView.addSubview(stackView)
-
+        containerView.stretchInView(parentView: contentView, edges: .init(top: AppStyles.defaultSpacing(factor: 0.5),
+                                                                          left: AppStyles.defaultSpacing,
+                                                                          bottom: AppStyles.defaultSpacing(factor: 0.5),
+                                                                          right: AppStyles.defaultSpacing))
+        
+        containerView.addSubview(leftStackView)
+        containerView.addSubview(rightStackView)
+        
         NSLayoutConstraint.activate([
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: AppStyles.defaultSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            rightStackView.widthAnchor.constraint(equalToConstant: 80),
+            containerView.heightAnchor.constraint(equalToConstant: Self.cellHeight),
+            leftStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: AppStyles.defaultSpacing),
+            leftStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            
+            containerView.trailingAnchor.constraint(equalTo: rightStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
+            rightStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            rightStackView.widthAnchor.constraint(equalToConstant: Self.textFieldGradeWidth),
+            
+            rightStackView.leadingAnchor.constraint(equalTo: leftStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
         ])
     }
 }
