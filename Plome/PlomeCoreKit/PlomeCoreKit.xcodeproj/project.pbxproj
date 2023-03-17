@@ -86,7 +86,6 @@
 		CFC03102296782E100C7F1B0 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030FD296782E100C7F1B0 /* Icons.swift */; };
 		CFC03103296782E100C7F1B0 /* PlomeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030FE296782E100C7F1B0 /* PlomeColor.swift */; };
 		CFC03104296782E100C7F1B0 /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030FF296782E100C7F1B0 /* AppStyles.swift */; };
-		CFC133B72954FC31001A84B1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CFC133B62954FC31001A84B1 /* Lottie */; };
 		CFD055A62941FC7B000D43BB /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
 		CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
@@ -214,7 +213,6 @@
 				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 				CF578090298FFCF400D3288C /* Dependencies in Frameworks */,
-				CFC133B72954FC31001A84B1 /* Lottie in Frameworks */,
 				8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,7 +581,6 @@
 				CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */,
 				CF135E20293D56E100ACFC6A /* FirebaseAnalytics */,
 				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
-				CFC133B62954FC31001A84B1 /* Lottie */,
 				CF57808F298FFCF400D3288C /* Dependencies */,
 			);
 			productName = PlomeCoreKit;
@@ -667,7 +664,6 @@
 			packageReferences = (
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
@@ -1295,14 +1291,6 @@
 				minimumVersion = 0.1.4;
 			};
 		};
-		CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1330,11 +1318,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */;
 			productName = Dependencies;
-		};
-		CFC133B62954FC31001A84B1 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFC133B52954FC31001A84B1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 
