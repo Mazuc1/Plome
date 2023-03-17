@@ -13,12 +13,12 @@ import Dependencies
 final class DefaultSimulationModelStorageServiceTests: XCTestCase {
     private var userDefauls: DefaultsProtocol!
     private var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol!
-    private var mockCoreData: MockCoreData!
+    private var mockCoreData: MockStorageProvider!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
 
     override func setUp() {
         super.setUp()
-        mockCoreData = MockCoreData()
+        mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         userDefauls = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)

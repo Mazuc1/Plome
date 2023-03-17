@@ -16,13 +16,24 @@ final class ExamTests: XCTestCase {
 
     func testThatGradeIsCorrectlySaved() {
         // Arrange
-        let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
+        let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: 2, type: .trial)
 
         // Act
         _ = exam.save("1", in: .grade)
 
         // Assert
         XCTAssertEqual(exam.grade, 1)
+    }
+    
+    func testThatSavingGradeGeaterThanRatioFailed() {
+        // Arrange
+        let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: 20, type: .trial)
+
+        // Act
+        let result = exam.save("21", in: .grade)
+
+        // Assert
+        XCTAssertFalse(result)
     }
 
     func testThatGradeIsNotSavedWhenTheSaveValueIsNotConform() {
