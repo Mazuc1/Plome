@@ -23,6 +23,7 @@ final class ModelExamCell: UITableViewCell {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
+        $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -37,7 +38,21 @@ final class ModelExamCell: UITableViewCell {
         $0.keyboardType = .numbersAndPunctuation
         $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
+    }
+
+    private let textFieldRatio: MDCOutlinedTextField = .init().configure {
+        $0.label.text = L10n.SimulationModels.ratio
+        $0.placeholder = L10n.SimulationModels.ratioPlaceholer
+        $0.font = PlomeFont.bodyM.font
+        $0.verticalDensity = 30
+        $0.setOutlineColor(.lightGray, for: .normal)
+        $0.setNormalLabelColor(.lightGray, for: .normal)
+        $0.sizeToFit()
+        $0.keyboardType = .numbersAndPunctuation
+        $0.returnKeyType = .done
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
     private var stackView: UIStackView = .init().configure {
@@ -56,6 +71,7 @@ final class ModelExamCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldCoeff.delegate = self
+        textFieldRatio.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,9 +81,13 @@ final class ModelExamCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         textFieldCoeff.text = nil
+        textFieldRatio.text = nil
 
         textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
         textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+
+        textFieldRatio.setOutlineColor(.lightGray, for: .normal)
+        textFieldRatio.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
 
     // MARK: - Methods
@@ -81,13 +101,17 @@ final class ModelExamCell: UITableViewCell {
             textFieldCoeff.text = "\(coeff)"
         }
 
+        if let ratio = exam.ratio {
+            textFieldRatio.text = "\(ratio)"
+        }
+
         backgroundColor = .clear
         selectionStyle = .none
     }
 
     private func setupLayout() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubviews([labelExamName, textFieldCoeff])
+        stackView.addArrangedSubviews([labelExamName, textFieldCoeff, textFieldRatio])
 
         NSLayoutConstraint.activate([
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -112,28 +136,30 @@ extension ModelExamCell: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text, !text.isEmpty {
-            var checkResult: Bool?
+        var saveResult: Bool?
 
-            checkResult = exam?.save(text, ifIsConformTo: .coeff)
-
-            setStyle(for: textField, dependOf: checkResult ?? false)
+        if let placeholder = textField.placeholder,
+           placeholder == L10n.SimulationModels.ratioPlaceholer
+        {
+            saveResult = exam?.save(textField.text, in: .ratio)
         } else {
-            exam?.coefficient = nil
+            saveResult = exam?.save(textField.text, in: .coeff)
         }
+
+        setStyle(for: textField, saveSucceed: saveResult ?? false)
 
         addSimulationModelViewModelInput?.userDidChangeValue()
     }
 
-    private func setStyle(for textField: UITextField, dependOf result: Bool) {
+    private func setStyle(for textField: UITextField, saveSucceed: Bool) {
         guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
 
-        if !result {
-            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
-            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
-        } else {
+        if saveSucceed {
             mdcTextField.setOutlineColor(.lightGray, for: .normal)
             mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+        } else {
+            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
         }
     }
 }

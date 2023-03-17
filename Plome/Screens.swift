@@ -10,22 +10,16 @@ import PlomeCoreKit
 import UIKit
 
 final class Screens {
-    // MARK: - Properties
-
-    public let context: ContextProtocol
-
     // MARK: - Init
 
-    public init(context: ContextProtocol) {
-        self.context = context
-    }
+    public init() {}
 }
 
 // MARK: - Simulations
 
 extension Screens {
     func createSimulationsTab(router: SimulationsRouter) -> UIViewController {
-        let simulationListViewModel = SimulationListViewModel(router: router, simulationRepository: context.simulationRepository)
+        let simulationListViewModel = SimulationListViewModel(router: router)
         let simulationsViewController = SimulationListViewController(viewModel: simulationListViewModel)
         simulationsViewController.tabBarItem = Tabs.home.item
 
@@ -33,7 +27,7 @@ extension Screens {
     }
 
     func createSelectSimulationModel(router: SimulationsRouter) -> UIViewController {
-        let selectSimulationModelViewModel = SelectSimulationModelViewModel(router: router, simulationRepository: context.simulationRepository)
+        let selectSimulationModelViewModel = SelectSimulationModelViewModel(router: router)
         let selectSimulationModelViewController = SelectSimulationModelViewController(viewModel: selectSimulationModelViewModel)
         let navigationController = UINavigationController(rootViewController: selectSimulationModelViewController)
 
@@ -48,13 +42,13 @@ extension Screens {
     }
 
     func createSimulationResult(router: SimulationsRouter, with simulation: Simulation) -> UIViewController {
-        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation, simulationRepository: context.simulationRepository)
+        let simulationResultViewModel = SimulationResultViewModel(router: router, simulation: simulation)
         let simulationResultViewController = SimulationResultViewController(viewModel: simulationResultViewModel)
         return simulationResultViewController
     }
 
     func createSimulationDetails(router: SimulationsRouter, for simulation: Simulation, extract from: CDSimulation) -> UIViewController {
-        let simulationDetailsViewModel = SimulationDetailsViewModel(router: router, simulation: simulation, cdSimulation: from, simulationRepository: context.simulationRepository)
+        let simulationDetailsViewModel = SimulationDetailsViewModel(router: router, simulation: simulation, cdSimulation: from)
         let simulationDetailsViewController = SimulationDetailsViewController(viewModel: simulationDetailsViewModel)
         return simulationDetailsViewController
     }
@@ -64,14 +58,14 @@ extension Screens {
 
 extension Screens {
     func createSimulationModelsTab(router: SimulationModelsRouter) -> UIViewController {
-        let simulationModelsViewModel = SimulationModelsViewModel(router: router, simulationRepository: context.simulationRepository, shareSimulationModelService: context.shareSimulationModelService)
+        let simulationModelsViewModel = SimulationModelsViewModel(router: router)
         let simulationModelsViewController = SimulationModelsViewController(viewModel: simulationModelsViewModel)
         simulationModelsViewController.tabBarItem = Tabs.model.item
         return simulationModelsViewController
     }
 
     func createAddSimulationModel(router: SimulationModelsRouter, openAs: AddSimulationModelOpeningMode) -> UIViewController {
-        let addSimulationViewModel = AddSimulationModelViewModel(router: router, simulationRepository: context.simulationRepository, openAs: openAs)
+        let addSimulationViewModel = AddSimulationModelViewModel(router: router, openAs: openAs)
         let addSimulationViewController = AddSimulationModelViewController(viewModel: addSimulationViewModel)
         let navigationController = UINavigationController(rootViewController: addSimulationViewController)
 
@@ -83,7 +77,7 @@ extension Screens {
 
 extension Screens {
     func createSettingsTab(router: SettingsRouter) -> UIViewController {
-        let settingsViewModel = SettingsViewModel(router: router, simulationRepository: context.simulationRepository, defaultSimulationModelsProvider: context.defaultSimulationModelsProvider, shareSimulationModelService: context.shareSimulationModelService)
+        let settingsViewModel = SettingsViewModel(router: router)
         let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
         settingsViewController.tabBarItem = Tabs.settings.item
 

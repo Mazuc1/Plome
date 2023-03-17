@@ -18,30 +18,34 @@ final class ExamCell: UITableViewCell {
 
     weak var simulationViewModelInput: SimulationViewModelInput?
 
+    private static let cellHeight: CGFloat = 70
+    private static let textFieldGradeWidth: CGFloat = 80
+
     // MARK: - UI
 
-    private var labelExamName: AppLabel = .init(withInsets: AppStyles.defaultSpacing,
-                                                AppStyles.defaultSpacing,
-                                                AppStyles.defaultSpacing,
-                                                AppStyles.defaultSpacing).configure {
+    private let labelExamName: UILabel = .init().configure {
         $0.font = PlomeFont.bodyM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
-        $0.numberOfLines = 0
+        $0.numberOfLines = 1
     }
 
-    private let textFieldCoeff: MDCOutlinedTextField = .init().configure {
-        $0.label.text = L10n.Home.coeff
-        $0.placeholder = L10n.Home.coeffPlaceholder
+    private let labelRatio: UILabel = .init().configure {
         $0.font = PlomeFont.bodyM.font
-        $0.verticalDensity = 30
-        $0.setOutlineColor(.lightGray, for: .normal)
-        $0.setNormalLabelColor(.lightGray, for: .normal)
-        $0.sizeToFit()
-        $0.keyboardType = .numbersAndPunctuation
-        $0.returnKeyType = .done
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        $0.textColor = PlomeColor.darkBlue.color
+        $0.textAlignment = .left
+    }
+
+    private let labelCoefficient: AppLabel = .init(withInsets: AppStyles.defaultSpacing(factor: 0.5),
+                                                   AppStyles.defaultSpacing(factor: 0.5),
+                                                   AppStyles.defaultSpacing(factor: 0.5),
+                                                   AppStyles.defaultSpacing(factor: 0.5)).configure {
+        $0.font = PlomeFont.bodyS.font
+        $0.textColor = PlomeColor.darkBlue.color
+        $0.textAlignment = .center
+        $0.layer.cornerRadius = AppStyles.defaultRadius
+        $0.clipsToBounds = true
+        $0.backgroundColor = PlomeColor.darkGray.color.withAlphaComponent(0.2)
     }
 
     private let textFieldGrade: MDCOutlinedTextField = .init().configure {
@@ -55,29 +59,46 @@ final class ExamCell: UITableViewCell {
         $0.keyboardType = .numbersAndPunctuation
         $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
-    private var stackView: UIStackView = .init().configure {
-        $0.axis = .horizontal
+    private let separator: UIView = .init().configure {
+        $0.backgroundColor = .black
+        $0.layer.cornerRadius = 1.5
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            $0.heightAnchor.constraint(equalToConstant: 3),
+            $0.widthAnchor.constraint(equalToConstant: 70),
+        ])
+    }
+
+    private lazy var leftStackView = UIStackView().configure {
+        $0.axis = .vertical
+        $0.alignment = .leading
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.addArrangedSubviews([labelExamName, labelCoefficient])
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private lazy var rightStackView = UIStackView().configure {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .equalSpacing
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.addArrangedSubviews([textFieldGrade, separator, labelRatio])
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private let containerView: UIView = .init().configure {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
-        $0.alignment = .center
-        $0.distribution = .fill
-        $0.spacing = AppStyles.defaultSpacing
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isLayoutMarginsRelativeArrangement = true
-        $0.layoutMargins = .init(top: AppStyles.defaultSpacing(factor: 0.5),
-                                 left: AppStyles.defaultSpacing,
-                                 bottom: AppStyles.defaultSpacing(factor: 0.5),
-                                 right: AppStyles.defaultSpacing)
     }
 
     // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        textFieldCoeff.delegate = self
         textFieldGrade.delegate = self
     }
 
@@ -89,13 +110,9 @@ final class ExamCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         textFieldGrade.text = nil
-        textFieldCoeff.text = nil
 
         textFieldGrade.setOutlineColor(.lightGray, for: .normal)
         textFieldGrade.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
-
-        textFieldCoeff.setOutlineColor(.lightGray, for: .normal)
-        textFieldCoeff.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
     }
 
     // MARK: - Methods
@@ -105,12 +122,17 @@ final class ExamCell: UITableViewCell {
         setupLayout()
 
         labelExamName.text = exam?.name
-        if let coeff = exam?.coefficient {
-            textFieldCoeff.text = "\(coeff)"
-        }
 
         if let grade = exam?.grade {
-            textFieldGrade.text = grade
+            textFieldGrade.text = "\(grade)"
+        }
+
+        if let ratio = exam?.ratio {
+            labelRatio.text = "\(ratio)"
+        }
+
+        if let coeff = exam?.coefficient {
+            labelCoefficient.text = "\(L10n.Home.coeff): \(coeff)"
         }
 
         backgroundColor = .clear
@@ -118,14 +140,24 @@ final class ExamCell: UITableViewCell {
     }
 
     private func setupLayout() {
-        contentView.addSubview(stackView)
-        stackView.addArrangedSubviews([labelExamName, textFieldCoeff, textFieldGrade])
+        containerView.stretchInView(parentView: contentView, edges: .init(top: AppStyles.defaultSpacing(factor: 0.5),
+                                                                          left: AppStyles.defaultSpacing,
+                                                                          bottom: AppStyles.defaultSpacing(factor: 0.5),
+                                                                          right: AppStyles.defaultSpacing))
+
+        containerView.addSubview(leftStackView)
+        containerView.addSubview(rightStackView)
 
         NSLayoutConstraint.activate([
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: AppStyles.defaultSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: Self.cellHeight),
+            leftStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: AppStyles.defaultSpacing),
+            leftStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+
+            containerView.trailingAnchor.constraint(equalTo: rightStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
+            rightStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            rightStackView.widthAnchor.constraint(equalToConstant: Self.textFieldGradeWidth),
+
+            rightStackView.leadingAnchor.constraint(equalTo: leftStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
         ])
     }
 }
@@ -139,32 +171,22 @@ extension ExamCell: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text, !text.isEmpty {
-            var checkResult: Bool?
+        let saveResult = exam?.save(textField.text, in: .grade)
 
-            if textField.placeholder == "08/20" {
-                checkResult = exam?.save(text, ifIsConformTo: .grade)
-            } else if textField.placeholder == "1.0" {
-                checkResult = exam?.save(text, ifIsConformTo: .coeff)
-            }
-
-            setStyle(for: textField, dependOf: checkResult ?? false)
-        } else {
-            exam?.grade = nil
-        }
+        setStyle(for: textField, saveSucceed: saveResult ?? false)
 
         simulationViewModelInput?.userDidChangeValue()
     }
 
-    private func setStyle(for textField: UITextField, dependOf result: Bool) {
+    private func setStyle(for textField: UITextField, saveSucceed: Bool) {
         guard let mdcTextField = textField as? MDCOutlinedTextField else { return }
 
-        if !result {
-            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
-            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
-        } else {
+        if saveSucceed {
             mdcTextField.setOutlineColor(.lightGray, for: .normal)
             mdcTextField.setFloatingLabelColor(PlomeColor.black.color, for: .normal)
+        } else {
+            mdcTextField.setOutlineColor(PlomeColor.fail.color, for: .normal)
+            mdcTextField.setFloatingLabelColor(PlomeColor.fail.color, for: .normal)
         }
     }
 }

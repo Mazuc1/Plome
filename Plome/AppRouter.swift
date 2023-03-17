@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 14/07/2022.
 //
 
+import Dependencies
 import Foundation
 import PlomeCoreKit
 import UIKit
@@ -12,8 +13,10 @@ import UIKit
 final class AppRouter {
     // MARK: - Properties
 
-    private let context: ContextProtocol
     private let screens: Screens
+
+    @Dependency(\.userDefault) private var userDefault
+    @Dependency(\.defaultSimulationModelStorageService) private var defaultSimulationModelStorageService
 
     // MARK: - UI
 
@@ -27,9 +30,8 @@ final class AppRouter {
 
     // MARK: - Initializer
 
-    init(window: UIWindow, context: ContextProtocol, screens: Screens) {
+    init(window: UIWindow, screens: Screens) {
         self.window = window
-        self.context = context
         self.screens = screens
 
         window.makeKeyAndVisible()
@@ -38,7 +40,7 @@ final class AppRouter {
         simulationModelsRouter = SimulationModelsRouter(screens: screens, rootTransition: EmptyTransition())
         settingsRouter = SettingsRouter(screens: screens, rootTransition: EmptyTransition())
 
-        onboardingFlowController = OnboardingFlowController(screens: screens, userDefaults: context.userDefaults)
+        onboardingFlowController = OnboardingFlowController(screens: screens)
     }
 
     // MARK: - Methods
@@ -52,7 +54,7 @@ final class AppRouter {
     }
 
     private func startMainNavigation() {
-        context.defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
+        defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
 
         tabBarController.viewControllers = [
             simulationsRouter.makeRootViewController(),
@@ -66,7 +68,7 @@ final class AppRouter {
 
     private func presentOnboardingIfNeeded() {
         onboardingFlowController.onFinished = { [weak self] in
-            self?.context.userDefaults.setData(value: true, key: .hasOnboardingBeenSeen)
+            self?.userDefault.setData(value: true, key: .hasOnboardingBeenSeen)
             self?.startMainNavigation()
         }
 

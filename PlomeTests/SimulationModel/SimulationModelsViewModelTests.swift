@@ -7,6 +7,7 @@
 
 import Combine
 import CoreData
+import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
@@ -16,17 +17,22 @@ final class SimulationModelsViewModelTests: XCTestCase {
     private var simulationModelsRouter: SimulationModelsRouter!
     private var simulationModelsViewModel: SimulationModelsViewModel!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
-    private var mockCoreData: MockCoreData!
+    private var mockCoreData: MockStorageProvider!
     private var cancellables: Set<AnyCancellable> = []
 
     override func setUp() {
         super.setUp()
 
-        mockCoreData = MockCoreData()
+        mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
-        simulationModelsRouter = SimulationModelsRouter(screens: .init(context: testContext), rootTransition: EmptyTransition())
-        simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter, simulationRepository: simulationRepository, shareSimulationModelService: ShareSimulationModelService())
+        simulationModelsRouter = SimulationModelsRouter(screens: .init(), rootTransition: EmptyTransition())
+        simulationModelsViewModel = withDependencies {
+            $0.coreDataSimulationRepository = simulationRepository
+            $0.shareSimulationModelService = ShareSimulationModelService()
+        } operation: {
+            SimulationModelsViewModel(router: simulationModelsRouter)
+        }
     }
 
     func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsOneSection() {

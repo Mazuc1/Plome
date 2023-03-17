@@ -124,9 +124,6 @@ public extension CoreDataRepository {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
         try mainContext.performAndWait {
-            // Need to do this to update UI, don't know why after manqy hours of searching...
-            // _ = try backgroundContext.fetch(fetchRequest)
-
             try mainContext.deleteAndMergeChanges(using: deleteRequest)
             try mainContext.saveIfNeeded()
         }

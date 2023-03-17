@@ -1,8 +1,8 @@
 //
 //  UserDefault.swift
-//  EvaneosCoreKit
+//  PlomeCoreKit
 //
-//  Created by Alexandre Guibert1 on 20/01/2022.
+//  Created by Mazuc Loïc on 20/01/2022.
 //  Copyright © 2022 evaneos. All rights reserved.
 //
 

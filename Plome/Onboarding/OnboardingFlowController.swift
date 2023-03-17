@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 02/08/2022.
 //
 
+import Dependencies
 import Foundation
 import PlomeCoreKit
 import SwiftUI
@@ -18,16 +19,15 @@ final class OnboardingFlowController {
     // MARK: - Properties
 
     private let screens: Screens
-    private let userDefaults: Defaults
+    @Dependency(\.userDefault) private var userDefault
     var onFinished: (() -> Void)?
 
     private var mainRouter: OnboardingRouter
 
     // MARK: - Init
 
-    init(screens: Screens, userDefaults: Defaults) {
+    init(screens: Screens) {
         self.screens = screens
-        self.userDefaults = userDefaults
         mainRouter = OnboardingRouter(screens: screens, rootTransition: EmptyTransition())
         mainRouter.mainRouterDelegate = self
     }
@@ -38,7 +38,7 @@ final class OnboardingFlowController {
 
     func shouldPresentOnboarding() -> Bool {
         // userDefaults.setData(value: false, key: .hasOnboardingBeenSeen)
-        return userDefaults.getData(type: Bool.self, forKey: .hasOnboardingBeenSeen) ?? false
+        return userDefault.getData(type: Bool.self, forKey: .hasOnboardingBeenSeen) ?? false
     }
 }
 

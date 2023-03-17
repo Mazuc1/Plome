@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Dependencies
 import Foundation
 import PlomeCoreKit
 
@@ -13,17 +14,14 @@ final class SettingsViewModel {
     // MARK: - Properties
 
     private let router: SettingsRouter
-    private let simulationRepository: CoreDataRepository<CDSimulation>
-    private let defaultSimulationModelsProvider: DefaultSimulationModelsProvider
-    private let shareSimulationModelService: ShareSimulationModelServiceProtocol
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
+    @Dependency(\.defaultSimulationModelsProvider) private var defaultSimulationModelsProvider
+    @Dependency(\.shareSimulationModelService) private var shareSimulationModelService
 
     // MARK: - Init
 
-    init(router: SettingsRouter, simulationRepository: CoreDataRepository<CDSimulation>, defaultSimulationModelsProvider: DefaultSimulationModelsProvider, shareSimulationModelService: ShareSimulationModelServiceProtocol) {
+    init(router: SettingsRouter) {
         self.router = router
-        self.simulationRepository = simulationRepository
-        self.defaultSimulationModelsProvider = defaultSimulationModelsProvider
-        self.shareSimulationModelService = shareSimulationModelService
     }
 
     // MARK: - Methods

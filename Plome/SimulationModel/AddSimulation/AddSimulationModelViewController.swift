@@ -23,6 +23,7 @@ final class AddSimulationModelViewController: AppViewController {
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
+        $0.estimatedRowHeight = 50
         $0.register(ModelExamCell.self, forCellReuseIdentifier: ModelExamCell.reuseIdentifier)
         $0.register(ExamTypeHeaderView.self, forHeaderFooterViewReuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -170,8 +171,8 @@ extension AddSimulationModelViewController: UITableViewDataSource {
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let section = ExamTypeSection(rawValue: section) else { return nil }
         let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
-        simulationHeaderView.setup()
         simulationHeaderView.examTypeHeaderViewOutput = viewModel
+        simulationHeaderView.setup()
         return simulationHeaderView
     }
 

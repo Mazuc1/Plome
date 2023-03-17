@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 30/10/2022.
 //
 
+import Dependencies
 import Foundation
 import PlomeCoreKit
 import UIKit
@@ -15,15 +16,14 @@ final class SelectSimulationModelViewModel: ObservableObject {
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
 
     private let router: SimulationsRouter
-    private let simulationRepository: CoreDataRepository<CDSimulation>
+    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
 
     @Published var snapshot: TableViewSnapshot = .init()
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulationRepository: CoreDataRepository<CDSimulation>) {
+    init(router: SimulationsRouter) {
         self.router = router
-        self.simulationRepository = simulationRepository
     }
 
     // MARK: - Methods
@@ -36,7 +36,10 @@ final class SelectSimulationModelViewModel: ObservableObject {
             simulations = coreDataSimulationModels
                 .map {
                     var examSet: Set<Exam>?
-                    if let exams = $0.exams?.map({ Exam(name: $0.name, coefficient: $0.coefficient, grade: $0.grade, type: $0.type) }) {
+                    if let exams = $0.exams?.map({
+                        let grade = $0.grade == Exam.defaultGradeValue ? nil : $0.grade
+                        return Exam(name: $0.name, coefficient: $0.coefficient, grade: grade, ratio: $0.ratio, type: $0.type)
+                    }) {
                         examSet = Set(exams)
                     }
                     return Simulation(name: $0.name, date: $0.date, exams: examSet, type: $0.type)

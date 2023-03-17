@@ -6,6 +6,7 @@
 //
 
 @testable import PlomeCoreKit
+@testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class SimulationTests: XCTestCase {
@@ -18,7 +19,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial))
 
         // Assert
         XCTAssertTrue(simulation.exams!.count > 0)
@@ -27,7 +28,7 @@ final class SimulationTests: XCTestCase {
     func testWhenRemoveExamThenExamIsRemoved() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
-        let exam: Exam = .init(name: "", coefficient: nil, grade: nil, type: .trial)
+        let exam: Exam = .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
         simulation.add(exam: exam)
 
         // Act
@@ -44,7 +45,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial))
 
         // Assert
         XCTAssertTrue(simulation.examsContainTrials())
@@ -63,7 +64,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .continuousControl))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .continuousControl))
 
         // Assert
         XCTAssertFalse(simulation.examsContainTrials())
@@ -76,7 +77,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .continuousControl))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .continuousControl))
 
         // Assert
         XCTAssertTrue(simulation.examsContainContinuousControls())
@@ -95,7 +96,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial))
 
         // Assert
         XCTAssertFalse(simulation.examsContainContinuousControls())
@@ -108,7 +109,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .option))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .option))
 
         // Assert
         XCTAssertTrue(simulation.examsContainOptions())
@@ -127,7 +128,7 @@ final class SimulationTests: XCTestCase {
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
         // Act
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial))
 
         // Assert
         XCTAssertFalse(simulation.examsContainOptions())
@@ -138,11 +139,11 @@ final class SimulationTests: XCTestCase {
     func testWhenAllExamsGradeIsNotNilThenVerificationForAllExamsGradeIsSetSucceed() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
 
         // Act
         let result = simulation.gradeIsSetForAllExams()
@@ -154,11 +155,11 @@ final class SimulationTests: XCTestCase {
     func testWhenAtLeastOneExamsGardeIsNilThenVerificationForAllExamsGradeIsSetFailed() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
-        simulation.add(exam: .init(name: "", coefficient: nil, grade: "12/20", type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
 
         // Act
         let result = simulation.gradeIsSetForAllExams()
@@ -184,11 +185,11 @@ final class SimulationTests: XCTestCase {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
-        let exam: Exam = .init(name: "Art", coefficient: nil, grade: "12/20", type: .trial)
-        let exam2: Exam = .init(name: "Some", coefficient: nil, grade: "12/20", type: .trial)
-        let exam3: Exam = .init(name: "", coefficient: nil, grade: nil, type: .option)
-        let exam4: Exam = .init(name: "Bo2", coefficient: nil, grade: "12/20", type: .trial)
-        let exam5: Exam = .init(name: "", coefficient: nil, grade: "12/20", type: .continuousControl)
+        let exam: Exam = .init(name: "Art", coefficient: nil, grade: 12, ratio: 20, type: .trial)
+        let exam2: Exam = .init(name: "Some", coefficient: nil, grade: 12, ratio: 20, type: .trial)
+        let exam3: Exam = .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .option)
+        let exam4: Exam = .init(name: "Bo2", coefficient: nil, grade: 12, ratio: 20, type: .trial)
+        let exam5: Exam = .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .continuousControl)
 
         let expectedResult = [exam, exam4, exam2]
 
@@ -223,11 +224,11 @@ final class SimulationTests: XCTestCase {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
-        let exam: Exam = .init(name: "Art", coefficient: nil, grade: "12/20", type: .option)
-        let exam2: Exam = .init(name: "Some", coefficient: nil, grade: "12/20", type: .trial)
-        let exam3: Exam = .init(name: "", coefficient: nil, grade: nil, type: .option)
-        let exam4: Exam = .init(name: "Bo2", coefficient: nil, grade: "12/20", type: .trial)
-        let exam5: Exam = .init(name: "", coefficient: nil, grade: "12/20", type: .continuousControl)
+        let exam: Exam = .init(name: "Art", coefficient: nil, grade: 12, ratio: 20, type: .option)
+        let exam2: Exam = .init(name: "Some", coefficient: nil, grade: 12, ratio: 20, type: .trial)
+        let exam3: Exam = .init(name: "", coefficient: nil, grade: nil, ratio: nil, type: .option)
+        let exam4: Exam = .init(name: "Bo2", coefficient: nil, grade: 12, ratio: 20, type: .trial)
+        let exam5: Exam = .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .continuousControl)
 
         simulation.add(exam: exam5)
         simulation.add(exam: exam4)
@@ -259,11 +260,11 @@ final class SimulationTests: XCTestCase {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
-        let exam: Exam = .init(name: "", coefficient: nil, grade: "5/20", type: .option)
-        let exam2: Exam = .init(name: "", coefficient: nil, grade: "2.75/20", type: .trial)
-        let exam3: Exam = .init(name: "", coefficient: nil, grade: "3/20", type: .option)
-        let exam4: Exam = .init(name: "", coefficient: nil, grade: "1.99/20", type: .trial)
-        let exam5: Exam = .init(name: "", coefficient: nil, grade: "12/20", type: .continuousControl)
+        let exam: Exam = .init(name: "", coefficient: nil, grade: 5, ratio: 20, type: .option)
+        let exam2: Exam = .init(name: "", coefficient: nil, grade: 2.75, ratio: 20, type: .trial)
+        let exam3: Exam = .init(name: "", coefficient: nil, grade: 3, ratio: 20, type: .option)
+        let exam4: Exam = .init(name: "", coefficient: nil, grade: 1.99, ratio: 20, type: .trial)
+        let exam5: Exam = .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .continuousControl)
 
         simulation.add(exam: exam5)
         simulation.add(exam: exam4)
@@ -295,11 +296,11 @@ final class SimulationTests: XCTestCase {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
 
-        let exam: Exam = .init(name: "", coefficient: nil, grade: "5/20", type: .option)
-        let exam2: Exam = .init(name: "", coefficient: nil, grade: "18.75/20", type: .trial)
-        let exam3: Exam = .init(name: "", coefficient: nil, grade: "13/20", type: .option)
-        let exam4: Exam = .init(name: "", coefficient: nil, grade: "10.99/20", type: .trial)
-        let exam5: Exam = .init(name: "", coefficient: nil, grade: "19.76/20", type: .continuousControl)
+        let exam: Exam = .init(name: "", coefficient: nil, grade: 5, ratio: 20, type: .option)
+        let exam2: Exam = .init(name: "", coefficient: nil, grade: 18.75, ratio: 20, type: .trial)
+        let exam3: Exam = .init(name: "", coefficient: nil, grade: 13, ratio: 20, type: .option)
+        let exam4: Exam = .init(name: "", coefficient: nil, grade: 10.99, ratio: 20, type: .trial)
+        let exam5: Exam = .init(name: "", coefficient: nil, grade: 19.76, ratio: 20, type: .continuousControl)
 
         simulation.add(exam: exam5)
         simulation.add(exam: exam4)
@@ -323,5 +324,24 @@ final class SimulationTests: XCTestCase {
 
         // Assert
         XCTAssertNil(result)
+    }
+
+    func testWhenEncodingSimulationThenEncodeSucceed() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: Date(), exams: .init(), type: .brevet)
+
+        // Assert
+        XCTAssertNoThrow(try JSONEncoder().encode(simulation))
+    }
+
+    func testThatSimulationCreateFromJSON() {
+        // Act
+        let simulation = Simulation.createFromJson(sender: self)
+
+        // Assert
+        XCTAssertEqual(simulation.name, "Test")
+        XCTAssertEqual(simulation.date, nil)
+        XCTAssertEqual(simulation.exams, [])
+        XCTAssertEqual(simulation.type, .brevet)
     }
 }

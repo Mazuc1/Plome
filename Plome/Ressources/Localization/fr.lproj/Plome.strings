@@ -95,6 +95,9 @@
 "simulationModels.success_download_title" = "C'est bon !";
 "simulationModels.success_download_message" = "Le modèle à bien été ajouté.";
 
+"simulationModels.ratio" = "Dénominateur";
+"simulationModels.ratio_placeholer" = "20";
+
 // MARK: - Onboarding
 
 "onboarding.presentationTitle" = "Hello !";

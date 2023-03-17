@@ -18,7 +18,7 @@ public enum TestSimulations {
         case TB
         case random
 
-        var gradeRange: ClosedRange<Int> {
+        var gradeRange: ClosedRange<Float> {
             switch self {
             case .bigFailure: return 0 ... 10
             case .mediumFailure: return 7 ... 11
@@ -36,6 +36,7 @@ public enum TestSimulations {
         _ = GeneralBACExamsProvider.allExams()
             .map {
                 $0.grade = setRandomGrade(targetedMention: targetedMention)
+                $0.ratio = 20
                 simulation.add(exam: $0)
             }
 
@@ -70,14 +71,14 @@ public enum TestSimulations {
         return simulation
     }
 
-    private static func setRandomGrade(targetedMention: TargetMention) -> String {
-        "\(Int.random(in: targetedMention.gradeRange))/20"
+    private static func setRandomGrade(targetedMention: TargetMention) -> Float {
+        Float.random(in: targetedMention.gradeRange)
     }
 
     private static func addOptions(in simulation: Simulation, for mention: TargetMention) {
         (0 ... 4)
             .forEach { _ in
-                let exam = Exam(name: "", coefficient: 1, grade: "\(mention.gradeRange.randomElement()!)/20", type: .option)
+                let exam = Exam(name: "", coefficient: 1, grade: setRandomGrade(targetedMention: mention), ratio: 20, type: .option)
                 simulation.exams?.insert(exam)
             }
     }
@@ -86,24 +87,24 @@ public enum TestSimulations {
 enum CalculatorShaperProvider {
     static func calculatorShaperWithExamSucceed() -> CalculatorShaper {
         let trials: [Exam] = [
-            .init(name: "", coefficient: 4, grade: "14/20", type: .trial),
-            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
-            .init(name: "", coefficient: 7, grade: "13/20", type: .trial),
-            .init(name: "BetterGrade", coefficient: 3, grade: "18/20", type: .trial),
+            .init(name: "", coefficient: 4, grade: 14, ratio: 20, type: .trial),
+            .init(name: "", coefficient: 2, grade: 6, ratio: 20, type: .trial),
+            .init(name: "", coefficient: 7, grade: 13, ratio: 20, type: .trial),
+            .init(name: "BetterGrade", coefficient: 3, grade: 18, ratio: 20, type: .trial),
         ]
 
         let continuousControl: [Exam] = [
-            .init(name: "WorstGrade", coefficient: 2, grade: "02/20", type: .continuousControl),
-            .init(name: "", coefficient: 5, grade: "15/20", type: .continuousControl),
-            .init(name: "", coefficient: 1, grade: "11/20", type: .continuousControl),
-            .init(name: "", coefficient: 8, grade: "13/20", type: .continuousControl),
+            .init(name: "WorstGrade", coefficient: 2, grade: 2, ratio: 20, type: .continuousControl),
+            .init(name: "", coefficient: 5, grade: 15, ratio: 20, type: .continuousControl),
+            .init(name: "", coefficient: 1, grade: 11, ratio: 20, type: .continuousControl),
+            .init(name: "", coefficient: 8, grade: 13, ratio: 20, type: .continuousControl),
         ]
 
         let options: [Exam] = [
-            .init(name: "", coefficient: 1, grade: "12/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
+            .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .option),
+            .init(name: "", coefficient: 1, grade: 6, ratio: 20, type: .option),
+            .init(name: "", coefficient: 1, grade: 13.45, ratio: 20, type: .option),
+            .init(name: "", coefficient: 1, grade: 8.22, ratio: 20, type: .option),
         ]
 
         let dateComponent = DateComponents(year: 2012, month: 12, day: 12)
@@ -122,24 +123,24 @@ enum CalculatorShaperProvider {
 
     static func calculatorShaperWithExamFailure() -> CalculatorShaper {
         let trials: [Exam] = [
-            .init(name: "", coefficient: 4, grade: "3/20", type: .trial),
-            .init(name: "", coefficient: 2, grade: "6/20", type: .trial),
-            .init(name: "", coefficient: 7, grade: "2/20", type: .trial),
-            .init(name: "", coefficient: 3, grade: "4/20", type: .trial),
+            .init(name: "", coefficient: 4, grade: 3, ratio: 20, type: .trial),
+            .init(name: "", coefficient: 2, grade: 6, ratio: 20, type: .trial),
+            .init(name: "", coefficient: 7, grade: 2, ratio: 20, type: .trial),
+            .init(name: "", coefficient: 3, grade: 4, ratio: 20, type: .trial),
         ]
 
         let continuousControl: [Exam] = [
-            .init(name: "", coefficient: 2, grade: "02/20", type: .continuousControl),
-            .init(name: "", coefficient: 5, grade: "2/20", type: .continuousControl),
-            .init(name: "", coefficient: 1, grade: "1/20", type: .continuousControl),
-            .init(name: "", coefficient: 8, grade: "4/20", type: .continuousControl),
+            .init(name: "", coefficient: 2, grade: 2, ratio: 20, type: .continuousControl),
+            .init(name: "", coefficient: 5, grade: 2, ratio: 20, type: .continuousControl),
+            .init(name: "", coefficient: 1, grade: 1, ratio: 20, type: .continuousControl),
+            .init(name: "", coefficient: 8, grade: 4, ratio: 20, type: .continuousControl),
         ]
 
         let options: [Exam] = [
-            .init(name: "", coefficient: 1, grade: "1/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "6/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "13.45/20", type: .option),
-            .init(name: "", coefficient: 1, grade: "08.22/20", type: .option),
+            .init(name: "", coefficient: 1, grade: 1, ratio: 20, type: .option),
+            .init(name: "", coefficient: 1, grade: 6, ratio: 20, type: .option),
+            .init(name: "", coefficient: 1, grade: 13.45, ratio: 20, type: .option),
+            .init(name: "", coefficient: 1, grade: 8.22, ratio: 20, type: .option),
         ]
 
         let simulation = Simulation(name: "", date: nil, exams: .init(), type: .brevet)

@@ -27,6 +27,7 @@ final class SimulationViewController: AppViewController {
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
+        $0.estimatedRowHeight = 50
         $0.register(ExamTypeHeaderView.self, forHeaderFooterViewReuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
         $0.register(ExamCell.self, forCellReuseIdentifier: ExamCell.reuseIdentifier)
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +55,14 @@ final class SimulationViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.simulation.name
-        navigationItem.rightBarButtonItem = createInfoBarButton()
+
+        navigationItem.rightBarButtonItems = []
+        navigationItem.rightBarButtonItems?.append(createInfoBarButton())
+
+        #if DEBUG
+            navigationItem.rightBarButtonItems?.append(createDebugBarButton())
+        #endif
+
         navigationItem.backButtonDisplayMode = .minimal
 
         setupConstraint()
@@ -106,6 +114,15 @@ final class SimulationViewController: AppViewController {
         present(alertController, animated: true)
     }
 
+    private func createDebugBarButton() -> UIBarButtonItem {
+        UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 17), style: .plain, target: self, action: #selector(didTapFillSimulation))
+    }
+
+    @objc private func didTapFillSimulation() {
+        viewModel.autoFillExams()
+        tableView.reloadData()
+    }
+
     @objc private func userDidTapCalculate() {
         viewModel.userDidTapCalculate()
     }
@@ -116,14 +133,6 @@ final class SimulationViewController: AppViewController {
 extension SimulationViewController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
         ExamTypeSection.allCases.count
-    }
-
-    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let section = ExamTypeSection(rawValue: section) else { return nil }
-        let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
-        simulationHeaderView.setup()
-        simulationHeaderView.examTypeHeaderViewOutput = viewModel
-        return simulationHeaderView
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,18 +159,14 @@ extension SimulationViewController: UITableViewDataSource {
     }
 }
 
-// MARK: -  Table view delegate
+// MARK: -  UITableViewDelegate
 
 extension SimulationViewController: UITableViewDelegate {
-    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
-        true
-    }
-
-    func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = AppContextualAction.deleteAction { [weak self] in
-            self?.viewModel.userDidTapDeleteExam(at: indexPath)
-        }
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let section = ExamTypeSection(rawValue: section) else { return nil }
+        let simulationHeaderView = ExamTypeHeaderView(section: section, reuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
+        simulationHeaderView.setup()
+        return simulationHeaderView
     }
 }
 

@@ -5,6 +5,7 @@
 //  Created by Loic Mazuc on 02/12/2022.
 //
 
+import Dependencies
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
@@ -12,16 +13,23 @@ import XCTest
 final class DefaultSimulationModelStorageServiceTests: XCTestCase {
     private var userDefauls: DefaultsProtocol!
     private var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol!
-    private var mockCoreData: MockCoreData!
+    private var mockCoreData: MockStorageProvider!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
 
     override func setUp() {
         super.setUp()
-        mockCoreData = MockCoreData()
+        mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         userDefauls = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
-        defaultSimulationModelStorageService = DefaultSimulationModelStorageService(userDefault: userDefauls, simulationRepository: simulationRepository)
+
+        defaultSimulationModelStorageService = withDependencies {
+            $0.userDefault = userDefauls
+            $0.defaultSimulationModelsProvider = .init()
+            $0.coreDataSimulationRepository = simulationRepository
+        } operation: {
+            DefaultSimulationModelStorageService()
+        }
     }
 
     func testWhenIsSimulationModelRegisterIsNotInUserDefaultThenDefaultSimulationModelsAreAdded() {

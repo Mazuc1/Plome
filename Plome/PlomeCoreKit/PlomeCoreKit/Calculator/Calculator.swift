@@ -262,7 +262,7 @@ extension Calculator {
     private func getAllExamsWhereGradeIsLowerThanAverageSortByCoefficient(from simulation: Simulation) -> [Exam] {
         guard let exams = simulation.exams else { return [] }
         return exams
-            .filter { $0.isGradeLowerThanItsOutOf() }
+            .filter { $0.isGradeLowerThanAverageRatio() }
             .sorted {
                 guard let lhsCoeff = $0.coefficient,
                       let rhsCoeff = $1.coefficient else { return false }
