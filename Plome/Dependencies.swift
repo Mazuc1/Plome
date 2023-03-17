@@ -5,8 +5,8 @@
 //  Created by Loic Mazuc on 05/02/2023.
 //
 
-import Foundation
 import Dependencies
+import Foundation
 
 // MARK: - ShareSimulationModelService
 

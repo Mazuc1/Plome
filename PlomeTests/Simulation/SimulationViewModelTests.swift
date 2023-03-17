@@ -5,11 +5,11 @@
 //  Created by Loic Mazuc on 23/11/2022.
 //
 
+import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 import PlomeCoreKitTestsHelpers
 import XCTest
-import Dependencies
 
 final class SimulationViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!

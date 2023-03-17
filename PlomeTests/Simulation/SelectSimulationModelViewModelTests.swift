@@ -6,11 +6,11 @@
 //
 
 import Combine
+import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
-import Dependencies
 
 final class SelectSimulationModelViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
@@ -27,7 +27,7 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
 
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
-        
+
         selectSimulationModelViewModel = withDependencies {
             $0.coreDataSimulationRepository = simulationRepository
         } operation: {

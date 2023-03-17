@@ -24,7 +24,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertEqual(exam.grade, 1)
     }
-    
+
     func testThatSavingGradeGeaterThanRatioFailed() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: 20, type: .trial)

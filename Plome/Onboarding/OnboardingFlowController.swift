@@ -5,11 +5,11 @@
 //  Created by Loic Mazuc on 02/08/2022.
 //
 
+import Dependencies
 import Foundation
 import PlomeCoreKit
 import SwiftUI
 import UIKit
-import Dependencies
 
 protocol MainRouterDelegate: AnyObject {
     func didFinishPresentOnboarding()

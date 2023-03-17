@@ -6,9 +6,9 @@
 //
 
 import CoreData
+import Dependencies
 import Foundation
 import PlomeCoreKit
-import Dependencies
 
 final class SettingsViewModel {
     // MARK: - Properties

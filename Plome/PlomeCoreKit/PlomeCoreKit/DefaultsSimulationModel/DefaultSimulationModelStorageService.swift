@@ -5,8 +5,8 @@
 //  Created by Loic Mazuc on 02/12/2022.
 //
 
-import Foundation
 import Dependencies
+import Foundation
 
 public protocol DefaultSimulationModelStorageServiceProtocol {
     func addDefaultSimulationModelIfNeeded()

@@ -7,11 +7,11 @@
 
 import Combine
 import CoreData
+import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
-import Dependencies
 
 final class SimulationModelsViewModelTests: XCTestCase {
     private var simulationModelsRouter: SimulationModelsRouter!

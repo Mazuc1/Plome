@@ -6,10 +6,10 @@
 //
 
 import CoreData
+import Dependencies
 import Foundation
 import PlomeCoreKit
 import UIKit
-import Dependencies
 
 final class SimulationResultViewModel {
     // MARK: - Properties

@@ -5,8 +5,8 @@
 //  Created by Loic Mazuc on 05/02/2023.
 //
 
-import Foundation
 import Dependencies
+import Foundation
 
 // MARK: - Defaults
 
@@ -24,7 +24,7 @@ public extension DependencyValues {
 // MARK: - DefaultSimulationModelsProvider
 
 enum DefaultSimulationModelsProviderKey: DependencyKey {
-    static var liveValue: DefaultSimulationModelsProvider = DefaultSimulationModelsProvider()
+    static var liveValue: DefaultSimulationModelsProvider = .init()
 }
 
 public extension DependencyValues {
@@ -50,7 +50,7 @@ public extension DependencyValues {
 // MARK: - StorageProvider
 
 enum StorageProviderKey: DependencyKey {
-    static var liveValue: StorageProvider = StorageProvider()
+    static var liveValue: StorageProvider = .init()
     static var testValue: StorageProvider = MockStorageProvider()
 }
 
@@ -66,13 +66,13 @@ public extension DependencyValues {
 enum CoreDataSimulationRepositoryKey: DependencyKey {
     static var liveValue: CoreDataRepository<CDSimulation> {
         @Dependency(\.storageProvider) var storageProvider
-        
+
         return .init(storageProvider: storageProvider)
     }
-    
+
     static var testValue: CoreDataRepository<CDSimulation> {
         @Dependency(\.storageProvider) var storageProvider
-        
+
         return .init(storageProvider: storageProvider)
     }
 }

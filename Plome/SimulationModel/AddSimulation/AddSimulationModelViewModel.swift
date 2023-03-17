@@ -7,9 +7,9 @@
 
 import Combine
 import CoreData
+import Dependencies
 import Foundation
 import PlomeCoreKit
-import Dependencies
 
 enum AddSimulationModelOpeningMode {
     case add

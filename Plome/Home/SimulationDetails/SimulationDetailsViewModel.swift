@@ -5,9 +5,9 @@
 //  Created by Loic Mazuc on 24/11/2022.
 //
 
+import Dependencies
 import Foundation
 import PlomeCoreKit
-import Dependencies
 
 final class SimulationDetailsViewModel {
     // MARK: - Properties

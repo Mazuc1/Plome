@@ -5,10 +5,10 @@
 //  Created by Loic Mazuc on 21/10/2022.
 //
 
+import Dependencies
 import Foundation
 import PlomeCoreKit
 import UIKit
-import Dependencies
 
 final class SimulationModelsViewModel: ObservableObject {
     // MARK: - Properties

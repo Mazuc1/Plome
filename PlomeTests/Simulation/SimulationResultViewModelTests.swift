@@ -5,11 +5,11 @@
 //  Created by Loic Mazuc on 23/11/2022.
 //
 
+import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
-import Dependencies
 
 final class SimulationResultViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
@@ -35,7 +35,6 @@ final class SimulationResultViewModelTests: XCTestCase {
         } operation: {
             SimulationResultViewModel(router: simulationsRouter, simulation: simulation)
         }
-
 
         let cdSimulationsBeforeAddingNewSimulation = try! simulationRepository.list()
 

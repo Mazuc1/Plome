@@ -10,7 +10,7 @@ import Foundation
 
 public class Exam: NSObject, NSCopying, Codable {
     // MARK: - Properties
-    
+
     public static let defaultGradeValue: Float = -1.0
 
     public enum Field {

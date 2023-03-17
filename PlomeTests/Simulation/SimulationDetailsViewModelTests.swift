@@ -5,11 +5,11 @@
 //  Created by Loic Mazuc on 28/11/2022.
 //
 
+import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
-import Dependencies
 
 final class SimulationDetailsViewModelTests: XCTestCase {
     private var simulationsRouter: SimulationsRouter!
@@ -41,7 +41,6 @@ final class SimulationDetailsViewModelTests: XCTestCase {
         } operation: {
             SimulationDetailsViewModel(router: simulationsRouter, simulation: simulation, cdSimulation: cdSimulationTest!)
         }
-
 
         // Act
         viewModel.userDidTapDeleteSimulation()

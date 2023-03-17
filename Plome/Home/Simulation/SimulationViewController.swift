@@ -55,14 +55,14 @@ final class SimulationViewController: AppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.simulation.name
-        
+
         navigationItem.rightBarButtonItems = []
         navigationItem.rightBarButtonItems?.append(createInfoBarButton())
-        
+
         #if DEBUG
-        navigationItem.rightBarButtonItems?.append(createDebugBarButton())
+            navigationItem.rightBarButtonItems?.append(createDebugBarButton())
         #endif
-        
+
         navigationItem.backButtonDisplayMode = .minimal
 
         setupConstraint()
@@ -113,11 +113,11 @@ final class SimulationViewController: AppViewController {
 
         present(alertController, animated: true)
     }
-    
+
     private func createDebugBarButton() -> UIBarButtonItem {
         UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 17), style: .plain, target: self, action: #selector(didTapFillSimulation))
     }
-    
+
     @objc private func didTapFillSimulation() {
         viewModel.autoFillExams()
         tableView.reloadData()

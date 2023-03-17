@@ -17,7 +17,7 @@ final class ExamCell: UITableViewCell {
     private var exam: Exam?
 
     weak var simulationViewModelInput: SimulationViewModelInput?
-    
+
     private static let cellHeight: CGFloat = 70
     private static let textFieldGradeWidth: CGFloat = 80
 
@@ -61,7 +61,7 @@ final class ExamCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
-    
+
     private let separator: UIView = .init().configure {
         $0.backgroundColor = .black
         $0.layer.cornerRadius = 1.5
@@ -71,7 +71,7 @@ final class ExamCell: UITableViewCell {
             $0.widthAnchor.constraint(equalToConstant: 70),
         ])
     }
-    
+
     private lazy var leftStackView = UIStackView().configure {
         $0.axis = .vertical
         $0.alignment = .leading
@@ -80,7 +80,7 @@ final class ExamCell: UITableViewCell {
         $0.addArrangedSubviews([labelExamName, labelCoefficient])
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     private lazy var rightStackView = UIStackView().configure {
         $0.axis = .vertical
         $0.alignment = .center
@@ -89,7 +89,7 @@ final class ExamCell: UITableViewCell {
         $0.addArrangedSubviews([textFieldGrade, separator, labelRatio])
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     private let containerView: UIView = .init().configure {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
@@ -144,19 +144,19 @@ final class ExamCell: UITableViewCell {
                                                                           left: AppStyles.defaultSpacing,
                                                                           bottom: AppStyles.defaultSpacing(factor: 0.5),
                                                                           right: AppStyles.defaultSpacing))
-        
+
         containerView.addSubview(leftStackView)
         containerView.addSubview(rightStackView)
-        
+
         NSLayoutConstraint.activate([
             containerView.heightAnchor.constraint(equalToConstant: Self.cellHeight),
             leftStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: AppStyles.defaultSpacing),
             leftStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            
+
             containerView.trailingAnchor.constraint(equalTo: rightStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
             rightStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             rightStackView.widthAnchor.constraint(equalToConstant: Self.textFieldGradeWidth),
-            
+
             rightStackView.leadingAnchor.constraint(equalTo: leftStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
         ])
     }
