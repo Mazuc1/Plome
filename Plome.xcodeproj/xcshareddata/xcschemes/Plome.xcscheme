@@ -41,6 +41,26 @@
                ReferencedContainer = "container:Plome.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CFD055A12941FC7B000D43BB"
+               BuildableName = "PlomeCoreKitTests.xctest"
+               BlueprintName = "PlomeCoreKitTests"
+               ReferencedContainer = "container:Plome/PlomeCoreKit/PlomeCoreKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CF02ABB3295BBD8100B5FCC9"
+               BuildableName = "GatewayTests.xctest"
+               BlueprintName = "GatewayTests"
+               ReferencedContainer = "container:Plome/Gateway/Gateway.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
