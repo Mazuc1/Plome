@@ -18,6 +18,7 @@
 "home.save_model" = "Save this model";
 "home.return_to_home" = "Back to home";
 "home.result" = "Result";
+"home.no_simulation_model_available" = "You do not have any simulation models.\n\nYou can add them from the settings or from the Model tab.";
 
 "home.its_done" = "It's done !";
 "home.model_has_been_save" = "The model has been saved";

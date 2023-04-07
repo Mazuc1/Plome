@@ -42,6 +42,8 @@ final class SelectSimulationModelViewController: AppViewController {
         $0.action = #selector(self?.userDidTapCloseButton)
         $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 16)
     }
+    
+    private let emptySimulationModelListView: PlaceholderView = .init(frame: .zero, icon: nil, text: L10n.Home.noSimulationModelAvailable)
 
     // MARK: - Init
 
@@ -89,15 +91,35 @@ final class SelectSimulationModelViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
+        
+        view.addSubview(emptySimulationModelListView)
+
+        NSLayoutConstraint.activate([
+            emptySimulationModelListView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            emptySimulationModelListView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor),
+            emptySimulationModelListView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: emptySimulationModelListView.trailingAnchor),
+        ])
     }
 
     private func bindSnapshot() {
         viewModel.$snapshot
             .receive(on: RunLoop.main)
             .sink { [weak self] in
+                self?.updateUIVisibility(snapshot: $0)
                 self?.dataSource.apply($0, animatingDifferences: false, completion: nil)
             }
             .store(in: &cancellables)
+    }
+    
+    private func updateUIVisibility(snapshot: SelectSimulationModelViewModel.TableViewSnapshot) {
+        if snapshot.numberOfItems == 0 {
+            emptySimulationModelListView.isHidden = false
+            labelActionDescription.isHidden = true
+        } else {
+            labelActionDescription.isHidden = false
+            emptySimulationModelListView.isHidden = true
+        }
     }
 
     private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
