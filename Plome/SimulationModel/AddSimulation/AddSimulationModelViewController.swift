@@ -30,7 +30,7 @@ final class AddSimulationModelViewController: AppViewController {
     }
 
     private lazy var primaryCTARegisterModel: PrimaryCTA = .init(title: PlomeCoreKit.L10n.General.save).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapSaveSimulationModel), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapSaveSimulationModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 

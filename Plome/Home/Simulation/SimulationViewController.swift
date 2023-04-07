@@ -34,7 +34,7 @@ final class SimulationViewController: AppViewController {
     }
 
     private lazy var primaryCTACalculate: PrimaryCTA = .init(title: L10n.Home.calculate).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapCalculate), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapCalculate), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 

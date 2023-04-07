@@ -39,7 +39,7 @@ class SimulationDetailsViewController: AppViewController {
     }
 
     private lazy var tertiaryCTARemakeSimulation: TertiaryCTA = .init(title: L10n.Home.remakeSimulationFromThisOne).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 

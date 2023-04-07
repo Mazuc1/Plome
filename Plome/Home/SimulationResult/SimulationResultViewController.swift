@@ -90,12 +90,12 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private lazy var primaryCTARemakeSimulation: PrimaryCTA = .init(title: L10n.Home.remakeSimulation).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: L10n.Home.returnToHome).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapBackToHome), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapBackToHome), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
