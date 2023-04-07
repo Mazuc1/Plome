@@ -65,10 +65,13 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         rootViewController?.present(alertController, animated: true)
     }
 
-    public func alertWithAction(title: String, message: String, completion: @escaping () -> Void) {
+    public func alertWithAction(title: String, message: String, isPrimaryDestructive: Bool = false, completion: @escaping () -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let primaryActionStyle: UIAlertAction.Style = isPrimaryDestructive ? .destructive : .default
+        
         alertController.addAction(UIAlertAction(title: L10n.General.no, style: .cancel))
-        alertController.addAction(UIAlertAction(title: L10n.General.yes, style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: L10n.General.yes, style: primaryActionStyle, handler: { _ in
             completion()
         }))
         alertController.view.tintColor = PlomeColor.lagoon.color

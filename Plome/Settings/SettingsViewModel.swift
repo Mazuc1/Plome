@@ -36,7 +36,7 @@ final class SettingsViewModel {
     }
 
     func userDidTapDeleteSimulations() {
-        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageRemoveSimulations) { [weak self] in
+        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageRemoveSimulations, isPrimaryDestructive: true) { [weak self] in
             self?.deleteSimulations()
         }
     }
@@ -95,7 +95,7 @@ final class SettingsViewModel {
     }
 
     func userDidTapReinitializeApplication() {
-        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageReinitialize) { [weak self] in
+        router.alertWithAction(title: PlomeCoreKit.L10n.General.warning, message: L10n.Settings.warningMessageReinitialize, isPrimaryDestructive: true) { [weak self] in
             self?.deleteAllSimulations()
         }
     }
