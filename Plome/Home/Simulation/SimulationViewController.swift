@@ -34,7 +34,7 @@ final class SimulationViewController: AppViewController {
     }
 
     private lazy var primaryCTACalculate: PrimaryCTA = .init(title: L10n.Home.calculate).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapCalculate), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapCalculate), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -101,7 +101,7 @@ final class SimulationViewController: AppViewController {
     }
 
     private func createInfoBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.info.configure(weight: .regular, color: .lagoon, size: 20), style: .plain, target: self, action: #selector(userDidTapInfo))
+        UIBarButtonItem(image: Icons.info.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapInfo))
     }
 
     @objc private func userDidTapInfo() {
@@ -115,7 +115,7 @@ final class SimulationViewController: AppViewController {
     }
 
     private func createDebugBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 17), style: .plain, target: self, action: #selector(didTapFillSimulation))
+        UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(didTapFillSimulation))
     }
 
     @objc private func didTapFillSimulation() {

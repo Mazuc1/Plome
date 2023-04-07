@@ -39,7 +39,7 @@ class SimulationDetailsViewController: AppViewController {
     }
 
     private lazy var tertiaryCTARemakeSimulation: TertiaryCTA = .init(title: L10n.Home.remakeSimulationFromThisOne).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -141,7 +141,7 @@ class SimulationDetailsViewController: AppViewController {
     }
 
     private func createDeleteBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .lagoon, size: 20), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
+        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
     }
 
     @objc private func userDidTapDeleteSimulation() {

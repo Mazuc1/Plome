@@ -30,7 +30,7 @@ final class SimulationListViewController: AppViewController {
     }
 
     private lazy var primaryCTANewSimulation: PrimaryCTA = .init(title: L10n.Home.newSimulation).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapNewSimulation), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapNewSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 

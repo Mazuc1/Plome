@@ -18,6 +18,7 @@
 "home.save_model" = "Save this model";
 "home.return_to_home" = "Back to home";
 "home.result" = "Result";
+"home.no_simulation_model_available" = "You do not have any simulation models.\n\nYou can add them from the settings or from the Model tab.";
 
 "home.its_done" = "It's done !";
 "home.model_has_been_save" = "The model has been saved";
@@ -79,7 +80,7 @@
 // MARK: - Simulation models
 
 "simulationModels.new_model" = "New model";
-"simulationModels.empty_model_placeholder" = "Here you will find all your exam simulation templates.\n\nYou can use an existing one to modify it.\n\nYou will also find default templates in the application settings.";
+"simulationModels.empty_model_placeholder" = "Here you will find all your exam simulation models.\n\nYou can use an existing one to modify it.\n\nYou will also find default templates in the application settings.";
 
 "simulationModels.warning_message_remove_model" = "You are about to delete this model. Are you sure you want to delete it?";
 
@@ -90,7 +91,7 @@
 "simulationModels.number_of_options" = "%d Options";
 
 "simulationModels.sharing_code_message" = "Enter this code in the application settings to download the shared template. Warning, this code is only valid for 2 hours.";
-"simulationModels.download_model" = "Download a template";
+"simulationModels.download_model" = "Download a model";
 "simulationModels.write_code" = "Enter the code that was shared with you.";
 "simulationModels.success_download_title" = "That's good!";
 "simulationModels.success_download_message" = "The template has been added.";

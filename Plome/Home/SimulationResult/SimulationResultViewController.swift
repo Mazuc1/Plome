@@ -90,12 +90,12 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private lazy var primaryCTARemakeSimulation: PrimaryCTA = .init(title: L10n.Home.remakeSimulation).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapRemakeSimulation), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapRemakeSimulation), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private lazy var tertiaryCTABackToHome: TertiaryCTA = .init(title: L10n.Home.returnToHome).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapBackToHome), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapBackToHome), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -249,7 +249,7 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private func createShareResultBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 20), style: .plain, target: self, action: #selector(userDidTapShareResult))
+        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapShareResult))
     }
 
     @objc private func userDidTapRemakeSimulation() {

@@ -10,7 +10,7 @@ import UIKit
 public final class PlaceholderView: UIView {
     // MARK: - Properties
 
-    private let icon: Icons
+    private let icon: Icons?
     private let text: String
 
     // MARK: - UI
@@ -35,7 +35,7 @@ public final class PlaceholderView: UIView {
 
     // MARK: - Init
 
-    public required init(frame: CGRect, icon: Icons, text: String) {
+    public required init(frame: CGRect, icon: Icons?, text: String) {
         self.icon = icon
         self.text = text
         super.init(frame: frame)
@@ -55,7 +55,9 @@ public final class PlaceholderView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         textLabel.text = text
-        imageView.image = icon.configure(weight: .regular, color: .lagoon, size: 50)
+        if let icon {
+            imageView.image = icon.configure(weight: .regular, color: .lagoon, size: 50)
+        }
 
         stackView.addArrangedSubviews([imageView, textLabel])
         stackView.stretchInView(parentView: self)

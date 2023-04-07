@@ -28,7 +28,7 @@ final class SimulationModelsViewController: AppViewController {
     }
 
     private lazy var primaryCTAAddModel: PrimaryCTA = .init(title: L10n.SimulationModels.newModel).configure { [weak self] in
-        $0.addTarget(self, action: #selector(userDidTapAddModel), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self?.userDidTapAddModel), for: .touchUpInside)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 

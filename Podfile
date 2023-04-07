@@ -15,7 +15,7 @@ target 'PlomeCoreKit' do
 end
 
 target 'Plome' do
-  pod 'MaterialComponents/TextControls+OutlinedTextFields'
-  pod 'MaterialComponents/TextControls+OutlinedTextFieldsTheming'
-  pod 'MDFInternationalization'
+    pod 'MaterialComponents/TextControls+OutlinedTextFields'
+    pod 'MaterialComponents/TextControls+OutlinedTextFieldsTheming'
+    pod 'MDFInternationalization'
 end

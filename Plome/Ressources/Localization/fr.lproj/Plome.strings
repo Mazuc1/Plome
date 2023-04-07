@@ -18,6 +18,7 @@
 "home.save_model" = "Enregistrer ce modèle";
 "home.return_to_home" = "Retourner à l'accueil";
 "home.result" = "Résultat";
+"home.no_simulation_model_available" = "Vous n'avez pas de modèles de simulations.\n\nVous pouvez en ajouter depuis les réglages ou depuis le tab Modèle.";
 
 "home.its_done" = "C'est fait !";
 "home.model_has_been_save" = "Le modèle à bien été enregistrer";
