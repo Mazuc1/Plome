@@ -141,7 +141,7 @@ class SimulationDetailsViewController: AppViewController {
     }
 
     private func createDeleteBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .lagoon, size: 20), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
+        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
     }
 
     @objc private func userDidTapDeleteSimulation() {

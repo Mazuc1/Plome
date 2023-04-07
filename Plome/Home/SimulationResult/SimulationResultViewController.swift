@@ -249,7 +249,7 @@ final class SimulationResultViewController: AppViewController {
     }
 
     private func createShareResultBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 20), style: .plain, target: self, action: #selector(userDidTapShareResult))
+        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapShareResult))
     }
 
     @objc private func userDidTapRemakeSimulation() {

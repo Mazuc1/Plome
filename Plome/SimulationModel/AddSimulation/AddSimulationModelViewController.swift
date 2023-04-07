@@ -47,14 +47,14 @@ final class AddSimulationModelViewController: AppViewController {
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapCloseButton)
-        $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 20)
+        $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 16)
     }
 
     private lazy var buttonEditTitle: UIBarButtonItem = .init().configure { [weak self] in
         $0.target = self
         $0.style = .plain
         $0.action = #selector(self?.userDidTapEditTitleButton)
-        $0.image = Icons.pencil.configure(weight: .regular, color: .lagoon, size: 20)
+        $0.image = Icons.pencil.configure(weight: .regular, color: .lagoon, size: 16)
     }
 
     // MARK: - Init
