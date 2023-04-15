@@ -286,7 +286,7 @@
 			path = SimulationModel;
 			sourceTree = "<group>";
 		};
-		CF3B9AA028F3292C00457A44 /* Home */ = {
+		CF3B9AA028F3292C00457A44 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
 				CF888F72290F234C00D2D3E5 /* SimulationsRouter.swift */,
@@ -297,7 +297,7 @@
 				CF888F76290F24F900D2D3E5 /* SimulationList */,
 				CF0C7A6B292FDDA500E49803 /* SimulationDetails */,
 			);
-			path = Home;
+			path = Simulation;
 			sourceTree = "<group>";
 		};
 		CF3B9AA128F3293000457A44 /* SimulationModel */ = {
@@ -432,7 +432,7 @@
 				CF02ABCB295D138500B5FCC9 /* Services */,
 				CFD0BC9C2943330A005C898B /* Ressources */,
 				CFB51232294C78FB00979309 /* Onboarding */,
-				CF3B9AA028F3292C00457A44 /* Home */,
+				CF3B9AA028F3292C00457A44 /* Simulation */,
 				CF3B9AA128F3293000457A44 /* SimulationModel */,
 				CF3B9AA228F3293F00457A44 /* Settings */,
 				CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */,
