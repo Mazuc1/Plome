@@ -14,6 +14,8 @@ final class SimulationViewController: AppViewController {
 
     private let viewModel: SimulationViewModel
     private var cancellables: Set<AnyCancellable> = .init()
+    
+    private static let liveSimulationResultViewHeight: CGFloat = 70
 
     // MARK: - UI
 
@@ -31,6 +33,10 @@ final class SimulationViewController: AppViewController {
 
     private lazy var secondaryCTASave: SecondaryCTA = .init(title: L10n.Home.calculate).configure { [weak self] in
         //$0.addTarget(self, action: #selector(self?.userDidTapCalculate), for: .touchUpInside)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private let liveSimulationResultView: LiveSimulationResultView = .init(frame: .zero).configure {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -67,13 +73,13 @@ final class SimulationViewController: AppViewController {
     // MARK: - Methods
 
     private func setupConstraint() {
-        view.addSubview(secondaryCTASave)
+        view.addSubview(liveSimulationResultView)
 
         NSLayoutConstraint.activate([
-            secondaryCTASave.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: secondaryCTASave.bottomAnchor),
-            view.trailingAnchor.constraint(equalTo: secondaryCTASave.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            secondaryCTASave.heightAnchor.constraint(equalToConstant: AppStyles.primaryCTAHeight),
+            liveSimulationResultView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            liveSimulationResultView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            view.trailingAnchor.constraint(equalTo: liveSimulationResultView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            liveSimulationResultView.heightAnchor.constraint(equalToConstant: Self.liveSimulationResultViewHeight),
         ])
     }
 
@@ -97,5 +103,85 @@ final class SimulationViewController: AppViewController {
 
     @objc private func didTapFillSimulation() {
         viewModel.autoFillExams()
+    }
+}
+
+// MARK: - LiveSimulationResultView
+
+private final class LiveSimulationResultView: UIView {
+    
+    // MARK: - Properties
+    
+    // MARK: - UI
+    
+    private let mentionView: MentionView = .init(frame: .zero, mention: .B)
+    
+    private let gradeLabel: UILabel = .init().configure {
+        $0.font = PlomeFont.demiBoldL.font
+        $0.textColor = PlomeColor.darkBlue.color
+    }
+    
+    private let imageView: UIImageView = .init()
+    
+    private let gradesStateLabel: UILabel = .init().configure {
+        $0.font = PlomeFont.bodyS.font
+        $0.textColor = PlomeColor.darkGray.color
+    }
+    
+    private let spacer: UIView = .init().configure {
+        let spacerWidthConstraint = $0.widthAnchor.constraint(equalToConstant: .greatestFiniteMagnitude)
+        spacerWidthConstraint.priority = .defaultLow
+        spacerWidthConstraint.isActive = true
+    }
+    
+    private let topStackView: UIStackView = .init().configure {
+        $0.axis = .horizontal
+        $0.distribution = .equalSpacing
+        $0.spacing = AppStyles.defaultSpacing
+        $0.alignment = .center
+    }
+    
+    private let bottomStackView: UIStackView = .init().configure {
+        $0.axis = .horizontal
+        $0.distribution = .equalSpacing
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.alignment = .center
+    }
+    
+    private let stackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing
+        $0.alignment = .top
+        $0.isLayoutMarginsRelativeArrangement = true
+        $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
+                                 left: AppStyles.defaultSpacing,
+                                 bottom: AppStyles.defaultSpacing,
+                                 right: AppStyles.defaultSpacing)
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = AppStyles.defaultRadius
+    }
+    
+    // MARK: - Init
+
+    public required override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    private func setupView() {
+        gradeLabel.text = "13.23 / 20"
+        gradesStateLabel.text = "Toutes les note ne sont pas remplis"
+        imageView.image = Icons.fail.configure(weight: .regular, color: .fail, size: 15)
+        
+        topStackView.addArrangedSubviews([gradeLabel, spacer, mentionView])
+        bottomStackView.addArrangedSubviews([imageView, gradesStateLabel])
+        
+        stackView.addArrangedSubviews([topStackView, bottomStackView])
+        stackView.stretchInView(parentView: self)
     }
 }

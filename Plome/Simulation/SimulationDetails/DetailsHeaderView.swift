@@ -93,10 +93,10 @@ final class DetailsHeaderView: UIView {
 
 // MARK: - MentionView
 
-private final class MentionView: UIView {
+final class MentionView: UIView {
     // MARK: - Properties
 
-    private let mention: Mention
+    private var mention: Mention
 
     // MARK: - UI
 
@@ -146,5 +146,13 @@ private final class MentionView: UIView {
         stackView.layoutMargins = .init(top: margin, left: margin, bottom: margin, right: margin)
 
         stackView.stretchInView(parentView: self)
+    }
+    
+    func update(mention: Mention) {
+        self.mention = mention
+        
+        titleLabel.text = mention.name
+        titleLabel.textColor = mention.plomeColor.color
+        backgroundColor = mention.plomeColor.color.withAlphaComponent(0.1)
     }
 }
