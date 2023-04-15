@@ -21,8 +21,6 @@ final class SimulationViewModel: ObservableObject {
     let simulation: Simulation
     @Published var canCalculate: Bool = false
 
-    weak var viewControllerDelegate: SimulationViewControllerOutput?
-
     // MARK: - Init
 
     init(router: SimulationsRouter, simulation: Simulation) {
