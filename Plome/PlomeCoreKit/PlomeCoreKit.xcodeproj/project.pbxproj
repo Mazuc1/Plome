@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DD698738BEE02B69DC77D6 /* Pods_PlomeCoreKit.framework */; };
+		CF035FF829F12BA3005196D6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = CF035FF729F12BA3005196D6 /* Tabman */; };
 		CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BA2905E7760099186E /* CoreDataRepository.swift */; };
 		CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */; };
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
@@ -214,6 +215,7 @@
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 				CF578090298FFCF400D3288C /* Dependencies in Frameworks */,
 				8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */,
+				CF035FF829F12BA3005196D6 /* Tabman in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +584,7 @@
 				CF135E20293D56E100ACFC6A /* FirebaseAnalytics */,
 				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
 				CF57808F298FFCF400D3288C /* Dependencies */,
+				CF035FF729F12BA3005196D6 /* Tabman */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -665,6 +668,7 @@
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1272,6 +1276,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uias/Tabman.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1299,6 +1311,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF035FF729F12BA3005196D6 /* Tabman */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
+		};
 		CF135E20293D56E100ACFC6A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
