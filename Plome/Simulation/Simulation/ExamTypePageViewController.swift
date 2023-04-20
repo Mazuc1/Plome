@@ -13,18 +13,25 @@ import Pageboy
 final class ExamTypePageViewController: TabmanViewController {
     private var viewControllers = [UIViewController(), UIViewController(), UIViewController()]
     
+    
+    private let bar: TMBar = TMBar.ButtonBar().configure { bar in
+        bar.layout.transitionStyle = .progressive
+        bar.backgroundView.style = .clear
+        bar.indicator.tintColor = .black
+        bar.indicator.weight = .light
+        
+        bar.buttons.customize {
+            $0.font = PlomeFont.demiBoldM.font
+            $0.selectedTintColor = .black
+            $0.tintColor = .gray
+            $0.backgroundColor = PlomeColor.background.color
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.dataSource = self
-        
-        // Create bar
-        let bar = TMBar.ButtonBar()
-        bar.layout.transitionStyle = .snap
-        bar.backgroundView.style = .blur(style: .extraLight)
-        bar.backgroundColor = .brown
-        
-        // Add to view
+        self.dataSource = self        
         addBar(bar, dataSource: self, at: .top)
     }
 }

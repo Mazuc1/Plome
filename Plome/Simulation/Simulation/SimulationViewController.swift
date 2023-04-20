@@ -28,6 +28,14 @@ final class SimulationViewController: AppViewController {
         $0.spacing = AppStyles.defaultSpacing(factor: 2)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    private let pageViewControllerContainer: UIView = .init().configure {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private let examTypePageViewController: ExamTypePageViewController = .init(nibName: nil, bundle: nil).configure {
+        $0.view.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     private lazy var secondaryCTASave: SecondaryCTA = .init(title: L10n.Home.calculate).configure { [weak self] in
         //$0.addTarget(self, action: #selector(self?.userDidTapCalculate), for: .touchUpInside)
@@ -72,9 +80,12 @@ final class SimulationViewController: AppViewController {
 
     private func setupConstraint() {
         let margins = view.layoutMarginsGuide
-        
         view.addSubview(scrollView)
         scrollView.addSubview(scrollStackViewContainer)
+        
+        addChild(examTypePageViewController)
+        pageViewControllerContainer.addSubview(examTypePageViewController.view)
+        
         
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
@@ -83,15 +94,22 @@ final class SimulationViewController: AppViewController {
             margins.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
             scrollStackViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            scrollStackViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: scrollStackViewContainer.trailingAnchor),
             scrollStackViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
             scrollStackViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             scrollStackViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
+            pageViewControllerContainer.heightAnchor.constraint(equalToConstant: 800),
+            examTypePageViewController.view.leadingAnchor.constraint(equalTo: pageViewControllerContainer.leadingAnchor),
+            pageViewControllerContainer.trailingAnchor.constraint(equalTo: examTypePageViewController.view.trailingAnchor),
+            examTypePageViewController.view.topAnchor.constraint(equalTo: pageViewControllerContainer.topAnchor),
+            pageViewControllerContainer.bottomAnchor.constraint(equalTo: examTypePageViewController.view.bottomAnchor),
+
             secondaryCTASave.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
         ])
 
-        scrollStackViewContainer.addArrangedSubviews([liveSimulationResultView, secondaryCTASave])
+        examTypePageViewController.didMove(toParent: self)
+        scrollStackViewContainer.addArrangedSubviews([liveSimulationResultView, pageViewControllerContainer, secondaryCTASave])
     }
 
     private func createInfoBarButton() -> UIBarButtonItem {
