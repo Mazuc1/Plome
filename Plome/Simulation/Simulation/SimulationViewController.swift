@@ -18,18 +18,16 @@ final class SimulationViewController: AppViewController {
     private static let liveSimulationResultViewHeight: CGFloat = 70
 
     // MARK: - UI
-
-//    private lazy var tableView = UITableView(frame: .zero, style: .plain).configure { [weak self] in
-//        $0.delegate = self
-//        $0.dataSource = self
-//        $0.backgroundColor = .clear
-//        $0.separatorStyle = .none
-//        $0.showsVerticalScrollIndicator = false
-//        $0.estimatedRowHeight = 50
-//        $0.register(ExamTypeHeaderView.self, forHeaderFooterViewReuseIdentifier: ExamTypeHeaderView.reuseIdentifier)
-//        $0.register(ExamCell.self, forCellReuseIdentifier: ExamCell.reuseIdentifier)
-//        $0.translatesAutoresizingMaskIntoConstraints = false
-//    }
+    
+    private let scrollView: UIScrollView = UIScrollView().configure {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private let scrollStackViewContainer: UIStackView = UIStackView().configure {
+        $0.axis = .vertical
+        $0.spacing = AppStyles.defaultSpacing(factor: 2)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     private lazy var secondaryCTASave: SecondaryCTA = .init(title: L10n.Home.calculate).configure { [weak self] in
         //$0.addTarget(self, action: #selector(self?.userDidTapCalculate), for: .touchUpInside)
@@ -73,14 +71,27 @@ final class SimulationViewController: AppViewController {
     // MARK: - Methods
 
     private func setupConstraint() {
-        view.addSubview(liveSimulationResultView)
-
+        let margins = view.layoutMarginsGuide
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(scrollStackViewContainer)
+        
         NSLayoutConstraint.activate([
-            liveSimulationResultView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            liveSimulationResultView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.trailingAnchor.constraint(equalTo: liveSimulationResultView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            liveSimulationResultView.heightAnchor.constraint(equalToConstant: Self.liveSimulationResultViewHeight),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            scrollView.topAnchor.constraint(equalTo: margins.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            margins.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            scrollStackViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            scrollStackViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            scrollStackViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            scrollStackViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            scrollStackViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            secondaryCTASave.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
         ])
+
+        scrollStackViewContainer.addArrangedSubviews([liveSimulationResultView, secondaryCTASave])
     }
 
     private func createInfoBarButton() -> UIBarButtonItem {
