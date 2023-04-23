@@ -34,10 +34,10 @@ final class ExamTypePageViewController: TabmanViewController {
     }
     
     private lazy var layout: UICollectionViewFlowLayout = .init().configure {
-        $0.itemSize = CGSize(width: (view.frame.width / 3) - AppStyles.defaultSpacing(factor: 2),
-                             height: (view.frame.width / 3) - AppStyles.defaultSpacing(factor: 2))
+        $0.itemSize = CGSize(width: calculateCellWidth(),
+                             height: calculateCellWidth())
         $0.minimumLineSpacing = AppStyles.defaultSpacing
-        $0.minimumInteritemSpacing = 1
+        $0.minimumInteritemSpacing = AppStyles.defaultSpacing
         $0.scrollDirection = .vertical
         $0.sectionInset = .init(top: AppStyles.defaultSpacing,
                                 left: AppStyles.defaultSpacing(factor: 0.5),
@@ -67,6 +67,20 @@ final class ExamTypePageViewController: TabmanViewController {
         
         self.dataSource = self        
         addBar(bar, dataSource: self, at: .top)
+    }
+    
+    // MARK: - Methods
+    
+    private func calculateCellWidth() -> CGFloat {
+        let spacing: CGFloat = AppStyles.defaultSpacing(factor: 4)
+        let insets: CGFloat = 8
+        let minimumLineSpacing: CGFloat = AppStyles.defaultSpacing
+        
+        var calculatedWidth = view.frame.width - spacing
+        calculatedWidth -= insets
+        calculatedWidth -= minimumLineSpacing
+        
+        return CGFloat(calculatedWidth / 2)
     }
 }
 
