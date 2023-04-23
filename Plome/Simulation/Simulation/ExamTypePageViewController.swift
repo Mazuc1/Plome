@@ -11,8 +11,13 @@ import Tabman
 import Pageboy
 
 final class ExamTypePageViewController: TabmanViewController {
-    private var viewControllers = [UIViewController(), UIViewController(), UIViewController()]
     
+    // MARK: - Properties
+    
+    private var viewControllers: [UIViewController] = []
+    private let titles: [String]
+    
+    // MARK: - UI
     
     private let bar: TMBar = TMBar.ButtonBar().configure { bar in
         bar.layout.transitionStyle = .progressive
@@ -27,6 +32,24 @@ final class ExamTypePageViewController: TabmanViewController {
             $0.backgroundColor = PlomeColor.background.color
         }
     }
+    
+    // MARK: - Init
+    
+    required init(titles: [String]) {
+        self.titles = titles
+        
+        for _ in 0..<titles.count {
+            viewControllers.append(.init())
+        }
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +73,6 @@ extension ExamTypePageViewController: PageboyViewControllerDataSource, TMBarData
     }
     
     func barItem(for bar: Tabman.TMBar, at index: Int) -> Tabman.TMBarItemable {
-        TMBarItem(title: "Page \(index)")
+        TMBarItem(title: titles[index])
     }
 }
