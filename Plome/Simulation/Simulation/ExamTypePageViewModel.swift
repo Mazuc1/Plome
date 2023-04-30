@@ -11,7 +11,7 @@ import PlomeCoreKit
 final class ExamTypePageViewModel {
     // MARK: - Properties
     
-    let simulation: Simulation
+    private let simulation: Simulation
     
     lazy var examSectionsName: [String] = {
         var sectionsName: [String] = []
@@ -23,6 +23,14 @@ final class ExamTypePageViewModel {
         return sectionsName
     }()
     
+    lazy var numberOfSectionRows: [Int] = {
+        [
+            simulation.number(of: .trial),
+            simulation.number(of: .continuousControl),
+            simulation.number(of: .option)
+        ]
+    }()
+    
     // MARK: - Init
     
     init(simulation: Simulation) {
@@ -30,5 +38,7 @@ final class ExamTypePageViewModel {
     }
     
     // MARK: - Methods
+    
+    
     
 }
