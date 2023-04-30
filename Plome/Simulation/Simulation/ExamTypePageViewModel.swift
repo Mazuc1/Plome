@@ -13,22 +13,8 @@ final class ExamTypePageViewModel {
     
     private let simulation: Simulation
     
-    lazy var examSectionsName: [String] = {
-        var sectionsName: [String] = []
-        
-        simulation.examsContainTrials() ? sectionsName.append(PlomeCoreKit.L10n.trialsType) : doNothing()
-        simulation.examsContainContinuousControls() ? sectionsName.append(PlomeCoreKit.L10n.continuousControlsType) : doNothing()
-        simulation.examsContainOptions() ? sectionsName.append(PlomeCoreKit.L10n.optionsType) : doNothing()
-        
-        return sectionsName
-    }()
-    
-    lazy var numberOfSectionRows: [Int] = {
-        [
-            simulation.number(of: .trial),
-            simulation.number(of: .continuousControl),
-            simulation.number(of: .option)
-        ]
+    lazy var examTypes: [ExamType] = {
+        simulation.examTypes()
     }()
     
     // MARK: - Init
@@ -39,6 +25,16 @@ final class ExamTypePageViewModel {
     
     // MARK: - Methods
     
+    func numberOfRows(for type: ExamType) -> Int {
+        simulation.number(of: type)
+    }
     
-    
+    func getExam(for index: Int) -> [Exam] {
+        switch index {
+        case 0: return simulation.exams(of: .trial)
+        case 1: return simulation.exams(of: .continuousControl)
+        case 2: return simulation.exams(of: .option)
+        default: return []
+        }
+    }
 }

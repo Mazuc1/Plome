@@ -13,6 +13,14 @@ import Foundation
     case trial
     case option
     case continuousControl
+    
+    public var title: String {
+        switch self {
+        case .trial: return L10n.trialsType
+        case .option: return L10n.optionsType
+        case .continuousControl: return L10n.continuousControlsType
+        }
+    }
 }
 
 @objc(CDExam)

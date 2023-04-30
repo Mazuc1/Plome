@@ -49,8 +49,8 @@ final class ExamTypePageViewController: TabmanViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0..<viewModel.examSectionsName.count {
-            viewControllers.append(.init(numberOfRows: viewModel.numberOfSectionRows[i]))
+        viewModel.examTypes.forEach {
+            viewControllers.append(.init(numberOfRows: viewModel.numberOfRows(for: $0)))
         }
         
         self.dataSource = self        
@@ -86,7 +86,7 @@ extension ExamTypePageViewController: PageboyViewControllerDataSource, TMBarData
     }
     
     func barItem(for bar: Tabman.TMBar, at index: Int) -> Tabman.TMBarItemable {
-        TMBarItem(title: viewModel.examSectionsName[index])
+        TMBarItem(title: viewModel.examTypes[index].title)
     }
 }
 

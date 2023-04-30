@@ -38,6 +38,14 @@ public class Simulation: NSObject, NSCopying, Codable {
     }
 
     // MARK: - Methods
+    
+    public func examTypes() -> [ExamType] {
+        var examTypes: [ExamType] = []
+        examsContainTrials() ? examTypes.append(.trial) : doNothing()
+        examsContainContinuousControls() ? examTypes.append(.continuousControl) : doNothing()
+        examsContainOptions() ? examTypes.append(.option) : doNothing()
+        return examTypes
+    }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
