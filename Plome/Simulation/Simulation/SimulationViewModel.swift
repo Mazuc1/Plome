@@ -18,8 +18,10 @@ final class SimulationViewModel: ObservableObject {
 
     private let router: SimulationsRouter
 
-    let simulation: Simulation
+    @Published var simulation: Simulation
     @Published var canCalculate: Bool = false
+    
+    weak var examTypePageViewControllerInput: ExamTypePageViewControllerInput?
     
     lazy var examTypePageViewModel: ExamTypePageViewModel = {
        return ExamTypePageViewModel(simulation: simulation)
@@ -44,7 +46,7 @@ final class SimulationViewModel: ObservableObject {
 
     func autoFillExams() {
         _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
-        userDidChangeValue()
+        examTypePageViewControllerInput?.updateTableViews()
     }
 }
 
@@ -52,6 +54,7 @@ final class SimulationViewModel: ObservableObject {
 
 extension SimulationViewModel: SimulationViewModelInput {
     func userDidChangeValue() {
-        canCalculate = simulation.gradeIsSetForAllExams()
+        // Update UI of synthesis view
+        //canCalculate = simulation.gradeIsSetForAllExams()
     }
 }

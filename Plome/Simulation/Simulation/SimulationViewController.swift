@@ -25,6 +25,7 @@ final class SimulationViewController: AppViewController {
     
     private lazy var examTypePageViewController: ExamTypePageViewController = .init(viewModel: viewModel.examTypePageViewModel).configure {
         $0.view.translatesAutoresizingMaskIntoConstraints = false
+        viewModel.examTypePageViewControllerInput = $0
     }
     
     private let liveSimulationResultView: LiveSimulationResultView = .init(frame: .zero).configure {

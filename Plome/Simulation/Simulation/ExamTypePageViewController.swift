@@ -10,13 +10,16 @@ import PlomeCoreKit
 import Tabman
 import Pageboy
 
+protocol ExamTypePageViewControllerInput: AnyObject {
+    func updateTableViews()
+}
+
 final class ExamTypePageViewController: TabmanViewController {
-    
     // MARK: - Properties
     
     private var viewControllers: [ExamListViewController] = []
     private let viewModel: ExamTypePageViewModel
-    
+        
     // MARK: - UI
     
     private let bar: TMBar = TMBar.ButtonBar().configure { bar in
@@ -48,27 +51,21 @@ final class ExamTypePageViewController: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         viewModel.examTypes.forEach {
-            viewControllers.append(.init(numberOfRows: viewModel.numberOfRows(for: $0)))
+            viewControllers.append(.init(exams: viewModel.getExam(of: $0)))
         }
-        
+                
         self.dataSource = self        
         addBar(bar, dataSource: self, at: .top)
     }
     
     // MARK: - Methods
-    
-    private func calculateCellWidth() -> CGFloat {
-        let spacing: CGFloat = AppStyles.defaultSpacing(factor: 4)
-        let insets: CGFloat = 8
-        let minimumLineSpacing: CGFloat = AppStyles.defaultSpacing
-        
-        var calculatedWidth = view.frame.width - spacing
-        calculatedWidth -= insets
-        calculatedWidth -= minimumLineSpacing
-        
-        return CGFloat(calculatedWidth / 2)
+}
+
+extension ExamTypePageViewController: ExamTypePageViewControllerInput {
+    func updateTableViews() {
+        viewControllers.forEach { $0.tableView.reloadData() }
     }
 }
 
@@ -81,25 +78,25 @@ extension ExamTypePageViewController: PageboyViewControllerDataSource, TMBarData
         viewControllers[index]
     }
     
-    func defaultPage(for pageboyViewController: Pageboy.PageboyViewController) -> Pageboy.PageboyViewController.Page? {
-        nil
-    }
+    func defaultPage(for pageboyViewController: Pageboy.PageboyViewController) -> Pageboy.PageboyViewController.Page? { nil }
     
     func barItem(for bar: Tabman.TMBar, at index: Int) -> Tabman.TMBarItemable {
         TMBarItem(title: viewModel.examTypes[index].title)
     }
 }
 
+// MARK: - ExamListViewController
+
 final class ExamListViewController: UITableViewController {
     
     // MARK: - Properties
     
-    let numberOfRows: Int
+    let exams: [Exam]
         
     // MARK: - Init
     
-    required init(numberOfRows: Int) {
-        self.numberOfRows = numberOfRows
+    required init(exams: [Exam]) {
+        self.exams = exams
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -117,13 +114,11 @@ final class ExamListViewController: UITableViewController {
         tableView.register(ExamCell.self, forCellReuseIdentifier: ExamCell.reuseIdentifier)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows
-    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { exams.count }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExamCell.reuseIdentifier, for: indexPath) as? ExamCell else { return UITableViewCell() }
-        cell.setup(exam: .init(name: "Test", coefficient: 1, grade: 12, ratio: 20, type: .trial))
+        cell.setup(exam: exams[indexPath.row])
         return cell
     }
 }

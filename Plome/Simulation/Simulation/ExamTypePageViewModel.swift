@@ -11,7 +11,7 @@ import PlomeCoreKit
 final class ExamTypePageViewModel {
     // MARK: - Properties
     
-    private let simulation: Simulation
+    let simulation: Simulation
     
     lazy var examTypes: [ExamType] = {
         simulation.examTypes()
@@ -25,16 +25,7 @@ final class ExamTypePageViewModel {
     
     // MARK: - Methods
     
-    func numberOfRows(for type: ExamType) -> Int {
-        simulation.number(of: type)
-    }
-    
-    func getExam(for index: Int) -> [Exam] {
-        switch index {
-        case 0: return simulation.exams(of: .trial)
-        case 1: return simulation.exams(of: .continuousControl)
-        case 2: return simulation.exams(of: .option)
-        default: return []
-        }
+    func getExam(of type: ExamType) -> [Exam] {
+        simulation.exams(of: type)
     }
 }
