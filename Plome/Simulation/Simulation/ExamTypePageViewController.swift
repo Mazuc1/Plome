@@ -15,7 +15,7 @@ final class ExamTypePageViewController: TabmanViewController {
     // MARK: - Properties
     
     private var viewControllers: [ExamListViewController] = []
-    private let titles: [String]
+    private let viewModel: ExamTypePageViewModel
     
     // MARK: - UI
     
@@ -35,8 +35,8 @@ final class ExamTypePageViewController: TabmanViewController {
     
     // MARK: - Init
     
-    required init(titles: [String]) {
-        self.titles = titles
+    required init(viewModel: ExamTypePageViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,7 +49,7 @@ final class ExamTypePageViewController: TabmanViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for _ in 0..<titles.count {
+        for _ in 0..<viewModel.examSectionsName.count {
             viewControllers.append(.init())
         }
         
@@ -86,7 +86,7 @@ extension ExamTypePageViewController: PageboyViewControllerDataSource, TMBarData
     }
     
     func barItem(for bar: Tabman.TMBar, at index: Int) -> Tabman.TMBarItemable {
-        TMBarItem(title: titles[index])
+        TMBarItem(title: viewModel.examSectionsName[index])
     }
 }
 

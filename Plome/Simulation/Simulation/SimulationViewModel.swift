@@ -20,6 +20,10 @@ final class SimulationViewModel: ObservableObject {
 
     let simulation: Simulation
     @Published var canCalculate: Bool = false
+    
+    lazy var examTypePageViewModel: ExamTypePageViewModel = {
+       return ExamTypePageViewModel(simulation: simulation)
+    }()
 
     // MARK: - Init
 
@@ -41,16 +45,6 @@ final class SimulationViewModel: ObservableObject {
     func autoFillExams() {
         _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
         userDidChangeValue()
-    }
-    
-    func examSectionsName() -> [String] {
-        var sectionsName: [String] = []
-        
-        simulation.examsContainTrials() ? sectionsName.append(PlomeCoreKit.L10n.trialsType) : doNothing()
-        simulation.examsContainContinuousControls() ? sectionsName.append(PlomeCoreKit.L10n.continuousControlsType) : doNothing()
-        simulation.examsContainOptions() ? sectionsName.append(PlomeCoreKit.L10n.optionsType) : doNothing()
-        
-        return sectionsName
     }
 }
 

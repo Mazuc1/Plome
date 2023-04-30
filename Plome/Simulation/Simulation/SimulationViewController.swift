@@ -23,7 +23,7 @@ final class SimulationViewController: AppViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private lazy var examTypePageViewController: ExamTypePageViewController = .init(titles: viewModel.examSectionsName()).configure {
+    private lazy var examTypePageViewController: ExamTypePageViewController = .init(viewModel: viewModel.examTypePageViewModel).configure {
         $0.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
