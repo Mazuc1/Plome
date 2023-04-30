@@ -18,7 +18,7 @@ final class ExamCell: UITableViewCell {
 
     weak var simulationViewModelInput: SimulationViewModelInput?
 
-    private static let cellHeight: CGFloat = 70
+    private static let cellHeight: CGFloat = 60
     private static let textFieldGradeWidth: CGFloat = 80
 
     // MARK: - UI
@@ -31,7 +31,7 @@ final class ExamCell: UITableViewCell {
     }
 
     private let labelRatio: UILabel = .init().configure {
-        $0.font = PlomeFont.bodyM.font
+        $0.font = PlomeFont.demiBoldM.font
         $0.textColor = PlomeColor.darkBlue.color
         $0.textAlignment = .left
     }
@@ -59,17 +59,7 @@ final class ExamCell: UITableViewCell {
         $0.keyboardType = .numbersAndPunctuation
         $0.returnKeyType = .done
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
-    }
-
-    private let separator: UIView = .init().configure {
-        $0.backgroundColor = .black
-        $0.layer.cornerRadius = 1.5
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            $0.heightAnchor.constraint(equalToConstant: 3),
-            $0.widthAnchor.constraint(equalToConstant: 70),
-        ])
+        $0.widthAnchor.constraint(equalToConstant: 70).isActive = true
     }
 
     private lazy var leftStackView = UIStackView().configure {
@@ -82,11 +72,11 @@ final class ExamCell: UITableViewCell {
     }
 
     private lazy var rightStackView = UIStackView().configure {
-        $0.axis = .vertical
+        $0.axis = .horizontal
         $0.alignment = .center
-        $0.distribution = .equalSpacing
+        $0.distribution = .fill
         $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
-        $0.addArrangedSubviews([textFieldGrade, separator, labelRatio])
+        $0.addArrangedSubviews([textFieldGrade, labelRatio])
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -128,7 +118,7 @@ final class ExamCell: UITableViewCell {
         }
 
         if let ratio = exam?.ratio {
-            labelRatio.text = "\(ratio)"
+            labelRatio.text = "/ \(ratio)"
         }
 
         if let coeff = exam?.coefficient {
@@ -155,8 +145,6 @@ final class ExamCell: UITableViewCell {
 
             containerView.trailingAnchor.constraint(equalTo: rightStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
             rightStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            rightStackView.widthAnchor.constraint(equalToConstant: Self.textFieldGradeWidth),
-
             rightStackView.leadingAnchor.constraint(equalTo: leftStackView.trailingAnchor, constant: AppStyles.defaultSpacing),
         ])
     }

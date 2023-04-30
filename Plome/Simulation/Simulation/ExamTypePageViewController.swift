@@ -33,17 +33,17 @@ final class ExamTypePageViewController: TabmanViewController {
         }
     }
     
-    private lazy var layout: UICollectionViewFlowLayout = .init().configure {
-        $0.itemSize = CGSize(width: calculateCellWidth(),
-                             height: calculateCellWidth())
-        $0.minimumLineSpacing = AppStyles.defaultSpacing
-        $0.minimumInteritemSpacing = AppStyles.defaultSpacing
-        $0.scrollDirection = .vertical
-        $0.sectionInset = .init(top: AppStyles.defaultSpacing,
-                                left: AppStyles.defaultSpacing(factor: 0.5),
-                                bottom: AppStyles.defaultSpacing,
-                                right: AppStyles.defaultSpacing(factor: 0.5))
-    }
+//    private lazy var layout: UICollectionViewFlowLayout = .init().configure {
+//        $0.itemSize = CGSize(width: calculateCellWidth(),
+//                             height: 110)
+//        $0.minimumLineSpacing = AppStyles.defaultSpacing
+//        $0.minimumInteritemSpacing = AppStyles.defaultSpacing
+//        $0.scrollDirection = .vertical
+//        $0.sectionInset = .init(top: AppStyles.defaultSpacing,
+//                                left: AppStyles.defaultSpacing(factor: 0.5),
+//                                bottom: AppStyles.defaultSpacing,
+//                                right: AppStyles.defaultSpacing(factor: 0.5))
+//    }
     
     // MARK: - Init
     
@@ -62,7 +62,7 @@ final class ExamTypePageViewController: TabmanViewController {
         super.viewDidLoad()
         
         for _ in 0..<titles.count {
-            viewControllers.append(.init(collectionViewLayout: layout))
+            viewControllers.append(.init())
         }
         
         self.dataSource = self        
@@ -102,31 +102,29 @@ extension ExamTypePageViewController: PageboyViewControllerDataSource, TMBarData
     }
 }
 
-final class GridExamTypeViewController: UICollectionViewController {
+final class GridExamTypeViewController: UITableViewController {
     
     // MARK: - Properties
-    
-    private let reuseIdentifier: String = "cell"
-    
+        
     // MARK: - UI
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = PlomeColor.background.color
-        collectionView.register(UICollectionViewCell.self,
-                                forCellWithReuseIdentifier: reuseIdentifier)
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.backgroundColor = PlomeColor.background.color
+        tableView.register(ExamCell.self, forCellReuseIdentifier: ExamCell.reuseIdentifier)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Should return number of exam for section type
-        return 12
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (3...7).randomElement()!
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath).configure {
-            $0.backgroundColor = .blue
-        }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ExamCell.reuseIdentifier, for: indexPath) as? ExamCell else { return UITableViewCell() }
+        cell.setup(exam: .init(name: "Test", coefficient: 1, grade: 12, ratio: 20, type: .trial))
+        return cell
     }
 }
