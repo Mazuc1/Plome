@@ -14,7 +14,7 @@ final class ExamTypePageViewController: TabmanViewController {
     
     // MARK: - Properties
     
-    private var viewControllers: [GridExamTypeViewController] = []
+    private var viewControllers: [ExamListViewController] = []
     private let titles: [String]
     
     // MARK: - UI
@@ -32,18 +32,6 @@ final class ExamTypePageViewController: TabmanViewController {
             $0.backgroundColor = PlomeColor.background.color
         }
     }
-    
-//    private lazy var layout: UICollectionViewFlowLayout = .init().configure {
-//        $0.itemSize = CGSize(width: calculateCellWidth(),
-//                             height: 110)
-//        $0.minimumLineSpacing = AppStyles.defaultSpacing
-//        $0.minimumInteritemSpacing = AppStyles.defaultSpacing
-//        $0.scrollDirection = .vertical
-//        $0.sectionInset = .init(top: AppStyles.defaultSpacing,
-//                                left: AppStyles.defaultSpacing(factor: 0.5),
-//                                bottom: AppStyles.defaultSpacing,
-//                                right: AppStyles.defaultSpacing(factor: 0.5))
-//    }
     
     // MARK: - Init
     
@@ -102,7 +90,7 @@ extension ExamTypePageViewController: PageboyViewControllerDataSource, TMBarData
     }
 }
 
-final class GridExamTypeViewController: UITableViewController {
+final class ExamListViewController: UITableViewController {
     
     // MARK: - Properties
         
