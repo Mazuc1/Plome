@@ -55,7 +55,9 @@ final class SimulationViewModel: ObservableObject {
 
 extension SimulationViewModel: SimulationViewModelInput {
     func didChangeSimulationExamGrade() {
-        simulationLiveInfosInput?.didUpdate(simulationLiveInfos: (simulation.average(),
-                                                                       simulation.gradeIsSetForAllExams()))
+        let simulationLiveInfos = SimulationLiveInfos(average: simulation.average(),
+                                                      isAllGradeSet: simulation.gradeIsSetForAllExams(),
+                                                      mention: simulation.mention())
+        simulationLiveInfosInput?.didUpdate(simulationLiveInfos: simulationLiveInfos)
     }
 }

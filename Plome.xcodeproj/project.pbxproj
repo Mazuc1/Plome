@@ -45,6 +45,7 @@
 		CF4F1846291D008C003F005B /* SimulationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1845291D008C003F005B /* SimulationResultViewController.swift */; };
 		CF4F1848291D009B003F005B /* SimulationResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F1847291D009B003F005B /* SimulationResultViewModel.swift */; };
 		CF5B5F2C2921B848002EF9BD /* GradeInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F2B2921B848002EF9BD /* GradeInformationCell.swift */; };
+		CF7ED9572A118ADE006E94EA /* SimulationLiveInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9562A118ADE006E94EA /* SimulationLiveInfos.swift */; };
 		CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */; };
 		CF852674290FF4FD00D58B2A /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF852673290FF4FD00D58B2A /* SimulationViewController.swift */; };
 		CF852676290FF51800D58B2A /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF852675290FF51800D58B2A /* SimulationViewModel.swift */; };
@@ -150,6 +151,7 @@
 		CF59EABD28ECD3580041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59EAF428ECD75E0041B33B /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5B5F2B2921B848002EF9BD /* GradeInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeInformationCell.swift; sourceTree = "<group>"; };
+		CF7ED9562A118ADE006E94EA /* SimulationLiveInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationLiveInfos.swift; sourceTree = "<group>"; };
 		CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExamCell.swift; sourceTree = "<group>"; };
 		CF852673290FF4FD00D58B2A /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
 		CF852675290FF51800D58B2A /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				CF48938F2915439100B97147 /* ExamCell.swift */,
 				CF035FF929F12DFA005196D6 /* ExamTypePageViewController.swift */,
 				CFF4DB7F29FE9BEE008D05A6 /* ExamTypePageViewModel.swift */,
+				CF7ED9562A118ADE006E94EA /* SimulationLiveInfos.swift */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				CFB51234294C7AB700979309 /* OnboardingFlowController.swift in Sources */,
 				CF852676290FF51800D58B2A /* SimulationViewModel.swift in Sources */,
 				CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */,
+				CF7ED9572A118ADE006E94EA /* SimulationLiveInfos.swift in Sources */,
 				CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */,
 				CF02ABCD295D141900B5FCC9 /* ShareSimulationModelService.swift in Sources */,
 				CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */,

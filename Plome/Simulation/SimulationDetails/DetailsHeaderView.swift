@@ -153,6 +153,7 @@ final class MentionView: UIView {
         
         titleLabel.text = mention.name
         titleLabel.textColor = mention.plomeColor.color
+        imageView.image = Icons.medal.configure(weight: .regular, color: mention.plomeColor, size: 15)
         backgroundColor = mention.plomeColor.color.withAlphaComponent(0.1)
     }
 }

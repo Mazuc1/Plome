@@ -119,34 +119,16 @@ final class SimulationViewController: AppViewController {
 // MARK: - LiveSimulationResultView
 
 protocol SimulationLiveInfosInput: AnyObject {
-    func didUpdate(simulationLiveInfos: (average: Float, isAllGradeSet: Bool))
+    func didUpdate(simulationLiveInfos: SimulationLiveInfos)
 }
 
 private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     
     // MARK: - Properties
     
-    private enum GradesState {
-        case filled, missing
-        
-        var description: String {
-            switch self {
-            case .filled: return "Toutes les note sont remplis !"
-            case .missing: return "Toutes les note ne sont pas remplis."
-            }
-        }
-        
-        var icon: UIImage {
-            switch self {
-            case .filled: return Icons.success.configure(weight: .regular, color: .success, size: 15)
-            case .missing: return Icons.fail.configure(weight: .regular, color: .fail, size: 15)
-            }
-        }
-    }
-    
     // MARK: - UI
     
-    private let mentionView: MentionView = .init(frame: .zero, mention: .B)
+    private let mentionView: MentionView = .init(frame: .zero, mention: .cannotBeCalculated)
     
     private let gradeLabel: UILabel = .init().configure {
         $0.font = PlomeFont.demiBoldL.font
@@ -217,16 +199,10 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
         stackView.stretchInView(parentView: self)
     }
     
-    func didUpdate(simulationLiveInfos: (average: Float, isAllGradeSet: Bool)) {
-        if simulationLiveInfos.isAllGradeSet {
-            gradesStateLabel.text = GradesState.filled.description
-            imageView.image = GradesState.filled.icon
-        } else {
-            gradesStateLabel.text = GradesState.missing.description
-            imageView.image = GradesState.missing.icon
-        }
-        
-        let gradeText = simulationLiveInfos.average == -1 ? "-- / 20" : "\(simulationLiveInfos.average.truncate(places: 2)) / 20"
-        gradeLabel.text = gradeText
+    func didUpdate(simulationLiveInfos: SimulationLiveInfos) {
+        gradesStateLabel.text = simulationLiveInfos.gradesState.description
+        imageView.image = simulationLiveInfos.gradesState.icon
+        gradeLabel.text = simulationLiveInfos.averageText
+        mentionView.update(mention: simulationLiveInfos.mention)
     }
 }

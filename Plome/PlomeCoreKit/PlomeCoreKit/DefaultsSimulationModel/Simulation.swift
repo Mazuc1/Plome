@@ -129,6 +129,29 @@ public class Simulation: NSObject, NSCopying, Codable {
         
         return (totalGrade / totalOn) * 20
     }
+    
+    public func mention() -> Mention {
+        guard let exams else { return .without }
+        var totalGrade: Float = 0
+        var totalOn: Float = 0
+        
+        var filteredExams = exams
+            .map { $0.getGradeInformation() }
+        
+        filteredExams.removeAll { $0.lhs == -1 || $0.rhs == -1 || $0.coeff == -1 }
+        if filteredExams.count != exams.count { return .cannotBeCalculated }
+        
+        filteredExams.forEach {
+            totalGrade += $0.lhs * $0.coeff
+            totalOn += $0.rhs * $0.coeff
+        }
+        
+        let mentionCalculator = MentionCalculator(simulationType: type,
+                                                  totalGrade: totalGrade,
+                                                  totalOutOf: totalOn)
+        
+        return mentionCalculator.mention()
+    }
 
     public func mergeAndConvertExams(in context: NSManagedObjectContext, for cdSimulation: CDSimulation) -> Set<CDExam> {
         var cdExams: Set<CDExam> = .init()
