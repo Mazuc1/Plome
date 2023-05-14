@@ -21,7 +21,7 @@ final class SimulationViewModel: ObservableObject {
     @Published var simulation: Simulation
     
     weak var examTypePageViewControllerInput: ExamTypePageViewControllerInput?
-    weak var liveSimulationResultViewInput: LiveSimulationResultViewInput?
+    weak var simulationLiveInfosInput: SimulationLiveInfosInput?
     
     lazy var examTypePageViewModel: ExamTypePageViewModel = {
        let viewModel = ExamTypePageViewModel(simulation: simulation)
@@ -55,7 +55,7 @@ final class SimulationViewModel: ObservableObject {
 
 extension SimulationViewModel: SimulationViewModelInput {
     func didChangeSimulationExamGrade() {
-        liveSimulationResultViewInput?.didUpdate(liveSimulationInfos: (simulation.average(),
+        simulationLiveInfosInput?.didUpdate(simulationLiveInfos: (simulation.average(),
                                                                        simulation.gradeIsSetForAllExams()))
     }
 }

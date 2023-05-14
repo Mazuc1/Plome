@@ -28,7 +28,7 @@ final class SimulationViewController: AppViewController {
         viewModel.examTypePageViewControllerInput = $0
     }
     
-    private let liveSimulationResultView: LiveSimulationResultView = .init(frame: .zero).configure {
+    private let simulationLiveInfosView: SimulationLiveInfosView = .init(frame: .zero).configure {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -48,7 +48,7 @@ final class SimulationViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.liveSimulationResultViewInput = liveSimulationResultView
+        viewModel.simulationLiveInfosInput = simulationLiveInfosView
         
         navigationItem.title = viewModel.simulation.name
         navigationItem.rightBarButtonItems = []
@@ -65,12 +65,12 @@ final class SimulationViewController: AppViewController {
     // MARK: - Methods
 
     private func setupConstraint() {
-        view.addSubview(liveSimulationResultView)
+        view.addSubview(simulationLiveInfosView)
 
         NSLayoutConstraint.activate([
-            liveSimulationResultView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.trailingAnchor.constraint(equalTo: liveSimulationResultView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            liveSimulationResultView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            simulationLiveInfosView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            view.trailingAnchor.constraint(equalTo: simulationLiveInfosView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            simulationLiveInfosView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
         
         view.addSubview(pageViewControllerContainer)
@@ -79,7 +79,7 @@ final class SimulationViewController: AppViewController {
         
         
         NSLayoutConstraint.activate([
-            pageViewControllerContainer.topAnchor.constraint(equalTo: liveSimulationResultView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            pageViewControllerContainer.topAnchor.constraint(equalTo: simulationLiveInfosView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             pageViewControllerContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             view.trailingAnchor.constraint(equalTo: pageViewControllerContainer.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             pageViewControllerContainer.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
@@ -118,11 +118,11 @@ final class SimulationViewController: AppViewController {
 
 // MARK: - LiveSimulationResultView
 
-protocol LiveSimulationResultViewInput: AnyObject {
-    func didUpdate(liveSimulationInfos: (average: Float, isAllGradeSet: Bool))
+protocol SimulationLiveInfosInput: AnyObject {
+    func didUpdate(simulationLiveInfos: (average: Float, isAllGradeSet: Bool))
 }
 
-private final class LiveSimulationResultView: UIView, LiveSimulationResultViewInput {
+private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     
     // MARK: - Properties
     
@@ -217,8 +217,8 @@ private final class LiveSimulationResultView: UIView, LiveSimulationResultViewIn
         stackView.stretchInView(parentView: self)
     }
     
-    func didUpdate(liveSimulationInfos: (average: Float, isAllGradeSet: Bool)) {
-        if liveSimulationInfos.isAllGradeSet {
+    func didUpdate(simulationLiveInfos: (average: Float, isAllGradeSet: Bool)) {
+        if simulationLiveInfos.isAllGradeSet {
             gradesStateLabel.text = GradesState.filled.description
             imageView.image = GradesState.filled.icon
         } else {
@@ -226,7 +226,7 @@ private final class LiveSimulationResultView: UIView, LiveSimulationResultViewIn
             imageView.image = GradesState.missing.icon
         }
         
-        let gradeText = liveSimulationInfos.average == -1 ? "-- / 20" : "\(liveSimulationInfos.average.truncate(places: 2)) / 20"
+        let gradeText = simulationLiveInfos.average == -1 ? "-- / 20" : "\(simulationLiveInfos.average.truncate(places: 2)) / 20"
         gradeLabel.text = gradeText
     }
 }
