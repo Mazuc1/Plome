@@ -48,16 +48,16 @@ final class SimulationViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.liveSimulationResultViewInput = liveSimulationResultView
+        
         navigationItem.title = viewModel.simulation.name
-
         navigationItem.rightBarButtonItems = []
         navigationItem.rightBarButtonItems?.append(createInfoBarButton())
+        navigationItem.backButtonDisplayMode = .minimal
 
         #if DEBUG
             navigationItem.rightBarButtonItems?.append(createDebugBarButton())
         #endif
-
-        navigationItem.backButtonDisplayMode = .minimal
 
         setupConstraint()
     }
@@ -118,9 +118,31 @@ final class SimulationViewController: AppViewController {
 
 // MARK: - LiveSimulationResultView
 
-private final class LiveSimulationResultView: UIView {
+protocol LiveSimulationResultViewInput: AnyObject {
+    func didUpdate(liveSimulationInfos: (average: Float, isAllGradeSet: Bool))
+}
+
+private final class LiveSimulationResultView: UIView, LiveSimulationResultViewInput {
     
     // MARK: - Properties
+    
+    private enum GradesState {
+        case filled, missing
+        
+        var description: String {
+            switch self {
+            case .filled: return "Toutes les note sont remplis !"
+            case .missing: return "Toutes les note ne sont pas remplis."
+            }
+        }
+        
+        var icon: UIImage {
+            switch self {
+            case .filled: return Icons.success.configure(weight: .regular, color: .success, size: 15)
+            case .missing: return Icons.fail.configure(weight: .regular, color: .fail, size: 15)
+            }
+        }
+    }
     
     // MARK: - UI
     
@@ -174,7 +196,7 @@ private final class LiveSimulationResultView: UIView {
     
     // MARK: - Init
 
-    public required override init(frame: CGRect) {
+    required override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
@@ -184,7 +206,7 @@ private final class LiveSimulationResultView: UIView {
     }
     
     private func setupView() {
-        gradeLabel.text = "13.23 / 20"
+        gradeLabel.text = "-- / 20"
         gradesStateLabel.text = "Toutes les note ne sont pas remplis"
         imageView.image = Icons.fail.configure(weight: .regular, color: .fail, size: 15)
         
@@ -193,5 +215,18 @@ private final class LiveSimulationResultView: UIView {
         
         stackView.addArrangedSubviews([topStackView, bottomStackView])
         stackView.stretchInView(parentView: self)
+    }
+    
+    func didUpdate(liveSimulationInfos: (average: Float, isAllGradeSet: Bool)) {
+        if liveSimulationInfos.isAllGradeSet {
+            gradesStateLabel.text = GradesState.filled.description
+            imageView.image = GradesState.filled.icon
+        } else {
+            gradesStateLabel.text = GradesState.missing.description
+            imageView.image = GradesState.missing.icon
+        }
+        
+        let gradeText = liveSimulationInfos.average == -1 ? "-- / 20" : "\(liveSimulationInfos.average.truncate(places: 2)) / 20"
+        gradeLabel.text = gradeText
     }
 }

@@ -55,6 +55,8 @@ final class ExamTypePageViewController: TabmanViewController {
         viewModel.examTypes.forEach {
             viewControllers.append(.init(exams: viewModel.getExam(of: $0)))
         }
+        
+        viewControllers.forEach { $0.simulationViewModelInput = viewModel.simulationViewModelInput }
                 
         self.dataSource = self        
         addBar(bar, dataSource: self, at: .top)
@@ -92,6 +94,7 @@ final class ExamListViewController: UITableViewController {
     // MARK: - Properties
     
     let exams: [Exam]
+    weak var simulationViewModelInput: SimulationViewModelInput?
         
     // MARK: - Init
     
@@ -119,6 +122,7 @@ final class ExamListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExamCell.reuseIdentifier, for: indexPath) as? ExamCell else { return UITableViewCell() }
         cell.setup(exam: exams[indexPath.row])
+        cell.simulationViewModelInput = simulationViewModelInput
         return cell
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import PlomeCoreKit
 
 protocol SimulationViewModelInput: AnyObject {
-    func userDidChangeValue()
+    func didChangeSimulationExamGrade()
 }
 
 final class SimulationViewModel: ObservableObject {
@@ -19,12 +19,14 @@ final class SimulationViewModel: ObservableObject {
     private let router: SimulationsRouter
 
     @Published var simulation: Simulation
-    @Published var canCalculate: Bool = false
     
     weak var examTypePageViewControllerInput: ExamTypePageViewControllerInput?
+    weak var liveSimulationResultViewInput: LiveSimulationResultViewInput?
     
     lazy var examTypePageViewModel: ExamTypePageViewModel = {
-       return ExamTypePageViewModel(simulation: simulation)
+       let viewModel = ExamTypePageViewModel(simulation: simulation)
+        viewModel.simulationViewModelInput = self
+        return viewModel
     }()
 
     // MARK: - Init
@@ -33,9 +35,7 @@ final class SimulationViewModel: ObservableObject {
         self.router = router
         self.simulation = simulation
 
-        // Needed when user remake a simulation from details to allow calculation.
-        // Without this, the user need to edit one field to enable button
-        userDidChangeValue()
+        didChangeSimulationExamGrade()
     }
 
     // MARK: - Methods
@@ -47,14 +47,15 @@ final class SimulationViewModel: ObservableObject {
     func autoFillExams() {
         _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
         examTypePageViewControllerInput?.updateTableViews()
+        didChangeSimulationExamGrade()
     }
 }
 
 // MARK: - SimulationViewModelInput
 
 extension SimulationViewModel: SimulationViewModelInput {
-    func userDidChangeValue() {
-        // Update UI of synthesis view
-        //canCalculate = simulation.gradeIsSetForAllExams()
+    func didChangeSimulationExamGrade() {
+        liveSimulationResultViewInput?.didUpdate(liveSimulationInfos: (simulation.average(),
+                                                                       simulation.gradeIsSetForAllExams()))
     }
 }

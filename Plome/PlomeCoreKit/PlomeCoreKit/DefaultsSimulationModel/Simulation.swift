@@ -111,6 +111,24 @@ public class Simulation: NSObject, NSCopying, Codable {
     public func add(exam: Exam) {
         exams?.insert(exam)
     }
+    
+    public func average() -> Float {
+        guard let exams else { return -1 }
+        var totalGrade: Float = 0
+        var totalOn: Float = 0
+        
+        var filteredExams = exams
+            .map { $0.getGradeInformation() }
+        
+        filteredExams.removeAll { $0.lhs == -1 || $0.rhs == -1 || $0.coeff == -1 }
+        
+        filteredExams.forEach {
+            totalGrade += $0.lhs * $0.coeff
+            totalOn += $0.rhs * $0.coeff
+        }
+        
+        return (totalGrade / totalOn) * 20
+    }
 
     public func mergeAndConvertExams(in context: NSManagedObjectContext, for cdSimulation: CDSimulation) -> Set<CDExam> {
         var cdExams: Set<CDExam> = .init()

@@ -12,6 +12,7 @@ final class ExamTypePageViewModel {
     // MARK: - Properties
     
     let simulation: Simulation
+    weak var simulationViewModelInput: SimulationViewModelInput?
     
     lazy var examTypes: [ExamType] = {
         simulation.examTypes()

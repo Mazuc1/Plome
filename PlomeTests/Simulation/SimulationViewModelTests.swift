@@ -19,7 +19,7 @@ final class SimulationViewModelTests: XCTestCase {
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
     }
 
-    // MARK: - userDidChangeValue
+    // MARK: - didChangeSimulationExamGrade
 
     func testWhenMissingOneOrMoreExamGradeThenCalculationIsDisabled() {
         // Arrange
@@ -30,7 +30,7 @@ final class SimulationViewModelTests: XCTestCase {
         let simulationViewModel = SimulationViewModel(router: simulationsRouter, simulation: simulation)
 
         // Act
-        simulationViewModel.userDidChangeValue()
+        simulationViewModel.didChangeSimulationExamGrade()
 
         // Assert
         XCTAssertFalse(simulationViewModel.canCalculate)
@@ -45,7 +45,7 @@ final class SimulationViewModelTests: XCTestCase {
         let simulationViewModel = SimulationViewModel(router: simulationsRouter, simulation: simulation)
 
         // Act
-        simulationViewModel.userDidChangeValue()
+        simulationViewModel.didChangeSimulationExamGrade()
 
         // Assert
         XCTAssertTrue(simulationViewModel.canCalculate)

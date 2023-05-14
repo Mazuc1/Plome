@@ -163,7 +163,7 @@ extension ExamCell: UITextFieldDelegate {
 
         setStyle(for: textField, saveSucceed: saveResult ?? false)
 
-        simulationViewModelInput?.userDidChangeValue()
+        simulationViewModelInput?.didChangeSimulationExamGrade()
     }
 
     private func setStyle(for textField: UITextField, saveSucceed: Bool) {
