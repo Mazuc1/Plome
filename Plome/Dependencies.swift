@@ -16,5 +16,6 @@ final class PlomeContainer: SharedContainer {
 extension PlomeContainer {
     var shareSimulationModelService: Factory<ShareSimulationModelServiceProtocol> {
         self { ShareSimulationModelService() }
+            .shared
     }
 }
