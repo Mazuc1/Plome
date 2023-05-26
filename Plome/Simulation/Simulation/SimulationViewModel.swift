@@ -40,10 +40,6 @@ final class SimulationViewModel: ObservableObject {
 
     // MARK: - Methods
 
-    func userDidTapCalculate() {
-        router.openSimulationResult(with: simulation)
-    }
-
     func autoFillExams() {
         _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
         examTypePageViewControllerInput?.updateTableViews()
