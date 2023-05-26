@@ -13,112 +13,112 @@ final class SimulationTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     // MARK: - mention
-    
+
     func testWhenSimulationHaveNilGradesThenWithoutMentionIsReturned() {
         // Arrange
         let expectedMention: Mention = .without
         let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
-        
+
         // Act
         let mention = simulation.mention()
-        
+
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
-    
+
     func testWhenGradesSimulationAreNotAllFillThenCannotBeCalculatedMentionIsReturned() {
         // Arrange
         let expectedMention: Mention = .cannotBeCalculated
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: 1, grade: nil, ratio: 20, type: .continuousControl))
-        
+
         // Act
         let mention = simulation.mention()
-        
+
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
-    
+
     func testThatMentionOfSimulationReturnedCorrectValue() {
         // Arrange
         let expectedMention: Mention = .AB
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 14, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .continuousControl))
-        
+
         // Act
         let mention = simulation.mention()
-        
+
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
-    
+
     // MARK: - average
-    
+
     func testWhenSimulationHaveNilGradesThenAverageReturnedDefaultValue() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
-        
+
         // Act
         let average = simulation.average()
-        
+
         // Assert
         XCTAssertEqual(average, -1)
     }
-    
+
     func testWhenSimulationHaveEmptyGradesThenAverageReturnedDefaultValue() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: nil, type: .custom)
         simulation.add(exam: .init(name: "", coefficient: 1, grade: nil, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: 1, grade: nil, ratio: 20, type: .continuousControl))
-        
+
         // Act
         let average = simulation.average()
-        
+
         // Assert
         XCTAssertEqual(average, -1)
     }
-    
+
     func testThatAverageOfSimulationReturnedCorrectValue() {
         // Arrange
         let expectedAverage: Float = 11.04
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         simulation.add(exam: .init(name: "", coefficient: 0.75, grade: 13.34, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: 1.5, grade: 9.89, ratio: 20, type: .continuousControl))
-        
+
         // Act
         let average = simulation.average()
-        
+
         // Assert
         XCTAssertEqual(average, expectedAverage)
     }
-    
+
     // MARK: - examTypes
-    
+
     func testWhenGetExamTypesOfSimulationThenExamTypesAreReturned() {
         // Arrange
         let expectedExamTypes: [ExamType] = [.trial, .continuousControl]
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .continuousControl))
-        
+
         // Act
         let examTypes = simulation.examTypes()
-        
+
         // Assert
         XCTAssertEqual(examTypes, expectedExamTypes)
     }
-    
+
     func testWhenGetExamTypesOfEmptySimulationThenEmptyArrayIsReturned() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
-        
+
         // Act
         let examTypes = simulation.examTypes()
-        
+
         // Assert
         XCTAssertTrue(examTypes.isEmpty)
     }

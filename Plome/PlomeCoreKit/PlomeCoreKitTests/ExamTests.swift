@@ -46,7 +46,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertFalse(result)
     }
-    
+
     func testThatGradeIsSavedWhenTheSaveValueIsEmpty() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
@@ -79,7 +79,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertFalse(result)
     }
-    
+
     func testThatRatioIsSavedWhenTheSaveValueIsEmpty() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
@@ -112,7 +112,7 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertFalse(result)
     }
-    
+
     func testThatCoefficientIsSavedWhenTheSaveValueIsEmpty() {
         // Arrange
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)

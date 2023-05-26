@@ -10,22 +10,20 @@ import PlomeCoreKit
 
 final class ExamTypePageViewModel {
     // MARK: - Properties
-    
+
     let simulation: Simulation
     weak var simulationViewModelInput: SimulationViewModelInput?
-    
-    lazy var examTypes: [ExamType] = {
-        simulation.examTypes()
-    }()
-    
+
+    lazy var examTypes: [ExamType] = simulation.examTypes()
+
     // MARK: - Init
-    
+
     init(simulation: Simulation) {
         self.simulation = simulation
     }
-    
+
     // MARK: - Methods
-    
+
     func getExam(of type: ExamType) -> [Exam] {
         simulation.exams(of: type)
     }

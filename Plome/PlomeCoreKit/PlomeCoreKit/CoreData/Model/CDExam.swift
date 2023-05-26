@@ -13,7 +13,7 @@ import Foundation
     case trial
     case option
     case continuousControl
-    
+
     public var title: String {
         switch self {
         case .trial: return L10n.trialsType

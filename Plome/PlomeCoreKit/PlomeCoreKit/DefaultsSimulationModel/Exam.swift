@@ -70,13 +70,13 @@ public class Exam: NSObject, NSCopying, Codable {
 
         return cdExam
     }
-    
+
     private func canBeSaved(_ text: String?, in field: Field) -> Bool {
         if let text, text.isEmpty { return true }
-        
+
         guard let text,
               let value = Float(text) else { return false }
-                
+
         if field == .grade {
             guard let ratio, value <= ratio else { return false }
             return true
@@ -85,21 +85,22 @@ public class Exam: NSObject, NSCopying, Codable {
 
     public func saveIfRulesAreRespected(_ text: String?, in field: Field) -> Bool {
         guard canBeSaved(text, in: field) else { return false }
-        
+
         var valueToSave: Float?
-        
+
         if let text,
            !text.isEmpty,
-           let value = Float(text) {
+           let value = Float(text)
+        {
             valueToSave = value
         } else { valueToSave = nil }
-        
+
         switch field {
         case .grade: grade = valueToSave
         case .coeff: coefficient = valueToSave
         case .ratio: ratio = valueToSave
         }
-        
+
         return true
     }
 

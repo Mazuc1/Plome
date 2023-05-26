@@ -13,31 +13,31 @@ struct SimulationLiveInfos {
     private let average: Float
     private let isAllGradeSet: Bool
     let mention: Mention
-    
+
     var gradesState: GradesState {
         isAllGradeSet ? .filled : .missing
     }
-    
+
     var averageText: String {
         average == -1 ? "-- / 20" : "\(average.truncate(places: 2)) / 20"
     }
-    
+
     init(average: Float, isAllGradeSet: Bool, mention: Mention) {
         self.average = average
         self.isAllGradeSet = isAllGradeSet
         self.mention = mention
     }
-    
+
     enum GradesState {
         case filled, missing
-        
+
         var description: String {
             switch self {
             case .filled: return "Toutes les notes sont remplis !"
             case .missing: return "Toutes les notes ne sont pas remplis."
             }
         }
-        
+
         var icon: UIImage {
             switch self {
             case .filled: return Icons.success.configure(weight: .regular, color: .lagoon, size: 15)

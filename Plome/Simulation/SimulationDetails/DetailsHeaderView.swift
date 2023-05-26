@@ -147,10 +147,10 @@ final class MentionView: UIView {
 
         stackView.stretchInView(parentView: self)
     }
-    
+
     func update(mention: Mention) {
         self.mention = mention
-        
+
         titleLabel.text = mention.name
         titleLabel.textColor = mention.plomeColor.color
         imageView.image = Icons.medal.configure(weight: .regular, color: mention.plomeColor, size: 15)

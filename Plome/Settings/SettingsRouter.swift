@@ -37,7 +37,8 @@ final class SettingsRouter: DefaultRouter {
             launchMailApp()
         } else {
             if let url = URL(string: "mailto:\(L10n.Settings.assistanceMail)"),
-               UIApplication.shared.canOpenURL(url) {
+               UIApplication.shared.canOpenURL(url)
+            {
                 UIApplication.shared.open(url)
             } else {
                 alert(title: PlomeCoreKit.L10n.General.oups, message: L10n.Settings.errorLaunchMailApp)

@@ -40,21 +40,22 @@ class MentionCalculator {
     private(set) var ABMentionScore: Float = 0
     private(set) var BMentionScore: Float = 0
     private(set) var TBMentionScore: Float = 0
-    
+
     private let simulationType: SimulationType
     private let totalGrade: Float
     private let totalOutOf: Float
-    
+
     init(simulationType: SimulationType,
          totalGrade: Float,
-         totalOutOf: Float) {
+         totalOutOf: Float)
+    {
         self.simulationType = simulationType
         self.totalGrade = totalGrade
         self.totalOutOf = totalOutOf
-        
+
         setMentionScores()
     }
-    
+
     func mention() -> Mention {
         switch totalGrade {
         case withoutMentionScore ..< ABMentionScore: return .without
@@ -64,7 +65,7 @@ class MentionCalculator {
         default: return .without
         }
     }
-    
+
     private func setMentionScores() {
         switch simulationType {
         case .custom:

@@ -20,12 +20,12 @@ final class SimulationViewModel: ObservableObject {
     private let router: SimulationsRouter
 
     @Published var simulation: Simulation
-    
+
     weak var examTypePageViewControllerInput: ExamTypePageViewControllerInput?
     weak var simulationLiveInfosInput: SimulationLiveInfosInput?
-    
+
     lazy var examTypePageViewModel: ExamTypePageViewModel = {
-       let viewModel = ExamTypePageViewModel(simulation: simulation)
+        let viewModel = ExamTypePageViewModel(simulation: simulation)
         viewModel.simulationViewModelInput = self
         return viewModel
     }()
@@ -42,13 +42,13 @@ final class SimulationViewModel: ObservableObject {
     // MARK: - Methods
 
     #if DEBUG
-    func autoFillExams() {
-        _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
-        examTypePageViewControllerInput?.updateTableViews()
-        didChangeSimulationExamGrade()
-    }
+        func autoFillExams() {
+            _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
+            examTypePageViewControllerInput?.updateTableViews()
+            didChangeSimulationExamGrade()
+        }
     #endif
-    
+
     func userDidTapShareResult(screenshot: UIImage) {
         guard let url = screenshot.url(name: L10n.Home.mySimulation) else {
             router.errorAlert()
