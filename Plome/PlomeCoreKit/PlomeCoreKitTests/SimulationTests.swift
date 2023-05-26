@@ -13,6 +13,33 @@ final class SimulationTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
+    
+    // MARK: - examTypes
+    
+    func testWhenGetExamTypesOfSimulationThenExamTypesAreReturned() {
+        // Arrange
+        let expectedExamTypes: [ExamType] = [.trial, .continuousControl]
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: nil, grade: 12, ratio: 20, type: .continuousControl))
+        
+        // Act
+        let examTypes = simulation.examTypes()
+        
+        // Assert
+        XCTAssertEqual(examTypes, expectedExamTypes)
+    }
+    
+    func testWhenGetExamTypesOfEmptySimulationThenEmptyArrayIsReturned() {
+        // Arrange
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        
+        // Act
+        let examTypes = simulation.examTypes()
+        
+        // Assert
+        XCTAssertTrue(examTypes.isEmpty)
+    }
 
     func testWhenAddExamThenExamIsAdded() {
         // Arrange
