@@ -5,7 +5,6 @@
 //  Created by Loic Mazuc on 02/12/2022.
 //
 
-import Dependencies
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
@@ -23,13 +22,7 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
 
         userDefauls = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
 
-        defaultSimulationModelStorageService = withDependencies {
-            $0.userDefault = userDefauls
-            $0.defaultSimulationModelsProvider = .init()
-            $0.coreDataSimulationRepository = simulationRepository
-        } operation: {
-            DefaultSimulationModelStorageService()
-        }
+        defaultSimulationModelStorageService = DefaultSimulationModelStorageService()
     }
 
     func testWhenIsSimulationModelRegisterIsNotInUserDefaultThenDefaultSimulationModelsAreAdded() {

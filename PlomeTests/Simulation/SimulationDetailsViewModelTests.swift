@@ -5,7 +5,6 @@
 //  Created by Loic Mazuc on 28/11/2022.
 //
 
-import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
@@ -21,7 +20,8 @@ final class SimulationDetailsViewModelTests: XCTestCase {
 
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
-
+        
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
     }
 
@@ -36,11 +36,7 @@ final class SimulationDetailsViewModelTests: XCTestCase {
             cdSimulationTest = cdSimulation
         }
 
-        let viewModel = withDependencies {
-            $0.coreDataSimulationRepository = simulationRepository
-        } operation: {
-            SimulationDetailsViewModel(router: simulationsRouter, simulation: simulation, cdSimulation: cdSimulationTest!)
-        }
+        let viewModel = SimulationDetailsViewModel(router: simulationsRouter, simulation: simulation, cdSimulation: cdSimulationTest!)
 
         // Act
         viewModel.userDidTapDeleteSimulation()

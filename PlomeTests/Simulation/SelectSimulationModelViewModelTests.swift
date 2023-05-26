@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Dependencies
+import Factory
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
@@ -22,17 +22,13 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
-
+        
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
+        
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
-
-        selectSimulationModelViewModel = withDependencies {
-            $0.coreDataSimulationRepository = simulationRepository
-        } operation: {
-            SelectSimulationModelViewModel(router: simulationsRouter)
-        }
+        selectSimulationModelViewModel = SelectSimulationModelViewModel(router: simulationsRouter)
     }
 
     // MARK: - updateSnapshot

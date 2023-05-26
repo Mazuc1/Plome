@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
@@ -25,14 +24,11 @@ final class SimulationListViewModelTests: XCTestCase {
 
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
 
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
 
-        simulationListViewModel = withDependencies {
-            $0.coreDataSimulationRepository = simulationRepository
-        } operation: {
-            SimulationListViewModel(router: simulationsRouter)
-        }
+        simulationListViewModel = SimulationListViewModel(router: simulationsRouter)
     }
 
     // MARK: - updateSnapshot
