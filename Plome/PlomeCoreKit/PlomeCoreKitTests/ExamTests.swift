@@ -46,6 +46,17 @@ final class ExamTests: XCTestCase {
         // Assert
         XCTAssertFalse(result)
     }
+    
+    func testThatGradeIsSavedWhenTheSaveValueIsEmpty() {
+        // Arrange
+        let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
+
+        // Act
+        let result = exam.saveIfRulesAreRespected("", in: .grade)
+
+        // Assert
+        XCTAssertTrue(result)
+    }
 
     func testThatRatioIsCorrectlySaved() {
         // Arrange
@@ -63,10 +74,21 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        let result = exam.saveIfRulesAreRespected("", in: .ratio)
+        let result = exam.saveIfRulesAreRespected("@@", in: .ratio)
 
         // Assert
         XCTAssertFalse(result)
+    }
+    
+    func testThatRatioIsSavedWhenTheSaveValueIsEmpty() {
+        // Arrange
+        let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
+
+        // Act
+        let result = exam.saveIfRulesAreRespected("", in: .ratio)
+
+        // Assert
+        XCTAssertTrue(result)
     }
 
     func testThatCoefficientIsCorrectlySaved() {
@@ -89,6 +111,17 @@ final class ExamTests: XCTestCase {
 
         // Assert
         XCTAssertFalse(result)
+    }
+    
+    func testThatCoefficientIsSavedWhenTheSaveValueIsEmpty() {
+        // Arrange
+        let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
+
+        // Act
+        let result = exam.saveIfRulesAreRespected("", in: .coeff)
+
+        // Assert
+        XCTAssertTrue(result)
     }
 
     func testThatGradeInformationIsCorrectlyReturned() {
