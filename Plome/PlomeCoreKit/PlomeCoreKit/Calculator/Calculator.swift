@@ -8,6 +8,7 @@
 import UIKit
 
 public enum Mention {
+    case cannotBeCalculated
     case without
     case AB
     case B
@@ -15,6 +16,7 @@ public enum Mention {
 
     public var name: String {
         switch self {
+        case .cannotBeCalculated: return "Ne peux être calculée"
         case .without: return L10n.withoutMention
         case .AB: return L10n.quiteWellMention
         case .B: return L10n.greatMention
@@ -24,10 +26,68 @@ public enum Mention {
 
     public var plomeColor: PlomeColor {
         switch self {
+        case .cannotBeCalculated: return PlomeColor.withoutMention
         case .without: return PlomeColor.withoutMention
         case .AB: return PlomeColor.quiteWellMention
         case .B: return PlomeColor.greatMention
         case .TB: return PlomeColor.veryGreatMention
+        }
+    }
+}
+
+class MentionCalculator {
+    private(set) var withoutMentionScore: Float = 0
+    private(set) var ABMentionScore: Float = 0
+    private(set) var BMentionScore: Float = 0
+    private(set) var TBMentionScore: Float = 0
+
+    private let simulationType: SimulationType
+    private let totalGrade: Float
+    private let totalOutOf: Float
+
+    init(simulationType: SimulationType,
+         totalGrade: Float,
+         totalOutOf: Float)
+    {
+        self.simulationType = simulationType
+        self.totalGrade = totalGrade
+        self.totalOutOf = totalOutOf
+
+        setMentionScores()
+    }
+
+    func mention() -> Mention {
+        switch totalGrade {
+        case withoutMentionScore ..< ABMentionScore: return .without
+        case ABMentionScore ..< BMentionScore: return .AB
+        case BMentionScore ..< TBMentionScore: return .B
+        case TBMentionScore...: return .TB
+        default: return .without
+        }
+    }
+
+    private func setMentionScores() {
+        switch simulationType {
+        case .custom:
+            withoutMentionScore = (50 * totalOutOf) / 100
+            ABMentionScore = (60 * totalOutOf) / 100
+            BMentionScore = (70 * totalOutOf) / 100
+            TBMentionScore = (80 * totalOutOf) / 100
+        case .brevet:
+            withoutMentionScore = 400
+            ABMentionScore = 480
+            BMentionScore = 560
+            TBMentionScore = 640
+        case .generalBAC:
+            withoutMentionScore = 1000
+            ABMentionScore = 1200
+            BMentionScore = 1400
+            TBMentionScore = 1600
+        case .technologicalBAC:
+            withoutMentionScore = 1000
+            ABMentionScore = 1200
+            BMentionScore = 1400
+            TBMentionScore = 1600
         }
     }
 }

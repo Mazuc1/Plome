@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         AppAppearance.setKeyboardAppearance()
         Analytics.setAnalyticsCollectionEnabled(true)
-        
+
         return true
     }
-    
+
     func application(_: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-    
+
     func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {}
 }

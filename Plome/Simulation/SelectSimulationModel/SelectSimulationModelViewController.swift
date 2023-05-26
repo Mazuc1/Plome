@@ -42,7 +42,7 @@ final class SelectSimulationModelViewController: AppViewController {
         $0.action = #selector(self?.userDidTapCloseButton)
         $0.image = Icons.xmark.configure(weight: .regular, color: .lagoon, size: 16)
     }
-    
+
     private let emptySimulationModelListView: PlaceholderView = .init(frame: .zero, icon: nil, text: L10n.Home.noSimulationModelAvailable)
 
     // MARK: - Init
@@ -91,7 +91,7 @@ final class SelectSimulationModelViewController: AppViewController {
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
         ])
-        
+
         view.addSubview(emptySimulationModelListView)
 
         NSLayoutConstraint.activate([
@@ -111,7 +111,7 @@ final class SelectSimulationModelViewController: AppViewController {
             }
             .store(in: &cancellables)
     }
-    
+
     private func updateUIVisibility(snapshot: SelectSimulationModelViewModel.TableViewSnapshot) {
         if snapshot.numberOfItems == 0 {
             emptySimulationModelListView.isHidden = false

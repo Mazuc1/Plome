@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DD698738BEE02B69DC77D6 /* Pods_PlomeCoreKit.framework */; };
+		CF035FF829F12BA3005196D6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = CF035FF729F12BA3005196D6 /* Tabman */; };
 		CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BA2905E7760099186E /* CoreDataRepository.swift */; };
 		CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */; };
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
 		CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E20293D56E100ACFC6A /* FirebaseAnalytics */; };
 		CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */; };
 		CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E24293D581900ACFC6A /* FirebaseCrashlytics */; };
+		CF14483E29F56888008EAC5B /* Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF14483D29F56888008EAC5B /* Nothing.swift */; };
 		CF18517529342C1C003CB46F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517429342C1C003CB46F /* UIViewController.swift */; };
 		CF1C16FC295483A500E9EF03 /* UIPageViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C16FB295483A500E9EF03 /* UIPageViewController+extension.swift */; };
 		CF208F2228F94810001F83B1 /* CDSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF208F1E28F94810001F83B1 /* CDSimulation.swift */; };
@@ -110,6 +112,7 @@
 		CF0A26BA2905E7760099186E /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerError.swift; sourceTree = "<group>"; };
 		CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+extension.swift"; sourceTree = "<group>"; };
+		CF14483D29F56888008EAC5B /* Nothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nothing.swift; sourceTree = "<group>"; };
 		CF18517429342C1C003CB46F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSimulationsProvider.swift; sourceTree = "<group>"; };
 		CF1C16FB295483A500E9EF03 /* UIPageViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+extension.swift"; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 				CF578090298FFCF400D3288C /* Dependencies in Frameworks */,
 				8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */,
+				CF035FF829F12BA3005196D6 /* Tabman in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +260,15 @@
 				CFC030ED296782C700C7F1B0 /* TertiaryCTA.swift */,
 			);
 			path = CTA;
+			sourceTree = "<group>";
+		};
+		CF14483C29F56875008EAC5B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CF3B9A9728F1E84100457A44 /* Configurable.swift */,
+				CF14483D29F56888008EAC5B /* Nothing.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CF208F1728F9459A001F83B1 /* CoreData */ = {
@@ -427,11 +440,11 @@
 				CF208F3E28F95BA2001F83B1 /* Info.plist */,
 				CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */,
 				CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */,
-				CF3B9A9728F1E84100457A44 /* Configurable.swift */,
 				CF52B4A42939FB4400AB6C9E /* PlomeCoreKitModule.swift */,
 				CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */,
 				CF52B49F2939F72E00AB6C9E /* UserDefault.swift */,
 				CFE7700E299061560079ABC2 /* Dependencies.swift */,
+				CF14483C29F56875008EAC5B /* Helpers */,
 				CF5B5F312921BD79002EF9BD /* Ressources */,
 				CF8F96E2291EAB4E000815F8 /* Calculator */,
 				CF48938C2915273900B97147 /* Components */,
@@ -582,6 +595,7 @@
 				CF135E20293D56E100ACFC6A /* FirebaseAnalytics */,
 				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
 				CF57808F298FFCF400D3288C /* Dependencies */,
+				CF035FF729F12BA3005196D6 /* Tabman */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -665,6 +679,7 @@
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -761,6 +776,7 @@
 				CFC030E8296782BD00C7F1B0 /* ALProgressRing.swift in Sources */,
 				CF3B9A9628F1E5E700457A44 /* UIView+extension.swift in Sources */,
 				CF208F5C28F96EB9001F83B1 /* Exam.swift in Sources */,
+				CF14483E29F56888008EAC5B /* Nothing.swift in Sources */,
 				CFC030F0296782C700C7F1B0 /* TertiaryCTA.swift in Sources */,
 				CFC030E4296782A000C7F1B0 /* AppViewController.swift in Sources */,
 				CF18517529342C1C003CB46F /* UIViewController.swift in Sources */,
@@ -1272,6 +1288,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uias/Tabman.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1299,6 +1323,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF035FF729F12BA3005196D6 /* Tabman */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
+		};
 		CF135E20293D56E100ACFC6A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

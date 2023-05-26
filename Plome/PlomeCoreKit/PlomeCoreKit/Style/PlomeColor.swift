@@ -30,6 +30,7 @@ public enum PlomeColor {
     // Result
     case success
     case fail
+    case warning
 
     // Details progressView
     case trials
@@ -54,6 +55,7 @@ public enum PlomeColor {
 
         case .success: return (0.19, 0.67, 0.04)
         case .fail: return (0.99, 0.117, 0.121)
+        case .warning: return (0.81, 0.74, 0.17)
 
         case .trials: return (1, 0.54, 0.35)
         case .continuousControl: return (0, 0.53, 0.47)
@@ -79,6 +81,7 @@ public enum PlomeColor {
 
         case .success: return UIColor(color: .success)
         case .fail: return UIColor(color: .fail)
+        case .warning: return UIColor(color: .warning)
 
         case .trials: return UIColor(color: .trials)
         case .continuousControl: return UIColor(color: .continuousControl)

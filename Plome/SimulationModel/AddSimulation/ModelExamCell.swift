@@ -141,9 +141,9 @@ extension ModelExamCell: UITextFieldDelegate {
         if let placeholder = textField.placeholder,
            placeholder == L10n.SimulationModels.ratioPlaceholer
         {
-            saveResult = exam?.save(textField.text, in: .ratio)
+            saveResult = exam?.saveIfRulesAreRespected(textField.text, in: .ratio)
         } else {
-            saveResult = exam?.save(textField.text, in: .coeff)
+            saveResult = exam?.saveIfRulesAreRespected(textField.text, in: .coeff)
         }
 
         setStyle(for: textField, saveSucceed: saveResult ?? false)
