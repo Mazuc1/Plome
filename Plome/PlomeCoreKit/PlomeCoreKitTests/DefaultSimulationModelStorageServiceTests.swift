@@ -5,13 +5,12 @@
 //  Created by Loic Mazuc on 02/12/2022.
 //
 
-import Dependencies
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
 import XCTest
 
 final class DefaultSimulationModelStorageServiceTests: XCTestCase {
-    private var userDefauls: DefaultsProtocol!
+    private var userDefaults: DefaultsProtocol!
     private var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol!
     private var mockCoreData: MockStorageProvider!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
@@ -20,22 +19,18 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
         super.setUp()
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
+        userDefaults = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
+        
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
+        CoreKitContainer.shared.userDefault.register { self.userDefaults }
 
-        userDefauls = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
-
-        defaultSimulationModelStorageService = withDependencies {
-            $0.userDefault = userDefauls
-            $0.defaultSimulationModelsProvider = .init()
-            $0.coreDataSimulationRepository = simulationRepository
-        } operation: {
-            DefaultSimulationModelStorageService()
-        }
+        defaultSimulationModelStorageService = DefaultSimulationModelStorageService()
     }
 
     func testWhenIsSimulationModelRegisterIsNotInUserDefaultThenDefaultSimulationModelsAreAdded() {
         // Arrange
         // To ensure of the non existance of the key
-        userDefauls.removeData(key: .isSimulationModelRegister)
+        userDefaults.removeData(key: .isSimulationModelRegister)
 
         // Act
         defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
@@ -43,13 +38,13 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
         let cdSimulation = try! simulationRepository.list()
 
         // Assert
-        XCTAssertEqual(userDefauls.getData(type: Bool.self, forKey: .isSimulationModelRegister)!, true)
+        XCTAssertEqual(userDefaults.getData(type: Bool.self, forKey: .isSimulationModelRegister)!, true)
         XCTAssertEqual(cdSimulation.count, 3)
     }
 
     func testWhenIsSimulationModelRegisterIsInUserDefaultThenNothingAppend() {
         // Arrange
-        userDefauls.setData(value: true, key: .isSimulationModelRegister)
+        userDefaults.setData(value: true, key: .isSimulationModelRegister)
 
         // Act
         defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()

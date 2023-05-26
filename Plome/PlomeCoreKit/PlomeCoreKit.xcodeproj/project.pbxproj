@@ -51,7 +51,6 @@
 		CF52B49E2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B49D2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift */; };
 		CF52B4A02939F72E00AB6C9E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B49F2939F72E00AB6C9E /* UserDefault.swift */; };
 		CF52B4A52939FB4400AB6C9E /* PlomeCoreKitModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52B4A42939FB4400AB6C9E /* PlomeCoreKitModule.swift */; };
-		CF578090298FFCF400D3288C /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = CF57808F298FFCF400D3288C /* Dependencies */; };
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
 		CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5B5F322921BD8C002EF9BD /* confetti.png */; };
@@ -66,6 +65,7 @@
 		CF7DED0729420CA7009DC817 /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DED0129420CA7009DC817 /* SimulationTests.swift */; };
 		CF7DED0829420CA7009DC817 /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DED0229420CA7009DC817 /* UserDefaultsTests.swift */; };
 		CF7DED0929420CC3009DC817 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */; };
+		CF832EBC2A20D2BE006F7804 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = CF832EBB2A20D2BE006F7804 /* Factory */; };
 		CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
@@ -214,8 +214,8 @@
 			files = (
 				CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */,
 				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
+				CF832EBC2A20D2BE006F7804 /* Factory in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
-				CF578090298FFCF400D3288C /* Dependencies in Frameworks */,
 				8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */,
 				CF035FF829F12BA3005196D6 /* Tabman in Frameworks */,
 			);
@@ -594,8 +594,8 @@
 				CF4F1842291CFC0D003F005B /* IQKeyboardManagerSwift */,
 				CF135E20293D56E100ACFC6A /* FirebaseAnalytics */,
 				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
-				CF57808F298FFCF400D3288C /* Dependencies */,
 				CF035FF729F12BA3005196D6 /* Tabman */,
+				CF832EBB2A20D2BE006F7804 /* Factory */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -678,8 +678,8 @@
 			packageReferences = (
 				CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 				CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */,
+				CF832EBA2A20D2BE006F7804 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1312,12 +1312,12 @@
 				version = 6.5.0;
 			};
 		};
-		CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+		CF832EBA2A20D2BE006F7804 /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-dependencies.git";
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.4;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1348,10 +1348,10 @@
 			package = CF4F1841291CFC0D003F005B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		CF57808F298FFCF400D3288C /* Dependencies */ = {
+		CF832EBB2A20D2BE006F7804 /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF57808E298FFCF400D3288C /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = Dependencies;
+			package = CF832EBA2A20D2BE006F7804 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 

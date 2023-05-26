@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 30/10/2022.
 //
 
-import Dependencies
+import Factory
 import Foundation
 import PlomeCoreKit
 import UIKit
@@ -16,7 +16,7 @@ final class SelectSimulationModelViewModel: ObservableObject {
     typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
 
     private let router: SimulationsRouter
-    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
+    @Injected(\CoreKitContainer.coreDataSimulationRepository) private var simulationRepository
 
     @Published var snapshot: TableViewSnapshot = .init()
 

@@ -7,7 +7,6 @@
 
 import Combine
 import CoreData
-import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
@@ -25,14 +24,10 @@ final class SimulationModelsViewModelTests: XCTestCase {
 
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
 
         simulationModelsRouter = SimulationModelsRouter(screens: .init(), rootTransition: EmptyTransition())
-        simulationModelsViewModel = withDependencies {
-            $0.coreDataSimulationRepository = simulationRepository
-            $0.shareSimulationModelService = ShareSimulationModelService()
-        } operation: {
-            SimulationModelsViewModel(router: simulationModelsRouter)
-        }
+        simulationModelsViewModel = SimulationModelsViewModel(router: simulationModelsRouter)
     }
 
     func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsOneSection() {

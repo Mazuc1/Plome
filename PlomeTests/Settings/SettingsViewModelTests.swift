@@ -5,7 +5,6 @@
 //  Created by Loic Mazuc on 02/12/2022.
 //
 
-import Dependencies
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
@@ -21,14 +20,10 @@ final class SettingsViewModelTests: XCTestCase {
 
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
+        
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
 
-        settingsViewModel = withDependencies {
-            $0.coreDataSimulationRepository = simulationRepository
-            $0.defaultSimulationModelsProvider = .init()
-            $0.shareSimulationModelService = ShareSimulationModelService()
-        } operation: {
-            SettingsViewModel(router: .init(screens: .init(), rootTransition: EmptyTransition()))
-        }
+        settingsViewModel = SettingsViewModel(router: .init(screens: .init(), rootTransition: EmptyTransition()))
     }
 
     func testWhenDeleteSimulationsThenSimulationIsDeleted() {

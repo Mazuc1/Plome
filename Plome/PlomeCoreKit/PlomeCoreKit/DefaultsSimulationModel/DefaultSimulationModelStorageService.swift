@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 02/12/2022.
 //
 
-import Dependencies
+import Factory
 import Foundation
 
 public protocol DefaultSimulationModelStorageServiceProtocol {
@@ -23,9 +23,9 @@ public class DefaultSimulationModelStorageService: DefaultSimulationModelStorage
         }
     }
 
-    @Dependency(\.userDefault) var userDefault
-    @Dependency(\.coreDataSimulationRepository) var simulationRepository
-    @Dependency(\.defaultSimulationModelsProvider) var defaultSimulationModelsProvider
+    @Injected(\CoreKitContainer.userDefault) var userDefault
+    @Injected(\CoreKitContainer.coreDataSimulationRepository) var simulationRepository
+    @Injected(\CoreKitContainer.defaultSimulationModelsProvider) var defaultSimulationModelsProvider
 
     // MARK: - Init
 

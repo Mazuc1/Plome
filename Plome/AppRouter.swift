@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 14/07/2022.
 //
 
-import Dependencies
+import Factory
 import Foundation
 import PlomeCoreKit
 import UIKit
@@ -15,8 +15,8 @@ final class AppRouter {
 
     private let screens: Screens
 
-    @Dependency(\.userDefault) private var userDefault
-    @Dependency(\.defaultSimulationModelStorageService) private var defaultSimulationModelStorageService
+    @Injected(\CoreKitContainer.userDefault) private var userDefault
+    @Injected(\CoreKitContainer.defaultSimulationModelStorageService) private var defaultSimulationModelStorageService
 
     // MARK: - UI
 

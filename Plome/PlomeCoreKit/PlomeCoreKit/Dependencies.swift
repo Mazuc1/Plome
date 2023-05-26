@@ -5,81 +5,32 @@
 //  Created by Loic Mazuc on 05/02/2023.
 //
 
-import Dependencies
 import Foundation
+import Factory
 
-// MARK: - Defaults
-
-enum DefaultKey: DependencyKey {
-    static var liveValue: DefaultsProtocol = Defaults()
+public final class CoreKitContainer: SharedContainer {
+    public static var shared = CoreKitContainer()
+    public var manager = ContainerManager()
 }
 
-public extension DependencyValues {
-    var userDefault: DefaultsProtocol {
-        get { self[DefaultKey.self] }
-        set { self[DefaultKey.self] = newValue }
+public extension CoreKitContainer {
+    var userDefault: Factory<DefaultsProtocol> {
+        self { Defaults() }
     }
-}
-
-// MARK: - DefaultSimulationModelsProvider
-
-enum DefaultSimulationModelsProviderKey: DependencyKey {
-    static var liveValue: DefaultSimulationModelsProvider = .init()
-}
-
-public extension DependencyValues {
-    var defaultSimulationModelsProvider: DefaultSimulationModelsProvider {
-        get { self[DefaultSimulationModelsProviderKey.self] }
-        set { self[DefaultSimulationModelsProviderKey.self] = newValue }
+    
+    var defaultSimulationModelsProvider: Factory<DefaultSimulationModelsProvider> {
+        self { DefaultSimulationModelsProvider() }
     }
-}
-
-// MARK: - DefaultSimulationModelStorageService
-
-enum DefaultSimulationModelStorageServiceKey: DependencyKey {
-    static var liveValue: DefaultSimulationModelStorageServiceProtocol = DefaultSimulationModelStorageService()
-}
-
-public extension DependencyValues {
-    var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol {
-        get { self[DefaultSimulationModelStorageServiceKey.self] }
-        set { self[DefaultSimulationModelStorageServiceKey.self] = newValue }
+    
+    var defaultSimulationModelStorageService: Factory<DefaultSimulationModelStorageServiceProtocol> {
+        self { DefaultSimulationModelStorageService() }
     }
-}
-
-// MARK: - StorageProvider
-
-enum StorageProviderKey: DependencyKey {
-    static var liveValue: StorageProvider = .init()
-    static var testValue: StorageProvider = MockStorageProvider()
-}
-
-public extension DependencyValues {
-    var storageProvider: StorageProvider {
-        get { self[StorageProviderKey.self] }
-        set { self[StorageProviderKey.self] = newValue }
+    
+    var storageProvider: Factory<StorageProvider> {
+        self { StorageProvider() }
     }
-}
-
-// MARK: - CoreDataRepository<CDSimulation>
-
-enum CoreDataSimulationRepositoryKey: DependencyKey {
-    static var liveValue: CoreDataRepository<CDSimulation> {
-        @Dependency(\.storageProvider) var storageProvider
-
-        return .init(storageProvider: storageProvider)
-    }
-
-    static var testValue: CoreDataRepository<CDSimulation> {
-        @Dependency(\.storageProvider) var storageProvider
-
-        return .init(storageProvider: storageProvider)
-    }
-}
-
-public extension DependencyValues {
-    var coreDataSimulationRepository: CoreDataRepository<CDSimulation> {
-        get { self[CoreDataSimulationRepositoryKey.self] }
-        set { self[CoreDataSimulationRepositoryKey.self] = newValue }
+    
+    var coreDataSimulationRepository: Factory<CoreDataRepository<CDSimulation>> {
+        self { .init(storageProvider: self.storageProvider()) }
     }
 }

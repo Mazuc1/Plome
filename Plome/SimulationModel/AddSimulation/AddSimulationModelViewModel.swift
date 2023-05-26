@@ -7,7 +7,7 @@
 
 import Combine
 import CoreData
-import Dependencies
+import Factory
 import Foundation
 import PlomeCoreKit
 
@@ -24,8 +24,9 @@ final class AddSimulationModelViewModel: ObservableObject {
     // MARK: - Properties
 
     private let router: SimulationModelsRouter
-    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
     private let openAs: AddSimulationModelOpeningMode
+    
+    @Injected(\CoreKitContainer.coreDataSimulationRepository) private var simulationRepository
 
     @Published var trials: [Exam] = []
     @Published var continousControls: [Exam] = []
