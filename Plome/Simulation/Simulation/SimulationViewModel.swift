@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import PlomeCoreKit
+import UIKit
 
 protocol SimulationViewModelInput: AnyObject {
     func didChangeSimulationExamGrade()
@@ -44,6 +45,14 @@ final class SimulationViewModel: ObservableObject {
         _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
         examTypePageViewControllerInput?.updateTableViews()
         didChangeSimulationExamGrade()
+    }
+    
+    func userDidTapShareResult(screenshot: UIImage) {
+        guard let url = screenshot.url(name: L10n.Home.mySimulation) else {
+            router.errorAlert()
+            return
+        }
+        router.openActivityController(with: [url])
     }
 }
 

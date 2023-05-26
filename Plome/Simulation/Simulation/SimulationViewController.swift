@@ -53,6 +53,7 @@ final class SimulationViewController: AppViewController {
         navigationItem.title = viewModel.simulation.name
         navigationItem.rightBarButtonItems = []
         navigationItem.rightBarButtonItems?.append(createInfoBarButton())
+        navigationItem.rightBarButtonItems?.append(createShareResultBarButton())
         navigationItem.backButtonDisplayMode = .minimal
 
         #if DEBUG
@@ -109,6 +110,14 @@ final class SimulationViewController: AppViewController {
 
     private func createDebugBarButton() -> UIBarButtonItem {
         UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(didTapFillSimulation))
+    }
+    
+    private func createShareResultBarButton() -> UIBarButtonItem {
+        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapShareResult))
+    }
+    
+    @objc private func userDidTapShareResult() {
+        viewModel.userDidTapShareResult(screenshot: simulationLiveInfosView.takeScreenshot())
     }
 
     @objc private func didTapFillSimulation() {
