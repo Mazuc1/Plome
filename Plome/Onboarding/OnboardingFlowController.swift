@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 02/08/2022.
 //
 
-import Dependencies
+import Factory
 import Foundation
 import PlomeCoreKit
 import SwiftUI
@@ -19,8 +19,9 @@ final class OnboardingFlowController {
     // MARK: - Properties
 
     private let screens: Screens
-    @Dependency(\.userDefault) private var userDefault
     var onFinished: (() -> Void)?
+    
+    @Injected(\CoreKitContainer.userDefault) private var userDefault
 
     private var mainRouter: OnboardingRouter
 

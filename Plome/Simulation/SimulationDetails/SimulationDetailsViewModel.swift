@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 24/11/2022.
 //
 
-import Dependencies
+import Factory
 import Foundation
 import PlomeCoreKit
 
@@ -15,7 +15,7 @@ final class SimulationDetailsViewModel {
     private let router: SimulationsRouter
     private let calculator: Calculator
     private let cdSimulation: CDSimulation
-    @Dependency(\.coreDataSimulationRepository) private var simulationRepository
+    @Injected(\CoreKitContainer.coreDataSimulationRepository) private var simulationRepository
 
     let simulation: Simulation
     let shaper: CalculatorShaper

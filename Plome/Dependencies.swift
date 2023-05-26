@@ -5,18 +5,16 @@
 //  Created by Loic Mazuc on 05/02/2023.
 //
 
-import Dependencies
 import Foundation
+import Factory
 
-// MARK: - ShareSimulationModelService
-
-enum ShareSimulationModelServiceKey: DependencyKey {
-    static var liveValue: ShareSimulationModelServiceProtocol = ShareSimulationModelService()
+final class PlomeContainer: SharedContainer {
+    static var shared = PlomeContainer()
+    var manager = ContainerManager()
 }
 
-extension DependencyValues {
-    var shareSimulationModelService: ShareSimulationModelServiceProtocol {
-        get { self[ShareSimulationModelServiceKey.self] }
-        set { self[ShareSimulationModelServiceKey.self] = newValue }
+extension PlomeContainer {
+    var shareSimulationModelService: Factory<ShareSimulationModelServiceProtocol> {
+        self { ShareSimulationModelService() }
     }
 }
