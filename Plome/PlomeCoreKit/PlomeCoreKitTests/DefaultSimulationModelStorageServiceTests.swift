@@ -10,7 +10,7 @@
 import XCTest
 
 final class DefaultSimulationModelStorageServiceTests: XCTestCase {
-    private var userDefauls: DefaultsProtocol!
+    private var userDefaults: DefaultsProtocol!
     private var defaultSimulationModelStorageService: DefaultSimulationModelStorageServiceProtocol!
     private var mockCoreData: MockStorageProvider!
     private var simulationRepository: CoreDataRepository<CDSimulation>!
@@ -19,8 +19,10 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
         super.setUp()
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
-
-        userDefauls = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
+        userDefaults = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
+        
+        CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
+        CoreKitContainer.shared.userDefault.register { self.userDefaults }
 
         defaultSimulationModelStorageService = DefaultSimulationModelStorageService()
     }
@@ -28,7 +30,7 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
     func testWhenIsSimulationModelRegisterIsNotInUserDefaultThenDefaultSimulationModelsAreAdded() {
         // Arrange
         // To ensure of the non existance of the key
-        userDefauls.removeData(key: .isSimulationModelRegister)
+        userDefaults.removeData(key: .isSimulationModelRegister)
 
         // Act
         defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
@@ -36,13 +38,13 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
         let cdSimulation = try! simulationRepository.list()
 
         // Assert
-        XCTAssertEqual(userDefauls.getData(type: Bool.self, forKey: .isSimulationModelRegister)!, true)
+        XCTAssertEqual(userDefaults.getData(type: Bool.self, forKey: .isSimulationModelRegister)!, true)
         XCTAssertEqual(cdSimulation.count, 3)
     }
 
     func testWhenIsSimulationModelRegisterIsInUserDefaultThenNothingAppend() {
         // Arrange
-        userDefauls.setData(value: true, key: .isSimulationModelRegister)
+        userDefaults.setData(value: true, key: .isSimulationModelRegister)
 
         // Act
         defaultSimulationModelStorageService.addDefaultSimulationModelIfNeeded()
