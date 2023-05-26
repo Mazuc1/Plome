@@ -33,15 +33,15 @@ struct SimulationLiveInfos {
         
         var description: String {
             switch self {
-            case .filled: return "Toutes les note sont remplis !"
-            case .missing: return "Toutes les note ne sont pas remplis."
+            case .filled: return "Toutes les notes sont remplis !"
+            case .missing: return "Toutes les notes ne sont pas remplis."
             }
         }
         
         var icon: UIImage {
             switch self {
-            case .filled: return Icons.success.configure(weight: .regular, color: .success, size: 15)
-            case .missing: return Icons.fail.configure(weight: .regular, color: .fail, size: 15)
+            case .filled: return Icons.success.configure(weight: .regular, color: .lagoon, size: 15)
+            case .missing: return Icons.warning.configure(weight: .regular, color: .warning, size: 15)
             }
         }
     }

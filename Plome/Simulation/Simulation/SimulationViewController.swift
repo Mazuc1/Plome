@@ -124,8 +124,6 @@ protocol SimulationLiveInfosInput: AnyObject {
 
 private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     
-    // MARK: - Properties
-    
     // MARK: - UI
     
     private let mentionView: MentionView = .init(frame: .zero, mention: .cannotBeCalculated)
@@ -189,8 +187,8 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     
     private func setupView() {
         gradeLabel.text = "-- / 20"
-        gradesStateLabel.text = "Toutes les note ne sont pas remplis"
-        imageView.image = Icons.fail.configure(weight: .regular, color: .fail, size: 15)
+        gradesStateLabel.text = "Toutes les notes ne sont pas remplis"
+        imageView.image = Icons.warning.configure(weight: .regular, color: .warning, size: 15)
         
         topStackView.addArrangedSubviews([gradeLabel, spacer, mentionView])
         bottomStackView.addArrangedSubviews([imageView, gradesStateLabel])
