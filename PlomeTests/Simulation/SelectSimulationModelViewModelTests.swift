@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Factory
 @testable import Plome
 @testable import PlomeCoreKit
 @testable import PlomeCoreKitTestsHelpers
