@@ -127,6 +127,9 @@ public class Simulation: NSObject, NSCopying, Codable {
             totalOn += $0.rhs * $0.coeff
         }
         
+        guard totalGrade > 0,
+              totalOn > 0 else { return -1 }
+        
         return (totalGrade / totalOn) * 20
     }
     
