@@ -64,9 +64,7 @@
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
 		CFBF56BA28ECC5F000E4EC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B828ECC5F000E4EC7D /* LaunchScreen.storyboard */; };
-		CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */; };
 		CFBFA09F292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */; };
-		CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */; };
 		CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */; };
 		CFC030B7296772A500C7F1B0 /* PineappleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030B6296772A500C7F1B0 /* PineappleCell.swift */; };
 		CFD0BCA02943334A005C898B /* Plome.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFD0BCA22943334A005C898B /* Plome.strings */; };
@@ -170,10 +168,8 @@
 		CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFBF56B928ECC5F000E4EC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFBF56BB28ECC5F000E4EC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationResultViewModelTests.swift; sourceTree = "<group>"; };
 		CFBFA09C292E6A7200F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA09E292E6B3000F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModelTests.swift; sourceTree = "<group>"; };
 		CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
 		CFC030B6296772A500C7F1B0 /* PineappleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PineappleCell.swift; sourceTree = "<group>"; };
 		CFD067AB292FBBE30034EE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -440,8 +436,6 @@
 		CFBFA087292E4CFC00F36790 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
-				CFBFA088292E4D0C00F36790 /* SimulationResultViewModelTests.swift */,
-				CFBFA0A0292E948100F36790 /* SimulationViewModelTests.swift */,
 				CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */,
 				CF907B2A292F7B2100DEA169 /* SimulationListViewModelTests.swift */,
 				CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */,
@@ -664,14 +658,12 @@
 			files = (
 				CFD7EF76296637310039E3A8 /* XCTest+extension.swift in Sources */,
 				CF1C170329548E2000E9EF03 /* OnboardingFlowControllerTests.swift in Sources */,
-				CFBFA0A1292E948100F36790 /* SimulationViewModelTests.swift in Sources */,
 				CFD7EF70296625A60039E3A8 /* MockURLProtocol.swift in Sources */,
 				CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */,
 				CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */,
 				CFD7EF6D296624FF0039E3A8 /* ShareSimulationModelServiceTests.swift in Sources */,
 				CFBFA0A3292E959F00F36790 /* SelectSimulationModelViewModelTests.swift in Sources */,
 				CF907B2B292F7B2100DEA169 /* SimulationListViewModelTests.swift in Sources */,
-				CFBFA089292E4D0C00F36790 /* SimulationResultViewModelTests.swift in Sources */,
 				CF32407A290BF8EB00FC6666 /* SimulationModelsViewModelTests.swift in Sources */,
 				CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */,
 			);

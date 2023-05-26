@@ -41,11 +41,13 @@ final class SimulationViewModel: ObservableObject {
 
     // MARK: - Methods
 
+    #if DEBUG
     func autoFillExams() {
         _ = simulation.exams!.map { $0.grade = Float.random(in: 1 ... 20).truncate(places: 2) }
         examTypePageViewControllerInput?.updateTableViews()
         didChangeSimulationExamGrade()
     }
+    #endif
     
     func userDidTapShareResult(screenshot: UIImage) {
         guard let url = screenshot.url(name: L10n.Home.mySimulation) else {

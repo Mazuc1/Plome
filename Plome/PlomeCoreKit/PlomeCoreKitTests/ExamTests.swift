@@ -19,7 +19,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: 2, type: .trial)
 
         // Act
-        _ = exam.save("1", in: .grade)
+        _ = exam.saveIfRulesAreRespected("1", in: .grade)
 
         // Assert
         XCTAssertEqual(exam.grade, 1)
@@ -30,7 +30,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: 20, type: .trial)
 
         // Act
-        let result = exam.save("21", in: .grade)
+        let result = exam.saveIfRulesAreRespected("21", in: .grade)
 
         // Assert
         XCTAssertFalse(result)
@@ -41,7 +41,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        let result = exam.save("@@", in: .grade)
+        let result = exam.saveIfRulesAreRespected("@@", in: .grade)
 
         // Assert
         XCTAssertFalse(result)
@@ -52,7 +52,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        _ = exam.save("1", in: .ratio)
+        _ = exam.saveIfRulesAreRespected("1", in: .ratio)
 
         // Assert
         XCTAssertEqual(exam.ratio, 1)
@@ -63,7 +63,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        let result = exam.save("", in: .ratio)
+        let result = exam.saveIfRulesAreRespected("", in: .ratio)
 
         // Assert
         XCTAssertFalse(result)
@@ -74,7 +74,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        _ = exam.save("1", in: .coeff)
+        _ = exam.saveIfRulesAreRespected("1", in: .coeff)
 
         // Assert
         XCTAssertEqual(exam.coefficient, 1)
@@ -85,7 +85,7 @@ final class ExamTests: XCTestCase {
         let exam = Exam(name: "", coefficient: nil, grade: nil, ratio: nil, type: .trial)
 
         // Act
-        let result = exam.save("abc", in: .coeff)
+        let result = exam.saveIfRulesAreRespected("abc", in: .coeff)
 
         // Assert
         XCTAssertFalse(result)
