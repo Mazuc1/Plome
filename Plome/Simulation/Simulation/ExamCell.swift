@@ -131,7 +131,7 @@ final class ExamCell: UITableViewCell {
 
     private func setupLayout() {
         containerView.stretchInView(parentView: contentView, edges: .init(top: AppStyles.defaultSpacing(factor: 0.5),
-                                                                          left: AppStyles.defaultSpacing,
+                                                                          left: 0,
                                                                           bottom: AppStyles.defaultSpacing(factor: 0.5),
                                                                           right: AppStyles.defaultSpacing))
 
