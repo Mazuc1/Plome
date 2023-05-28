@@ -39,7 +39,7 @@
 		CF02ABC7295D03DA00B5FCC9 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
 		CF02ABEA295F169B00B5FCC9 /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
 		CF77E101296B35D30028E4C9 /* PlomeCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlomeCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFD7EF67296375960039E3A8 /* TestEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEndPoint.swift; sourceTree = "<group>"; };
+		CFD7EF67296375960039E3A8 /* TestEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestEndPoint.swift; path = ../../../../PlomeTests/Helpers/TestEndPoint.swift; sourceTree = "<group>"; };
 		CFD7EF692963766D0039E3A8 /* MultipartFormDataRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequestTests.swift; sourceTree = "<group>"; };
 		CFD7EF7729663AB20039E3A8 /* EndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTests.swift; sourceTree = "<group>"; };
 		CFE4EA042962346100BC6DB2 /* TaskLoaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLoaderManager.swift; sourceTree = "<group>"; };
