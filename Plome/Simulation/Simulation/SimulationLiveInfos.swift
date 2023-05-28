@@ -19,7 +19,7 @@ struct SimulationLiveInfos {
     }
 
     var averageText: String {
-        average == -1 ? L10n.Home.placeholerGrade : L10n.Home.average(average)
+        average == -1 ? L10n.Home.placeholerGrade : "\(average.truncate(places: 2)) / 20"
     }
 
     init(average: Float, isAllGradeSet: Bool, mention: Mention) {
