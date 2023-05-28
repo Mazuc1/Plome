@@ -45,6 +45,10 @@
 		CF5B5F2C2921B848002EF9BD /* GradeInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B5F2B2921B848002EF9BD /* GradeInformationCell.swift */; };
 		CF7ED9572A118ADE006E94EA /* SimulationLiveInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9562A118ADE006E94EA /* SimulationLiveInfos.swift */; };
 		CF80CC0F2905DBD000B94AD8 /* ModelExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */; };
+		CF832ECD2A238005006F7804 /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832ECB2A238005006F7804 /* MultipartFormDataRequest.swift */; };
+		CF832ECE2A238005006F7804 /* TaskLoaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832ECC2A238005006F7804 /* TaskLoaderManager.swift */; };
+		CF832ED22A238027006F7804 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832ED02A238027006F7804 /* EndPoint.swift */; };
+		CF832ED32A238027006F7804 /* FileIOEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832ED12A238027006F7804 /* FileIOEndPoint.swift */; };
 		CF852674290FF4FD00D58B2A /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF852673290FF4FD00D58B2A /* SimulationViewController.swift */; };
 		CF852676290FF51800D58B2A /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF852675290FF51800D58B2A /* SimulationViewModel.swift */; };
 		CF888F73290F234C00D2D3E5 /* SimulationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF888F72290F234C00D2D3E5 /* SimulationsRouter.swift */; };
@@ -147,6 +151,10 @@
 		CF5B5F2B2921B848002EF9BD /* GradeInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeInformationCell.swift; sourceTree = "<group>"; };
 		CF7ED9562A118ADE006E94EA /* SimulationLiveInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationLiveInfos.swift; sourceTree = "<group>"; };
 		CF80CC0E2905DBD000B94AD8 /* ModelExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExamCell.swift; sourceTree = "<group>"; };
+		CF832ECB2A238005006F7804 /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		CF832ECC2A238005006F7804 /* TaskLoaderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskLoaderManager.swift; sourceTree = "<group>"; };
+		CF832ED02A238027006F7804 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		CF832ED12A238027006F7804 /* FileIOEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIOEndPoint.swift; sourceTree = "<group>"; };
 		CF852673290FF4FD00D58B2A /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
 		CF852675290FF51800D58B2A /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
 		CF888F72290F234C00D2D3E5 /* SimulationsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationsRouter.swift; sourceTree = "<group>"; };
@@ -353,6 +361,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF832EBD2A237FA9006F7804 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CF832ECB2A238005006F7804 /* MultipartFormDataRequest.swift */,
+				CF832ECC2A238005006F7804 /* TaskLoaderManager.swift */,
+				CF832ECF2A23801B006F7804 /* EndPoints */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CF832ECF2A23801B006F7804 /* EndPoints */ = {
+			isa = PBXGroup;
+			children = (
+				CF832ED02A238027006F7804 /* EndPoint.swift */,
+				CF832ED12A238027006F7804 /* FileIOEndPoint.swift */,
+			);
+			path = EndPoints;
+			sourceTree = "<group>";
+		};
 		CF852672290FF4E700D58B2A /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +447,7 @@
 				CF3B9A9C28F3287B00457A44 /* MainTabBarController.swift */,
 				CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */,
 				CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */,
+				CF832EBD2A237FA9006F7804 /* Network */,
 				CF02ABCB295D138500B5FCC9 /* Services */,
 				CFD0BC9C2943330A005C898B /* Ressources */,
 				CFB51232294C78FB00979309 /* Onboarding */,
@@ -685,9 +713,12 @@
 				CF7ED9572A118ADE006E94EA /* SimulationLiveInfos.swift in Sources */,
 				CF49EBD42902A33500693A85 /* AddSimulationModelViewModel.swift in Sources */,
 				CF02ABCD295D141900B5FCC9 /* ShareSimulationModelService.swift in Sources */,
+				CF832ED22A238027006F7804 /* EndPoint.swift in Sources */,
 				CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */,
 				CFB51236294C7AD800979309 /* OnboardingRouter.swift in Sources */,
+				CF832ECE2A238005006F7804 /* TaskLoaderManager.swift in Sources */,
 				CF035FFA29F12DFA005196D6 /* ExamTypePageViewController.swift in Sources */,
+				CF832ECD2A238005006F7804 /* MultipartFormDataRequest.swift in Sources */,
 				CF3B9A9E28F3287B00457A44 /* MainTabBarController.swift in Sources */,
 				CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */,
 				CF1C170029548A1300E9EF03 /* OnboardingPage.swift in Sources */,
@@ -695,6 +726,7 @@
 				CF3B9A9F28F3287B00457A44 /* AppRouter.swift in Sources */,
 				CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */,
 				CFE77011299062EC0079ABC2 /* Dependencies.swift in Sources */,
+				CF832ED32A238027006F7804 /* FileIOEndPoint.swift in Sources */,
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
 				CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */,
 				CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */,
