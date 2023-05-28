@@ -52,7 +52,6 @@ final class SimulationViewController: AppViewController {
 
         navigationItem.title = viewModel.simulation.name
         navigationItem.rightBarButtonItems = []
-        navigationItem.rightBarButtonItems?.append(createInfoBarButton())
         navigationItem.rightBarButtonItems?.append(createShareResultBarButton())
         navigationItem.backButtonDisplayMode = .minimal
 
@@ -91,20 +90,6 @@ final class SimulationViewController: AppViewController {
         ])
 
         examTypePageViewController.didMove(toParent: self)
-    }
-
-    private func createInfoBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.info.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapInfo))
-    }
-
-    @objc private func userDidTapInfo() {
-        let alertController = UIAlertController(title: L10n.Home.howToCompleteSimulation,
-                                                message: L10n.Home.simulationRules,
-                                                preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: PlomeCoreKit.L10n.General.ok, style: .cancel))
-        alertController.view.tintColor = PlomeColor.lagoon.color
-
-        present(alertController, animated: true)
     }
 
     private func createDebugBarButton() -> UIBarButtonItem {

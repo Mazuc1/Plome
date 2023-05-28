@@ -25,8 +25,6 @@
 "home.my_simulation" = "My simulation";
 
 "home.calculate" = "Calculate";
-"home.how_to_complete_simulation" = "How to complete the simulation?";
-"home.simulation_rules" = "Here are a few rules for doing your simulation well.\n\n1. Decimal numbers are written with dots.\n\n2. Notes must be separated with a /.\n\n3. If you do not indicate a coefficient, it will be automatically set to 1 during the calculation.";
 
 "home.coeff" = "Coeff.";
 "home.grade" = "Grade";

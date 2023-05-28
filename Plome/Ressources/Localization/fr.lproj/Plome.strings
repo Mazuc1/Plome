@@ -25,8 +25,6 @@
 "home.my_simulation" = "Ma simulation";
 
 "home.calculate" = "Calculer";
-"home.how_to_complete_simulation" = "Comment complétez la simulation ?";
-"home.simulation_rules" = "Voici les quelques règles pour bien faire votre simulation.\n\n1. Les nombres à décimaux s'écrivent avec des points.\n\n2. Les notes doivent être séparer avec un /.\n\n3. Si vous n'indiquez pas de coefficient, il sera automatiquement mis à 1 lors du calcul.";
 
 "home.coeff" = "Coeff.";
 "home.grade" = "Note";
