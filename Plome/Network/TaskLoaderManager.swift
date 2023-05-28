@@ -53,6 +53,7 @@ public class TaskLoaderManager {
     }
 }
 
+@MainActor
 class TaskLoaderView: UIView {
     // MARK: - Properties
 

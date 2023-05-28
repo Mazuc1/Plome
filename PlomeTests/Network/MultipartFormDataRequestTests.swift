@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 02/01/2023.
 //
 
-@testable import Gateway
+@testable import Plome
 import XCTest
 
 final class MultipartFormDataRequestTests: XCTestCase {

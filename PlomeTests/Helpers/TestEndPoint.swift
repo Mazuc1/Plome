@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import Gateway
+@testable import Plome
 
 enum TestEndPoint {
     case test(someParameter: String)

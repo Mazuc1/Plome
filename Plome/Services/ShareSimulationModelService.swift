@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Gateway
 import PlomeCoreKit
 
 protocol ShareSimulationModelServiceProtocol {

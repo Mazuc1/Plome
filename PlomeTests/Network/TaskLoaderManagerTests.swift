@@ -5,7 +5,7 @@
 //  Created by Loic Mazuc on 28/12/2022.
 //
 
-@testable import Gateway
+@testable import Plome
 import XCTest
 
 @MainActor
