@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Plome/Gateway/Gateway.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Plome/PlomeCoreKit/PlomeCoreKit.xcodeproj">
    </FileRef>
    <FileRef
