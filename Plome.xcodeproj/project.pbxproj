@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3828C928FF2B9619652D481F /* Pods_Plome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448906EE445F0E0C85196E7E /* Pods_Plome.framework */; };
 		CF02ABCD295D141900B5FCC9 /* ShareSimulationModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF02ABCC295D141900B5FCC9 /* ShareSimulationModelService.swift */; };
-		CF02ABCF295D154C00B5FCC9 /* Gateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF02ABCE295D154C00B5FCC9 /* Gateway.framework */; };
-		CF02ABD0295D190800B5FCC9 /* Gateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF02ABCE295D154C00B5FCC9 /* Gateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF035FFA29F12DFA005196D6 /* ExamTypePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF035FF929F12DFA005196D6 /* ExamTypePageViewController.swift */; };
 		CF0C7A6D292FDDBC00E49803 /* SimulationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6C292FDDBC00E49803 /* SimulationDetailsViewModel.swift */; };
 		CF0C7A6F292FDE0800E49803 /* SimulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A6E292FDE0800E49803 /* SimulationDetailsViewController.swift */; };
@@ -105,7 +103,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF02ABD0295D190800B5FCC9 /* Gateway.framework in Embed Frameworks */,
 				CF3B9AAA28F32C3300457A44 /* PlomeCoreKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -218,7 +215,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF02ABCF295D154C00B5FCC9 /* Gateway.framework in Frameworks */,
 				CF3B9AA928F32C3300457A44 /* PlomeCoreKit.framework in Frameworks */,
 				3828C928FF2B9619652D481F /* Pods_Plome.framework in Frameworks */,
 			);
