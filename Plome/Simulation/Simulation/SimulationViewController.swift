@@ -178,8 +178,8 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     }
 
     private func setupView() {
-        gradeLabel.text = "-- / 20"
-        gradesStateLabel.text = "Toutes les notes ne sont pas remplis"
+        gradeLabel.text = L10n.Home.placeholerGrade
+        gradesStateLabel.text = L10n.Home.notAllGradeFill
         imageView.image = Icons.warning.configure(weight: .regular, color: .warning, size: 15)
 
         topStackView.addArrangedSubviews([gradeLabel, spacer, mentionView])

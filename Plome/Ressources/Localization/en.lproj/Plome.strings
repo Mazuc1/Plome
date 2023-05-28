@@ -8,6 +8,11 @@
 
 // MARK: - Home
 
+"home.placeholer_grade" = "-- / 20";
+"home.average" = "%f / 20";
+"home.all_grade_fill" = "All the grades are filled in!";
+"home.not_all_grade_fill" = "Not all grades are filled in.";
+
 "home.how_to_catchUp" = "How you catch up ?";
 "home.you_will_obtain_your_diploma" = "You will graduate by earning extra points:";
 "home.your_grade_will_be" = "Your score will then be";
