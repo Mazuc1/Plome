@@ -8,19 +8,24 @@
 import UIKit
 import PlomeCoreKit
 
-enum SimulationSection {
-    case `default`
-    case cached
+enum SimulationItem: Hashable {
+    case `default`(Simulation)
+    case draft(Simulation)
+}
+
+enum SimulationSection: Int {
+    case `default` = 0
+    case draft = 1
     
     var sectionTitle: String? {
         switch self {
         case .`default`: return "Vos simulations"
-        case .cached: return "Vos brouillon"
+        case .draft: return "Vos brouillon"
         }
     }
 }
 
-class SimulationTableViewDataSource: UITableViewDiffableDataSource<SimulationSection, Simulation> {
+class SimulationTableViewDataSource: UITableViewDiffableDataSource<SimulationSection, SimulationItem> {
     override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         return snapshot().sectionIdentifiers[safe: section]?.sectionTitle
     }

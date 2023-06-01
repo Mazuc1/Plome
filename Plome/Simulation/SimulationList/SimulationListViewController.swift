@@ -24,6 +24,7 @@ final class SimulationListViewController: AppViewController {
         $0.rowHeight = SimulationCell.height
         $0.estimatedRowHeight = SimulationCell.height
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
+        $0.register(DraftSimulationCell.self, forCellReuseIdentifier: DraftSimulationCell.reuseIdentifier)
         $0.register(SimulationCellHeaderView.self, forHeaderFooterViewReuseIdentifier: SimulationCellHeaderView.reuseIdentifier)
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
@@ -127,11 +128,20 @@ final class SimulationListViewController: AppViewController {
     }
 
     private func createDataSource() -> SimulationTableViewDataSource {
-        return .init(tableView: tableView) { tableView, _, simulation in
-            if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
-                cell.setup(with: CalculatorShaper(calculator: .init(simulation: simulation)))
-                return cell
+        return .init(tableView: tableView) { tableView, _, simulationItem in
+            switch simulationItem {
+            case let .default(simulation):
+                if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
+                    cell.setup(with: CalculatorShaper(calculator: .init(simulation: simulation)))
+                    return cell
+                }
+            case let .draft(simulation):
+                if let cell = tableView.dequeueReusableCell(withIdentifier: DraftSimulationCell.reuseIdentifier) as? DraftSimulationCell {
+                    cell.setup(with: simulation)
+                    return cell
+                }
             }
+            
             return UITableViewCell()
         }
     }
@@ -144,9 +154,16 @@ final class SimulationListViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationListViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return 0 }
         
+        switch item {
+        case .`default`: return SimulationCell.height
+        case .draft: return DraftSimulationCell.height
+        }
+    }
+    
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.userDidSelectSimulation(at: indexPath)
     }
 

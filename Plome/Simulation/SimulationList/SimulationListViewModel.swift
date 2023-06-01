@@ -13,7 +13,7 @@ import UIKit
 final class SimulationListViewModel {
     // MARK: - Properties
 
-    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationSection, Simulation>
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationSection, SimulationItem>
 
     let router: SimulationsRouter
 
@@ -59,8 +59,13 @@ final class SimulationListViewModel {
         guard let simulations,
               !simulations.isEmpty else { return snapshot }
         
-        let defaultSimulation = simulations.filter { $0.isAllGradesSet() }
-        let cachedSimulation = simulations.filter { $0.isAtLeaseOneGradeNil() }
+        let defaultSimulation = simulations
+            .filter { $0.isAllGradesSet() }
+            .map { SimulationItem.default($0) }
+        
+        let cachedSimulation = simulations
+            .filter { $0.isAtLeaseOneGradeNil() }
+            .map { SimulationItem.draft($0) }
         
         if !defaultSimulation.isEmpty {
             snapshot.appendSections([.default])
@@ -68,8 +73,8 @@ final class SimulationListViewModel {
         }
         
         if !cachedSimulation.isEmpty {
-            snapshot.appendSections([.cached])
-            snapshot.appendItems(cachedSimulation, toSection: .cached)
+            snapshot.appendSections([.draft])
+            snapshot.appendItems(cachedSimulation, toSection: .draft)
         }
 
         return snapshot
@@ -90,7 +95,11 @@ final class SimulationListViewModel {
         }
 
         let simulation = snapshot.itemIdentifiers[index.row]
-        router.openSimulationDetails(for: simulation, extract: cdSimulation)
+        
+        switch simulation {
+        case let .default(simulation): router.openSimulationDetails(for: simulation, extract: cdSimulation)
+        case .draft(_): break
+        }
     }
 
     private func deleteSimulationModel(at index: Int) {
