@@ -70,6 +70,10 @@ final class SimulationViewModel: ObservableObject {
         saveSimulation()
     }
     
+    func saveSimulationToDraft() {
+        saveSimulation()
+    }
+    
     private func saveSimulation() {
         do {
             try simulationRepository.add { [simulation] cdSimulation, context in

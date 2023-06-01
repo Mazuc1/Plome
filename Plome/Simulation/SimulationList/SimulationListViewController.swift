@@ -15,7 +15,7 @@ final class SimulationListViewController: AppViewController {
     private let viewModel: SimulationListViewModel
     private var cancellables: Set<AnyCancellable> = []
 
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, Simulation> = self.createDataSource()
+    private lazy var dataSource: SimulationTableViewDataSource = self.createDataSource()
 
     // MARK: - UI
 
@@ -24,6 +24,7 @@ final class SimulationListViewController: AppViewController {
         $0.rowHeight = SimulationCell.height
         $0.estimatedRowHeight = SimulationCell.height
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
+        $0.register(SimulationCellHeaderView.self, forHeaderFooterViewReuseIdentifier: SimulationCellHeaderView.reuseIdentifier)
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +126,7 @@ final class SimulationListViewController: AppViewController {
         dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
 
-    private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
+    private func createDataSource() -> SimulationTableViewDataSource {
         return .init(tableView: tableView) { tableView, _, simulation in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
                 cell.setup(with: CalculatorShaper(calculator: .init(simulation: simulation)))
@@ -144,6 +145,8 @@ final class SimulationListViewController: AppViewController {
 
 extension SimulationListViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        
         viewModel.userDidSelectSimulation(at: indexPath)
     }
 
@@ -152,5 +155,10 @@ extension SimulationListViewController: UITableViewDelegate {
             self?.viewModel.userDidTapDeleteSimulation(at: indexPath.row)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return SimulationCellHeaderView(text: dataSource.tableView(tableView, titleForHeaderInSection: section) ?? "",
+                                        reuseIdentifier: SimulationCellHeaderView.reuseIdentifier)
     }
 }

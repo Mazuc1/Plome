@@ -13,7 +13,7 @@ import UIKit
 final class SimulationListViewModel {
     // MARK: - Properties
 
-    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationSection, Simulation>
 
     let router: SimulationsRouter
 
@@ -55,10 +55,21 @@ final class SimulationListViewModel {
 
     private func makeTableViewSnapshot(with simulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
-
-        if let simulations, !simulations.isEmpty {
-            snapshot.appendSections([0])
-            snapshot.appendItems(simulations, toSection: 0)
+        
+        guard let simulations,
+              !simulations.isEmpty else { return snapshot }
+        
+        let defaultSimulation = simulations.filter { $0.gradeIsSetForAllExams() }
+        let cachedSimulation = simulations.filter { $0.isAtLeaseOneGradeNil() }
+        
+        if !defaultSimulation.isEmpty {
+            snapshot.appendSections([.default])
+            snapshot.appendItems(defaultSimulation, toSection: .default)
+        }
+        
+        if !cachedSimulation.isEmpty {
+            snapshot.appendSections([.cached])
+            snapshot.appendItems(cachedSimulation, toSection: .cached)
         }
 
         return snapshot

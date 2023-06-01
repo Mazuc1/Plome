@@ -99,17 +99,17 @@ final class SimulationViewController: AppViewController {
                                               }),
                                      UIAction(title: "Sauvegarder",
                                               image: Icons.download.configure(weight: .regular, color: .lagoon, size: 16),
-                                              handler: { [weak self] _ in self?.viewModel.saveSimulationIfAllConditionsAreMet()
+                                              handler: { [viewModel] _ in viewModel.saveSimulationIfAllConditionsAreMet()
                                               }),
                                      UIAction(title: "Brouillon",
                                               image: Icons.cached.configure(weight: .regular, color: .lagoon, size: 16),
-                                              handler: { _ in
+                                              handler: { [viewModel] _ in viewModel.saveSimulationToDraft()
                                               })]
 
         #if DEBUG
             menuItems.append(UIAction(title: "Fulfill",
                                       image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16),
-                                      handler: { [weak self] _ in self?.viewModel.autoFillExams() }))
+                                      handler: { [viewModel] _ in viewModel.autoFillExams() }))
         #endif
 
         return UIMenu(title: "Options", image: nil, identifier: nil, options: [], children: menuItems)

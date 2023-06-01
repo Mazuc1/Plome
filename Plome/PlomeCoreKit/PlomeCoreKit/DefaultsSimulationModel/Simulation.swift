@@ -73,6 +73,11 @@ public class Simulation: NSObject, NSCopying, Codable {
         guard let exams else { return false }
         return exams.allSatisfy { $0.grade != nil }
     }
+    
+    public func isAtLeaseOneGradeNil() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.grade == Exam.defaultGradeValue }
+    }
 
     public func examsContainTrials() -> Bool {
         guard let exams else { return false }
