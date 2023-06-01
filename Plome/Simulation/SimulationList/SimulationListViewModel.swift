@@ -59,7 +59,7 @@ final class SimulationListViewModel {
         guard let simulations,
               !simulations.isEmpty else { return snapshot }
         
-        let defaultSimulation = simulations.filter { $0.gradeIsSetForAllExams() }
+        let defaultSimulation = simulations.filter { $0.isAllGradesSet() }
         let cachedSimulation = simulations.filter { $0.isAtLeaseOneGradeNil() }
         
         if !defaultSimulation.isEmpty {
