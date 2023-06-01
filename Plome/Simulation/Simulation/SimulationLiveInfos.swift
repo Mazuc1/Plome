@@ -28,6 +28,11 @@ struct SimulationLiveInfos {
         self.mention = mention
     }
 
+    func averageTextColor() -> UIColor {
+        guard gradesState == .filled else { return PlomeColor.darkGray.color }
+        return average.truncate(places: 2) >= 10 ? PlomeColor.success.color : PlomeColor.fail.color
+    }
+
     enum GradesState {
         case filled, missing
 
@@ -35,13 +40,6 @@ struct SimulationLiveInfos {
             switch self {
             case .filled: return L10n.Home.allGradeFill
             case .missing: return L10n.Home.notAllGradeFill
-            }
-        }
-
-        var icon: UIImage {
-            switch self {
-            case .filled: return Icons.success.configure(weight: .regular, color: .lagoon, size: 15)
-            case .missing: return Icons.warning.configure(weight: .regular, color: .warning, size: 15)
             }
         }
     }

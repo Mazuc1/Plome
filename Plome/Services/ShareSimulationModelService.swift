@@ -46,16 +46,16 @@ final class ShareSimulationModelService: ShareSimulationModelServiceProtocol {
 
     func download(with key: String) async throws -> Simulation {
         Task { @MainActor in TaskLoaderManager.shared.addTask() }
-        
+
         let fileIOEndPoint = FileIOEndPoint.download(key: key).endPoint
         guard let url = fileIOEndPoint.buildURL() else {
             throw ShareSimulationModelServiceError.cantBuildURL
         }
 
         let (data, _) = try await urlSession.data(from: url)
-        
+
         Task { @MainActor in TaskLoaderManager.shared.endTask() }
-        
+
         return try JSONDecoder().decode(Simulation.self, from: data)
     }
 

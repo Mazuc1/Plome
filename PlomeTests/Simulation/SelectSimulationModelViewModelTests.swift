@@ -23,9 +23,9 @@ final class SelectSimulationModelViewModelTests: XCTestCase {
         super.setUp()
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
-        
+
         CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
-        
+
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
         selectSimulationModelViewModel = SelectSimulationModelViewModel(router: simulationsRouter)
     }

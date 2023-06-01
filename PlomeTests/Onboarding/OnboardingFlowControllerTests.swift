@@ -18,9 +18,9 @@ final class OnboardingFlowControllerTests: XCTestCase {
         // Arrange
         let userDefault = Defaults(userDefaults: .init())
         userDefault.setData(value: false, key: .hasOnboardingBeenSeen)
-        
+
         CoreKitContainer.shared.userDefault.register { userDefault }
-        
+
         let onboardingFlowController = OnboardingFlowController(screens: .init())
 
         // Act
@@ -34,7 +34,7 @@ final class OnboardingFlowControllerTests: XCTestCase {
         // Arrange
         let userDefault = Defaults(userDefaults: .init())
         userDefault.setData(value: true, key: .hasOnboardingBeenSeen)
-        
+
         CoreKitContainer.shared.userDefault.register { userDefault }
         let onboardingFlowController = OnboardingFlowController(screens: .init())
 
@@ -48,7 +48,7 @@ final class OnboardingFlowControllerTests: XCTestCase {
     func testThatOnFinishedIsCalledWhenUserFinishOnboarding() {
         // Arrange
         let expectation = expectation(description: #function)
-        
+
         CoreKitContainer.shared.userDefault.register { Defaults() }
         let onboardingFlowController = OnboardingFlowController(screens: .init())
         onboardingFlowController.onFinished = { expectation.fulfill() }

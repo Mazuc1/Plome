@@ -89,29 +89,29 @@ final class SimulationViewController: AppViewController {
 
         examTypePageViewController.didMove(toParent: self)
     }
-    
+
     private func createBarButtonMenu() -> UIMenu {
         var menuItems: [UIAction] = [UIAction(title: "Partager",
                                               image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16),
                                               handler: { [weak self] _ in
-            guard let self else { return }
-            self.viewModel.userDidTapShareResult(screenshot: self.simulationLiveInfosView.takeScreenshot())
-        }),
+                                                  guard let self else { return }
+                                                  self.viewModel.userDidTapShareResult(screenshot: self.simulationLiveInfosView.takeScreenshot())
+                                              }),
                                      UIAction(title: "Sauvegarder",
                                               image: Icons.download.configure(weight: .regular, color: .lagoon, size: 16),
-                                              handler: { (_) in
-        }),
+                                              handler: { _ in
+                                              }),
                                      UIAction(title: "Brouillon",
                                               image: Icons.cached.configure(weight: .regular, color: .lagoon, size: 16),
-                                              handler: { (_) in
-        })]
-        
+                                              handler: { _ in
+                                              })]
+
         #if DEBUG
-        menuItems.append(UIAction(title: "Fulfill",
-                                  image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16),
-                                  handler: { [weak self] _ in self?.viewModel.autoFillExams() }))
+            menuItems.append(UIAction(title: "Fulfill",
+                                      image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16),
+                                      handler: { [weak self] _ in self?.viewModel.autoFillExams() }))
         #endif
-        
+
         return UIMenu(title: "Options", image: nil, identifier: nil, options: [], children: menuItems)
     }
 }
@@ -125,14 +125,13 @@ protocol SimulationLiveInfosInput: AnyObject {
 private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     // MARK: - UI
 
-    private let mentionView: MentionView = .init(frame: .zero, mention: .cannotBeCalculated)
+    private let mentionView: MentionView = .init(frame: .zero,
+                                                 mention: .cannotBeCalculated)
 
     private let gradeLabel: UILabel = .init().configure {
-        $0.font = PlomeFont.demiBoldL.font
+        $0.font = PlomeFont.custom(size: 22, weight: .demiBold).font
         $0.textColor = PlomeColor.darkBlue.color
     }
-
-    private let imageView: UIImageView = .init()
 
     private let gradesStateLabel: UILabel = .init().configure {
         $0.font = PlomeFont.bodyS.font
@@ -150,20 +149,6 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing
         $0.alignment = .center
-    }
-
-    private let bottomStackView: UIStackView = .init().configure {
-        $0.axis = .horizontal
-        $0.distribution = .equalSpacing
-        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
-        $0.alignment = .center
-    }
-
-    private let stackView: UIStackView = .init().configure {
-        $0.axis = .vertical
-        $0.distribution = .fill
-        $0.spacing = AppStyles.defaultSpacing
-        $0.alignment = .top
         $0.isLayoutMarginsRelativeArrangement = true
         $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                  left: AppStyles.defaultSpacing,
@@ -171,6 +156,13 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
                                  right: AppStyles.defaultSpacing)
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
+    }
+
+    private let stackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.alignment = .trailing
     }
 
     // MARK: - Init
@@ -187,19 +179,27 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     private func setupView() {
         gradeLabel.text = L10n.Home.placeholerGrade
         gradesStateLabel.text = L10n.Home.notAllGradeFill
-        imageView.image = Icons.warning.configure(weight: .regular, color: .warning, size: 15)
 
         topStackView.addArrangedSubviews([gradeLabel, spacer, mentionView])
-        bottomStackView.addArrangedSubviews([imageView, gradesStateLabel])
 
-        stackView.addArrangedSubviews([topStackView, bottomStackView])
+        stackView.addArrangedSubviews([topStackView, gradesStateLabel])
         stackView.stretchInView(parentView: self)
     }
 
     func didUpdate(simulationLiveInfos: SimulationLiveInfos) {
         gradesStateLabel.text = simulationLiveInfos.gradesState.description
-        imageView.image = simulationLiveInfos.gradesState.icon
-        gradeLabel.text = simulationLiveInfos.averageText
         mentionView.update(mention: simulationLiveInfos.mention)
+
+        setCustomGradeLabelText(for: simulationLiveInfos.averageText,
+                                with: simulationLiveInfos.averageTextColor())
+    }
+
+    private func setCustomGradeLabelText(for text: String, with color: UIColor) {
+        let splittedString = text.split(separator: "/")
+        let range = (text as NSString).range(of: String(splittedString[0]))
+
+        gradeLabel.attributedText = NSMutableAttributedString(string: text).configure {
+            $0.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        }
     }
 }

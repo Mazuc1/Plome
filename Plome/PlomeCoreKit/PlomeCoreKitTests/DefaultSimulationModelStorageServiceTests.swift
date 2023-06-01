@@ -20,7 +20,7 @@ final class DefaultSimulationModelStorageServiceTests: XCTestCase {
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
         userDefaults = Defaults(userDefaults: .init(suiteName: "UserDefaultTests")!)
-        
+
         CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
         CoreKitContainer.shared.userDefault.register { self.userDefaults }
 
