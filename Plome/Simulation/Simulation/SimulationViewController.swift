@@ -99,7 +99,7 @@ final class SimulationViewController: AppViewController {
                                               }),
                                      UIAction(title: "Sauvegarder",
                                               image: Icons.download.configure(weight: .regular, color: .lagoon, size: 16),
-                                              handler: { _ in
+                                              handler: { [weak self] _ in self?.viewModel.saveSimulationIfAllConditionsAreMet()
                                               }),
                                      UIAction(title: "Brouillon",
                                               image: Icons.cached.configure(weight: .regular, color: .lagoon, size: 16),
