@@ -12,6 +12,7 @@
 		CF0A26BB2905E7760099186E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BA2905E7760099186E /* CoreDataRepository.swift */; };
 		CF0A26BD2905E9780099186E /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BC2905E9780099186E /* CoreDataManagerError.swift */; };
 		CF0A26BF2905EC1A0099186E /* NSManagedObjectContext+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A26BE2905EC1A0099186E /* NSManagedObjectContext+extension.swift */; };
+		CF0C48672A28C79400948680 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF0C48662A28C79400948680 /* NotificationBannerSwift */; };
 		CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E20293D56E100ACFC6A /* FirebaseAnalytics */; };
 		CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */; };
 		CF135E25293D581900ACFC6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CF135E24293D581900ACFC6A /* FirebaseCrashlytics */; };
@@ -212,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0C48672A28C79400948680 /* NotificationBannerSwift in Frameworks */,
 				CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */,
 				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
 				CF832EBC2A20D2BE006F7804 /* Factory in Frameworks */,
@@ -596,6 +598,7 @@
 				CF135E22293D56E100ACFC6A /* FirebaseCrashlytics */,
 				CF035FF729F12BA3005196D6 /* Tabman */,
 				CF832EBB2A20D2BE006F7804 /* Factory */,
+				CF0C48662A28C79400948680 /* NotificationBannerSwift */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -680,6 +683,7 @@
 				CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */,
 				CF832EBA2A20D2BE006F7804 /* XCRemoteSwiftPackageReference "Factory" */,
+				CF0C48652A28C79400948680 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1296,6 +1300,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		CF0C48652A28C79400948680 /* XCRemoteSwiftPackageReference "NotificationBanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Daltron/NotificationBanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		CF135E1F293D56E100ACFC6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1327,6 +1339,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF035FF629F12BA3005196D6 /* XCRemoteSwiftPackageReference "Tabman" */;
 			productName = Tabman;
+		};
+		CF0C48662A28C79400948680 /* NotificationBannerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF0C48652A28C79400948680 /* XCRemoteSwiftPackageReference "NotificationBanner" */;
+			productName = NotificationBannerSwift;
 		};
 		CF135E20293D56E100ACFC6A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
