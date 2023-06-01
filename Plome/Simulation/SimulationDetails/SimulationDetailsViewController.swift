@@ -38,11 +38,6 @@ class SimulationDetailsViewController: AppViewController {
         $0.alignment = .center
     }
 
-    private lazy var tertiaryCTARemakeSimulation: TertiaryCTA = .init(title: L10n.Home.remakeSimulationFromThisOne).configure { [weak self] in
-        $0.addTarget(self, action: #selector(self?.userDidTapRemakeSimulation), for: .touchUpInside)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
     private let scrollViewContainerStackView: UIStackView = .init().configure {
         $0.axis = .vertical
         $0.distribution = .fill
@@ -113,8 +108,6 @@ class SimulationDetailsViewController: AppViewController {
             ])
         }
 
-        scrollViewContainerStackView.addArrangedSubview(tertiaryCTARemakeSimulation)
-
         scrollViewContainerStackView.stretchInView(parentView: scrollView)
 
         view.addSubview(scrollView)
@@ -130,8 +123,6 @@ class SimulationDetailsViewController: AppViewController {
             gradeInformationView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examsTypeGradeView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
             examGradeTypeStackView.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
-            tertiaryCTARemakeSimulation.heightAnchor.constraint(equalToConstant: AppStyles.secondaryCTAHeight),
-            tertiaryCTARemakeSimulation.widthAnchor.constraint(equalToConstant: widthWithoutMargin),
         ])
     }
 
@@ -141,14 +132,10 @@ class SimulationDetailsViewController: AppViewController {
     }
 
     private func createDeleteBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
+        UIBarButtonItem(image: Icons.trash.configure(weight: .regular, color: .fail, size: 16), style: .plain, target: self, action: #selector(userDidTapDeleteSimulation))
     }
 
     @objc private func userDidTapDeleteSimulation() {
         viewModel.userDidTapDeleteSimulation()
-    }
-
-    @objc private func userDidTapRemakeSimulation() {
-        viewModel.userDidTapRemakeSimulation()
     }
 }
