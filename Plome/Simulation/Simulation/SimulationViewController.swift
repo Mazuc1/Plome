@@ -51,13 +51,11 @@ final class SimulationViewController: AppViewController {
         viewModel.simulationLiveInfosInput = simulationLiveInfosView
 
         navigationItem.title = viewModel.simulation.name
-        navigationItem.rightBarButtonItems = []
-        navigationItem.rightBarButtonItems?.append(createShareResultBarButton())
         navigationItem.backButtonDisplayMode = .minimal
-
-        #if DEBUG
-            navigationItem.rightBarButtonItems?.append(createDebugBarButton())
-        #endif
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu",
+                                                            image: Icons.ellipsisMenu.configure(weight: .medium, color: .lagoon, size: 16),
+                                                            primaryAction: nil,
+                                                            menu: createBarButtonMenu())
 
         setupConstraint()
     }
@@ -91,21 +89,30 @@ final class SimulationViewController: AppViewController {
 
         examTypePageViewController.didMove(toParent: self)
     }
-
-    private func createDebugBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(didTapFillSimulation))
-    }
-
-    private func createShareResultBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapShareResult))
-    }
-
-    @objc private func userDidTapShareResult() {
-        viewModel.userDidTapShareResult(screenshot: simulationLiveInfosView.takeScreenshot())
-    }
-
-    @objc private func didTapFillSimulation() {
-        viewModel.autoFillExams()
+    
+    private func createBarButtonMenu() -> UIMenu {
+        var menuItems: [UIAction] = [UIAction(title: "Partager",
+                                              image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16),
+                                              handler: { [weak self] _ in
+            guard let self else { return }
+            self.viewModel.userDidTapShareResult(screenshot: self.simulationLiveInfosView.takeScreenshot())
+        }),
+                                     UIAction(title: "Sauvegarder",
+                                              image: Icons.download.configure(weight: .regular, color: .lagoon, size: 16),
+                                              handler: { (_) in
+        }),
+                                     UIAction(title: "Brouillon",
+                                              image: Icons.cached.configure(weight: .regular, color: .lagoon, size: 16),
+                                              handler: { (_) in
+        })]
+        
+        #if DEBUG
+        menuItems.append(UIAction(title: "Fulfill",
+                                  image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16),
+                                  handler: { [weak self] _ in self?.viewModel.autoFillExams() }))
+        #endif
+        
+        return UIMenu(title: "Options", image: nil, identifier: nil, options: [], children: menuItems)
     }
 }
 
