@@ -6,10 +6,10 @@
 //
 
 import Combine
+import Factory
 import Foundation
 import PlomeCoreKit
 import UIKit
-import Factory
 
 protocol SimulationViewModelInput: AnyObject {
     func didChangeSimulationExamGrade()
@@ -19,7 +19,7 @@ final class SimulationViewModel: ObservableObject {
     // MARK: - Properties
 
     private let router: SimulationsRouter
-    
+
     @Injected(\CoreKitContainer.coreDataSimulationRepository) private var simulationRepository
 
     @Published var simulation: Simulation
@@ -59,21 +59,21 @@ final class SimulationViewModel: ObservableObject {
         }
         router.openActivityController(with: [url])
     }
-    
+
     func saveSimulationIfAllConditionsAreMet() {
         guard simulation.gradeIsSetForAllExams() else {
             router.alert(title: "Oups",
                          message: "Vous ne pouvez pas sauvegarder une simulation si toutes les notes ne sont pas remplis. Si vous voulez la reprendre plus tard, ajoutez la à vos brouillon.")
             return
         }
-        
+
         saveSimulation()
     }
-    
+
     func saveSimulationToDraft() {
         saveSimulation()
     }
-    
+
     private func saveSimulation() {
         do {
             try simulationRepository.add { [simulation] cdSimulation, context in
@@ -81,10 +81,10 @@ final class SimulationViewModel: ObservableObject {
                 cdSimulation.exams = simulation.mergeAndConvertExams(in: context,
                                                                      for: cdSimulation)
                 cdSimulation.type = simulation.type
-                
+
                 cdSimulation.date = Date()
             }
-            
+
             router.showStatusBanner(title: "Sauvegardé !", style: .info)
         } catch { router.errorAlert() }
     }

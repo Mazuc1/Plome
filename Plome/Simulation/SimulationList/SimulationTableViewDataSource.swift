@@ -5,8 +5,8 @@
 //  Created by Loic Mazuc on 01/06/2023.
 //
 
-import UIKit
 import PlomeCoreKit
+import UIKit
 
 enum SimulationItem: Hashable {
     case `default`(Simulation)
@@ -16,10 +16,10 @@ enum SimulationItem: Hashable {
 enum SimulationSection: Int {
     case `default` = 0
     case draft = 1
-    
+
     var sectionTitle: String? {
         switch self {
-        case .`default`: return "Vos simulations"
+        case .default: return "Vos simulations"
         case .draft: return "Vos brouillon"
         }
     }

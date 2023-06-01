@@ -141,7 +141,7 @@ final class SimulationListViewController: AppViewController {
                     return cell
                 }
             }
-            
+
             return UITableViewCell()
         }
     }
@@ -154,15 +154,15 @@ final class SimulationListViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return 0 }
-        
+
         switch item {
-        case .`default`: return SimulationCell.height
+        case .default: return SimulationCell.height
         case .draft: return DraftSimulationCell.height
         }
     }
-    
+
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.userDidSelectSimulation(at: indexPath)
     }
@@ -173,7 +173,7 @@ extension SimulationListViewController: UITableViewDelegate {
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return SimulationCellHeaderView(text: dataSource.tableView(tableView, titleForHeaderInSection: section) ?? "",
                                         reuseIdentifier: SimulationCellHeaderView.reuseIdentifier)

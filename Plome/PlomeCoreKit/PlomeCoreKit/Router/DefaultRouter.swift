@@ -6,8 +6,8 @@
 //  Copyright © 2020 Cassius Pacheco. All rights reserved.
 //
 
-import UIKit
 import NotificationBannerSwift
+import UIKit
 
 open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     private let rootTransition: Transition
@@ -100,11 +100,12 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
         let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         rootViewController?.present(activityController, animated: true)
     }
-    
+
     // MARK: - Banner
-    
+
     public func showStatusBanner(title: String,
-                                   style: BannerStyle) {
+                                 style: BannerStyle)
+    {
         let banner = StatusBarNotificationBanner(title: title,
                                                  style: style,
                                                  colors: PlomeBannerColors())

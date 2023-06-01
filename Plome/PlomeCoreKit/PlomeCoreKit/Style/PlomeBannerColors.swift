@@ -5,8 +5,8 @@
 //  Created by Loic Mazuc on 01/06/2023.
 //
 
-import UIKit
 import NotificationBannerSwift
+import UIKit
 
 class PlomeBannerColors: BannerColorsProtocol {
     func color(for style: BannerStyle) -> UIColor {

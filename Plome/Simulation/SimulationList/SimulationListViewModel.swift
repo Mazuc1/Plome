@@ -55,23 +55,23 @@ final class SimulationListViewModel {
 
     private func makeTableViewSnapshot(with simulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
-        
+
         guard let simulations,
               !simulations.isEmpty else { return snapshot }
-        
+
         let defaultSimulation = simulations
             .filter { $0.isAllGradesSet() }
             .map { SimulationItem.default($0) }
-        
+
         let cachedSimulation = simulations
             .filter { $0.isAtLeaseOneGradeNil() }
             .map { SimulationItem.draft($0) }
-        
+
         if !defaultSimulation.isEmpty {
             snapshot.appendSections([.default])
             snapshot.appendItems(defaultSimulation, toSection: .default)
         }
-        
+
         if !cachedSimulation.isEmpty {
             snapshot.appendSections([.draft])
             snapshot.appendItems(cachedSimulation, toSection: .draft)
@@ -95,10 +95,10 @@ final class SimulationListViewModel {
         }
 
         let simulation = snapshot.itemIdentifiers[index.row]
-        
+
         switch simulation {
         case let .default(simulation): router.openSimulationDetails(for: simulation, extract: cdSimulation)
-        case .draft(_): break
+        case .draft: break
         }
     }
 
