@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     private let rootTransition: Transition
@@ -98,5 +99,15 @@ open class DefaultRouter: NSObject, Router, Closable, Dismissable, Alertable {
     public func openActivityController(with items: [Any]) {
         let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         rootViewController?.present(activityController, animated: true)
+    }
+    
+    // MARK: - Banner
+    
+    public func showStatusBanner(title: String,
+                                   style: BannerStyle) {
+        let banner = StatusBarNotificationBanner(title: title,
+                                                 style: style,
+                                                 colors: PlomeBannerColors())
+        banner.show()
     }
 }

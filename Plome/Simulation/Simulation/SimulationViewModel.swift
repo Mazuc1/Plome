@@ -74,11 +74,14 @@ final class SimulationViewModel: ObservableObject {
         do {
             try simulationRepository.add { [simulation] cdSimulation, context in
                 cdSimulation.name = simulation.name
-                cdSimulation.exams = simulation.mergeAndConvertExams(in: context, for: cdSimulation)
+                cdSimulation.exams = simulation.mergeAndConvertExams(in: context,
+                                                                     for: cdSimulation)
                 cdSimulation.type = simulation.type
                 
                 cdSimulation.date = Date()
             }
+            
+            router.showStatusBanner(title: "Sauvegardé !", style: .info)
         } catch { router.errorAlert() }
     }
 }
