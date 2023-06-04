@@ -84,29 +84,49 @@ final class SimulationListViewModel {
         router.openSelectSimulationModel()
     }
 
-    func userDidTapDeleteSimulation(at index: Int) {
-        deleteSimulationModel(at: index)
-    }
-
-    func userDidSelectSimulation(at index: IndexPath) {
-        guard let cdSimulation = coreDataSimulationModels?[index.row] else {
+    func userDidTapDelete(simulationItem: SimulationItem) {
+        guard let (_, cdSimulation) = getSimulationsFrom(simulationItem: simulationItem) else {
             router.errorAlert()
             return
         }
 
-        let simulation = snapshot.itemIdentifiers[index.row]
+        delete(cdSimulation: cdSimulation)
+    }
 
-        switch simulation {
-        case let .default(simulation): router.openSimulationDetails(for: simulation, extract: cdSimulation)
-        case .draft: break
+    func userDidSelect(simulationItem: SimulationItem) {
+        guard let (simulation, cdSimulation) = getSimulationsFrom(simulationItem: simulationItem) else {
+            router.errorAlert()
+            return
+        }
+
+        // Action
+        switch simulationItem {
+        case .default: router.openSimulationDetails(for: simulation,
+                                                    extract: cdSimulation)
+        case .draft:
+            simulation.replaceDefaultGradesValue()
+            router.openSimulation(with: simulation,
+                                  editing: cdSimulation)
         }
     }
 
-    private func deleteSimulationModel(at index: Int) {
+    private func getSimulationsFrom(simulationItem: SimulationItem) -> (Simulation, CDSimulation)? {
+        let extractedSimulation: Simulation
+
+        // Get simulation
+        switch simulationItem {
+        case let .default(simulation): extractedSimulation = simulation
+        case let .draft(simulation): extractedSimulation = simulation
+        }
+
+        guard let cdSimulation = coreDataSimulationModels?.first(where: { $0.date == extractedSimulation.date }) else { return nil }
+
+        return (extractedSimulation, cdSimulation)
+    }
+
+    private func delete(cdSimulation: CDSimulation) {
         do {
-            if let simulation = coreDataSimulationModels?[index] {
-                try simulationRepository.delete(with: simulation.objectID)
-            }
+            try simulationRepository.delete(with: cdSimulation.objectID)
         } catch {
             router.errorAlert()
         }

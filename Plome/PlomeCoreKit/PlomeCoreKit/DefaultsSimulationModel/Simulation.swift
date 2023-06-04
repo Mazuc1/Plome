@@ -122,6 +122,15 @@ public class Simulation: NSObject, NSCopying, Codable {
         exams?.insert(exam)
     }
 
+    public func replaceDefaultGradesValue() {
+        guard let exams else { return }
+        exams
+            .forEach {
+                let grade = $0.grade == -1 ? nil : $0.grade
+                $0.grade = grade
+            }
+    }
+
     public func average() -> Float {
         guard let exams else { return -1 }
         var totalGrade: Float = 0

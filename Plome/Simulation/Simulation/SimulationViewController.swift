@@ -37,6 +37,8 @@ final class SimulationViewController: AppViewController {
     required init(viewModel: SimulationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
+        hidesBottomBarWhenPushed = true
     }
 
     @available(*, unavailable)
@@ -58,6 +60,9 @@ final class SimulationViewController: AppViewController {
                                                             menu: createBarButtonMenu())
 
         setupConstraint()
+
+        // Update UI when editing simulation
+        viewModel.didChangeSimulationExamGrade()
     }
 
     // MARK: - Methods

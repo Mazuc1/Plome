@@ -164,12 +164,14 @@ extension SimulationListViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.userDidSelectSimulation(at: indexPath)
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        viewModel.userDidSelect(simulationItem: item)
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = AppContextualAction.deleteAction { [weak self] in
-            self?.viewModel.userDidTapDeleteSimulation(at: indexPath.row)
+            guard let item = self?.dataSource.itemIdentifier(for: indexPath) else { return }
+            self?.viewModel.userDidTapDelete(simulationItem: item)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }

@@ -24,6 +24,8 @@ final class SimulationViewModel: ObservableObject {
 
     @Published var simulation: Simulation
 
+    private var cdSimulation: CDSimulation?
+
     weak var examTypePageViewControllerInput: ExamTypePageViewControllerInput?
     weak var simulationLiveInfosInput: SimulationLiveInfosInput?
 
@@ -35,11 +37,10 @@ final class SimulationViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: SimulationsRouter, simulation: Simulation) {
+    init(router: SimulationsRouter, simulation: Simulation, editing cdSimulation: CDSimulation?) {
         self.router = router
         self.simulation = simulation
-
-        didChangeSimulationExamGrade()
+        self.cdSimulation = cdSimulation
     }
 
     // MARK: - Methods
