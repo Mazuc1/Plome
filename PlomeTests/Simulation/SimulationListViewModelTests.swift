@@ -52,7 +52,7 @@ final class SimulationListViewModelTests: XCTestCase {
             .sink { snapshot in
                 // Assert
                 XCTAssertEqual(snapshot.numberOfSections, 1)
-                XCTAssertEqual(snapshot.sectionIdentifiers[0], 0)
+                XCTAssertEqual(snapshot.sectionIdentifiers[0], SimulationSection.default)
             }
             .store(in: &cancellables)
     }
@@ -79,9 +79,11 @@ final class SimulationListViewModelTests: XCTestCase {
 
     func testWhenDeleteSimulationThenSimulationIsDeleted() {
         // Arrange
+        let date = Date()
+        
         try! simulationRepository.add { simulation, _ in
             simulation.name = "Test"
-            simulation.date = Date()
+            simulation.date = date
         }
 
         try! simulationRepository.add { simulation, _ in
@@ -91,7 +93,7 @@ final class SimulationListViewModelTests: XCTestCase {
 
         // Act
         simulationListViewModel.updateSnapshot()
-        simulationListViewModel.userDidTapDeleteSimulation(at: 0)
+        simulationListViewModel.userDidTapDelete(simulationItem: .default(.init(name: "", date: date, exams: nil, type: .brevet)))
         simulationListViewModel.updateSnapshot()
 
         simulationListViewModel.$snapshot
