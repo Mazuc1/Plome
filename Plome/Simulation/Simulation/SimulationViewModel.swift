@@ -68,14 +68,14 @@ final class SimulationViewModel: ObservableObject {
             return
         }
 
-        saveSimulation()
+        saveSimulation(successMessage: "Sauvegarder !")
     }
 
     func saveSimulationToDraft() {
-        saveSimulation()
+        saveSimulation(successMessage: "Ajouter aux brouillons")
     }
 
-    private func saveSimulation() {
+    private func saveSimulation(successMessage: String) {
         do {
             try simulationRepository.add { [simulation] cdSimulation, context in
                 cdSimulation.name = simulation.name
@@ -86,7 +86,7 @@ final class SimulationViewModel: ObservableObject {
                 cdSimulation.date = Date()
             }
 
-            router.showStatusBanner(title: "Sauvegardé !", style: .info)
+            router.showStatusBanner(title: successMessage, style: .info)
         } catch { router.errorAlert() }
     }
 }
