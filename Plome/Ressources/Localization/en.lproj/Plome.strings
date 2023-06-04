@@ -52,6 +52,17 @@
 "home.worst_grade" = "Worst grade";
 "home.best_grade" = "Best grade";
 
+"home.menu" = "Menu";
+"home.share" = "Share";
+"home.save" = "Save";
+"home.draft" = "Draft";
+"home.options" = "Options";
+"home.cant_save_simulation_message" = "You can't save a simulation unless all the notes have been filled in. If you want to resume it later, add it to your drafts.";
+"home.saved" = "Saved !";
+"home.add_to_draft" = "Add to drafts";
+"home.your_simulations" = "Your simulations";
+"home.your_drafts" = "Your drafts";
+
 // MARK: - Settings
 
 "settings.assistance_mail" = "mazuc.loic@icloud.com";
@@ -113,3 +124,7 @@
 "onboarding.modelText" = "Create your own exam templates in addition to what is already available.";
 "onboarding.simulationText" = "Enter your scores and coefficients to get the result.";
 "onboarding.startText" = "You know everything !";
+
+// MARK: - DEBUG
+
+"debug.fulfill_grades" = "Fulfill";

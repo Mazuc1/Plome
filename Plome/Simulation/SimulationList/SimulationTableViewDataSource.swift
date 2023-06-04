@@ -19,8 +19,8 @@ enum SimulationSection: Int {
 
     var sectionTitle: String? {
         switch self {
-        case .default: return "Vos simulations"
-        case .draft: return "Vos brouillon"
+        case .default: return L10n.Home.yourSimulations
+        case .draft: return L10n.Home.yourDrafts
         }
     }
 }

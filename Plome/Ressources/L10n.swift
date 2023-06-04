@@ -21,7 +21,14 @@ public enum L10n {
     public static let tabBarModel = L10n.tr("Plome", "tabBar_model", fallback: "Model")
     /// Settings
     public static let tabBarSettings = L10n.tr("Plome", "tabBar_settings", fallback: "Settings")
+    public enum Debug {
+        /// Fulfill
+        public static let fulfillGrades = L10n.tr("Plome", "debug.fulfill_grades", fallback: "Fulfill")
+    }
+
     public enum Home {
+        /// Add to drafts
+        public static let addToDraft = L10n.tr("Plome", "home.add_to_draft", fallback: "Add to drafts")
         /// Admit
         public static let admit = L10n.tr("Plome", "home.admit", fallback: "Admit")
         /// All the grades are filled in!
@@ -35,10 +42,14 @@ public enum L10n {
         public static let bestGrade = L10n.tr("Plome", "home.best_grade", fallback: "Best grade")
         /// Calculate
         public static let calculate = L10n.tr("Plome", "home.calculate", fallback: "Calculate")
+        /// You can't save a simulation unless all the notes have been filled in. If you want to resume it later, add it to your drafts.
+        public static let cantSaveSimulationMessage = L10n.tr("Plome", "home.cant_save_simulation_message", fallback: "You can't save a simulation unless all the notes have been filled in. If you want to resume it later, add it to your drafts.")
         /// Coeff.
         public static let coeff = L10n.tr("Plome", "home.coeff", fallback: "Coeff.")
         /// 1.0
         public static let coeffPlaceholder = L10n.tr("Plome", "home.coeff_placeholder", fallback: "1.0")
+        /// Draft
+        public static let draft = L10n.tr("Plome", "home.draft", fallback: "Draft")
         /// Have you changed the template used? Consider saving it.
         public static let editModelThinkToSave = L10n.tr("Plome", "home.edit_model_think_to_save", fallback: "Have you changed the template used? Consider saving it.")
         /// You will find here all your exam simulations.
@@ -55,6 +66,8 @@ public enum L10n {
         public static let howToCatchUp = L10n.tr("Plome", "home.how_to_catchUp", fallback: "How you catch up ?")
         /// It's done !
         public static let itsDone = L10n.tr("Plome", "home.its_done", fallback: "It's done !")
+        /// Menu
+        public static let menu = L10n.tr("Plome", "home.menu", fallback: "Menu")
         /// The model has been saved
         public static let modelHasBeenSave = L10n.tr("Plome", "home.model_has_been_save", fallback: "The model has been saved")
         /// My simulation
@@ -69,6 +82,8 @@ public enum L10n {
         public static let noSimulationModelAvailable = L10n.tr("Plome", "home.no_simulation_model_available", fallback: "You do not have any simulation models.\n\nYou can add them from the settings or from the Model tab.")
         /// Not all grades are filled in.
         public static let notAllGradeFill = L10n.tr("Plome", "home.not_all_grade_fill", fallback: "Not all grades are filled in.")
+        /// Options
+        public static let options = L10n.tr("Plome", "home.options", fallback: "Options")
         /// -- / 20
         public static let placeholerGrade = L10n.tr("Plome", "home.placeholer_grade", fallback: "-- / 20")
         /// Remake a simulation
@@ -79,10 +94,16 @@ public enum L10n {
         public static let result = L10n.tr("Plome", "home.result", fallback: "Result")
         /// Back to home
         public static let returnToHome = L10n.tr("Plome", "home.return_to_home", fallback: "Back to home")
+        /// Save
+        public static let save = L10n.tr("Plome", "home.save", fallback: "Save")
         /// Save this model
         public static let saveModel = L10n.tr("Plome", "home.save_model", fallback: "Save this model")
+        /// Saved !
+        public static let saved = L10n.tr("Plome", "home.saved", fallback: "Saved !")
         /// Select a model
         public static let selectAModel = L10n.tr("Plome", "home.select_a_model", fallback: "Select a model")
+        /// Share
+        public static let share = L10n.tr("Plome", "home.share", fallback: "Share")
         /// Simulation from %@
         public static func simulationFromDate(_ p1: Any) -> String {
             return L10n.tr("Plome", "home.simulation_from_date", String(describing: p1), fallback: "Simulation from %@")
@@ -96,10 +117,14 @@ public enum L10n {
         public static let worstGrade = L10n.tr("Plome", "home.worst_grade", fallback: "Worst grade")
         /// You will graduate by earning extra points:
         public static let youWillObtainYourDiploma = L10n.tr("Plome", "home.you_will_obtain_your_diploma", fallback: "You will graduate by earning extra points:")
+        /// Your drafts
+        public static let yourDrafts = L10n.tr("Plome", "home.your_drafts", fallback: "Your drafts")
         /// Your score will then be
         public static let yourGradeWillBe = L10n.tr("Plome", "home.your_grade_will_be", fallback: "Your score will then be")
         /// Your grades
         public static let yourGrades = L10n.tr("Plome", "home.your_grades", fallback: "Your grades")
+        /// Your simulations
+        public static let yourSimulations = L10n.tr("Plome", "home.your_simulations", fallback: "Your simulations")
     }
 
     public enum Onboarding {

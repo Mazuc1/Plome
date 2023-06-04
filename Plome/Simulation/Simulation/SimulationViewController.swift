@@ -54,7 +54,7 @@ final class SimulationViewController: AppViewController {
 
         navigationItem.title = viewModel.simulation.name
         navigationItem.backButtonDisplayMode = .minimal
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu",
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Home.menu,
                                                             image: Icons.ellipsisMenu.configure(weight: .medium, color: .lagoon, size: 16),
                                                             primaryAction: nil,
                                                             menu: createBarButtonMenu())
@@ -96,28 +96,28 @@ final class SimulationViewController: AppViewController {
     }
 
     private func createBarButtonMenu() -> UIMenu {
-        var menuItems: [UIAction] = [UIAction(title: "Partager",
+        var menuItems: [UIAction] = [UIAction(title: L10n.Home.share,
                                               image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16),
                                               handler: { [weak self] _ in
                                                   guard let self else { return }
                                                   self.viewModel.userDidTapShareResult(screenshot: self.simulationLiveInfosView.takeScreenshot())
                                               }),
-                                     UIAction(title: "Sauvegarder",
+                                     UIAction(title: L10n.Home.save,
                                               image: Icons.download.configure(weight: .regular, color: .lagoon, size: 16),
                                               handler: { [viewModel] _ in viewModel.saveSimulationIfAllConditionsAreMet()
                                               }),
-                                     UIAction(title: "Brouillon",
+                                     UIAction(title: L10n.Home.draft,
                                               image: Icons.cached.configure(weight: .regular, color: .lagoon, size: 16),
                                               handler: { [viewModel] _ in viewModel.saveSimulationToDraft()
                                               })]
 
         #if DEBUG
-            menuItems.append(UIAction(title: "Fulfill",
+            menuItems.append(UIAction(title: L10n.Debug.fulfillGrades,
                                       image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16),
                                       handler: { [viewModel] _ in viewModel.autoFillExams() }))
         #endif
 
-        return UIMenu(title: "Options", image: nil, identifier: nil, options: [], children: menuItems)
+        return UIMenu(title: L10n.Home.options, image: nil, identifier: nil, options: [], children: menuItems)
     }
 }
 

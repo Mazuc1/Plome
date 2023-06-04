@@ -63,16 +63,16 @@ final class SimulationViewModel: ObservableObject {
 
     func saveSimulationIfAllConditionsAreMet() {
         guard simulation.gradeIsSetForAllExams() else {
-            router.alert(title: "Oups",
-                         message: "Vous ne pouvez pas sauvegarder une simulation si toutes les notes ne sont pas remplis. Si vous voulez la reprendre plus tard, ajoutez la à vos brouillon.")
+            router.alert(title: PlomeCoreKit.L10n.General.oups,
+                         message: L10n.Home.cantSaveSimulationMessage)
             return
         }
 
-        saveSimulation(successMessage: "Sauvegarder !")
+        saveSimulation(successMessage: L10n.Home.saved)
     }
 
     func saveSimulationToDraft() {
-        saveSimulation(successMessage: "Ajouter aux brouillons")
+        saveSimulation(successMessage: L10n.Home.addToDraft)
     }
 
     private func saveSimulation(successMessage: String) {
