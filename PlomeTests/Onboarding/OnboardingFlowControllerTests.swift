@@ -54,7 +54,7 @@ final class OnboardingFlowControllerTests: XCTestCase {
         onboardingFlowController.onFinished = { expectation.fulfill() }
 
         // Act
-        onboardingFlowController.didFinishPresentOnboarding()
+        onboardingFlowController.didFinishOnboarding(onboardingViewController: .init(withConfiguration: .setUp()))
 
         // Assert
         waitForExpectations(timeout: 1)
