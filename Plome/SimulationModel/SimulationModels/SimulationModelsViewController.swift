@@ -109,7 +109,7 @@ final class SimulationModelsViewController: AppViewController {
             .store(in: &cancellables)
     }
 
-    private func applySnapshotIfNeeded(snapshot: SimulationListViewModel.TableViewSnapshot) {
+    private func applySnapshotIfNeeded(snapshot: SimulationModelsViewModel.TableViewSnapshot) {
         if snapshot.numberOfItems == 0 {
             emptySimulationModelListView.isHidden = false
         } else {

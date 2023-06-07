@@ -20,7 +20,7 @@ final class SimulationDetailsViewModelTests: XCTestCase {
 
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
-        
+
         CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
         simulationsRouter = SimulationsRouter(screens: .init(), rootTransition: EmptyTransition())
     }

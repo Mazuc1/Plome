@@ -46,8 +46,4 @@ final class SimulationDetailsViewModel {
             router.errorAlert()
         }
     }
-
-    func userDidTapRemakeSimulation() {
-        router.openSimulation(with: simulation)
-    }
 }

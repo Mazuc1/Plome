@@ -52,6 +52,17 @@
 "home.worst_grade" = "Pire note";
 "home.best_grade" = "Meilleur note";
 
+"home.menu" = "Menu";
+"home.share" = "Partager";
+"home.save" = "Sauvegarder";
+"home.draft" = "Brouillon";
+"home.options" = "Options";
+"home.cant_save_simulation_message" = "Vous ne pouvez pas sauvegarder une simulation si toutes les notes ne sont pas remplis. Si vous voulez la reprendre plus tard, ajoutez la à vos brouillon.";
+"home.saved" = "Sauvegardé !";
+"home.add_to_draft" = "Ajouter aux brouillons";
+"home.your_simulations" = "Vos simulations";
+"home.your_drafts" = "Vos brouillons";
+
 // MARK: - Settings
 
 "settings.assistance_mail" = "mazuc.loic@icloud.com";
@@ -113,3 +124,7 @@
 "onboarding.modelText" = "Créez vos propres modèles d'examen en plus de ce déjà disponible.";
 "onboarding.simulationText" = "Rentrez vos notes et coefficients pour avoir le résultat.";
 "onboarding.startText" = "Vous savez tout !";
+
+// MARK: - DEBUG
+
+"debug.fulfill_grades" = "Fulfill";

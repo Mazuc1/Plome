@@ -20,7 +20,7 @@ final class OnboardingFlowController {
 
     private let screens: Screens
     var onFinished: (() -> Void)?
-    
+
     @Injected(\CoreKitContainer.userDefault) private var userDefault
 
     private var mainRouter: OnboardingRouter

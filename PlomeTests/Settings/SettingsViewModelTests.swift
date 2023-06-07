@@ -20,7 +20,7 @@ final class SettingsViewModelTests: XCTestCase {
 
         mockCoreData = MockStorageProvider()
         simulationRepository = CoreDataRepository(storageProvider: mockCoreData)
-        
+
         CoreKitContainer.shared.coreDataSimulationRepository.register { self.simulationRepository }
 
         settingsViewModel = SettingsViewModel(router: .init(screens: .init(), rootTransition: EmptyTransition()))

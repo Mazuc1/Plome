@@ -25,7 +25,7 @@ final class AddSimulationModelViewModel: ObservableObject {
 
     private let router: SimulationModelsRouter
     private let openAs: AddSimulationModelOpeningMode
-    
+
     @Injected(\CoreKitContainer.coreDataSimulationRepository) private var simulationRepository
 
     @Published var trials: [Exam] = []

@@ -15,7 +15,7 @@ final class SimulationListViewController: AppViewController {
     private let viewModel: SimulationListViewModel
     private var cancellables: Set<AnyCancellable> = []
 
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, Simulation> = self.createDataSource()
+    private lazy var dataSource: SimulationTableViewDataSource = self.createDataSource()
 
     // MARK: - UI
 
@@ -24,6 +24,8 @@ final class SimulationListViewController: AppViewController {
         $0.rowHeight = SimulationCell.height
         $0.estimatedRowHeight = SimulationCell.height
         $0.register(SimulationCell.self, forCellReuseIdentifier: SimulationCell.reuseIdentifier)
+        $0.register(DraftSimulationCell.self, forCellReuseIdentifier: DraftSimulationCell.reuseIdentifier)
+        $0.register(SimulationCellHeaderView.self, forHeaderFooterViewReuseIdentifier: SimulationCellHeaderView.reuseIdentifier)
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -125,12 +127,21 @@ final class SimulationListViewController: AppViewController {
         dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
 
-    private func createDataSource() -> UITableViewDiffableDataSource<Int, Simulation> {
-        return .init(tableView: tableView) { tableView, _, simulation in
-            if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
-                cell.setup(with: CalculatorShaper(calculator: .init(simulation: simulation)))
-                return cell
+    private func createDataSource() -> SimulationTableViewDataSource {
+        return .init(tableView: tableView) { tableView, _, simulationItem in
+            switch simulationItem {
+            case let .default(simulation):
+                if let cell = tableView.dequeueReusableCell(withIdentifier: SimulationCell.reuseIdentifier) as? SimulationCell {
+                    cell.setup(with: CalculatorShaper(calculator: .init(simulation: simulation)))
+                    return cell
+                }
+            case let .draft(simulation):
+                if let cell = tableView.dequeueReusableCell(withIdentifier: DraftSimulationCell.reuseIdentifier) as? DraftSimulationCell {
+                    cell.setup(with: simulation)
+                    return cell
+                }
             }
+
             return UITableViewCell()
         }
     }
@@ -143,14 +154,30 @@ final class SimulationListViewController: AppViewController {
 // MARK: - Table View Delegate
 
 extension SimulationListViewController: UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return 0 }
+
+        switch item {
+        case .default: return SimulationCell.height
+        case .draft: return DraftSimulationCell.height
+        }
+    }
+
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.userDidSelectSimulation(at: indexPath)
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        viewModel.userDidSelect(simulationItem: item)
     }
 
     func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = AppContextualAction.deleteAction { [weak self] in
-            self?.viewModel.userDidTapDeleteSimulation(at: indexPath.row)
+            guard let item = self?.dataSource.itemIdentifier(for: indexPath) else { return }
+            self?.viewModel.userDidTapDelete(simulationItem: item)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return SimulationCellHeaderView(text: dataSource.tableView(tableView, titleForHeaderInSection: section) ?? "",
+                                        reuseIdentifier: SimulationCellHeaderView.reuseIdentifier)
     }
 }

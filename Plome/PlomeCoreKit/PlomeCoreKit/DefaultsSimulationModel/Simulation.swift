@@ -74,6 +74,16 @@ public class Simulation: NSObject, NSCopying, Codable {
         return exams.allSatisfy { $0.grade != nil }
     }
 
+    public func isAllGradesSet() -> Bool {
+        guard let exams else { return false }
+        return exams.allSatisfy { $0.grade != -1 }
+    }
+
+    public func isAtLeaseOneGradeNil() -> Bool {
+        guard let exams else { return false }
+        return exams.contains { $0.grade == Exam.defaultGradeValue }
+    }
+
     public func examsContainTrials() -> Bool {
         guard let exams else { return false }
         return exams.contains { $0.type == .trial }
@@ -112,6 +122,15 @@ public class Simulation: NSObject, NSCopying, Codable {
         exams?.insert(exam)
     }
 
+    public func replaceDefaultGradesValue() {
+        guard let exams else { return }
+        exams
+            .forEach {
+                let grade = $0.grade == -1 ? nil : $0.grade
+                $0.grade = grade
+            }
+    }
+
     public func average() -> Float {
         guard let exams else { return -1 }
         var totalGrade: Float = 0
@@ -127,8 +146,7 @@ public class Simulation: NSObject, NSCopying, Codable {
             totalOn += $0.rhs * $0.coeff
         }
 
-        guard totalGrade > 0,
-              totalOn > 0 else { return -1 }
+        guard totalOn > 0 else { return -1 }
 
         return (totalGrade / totalOn) * 20
     }

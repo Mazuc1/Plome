@@ -26,6 +26,7 @@ public enum AppAppearance {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         UINavigationBar.appearance().tintColor = PlomeColor.lagoon.color
 
+        UITableView.appearance().sectionFooterHeight = 0
         UITableView.appearance().sectionHeaderTopPadding = 0
 
         //  Page Control

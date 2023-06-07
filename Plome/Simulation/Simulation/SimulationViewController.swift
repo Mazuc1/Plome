@@ -37,6 +37,8 @@ final class SimulationViewController: AppViewController {
     required init(viewModel: SimulationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
+        hidesBottomBarWhenPushed = true
     }
 
     @available(*, unavailable)
@@ -51,15 +53,16 @@ final class SimulationViewController: AppViewController {
         viewModel.simulationLiveInfosInput = simulationLiveInfosView
 
         navigationItem.title = viewModel.simulation.name
-        navigationItem.rightBarButtonItems = []
-        navigationItem.rightBarButtonItems?.append(createShareResultBarButton())
         navigationItem.backButtonDisplayMode = .minimal
-
-        #if DEBUG
-            navigationItem.rightBarButtonItems?.append(createDebugBarButton())
-        #endif
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Home.menu,
+                                                            image: Icons.ellipsisMenu.configure(weight: .medium, color: .lagoon, size: 16),
+                                                            primaryAction: nil,
+                                                            menu: createBarButtonMenu())
 
         setupConstraint()
+
+        // Update UI when editing simulation
+        viewModel.didChangeSimulationExamGrade()
     }
 
     // MARK: - Methods
@@ -78,9 +81,9 @@ final class SimulationViewController: AppViewController {
         pageViewControllerContainer.addSubview(examTypePageViewController.view)
 
         NSLayoutConstraint.activate([
-            pageViewControllerContainer.topAnchor.constraint(equalTo: simulationLiveInfosView.bottomAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            pageViewControllerContainer.topAnchor.constraint(equalTo: simulationLiveInfosView.bottomAnchor),
             pageViewControllerContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
-            view.trailingAnchor.constraint(equalTo: pageViewControllerContainer.trailingAnchor, constant: AppStyles.defaultSpacing(factor: 2)),
+            view.trailingAnchor.constraint(equalTo: pageViewControllerContainer.trailingAnchor, constant: AppStyles.defaultSpacing),
             pageViewControllerContainer.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
 
             examTypePageViewController.view.leadingAnchor.constraint(equalTo: pageViewControllerContainer.leadingAnchor),
@@ -92,20 +95,29 @@ final class SimulationViewController: AppViewController {
         examTypePageViewController.didMove(toParent: self)
     }
 
-    private func createDebugBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(didTapFillSimulation))
-    }
+    private func createBarButtonMenu() -> UIMenu {
+        var menuItems: [UIAction] = [UIAction(title: L10n.Home.share,
+                                              image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16),
+                                              handler: { [weak self] _ in
+                                                  guard let self else { return }
+                                                  self.viewModel.userDidTapShareResult(screenshot: self.simulationLiveInfosView.takeScreenshot())
+                                              }),
+                                     UIAction(title: L10n.Home.save,
+                                              image: Icons.download.configure(weight: .regular, color: .lagoon, size: 16),
+                                              handler: { [viewModel] _ in viewModel.saveSimulationIfAllConditionsAreMet()
+                                              }),
+                                     UIAction(title: L10n.Home.draft,
+                                              image: Icons.cached.configure(weight: .regular, color: .lagoon, size: 16),
+                                              handler: { [viewModel] _ in viewModel.saveSimulationToDraft()
+                                              })]
 
-    private func createShareResultBarButton() -> UIBarButtonItem {
-        UIBarButtonItem(image: Icons.share.configure(weight: .regular, color: .lagoon, size: 16), style: .plain, target: self, action: #selector(userDidTapShareResult))
-    }
+        #if DEBUG
+            menuItems.append(UIAction(title: L10n.Debug.fulfillGrades,
+                                      image: Icons.hare.configure(weight: .regular, color: .lagoon, size: 16),
+                                      handler: { [viewModel] _ in viewModel.autoFillExams() }))
+        #endif
 
-    @objc private func userDidTapShareResult() {
-        viewModel.userDidTapShareResult(screenshot: simulationLiveInfosView.takeScreenshot())
-    }
-
-    @objc private func didTapFillSimulation() {
-        viewModel.autoFillExams()
+        return UIMenu(title: L10n.Home.options, image: nil, identifier: nil, options: [], children: menuItems)
     }
 }
 
@@ -118,14 +130,13 @@ protocol SimulationLiveInfosInput: AnyObject {
 private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     // MARK: - UI
 
-    private let mentionView: MentionView = .init(frame: .zero, mention: .cannotBeCalculated)
+    private let mentionView: MentionView = .init(frame: .zero,
+                                                 mention: .cannotBeCalculated)
 
     private let gradeLabel: UILabel = .init().configure {
-        $0.font = PlomeFont.demiBoldL.font
+        $0.font = PlomeFont.custom(size: 22, weight: .demiBold).font
         $0.textColor = PlomeColor.darkBlue.color
     }
-
-    private let imageView: UIImageView = .init()
 
     private let gradesStateLabel: UILabel = .init().configure {
         $0.font = PlomeFont.bodyS.font
@@ -143,20 +154,6 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
         $0.distribution = .equalSpacing
         $0.spacing = AppStyles.defaultSpacing
         $0.alignment = .center
-    }
-
-    private let bottomStackView: UIStackView = .init().configure {
-        $0.axis = .horizontal
-        $0.distribution = .equalSpacing
-        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
-        $0.alignment = .center
-    }
-
-    private let stackView: UIStackView = .init().configure {
-        $0.axis = .vertical
-        $0.distribution = .fill
-        $0.spacing = AppStyles.defaultSpacing
-        $0.alignment = .top
         $0.isLayoutMarginsRelativeArrangement = true
         $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
                                  left: AppStyles.defaultSpacing,
@@ -164,6 +161,13 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
                                  right: AppStyles.defaultSpacing)
         $0.backgroundColor = .white
         $0.layer.cornerRadius = AppStyles.defaultRadius
+    }
+
+    private let stackView: UIStackView = .init().configure {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.spacing = AppStyles.defaultSpacing(factor: 0.5)
+        $0.alignment = .trailing
     }
 
     // MARK: - Init
@@ -180,19 +184,27 @@ private final class SimulationLiveInfosView: UIView, SimulationLiveInfosInput {
     private func setupView() {
         gradeLabel.text = L10n.Home.placeholerGrade
         gradesStateLabel.text = L10n.Home.notAllGradeFill
-        imageView.image = Icons.warning.configure(weight: .regular, color: .warning, size: 15)
 
         topStackView.addArrangedSubviews([gradeLabel, spacer, mentionView])
-        bottomStackView.addArrangedSubviews([imageView, gradesStateLabel])
 
-        stackView.addArrangedSubviews([topStackView, bottomStackView])
+        stackView.addArrangedSubviews([topStackView, gradesStateLabel])
         stackView.stretchInView(parentView: self)
     }
 
     func didUpdate(simulationLiveInfos: SimulationLiveInfos) {
         gradesStateLabel.text = simulationLiveInfos.gradesState.description
-        imageView.image = simulationLiveInfos.gradesState.icon
-        gradeLabel.text = simulationLiveInfos.averageText
         mentionView.update(mention: simulationLiveInfos.mention)
+
+        setCustomGradeLabelText(for: simulationLiveInfos.averageText,
+                                with: simulationLiveInfos.averageTextColor())
+    }
+
+    private func setCustomGradeLabelText(for text: String, with color: UIColor) {
+        let splittedString = text.split(separator: "/")
+        let range = (text as NSString).range(of: String(splittedString[0]))
+
+        gradeLabel.attributedText = NSMutableAttributedString(string: text).configure {
+            $0.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        }
     }
 }

@@ -140,7 +140,7 @@ final class OnboardingViewController: AppViewController {
 
 extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     // No need to implement this method because we disable to go back
-    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? { nil }
+    func pageViewController(_: UIPageViewController, viewControllerBefore _: UIViewController) -> UIViewController? { nil }
 
     func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentVC = viewController as? OnboardingPageViewController else { return nil }

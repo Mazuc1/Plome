@@ -13,7 +13,7 @@ import UIKit
 final class SimulationListViewModel {
     // MARK: - Properties
 
-    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<Int, Simulation>
+    typealias TableViewSnapshot = NSDiffableDataSourceSnapshot<SimulationSection, SimulationItem>
 
     let router: SimulationsRouter
 
@@ -56,9 +56,25 @@ final class SimulationListViewModel {
     private func makeTableViewSnapshot(with simulations: [Simulation]?) -> TableViewSnapshot {
         var snapshot: TableViewSnapshot = .init()
 
-        if let simulations, !simulations.isEmpty {
-            snapshot.appendSections([0])
-            snapshot.appendItems(simulations, toSection: 0)
+        guard let simulations,
+              !simulations.isEmpty else { return snapshot }
+
+        let defaultSimulation = simulations
+            .filter { $0.isAllGradesSet() }
+            .map { SimulationItem.default($0) }
+
+        let cachedSimulation = simulations
+            .filter { $0.isAtLeaseOneGradeNil() }
+            .map { SimulationItem.draft($0) }
+
+        if !defaultSimulation.isEmpty {
+            snapshot.appendSections([.default])
+            snapshot.appendItems(defaultSimulation, toSection: .default)
+        }
+
+        if !cachedSimulation.isEmpty {
+            snapshot.appendSections([.draft])
+            snapshot.appendItems(cachedSimulation, toSection: .draft)
         }
 
         return snapshot
@@ -68,25 +84,49 @@ final class SimulationListViewModel {
         router.openSelectSimulationModel()
     }
 
-    func userDidTapDeleteSimulation(at index: Int) {
-        deleteSimulationModel(at: index)
-    }
-
-    func userDidSelectSimulation(at index: IndexPath) {
-        guard let cdSimulation = coreDataSimulationModels?[index.row] else {
+    func userDidTapDelete(simulationItem: SimulationItem) {
+        guard let (_, cdSimulation) = getSimulationsFrom(simulationItem: simulationItem) else {
             router.errorAlert()
             return
         }
 
-        let simulation = snapshot.itemIdentifiers[index.row]
-        router.openSimulationDetails(for: simulation, extract: cdSimulation)
+        delete(cdSimulation: cdSimulation)
     }
 
-    private func deleteSimulationModel(at index: Int) {
+    func userDidSelect(simulationItem: SimulationItem) {
+        guard let (simulation, cdSimulation) = getSimulationsFrom(simulationItem: simulationItem) else {
+            router.errorAlert()
+            return
+        }
+
+        // Action
+        switch simulationItem {
+        case .default: router.openSimulationDetails(for: simulation,
+                                                    extract: cdSimulation)
+        case .draft:
+            simulation.replaceDefaultGradesValue()
+            router.openSimulation(with: simulation,
+                                  editing: cdSimulation)
+        }
+    }
+
+    private func getSimulationsFrom(simulationItem: SimulationItem) -> (Simulation, CDSimulation)? {
+        let extractedSimulation: Simulation
+
+        // Get simulation
+        switch simulationItem {
+        case let .default(simulation): extractedSimulation = simulation
+        case let .draft(simulation): extractedSimulation = simulation
+        }
+
+        guard let cdSimulation = coreDataSimulationModels?.first(where: { $0.date == extractedSimulation.date }) else { return nil }
+
+        return (extractedSimulation, cdSimulation)
+    }
+
+    private func delete(cdSimulation: CDSimulation) {
         do {
-            if let simulation = coreDataSimulationModels?[index] {
-                try simulationRepository.delete(with: simulation.objectID)
-            }
+            try simulationRepository.delete(with: cdSimulation.objectID)
         } catch {
             router.errorAlert()
         }

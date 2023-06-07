@@ -74,7 +74,8 @@ final class SelectSimulationModelViewModel: ObservableObject {
             return
         }
 
-        router.openSimulation(with: simulation)
+        router.openSimulation(with: simulation,
+                              editing: nil)
     }
 
     func getSimulation(indexPath: IndexPath) -> Simulation? {

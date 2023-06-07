@@ -20,6 +20,8 @@ public enum PlomeFont {
     case demiBoldM
     case demiBoldS
 
+    case custom(size: CGFloat, weight: Font.Weight)
+
     public var font: UIFont {
         switch self {
         case .buttonDemiBold: return UIFont.urbaneRounded(size: 20, weight: .demiBold)
@@ -31,6 +33,7 @@ public enum PlomeFont {
         case .demiBoldL: return UIFont.urbaneRounded(size: 18, weight: .demiBold)
         case .demiBoldM: return UIFont.urbaneRounded(size: 16, weight: .demiBold)
         case .demiBoldS: return UIFont.urbaneRounded(size: 14, weight: .demiBold)
+        case let .custom(size: size, weight: weight): return UIFont.urbaneRounded(size: size, weight: weight)
         }
     }
 }

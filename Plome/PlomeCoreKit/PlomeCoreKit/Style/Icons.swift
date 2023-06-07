@@ -36,6 +36,8 @@ public enum Icons {
     case addRectangleStack
     case download
     case upload
+    case cached
+    case ellipsisMenu
 
     // Debug
     case hare
@@ -69,6 +71,8 @@ public enum Icons {
         case .addRectangleStack: return "rectangle.stack.badge.plus"
         case .download: return "square.and.arrow.down"
         case .upload: return "square.and.arrow.up"
+        case .cached: return "tray"
+        case .ellipsisMenu: return "ellipsis.circle"
 
         case .hare: return "hare"
         }
