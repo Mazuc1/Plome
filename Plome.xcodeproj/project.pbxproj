@@ -65,6 +65,7 @@
 		CFA04DAC2934DE9C00DFF2F5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA04DAB2934DE9C00DFF2F5 /* SettingsRouter.swift */; };
 		CFA04DAE2934DF7400DFF2F5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA04DAD2934DF7400DFF2F5 /* SettingsViewModel.swift */; };
 		CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB001CB290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift */; };
+		CFB0D5742A312BE100CDFF1F /* OnboardingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0D5732A312BE100CDFF1F /* OnboardingConfiguration.swift */; };
 		CFB51234294C7AB700979309 /* OnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51233294C7AB700979309 /* OnboardingFlowController.swift */; };
 		CFB51236294C7AD800979309 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51235294C7AD800979309 /* OnboardingRouter.swift */; };
 		CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51237294C7B2C00979309 /* OnboardingViewModel.swift */; };
@@ -179,6 +180,7 @@
 		CFA04DAB2934DE9C00DFF2F5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		CFA04DAD2934DF7400DFF2F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CFB001CB290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
+		CFB0D5732A312BE100CDFF1F /* OnboardingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingConfiguration.swift; sourceTree = "<group>"; };
 		CFB51233294C7AB700979309 /* OnboardingFlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFlowController.swift; sourceTree = "<group>"; };
 		CFB51235294C7AD800979309 /* OnboardingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		CFB51237294C7B2C00979309 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				CFB51239294C7B6900979309 /* OnboardingViewController.swift */,
 				CF1C16FD2954852300E9EF03 /* OnboardingPageViewController.swift */,
 				CF1C16FF29548A1300E9EF03 /* OnboardingPage.swift */,
+				CFB0D5732A312BE100CDFF1F /* OnboardingConfiguration.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				CF4B5AE929293A80005F8D18 /* SimulationCell.swift in Sources */,
 				CF4B5AE729279FAB005F8D18 /* CatchUpView.swift in Sources */,
 				CF4893902915439100B97147 /* ExamCell.swift in Sources */,
+				CFB0D5742A312BE100CDFF1F /* OnboardingConfiguration.swift in Sources */,
 				CF0C486B2A28D21700948680 /* SimulationTableViewDataSource.swift in Sources */,
 				CF2CCBD029028F2C00FA14C4 /* SimulationModelCell.swift in Sources */,
 				CFC030B7296772A500C7F1B0 /* PineappleCell.swift in Sources */,
