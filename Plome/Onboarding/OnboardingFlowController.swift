@@ -10,6 +10,7 @@ import Foundation
 import PlomeCoreKit
 import SwiftUI
 import UIKit
+import UIOnboarding
 
 protocol MainRouterDelegate: AnyObject {
     func didFinishPresentOnboarding()
@@ -23,18 +24,14 @@ final class OnboardingFlowController {
 
     @Injected(\CoreKitContainer.userDefault) private var userDefault
 
-    private var mainRouter: OnboardingRouter
-
     // MARK: - Init
 
     init(screens: Screens) {
         self.screens = screens
-        mainRouter = OnboardingRouter(screens: screens, rootTransition: EmptyTransition())
-        mainRouter.mainRouterDelegate = self
     }
 
     func start() -> UIViewController {
-        return mainRouter.makeRootViewController()
+        screens.createOnboarding(delegate: self)
     }
 
     func shouldPresentOnboarding() -> Bool {
@@ -43,9 +40,9 @@ final class OnboardingFlowController {
     }
 }
 
-extension OnboardingFlowController: MainRouterDelegate {
-    func didFinishPresentOnboarding() {
-        print("🐛 Did finish")
+extension OnboardingFlowController: UIOnboardingViewControllerDelegate {
+    func didFinishOnboarding(onboardingViewController: UIOnboarding.UIOnboardingViewController) {
+        print("🐛 Onboarding did finished")
         onFinished?()
     }
 }

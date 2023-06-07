@@ -27,10 +27,6 @@ final class OnboardingRouter: DefaultRouter {
     // MARK: - Methods
 
     func makeRootViewController() -> UIViewController {
-        let router = OnboardingRouter(screens: screens, mainRouterDelegate: mainRouterDelegate, rootTransition: EmptyTransition())
-        let onboardingViewController = screens.createOnboarding(router: router)
-        router.rootViewController = onboardingViewController
-
-        return onboardingViewController
+        return .init()
     }
 }

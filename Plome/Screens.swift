@@ -8,6 +8,7 @@
 import Foundation
 import PlomeCoreKit
 import UIKit
+import UIOnboarding
 
 final class Screens {
     // MARK: - Init
@@ -82,9 +83,10 @@ extension Screens {
 // MARK: - Onboarding
 
 extension Screens {
-    func createOnboarding(router: OnboardingRouter) -> UIViewController {
-        let onboardingViewModel = OnboardingViewModel(router: router)
-        let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
-        return onboardingViewController
+    func createOnboarding(delegate: UIOnboardingViewControllerDelegate) -> UIViewController {
+        let onboardingController = UIOnboardingViewController(withConfiguration: .setUp())
+        onboardingController.delegate = delegate
+        
+        return UINavigationController(rootViewController: onboardingController)
     }
 }
