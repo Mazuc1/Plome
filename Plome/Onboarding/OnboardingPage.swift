@@ -7,18 +7,16 @@
 
 import UIKit
 
-enum OnboardingPage: Int, CaseIterable {
-    case presentation = 0
-    case model = 1
-    case simulation = 2
-    case start = 3
+enum OnboardingPage {
+    case presentation
+    case model
+    case simulation
 
     var text: String {
         switch self {
         case .presentation: return L10n.Onboarding.presentationText
         case .model: return L10n.Onboarding.modelText
         case .simulation: return L10n.Onboarding.simulationText
-        case .start: return L10n.Onboarding.startText
         }
     }
 
@@ -27,7 +25,6 @@ enum OnboardingPage: Int, CaseIterable {
         case .presentation: return L10n.Onboarding.presentationTitle
         case .model: return L10n.Onboarding.modelTitle
         case .simulation: return L10n.Onboarding.simulationTitle
-        case .start: return L10n.Onboarding.startTitle
         }
     }
 
@@ -36,7 +33,6 @@ enum OnboardingPage: Int, CaseIterable {
         case .presentation: return Asset.student.image
         case .model: return Asset.model.image
         case .simulation: return Asset.calcul.image
-        case .start: return Asset.target.image
         }
     }
 }

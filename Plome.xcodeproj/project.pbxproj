@@ -18,7 +18,6 @@
 		CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */; };
 		CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */; };
 		CF1BDAA3293A246100E459FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */; };
-		CF1C16FE2954852300E9EF03 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C16FD2954852300E9EF03 /* OnboardingPageViewController.swift */; };
 		CF1C170029548A1300E9EF03 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C16FF29548A1300E9EF03 /* OnboardingPage.swift */; };
 		CF1C170329548E2000E9EF03 /* OnboardingFlowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C170229548E2000E9EF03 /* OnboardingFlowControllerTests.swift */; };
 		CF208F5228F960E0001F83B1 /* UrbaneRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */; };
@@ -65,10 +64,8 @@
 		CFA04DAC2934DE9C00DFF2F5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA04DAB2934DE9C00DFF2F5 /* SettingsRouter.swift */; };
 		CFA04DAE2934DF7400DFF2F5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA04DAD2934DF7400DFF2F5 /* SettingsViewModel.swift */; };
 		CFB001CC290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB001CB290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift */; };
+		CFB0D5742A312BE100CDFF1F /* OnboardingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0D5732A312BE100CDFF1F /* OnboardingConfiguration.swift */; };
 		CFB51234294C7AB700979309 /* OnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51233294C7AB700979309 /* OnboardingFlowController.swift */; };
-		CFB51236294C7AD800979309 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51235294C7AD800979309 /* OnboardingRouter.swift */; };
-		CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51237294C7B2C00979309 /* OnboardingViewModel.swift */; };
-		CFB5123A294C7B6900979309 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB51239294C7B6900979309 /* OnboardingViewController.swift */; };
 		CFBF56AE28ECC5F000E4EC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */; };
 		CFBF56B028ECC5F000E4EC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */; };
 		CFBF56B728ECC5F000E4EC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */; };
@@ -128,7 +125,6 @@
 		CF0C7A70292FE4C300E49803 /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
 		CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		CF1BDAA2293A246100E459FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CF1C16FD2954852300E9EF03 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		CF1C16FF29548A1300E9EF03 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		CF1C170229548E2000E9EF03 /* OnboardingFlowControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowControllerTests.swift; sourceTree = "<group>"; };
 		CF208F4D28F960D5001F83B1 /* UrbaneRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UrbaneRounded-Bold.ttf"; sourceTree = "<group>"; };
@@ -179,10 +175,8 @@
 		CFA04DAB2934DE9C00DFF2F5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		CFA04DAD2934DF7400DFF2F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CFB001CB290C184C00EF5A4E /* AddSimulationModelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimulationModelViewModelTests.swift; sourceTree = "<group>"; };
+		CFB0D5732A312BE100CDFF1F /* OnboardingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingConfiguration.swift; sourceTree = "<group>"; };
 		CFB51233294C7AB700979309 /* OnboardingFlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFlowController.swift; sourceTree = "<group>"; };
-		CFB51235294C7AD800979309 /* OnboardingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
-		CFB51237294C7B2C00979309 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		CFB51239294C7B6900979309 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		CFBF56AD28ECC5F000E4EC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBF56AF28ECC5F000E4EC7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFBF56B628ECC5F000E4EC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -443,11 +437,8 @@
 			isa = PBXGroup;
 			children = (
 				CFB51233294C7AB700979309 /* OnboardingFlowController.swift */,
-				CFB51235294C7AD800979309 /* OnboardingRouter.swift */,
-				CFB51237294C7B2C00979309 /* OnboardingViewModel.swift */,
-				CFB51239294C7B6900979309 /* OnboardingViewController.swift */,
-				CF1C16FD2954852300E9EF03 /* OnboardingPageViewController.swift */,
 				CF1C16FF29548A1300E9EF03 /* OnboardingPage.swift */,
+				CFB0D5732A312BE100CDFF1F /* OnboardingConfiguration.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -749,7 +740,6 @@
 				CF02ABCD295D141900B5FCC9 /* ShareSimulationModelService.swift in Sources */,
 				CF832ED22A238027006F7804 /* EndPoint.swift in Sources */,
 				CF2CCBCE290286CB00FA14C4 /* SimulationModelsViewModel.swift in Sources */,
-				CFB51236294C7AD800979309 /* OnboardingRouter.swift in Sources */,
 				CF832ECE2A238005006F7804 /* TaskLoaderManager.swift in Sources */,
 				CF035FFA29F12DFA005196D6 /* ExamTypePageViewController.swift in Sources */,
 				CF0C486D2A28D6C400948680 /* SimulationCellHeaderView.swift in Sources */,
@@ -764,7 +754,6 @@
 				CF832ED32A238027006F7804 /* FileIOEndPoint.swift in Sources */,
 				CF3B9AA628F32B8C00457A44 /* SimulationModelsViewController.swift in Sources */,
 				CFE4E9FF2962267E00BC6DB2 /* SimulationModelUploadResponse.swift in Sources */,
-				CFB51238294C7B2C00979309 /* OnboardingViewModel.swift in Sources */,
 				CF2CCBCC2902838300FA14C4 /* SimulationModelsRouter.swift in Sources */,
 				CF888F73290F234C00D2D3E5 /* SimulationsRouter.swift in Sources */,
 				CFD0BCA529433FA7005C898B /* L10n.swift in Sources */,
@@ -772,12 +761,12 @@
 				CF49EBD22902A2E700693A85 /* AddSimulationModelViewController.swift in Sources */,
 				CF41B57B294CAE7F00491486 /* Assets+Generated.swift in Sources */,
 				CFA04DAC2934DE9C00DFF2F5 /* SettingsRouter.swift in Sources */,
-				CFB5123A294C7B6900979309 /* OnboardingViewController.swift in Sources */,
 				CF0C7A71292FE4C300E49803 /* DetailsHeaderView.swift in Sources */,
 				CF888F75290F249E00D2D3E5 /* SimulationListViewModel.swift in Sources */,
 				CF4B5AE929293A80005F8D18 /* SimulationCell.swift in Sources */,
 				CF4B5AE729279FAB005F8D18 /* CatchUpView.swift in Sources */,
 				CF4893902915439100B97147 /* ExamCell.swift in Sources */,
+				CFB0D5742A312BE100CDFF1F /* OnboardingConfiguration.swift in Sources */,
 				CF0C486B2A28D21700948680 /* SimulationTableViewDataSource.swift in Sources */,
 				CF2CCBD029028F2C00FA14C4 /* SimulationModelCell.swift in Sources */,
 				CFC030B7296772A500C7F1B0 /* PineappleCell.swift in Sources */,
@@ -786,7 +775,6 @@
 				CFD1961A2931057D00A06FE7 /* ExamInformationsView.swift in Sources */,
 				CF3B9A8C28F1DD1400457A44 /* Screens.swift in Sources */,
 				CFF4DB8029FE9BEE008D05A6 /* ExamTypePageViewModel.swift in Sources */,
-				CF1C16FE2954852300E9EF03 /* OnboardingPageViewController.swift in Sources */,
 				CF3B9AA828F32BA600457A44 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

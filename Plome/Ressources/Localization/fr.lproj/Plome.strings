@@ -115,15 +115,16 @@
 
 // MARK: - Onboarding
 
+"onboarding.welcome" = "Bienvenue sur";
+"onboarding.continue" = "C'est parti !";
+
 "onboarding.presentationTitle" = "Hello !";
 "onboarding.modelTitle" = "Créez tes modèles";
 "onboarding.simulationTitle" = "Fait des simulations";
-"onboarding.startTitle" = "Let's go !";
 
 "onboarding.presentationText" = "Bienvenue sur Plôme, l'application qui vous permet de simuler vos examens.";
 "onboarding.modelText" = "Créez vos propres modèles d'examen en plus de ce déjà disponible.";
 "onboarding.simulationText" = "Rentrez vos notes et coefficients pour avoir le résultat.";
-"onboarding.startText" = "Vous savez tout !";
 
 // MARK: - DEBUG
 
