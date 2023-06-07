@@ -41,8 +41,8 @@
 "home.empty_simulation_placeholder" = "You will find here all your exam simulations.\n\nYou can take an existing one to modify it.";
 "home.my_simulations" = "My simulations";
 
-"home.admit" = "Admit";
-"home.unadmit" = "Unadmit";
+"home.admit" = "Admitted";
+"home.unadmit" = "Not admitted";
 
 "home.your_grades" = "Your grades";
 "home.remake_simulation_from_this_one" = "Re-simulate from this simulation";
