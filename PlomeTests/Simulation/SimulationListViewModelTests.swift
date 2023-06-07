@@ -33,17 +33,26 @@ final class SimulationListViewModelTests: XCTestCase {
 
     // MARK: - updateSnapshot
 
-    func testWhenUpdatingSnapshotWithDatabaseValuesThenSnapshotContainsOneSection() {
+    func testWhenUpdatingSnapshotWithNotDraftSimulationThenSnapshotContainedDefaultSection() {
         // Arrange
-        try! simulationRepository.add { simulation, context in
-            simulation.name = "Test"
-            simulation.date = Date()
-            simulation.exams = .init()
-            let exam = CDExam(context: context)
-            exam.simulation = simulation
-            exam.name = "TestExam"
-            simulation.exams?.insert(exam)
-        }
+        addDefaultSimulation()
+
+        // Act
+        simulationListViewModel.updateSnapshot()
+
+        simulationListViewModel.$snapshot
+            .sink { snapshot in
+                // Assert
+                print(snapshot)
+                XCTAssertEqual(snapshot.numberOfSections, 1)
+                XCTAssertEqual(snapshot.sectionIdentifiers[0], SimulationSection.default)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func testWhenUpdatingSnapshotWithDraftSimulationThenSnapshotContainedDraftSection() {
+        // Arrange
+        addDraftSimulation()
 
         // Act
         simulationListViewModel.updateSnapshot()
@@ -52,7 +61,26 @@ final class SimulationListViewModelTests: XCTestCase {
             .sink { snapshot in
                 // Assert
                 XCTAssertEqual(snapshot.numberOfSections, 1)
+                XCTAssertEqual(snapshot.sectionIdentifiers[0], SimulationSection.draft)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func testWhenUpdatingSnapshotWithDraftAndDefaultSimulationThenSnapshotContainedBothSection() {
+        // Arrange
+        addDraftSimulation()
+        addDefaultSimulation()
+
+        // Act
+        simulationListViewModel.updateSnapshot()
+
+        simulationListViewModel.$snapshot
+            .sink { snapshot in
+                // Assert
+                print(snapshot)
+                XCTAssertEqual(snapshot.numberOfSections, 2)
                 XCTAssertEqual(snapshot.sectionIdentifiers[0], SimulationSection.default)
+                XCTAssertEqual(snapshot.sectionIdentifiers[1], SimulationSection.draft)
             }
             .store(in: &cancellables)
     }
@@ -102,5 +130,32 @@ final class SimulationListViewModelTests: XCTestCase {
                 XCTAssertEqual(snapshot.numberOfItems, 1)
             }
             .store(in: &cancellables)
+    }
+}
+
+extension SimulationListViewModelTests {
+    func addDefaultSimulation() {
+        try! simulationRepository.add { simulation, context in
+            simulation.name = "Test"
+            simulation.date = Date()
+            simulation.exams = .init()
+            let exam = CDExam(context: context)
+            exam.simulation = simulation
+            exam.name = "TestExam"
+            simulation.exams?.insert(exam)
+        }
+    }
+    
+    func addDraftSimulation() {
+        try! simulationRepository.add { simulation, context in
+            simulation.name = "Test"
+            simulation.date = Date()
+            simulation.exams = .init()
+            let exam = CDExam(context: context)
+            exam.simulation = simulation
+            exam.name = "TestExam"
+            exam.grade = -1
+            simulation.exams?.insert(exam)
+        }
     }
 }
