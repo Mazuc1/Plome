@@ -21,7 +21,7 @@ struct UIOnboardingHelper {
 
     static func setUpSecondTitleLine() -> NSMutableAttributedString {
         .init(string: Bundle.main.displayName ?? "Plôme", attributes: [
-            .foregroundColor: UIColor.init(named: "camou") ?? UIColor.init(red: 0.654, green: 0.618, blue: 0.494, alpha: 1.0)
+            .foregroundColor: PlomeColor.lightGreen.color
         ])
     }
 
@@ -36,23 +36,12 @@ struct UIOnboardingHelper {
             .init(icon: OnboardingPage.simulation.image,
                   title: OnboardingPage.simulation.title,
                   description: OnboardingPage.simulation.text),
-            .init(icon: OnboardingPage.start.image,
-                  title: OnboardingPage.start.title,
-                  description: OnboardingPage.start.text),
         ])
-    }
-    
-    static func setUpNotice() -> UIOnboardingTextViewConfiguration {
-        return .init(icon: .init(named: "onboarding-notice-icon"),
-                     text: "Developed and designed for members of the Swiss Armed Forces.",
-                     linkTitle: "Learn more...",
-                     link: "https://www.lukmanascic.ch/portfolio/insignia",
-                     tint: .init(named: "camou") ?? .init(red: 0.654, green: 0.618, blue: 0.494, alpha: 1.0))
     }
     
     static func setUpButton() -> UIOnboardingButtonConfiguration {
         return .init(title: "Continue",
-                     backgroundColor: .init(named: "camou") ?? .init(red: 0.654, green: 0.618, blue: 0.494, alpha: 1.0))
+                     backgroundColor: PlomeColor.lightGreen.color)
     }
 }
 
@@ -62,7 +51,6 @@ extension UIOnboardingViewConfiguration {
                      firstTitleLine: UIOnboardingHelper.setUpFirstTitleLine(),
                      secondTitleLine: UIOnboardingHelper.setUpSecondTitleLine(),
                      features: UIOnboardingHelper.setUpFeatures(),
-                     textViewConfiguration: UIOnboardingHelper.setUpNotice(),
                      buttonConfiguration: UIOnboardingHelper.setUpButton())
     }
 }

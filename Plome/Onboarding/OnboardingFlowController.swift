@@ -35,7 +35,7 @@ final class OnboardingFlowController {
     }
 
     func shouldPresentOnboarding() -> Bool {
-        // userDefaults.setData(value: false, key: .hasOnboardingBeenSeen)
+        userDefault.setData(value: false, key: .hasOnboardingBeenSeen)
         return userDefault.getData(type: Bool.self, forKey: .hasOnboardingBeenSeen) ?? false
     }
 }

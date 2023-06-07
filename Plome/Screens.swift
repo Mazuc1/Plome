@@ -84,9 +84,8 @@ extension Screens {
 
 extension Screens {
     func createOnboarding(delegate: UIOnboardingViewControllerDelegate) -> UIViewController {
-        let onboardingController = UIOnboardingViewController(withConfiguration: .setUp())
-        onboardingController.delegate = delegate
-        
-        return UINavigationController(rootViewController: onboardingController)
+       UIOnboardingViewController(withConfiguration: .setUp()).configure {
+            $0.delegate = delegate
+        }
     }
 }
