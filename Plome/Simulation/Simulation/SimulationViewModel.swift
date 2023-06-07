@@ -24,6 +24,7 @@ final class SimulationViewModel: ObservableObject {
 
     @Published var simulation: Simulation
 
+    /// This is not use for now, but it will
     private var cdSimulation: CDSimulation?
 
     weak var examTypePageViewControllerInput: ExamTypePageViewControllerInput?

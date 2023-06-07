@@ -87,6 +87,7 @@
 		CFE77759293A111300D0A90D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */; };
 		CFEDAD7D29300F8B00D56717 /* ExamsTypeGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */; };
 		CFF4DB8029FE9BEE008D05A6 /* ExamTypePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4DB7F29FE9BEE008D05A6 /* ExamTypePageViewModel.swift */; };
+		CFF9B7A02A31246200EBD6ED /* SimulationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9B79F2A31246100EBD6ED /* SimulationViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,7 @@
 		CFE77758293A111300D0A90D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CFEDAD7C29300F8B00D56717 /* ExamsTypeGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsTypeGradeView.swift; sourceTree = "<group>"; };
 		CFF4DB7F29FE9BEE008D05A6 /* ExamTypePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypePageViewModel.swift; sourceTree = "<group>"; };
+		CFF9B79F2A31246100EBD6ED /* SimulationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModelTests.swift; sourceTree = "<group>"; };
 		FB5EDD562FF7E2617CECC92B /* Pods-Plome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plome.debug.xcconfig"; path = "Target Support Files/Pods-Plome/Pods-Plome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -488,6 +490,7 @@
 		CFBFA087292E4CFC00F36790 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
+				CFF9B79F2A31246100EBD6ED /* SimulationViewModelTests.swift */,
 				CFBFA0A2292E959F00F36790 /* SelectSimulationModelViewModelTests.swift */,
 				CF907B2A292F7B2100DEA169 /* SimulationListViewModelTests.swift */,
 				CF18517629342E93003CB46F /* SimulationDetailsViewModelTests.swift */,
@@ -710,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD7EF76296637310039E3A8 /* XCTest+extension.swift in Sources */,
+				CFF9B7A02A31246200EBD6ED /* SimulationViewModelTests.swift in Sources */,
 				CF1C170329548E2000E9EF03 /* OnboardingFlowControllerTests.swift in Sources */,
 				CFD7EF70296625A60039E3A8 /* MockURLProtocol.swift in Sources */,
 				CF18517729342E93003CB46F /* SimulationDetailsViewModelTests.swift in Sources */,
