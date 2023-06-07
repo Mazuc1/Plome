@@ -16,7 +16,7 @@ struct UIOnboardingHelper {
     }
 
     static func setUpFirstTitleLine() -> NSMutableAttributedString {
-        .init(string: "Welcome to", attributes: [.foregroundColor: UIColor.label])
+        .init(string: L10n.Onboarding.welcome, attributes: [.foregroundColor: UIColor.label])
     }
 
     static func setUpSecondTitleLine() -> NSMutableAttributedString {
@@ -40,7 +40,7 @@ struct UIOnboardingHelper {
     }
     
     static func setUpButton() -> UIOnboardingButtonConfiguration {
-        return .init(title: "Continue",
+        return .init(title: L10n.Onboarding.continue,
                      backgroundColor: PlomeColor.lightGreen.color)
     }
 }
