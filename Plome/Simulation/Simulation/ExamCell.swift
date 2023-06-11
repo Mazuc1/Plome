@@ -90,6 +90,7 @@ final class ExamCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldGrade.delegate = self
+        textFieldGrade.inputView = NumericKeyboard(target: textFieldGrade)
     }
 
     @available(*, unavailable)
