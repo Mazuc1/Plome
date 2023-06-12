@@ -73,7 +73,6 @@
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
 		CFB0D5722A312AF000CDFF1F /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = CFB0D5712A312AF000CDFF1F /* UIOnboarding */; };
-		CFB0D5772A31373A00CDFF1F /* KeyboardKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFB0D5762A31373A00CDFF1F /* KeyboardKit */; };
 		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CFC030E4296782A000C7F1B0 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030E3296782A000C7F1B0 /* AppViewController.swift */; };
@@ -223,7 +222,6 @@
 				CF135E23293D56E100ACFC6A /* FirebaseCrashlytics in Frameworks */,
 				CF135E21293D56E100ACFC6A /* FirebaseAnalytics in Frameworks */,
 				CF832EBC2A20D2BE006F7804 /* Factory in Frameworks */,
-				CFB0D5772A31373A00CDFF1F /* KeyboardKit in Frameworks */,
 				CF4F1843291CFC0D003F005B /* IQKeyboardManagerSwift in Frameworks */,
 				CFB0D5722A312AF000CDFF1F /* UIOnboarding in Frameworks */,
 				8B2DBE2FA670E91B0E7C8F66 /* Pods_PlomeCoreKit.framework in Frameworks */,
@@ -610,7 +608,6 @@
 				CF832EBB2A20D2BE006F7804 /* Factory */,
 				CF0C48662A28C79400948680 /* NotificationBannerSwift */,
 				CFB0D5712A312AF000CDFF1F /* UIOnboarding */,
-				CFB0D5762A31373A00CDFF1F /* KeyboardKit */,
 			);
 			productName = PlomeCoreKit;
 			productReference = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */;
@@ -697,7 +694,6 @@
 				CF832EBA2A20D2BE006F7804 /* XCRemoteSwiftPackageReference "Factory" */,
 				CF0C48652A28C79400948680 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 				CFB0D5702A312AF000CDFF1F /* XCRemoteSwiftPackageReference "UIOnboarding" */,
-				CFB0D5752A31373A00CDFF1F /* XCRemoteSwiftPackageReference "KeyboardKit" */,
 			);
 			productRefGroup = CF59EACA28ECD6B30041B33B /* Products */;
 			projectDirPath = "";
@@ -1356,14 +1352,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		CFB0D5752A31373A00CDFF1F /* XCRemoteSwiftPackageReference "KeyboardKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KeyboardKit/KeyboardKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1406,11 +1394,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CFB0D5702A312AF000CDFF1F /* XCRemoteSwiftPackageReference "UIOnboarding" */;
 			productName = UIOnboarding;
-		};
-		CFB0D5762A31373A00CDFF1F /* KeyboardKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFB0D5752A31373A00CDFF1F /* XCRemoteSwiftPackageReference "KeyboardKit" */;
-			productName = KeyboardKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
