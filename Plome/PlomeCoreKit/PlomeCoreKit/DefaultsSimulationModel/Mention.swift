@@ -16,7 +16,7 @@ public enum Mention {
 
     public var name: String {
         switch self {
-        case .cannotBeCalculated: return "Ne peux être calculée"
+        case .cannotBeCalculated: return L10n.cannotCalculatedMention
         case .without: return L10n.withoutMention
         case .AB: return L10n.quiteWellMention
         case .B: return L10n.greatMention
