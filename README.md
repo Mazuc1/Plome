@@ -18,6 +18,10 @@ Librairies utilisées:
 - Firebase crashlytics
 - IQKeyboardManager (https://github.com/hackiftekhar/IQKeyboardManager)
 - Material Component (https://github.com/material-components/material-components-ios)
+- UIOnboarding (https://github.com/lascic/UIOnboarding)
+- NotificationBanner (https://github.com/Daltron/NotificationBanner)
+- Tabman (https://github.com/uias/Tabman)
+- Factory (https://github.com/hmlongco/Factory)
 
 Service utilisé:
 
