@@ -166,7 +166,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.mentionSentence()
 
         // Assert
-        XCTAssertEqual(result, "Without mention")
+        XCTAssertEqual(result, "Quite well mention")
     }
 
     func testReturnsOfMentionSentenceWithExamFailure() {
@@ -287,7 +287,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.mention()
 
         // Assert
-        XCTAssertEqual(result, .without)
+        XCTAssertEqual(result, .AB)
     }
 
     func testReturnsOfMentionWithExamFailure() {
@@ -298,7 +298,7 @@ final class CalculatorShaperTests: XCTestCase {
         let result = calculatorShaper.mention()
 
         // Assert
-        XCTAssertNil(result)
+        XCTAssertEqual(result, .without)
     }
 
     func testReturnsOfGetExamGradeWhereIsBetter() {

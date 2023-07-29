@@ -77,7 +77,7 @@ public final class CalculatorShaper {
     /// Get the mention sentence depends of Mention. If there are no mention, returns "Sans mention"
     /// - Returns: Eg: "Mention très bien"
     public func mentionSentence() -> String {
-        calculator.simulation.mention().name
+        calculator.simulation.average() >= 10 ? calculator.simulation.mention().name : L10n.disableMention
     }
 
     /// Get trials grade out of twenty, truncated by two places
