@@ -35,63 +35,6 @@ public enum Mention {
     }
 }
 
-class MentionCalculator {
-    private(set) var withoutMentionScore: Float = 0
-    private(set) var ABMentionScore: Float = 0
-    private(set) var BMentionScore: Float = 0
-    private(set) var TBMentionScore: Float = 0
-
-    private let simulationType: SimulationType
-    private let totalGrade: Float
-    private let totalOutOf: Float
-
-    init(simulationType: SimulationType,
-         totalGrade: Float,
-         totalOutOf: Float)
-    {
-        self.simulationType = simulationType
-        self.totalGrade = totalGrade
-        self.totalOutOf = totalOutOf
-
-        setMentionScores()
-    }
-
-    func mention() -> Mention {
-        switch totalGrade {
-        case withoutMentionScore ..< ABMentionScore: return .without
-        case ABMentionScore ..< BMentionScore: return .AB
-        case BMentionScore ..< TBMentionScore: return .B
-        case TBMentionScore...: return .TB
-        default: return .without
-        }
-    }
-
-    private func setMentionScores() {
-        switch simulationType {
-        case .custom:
-            withoutMentionScore = (50 * totalOutOf) / 100
-            ABMentionScore = (60 * totalOutOf) / 100
-            BMentionScore = (70 * totalOutOf) / 100
-            TBMentionScore = (80 * totalOutOf) / 100
-        case .brevet:
-            withoutMentionScore = 400
-            ABMentionScore = 480
-            BMentionScore = 560
-            TBMentionScore = 640
-        case .generalBAC:
-            withoutMentionScore = 1000
-            ABMentionScore = 1200
-            BMentionScore = 1400
-            TBMentionScore = 1600
-        case .technologicalBAC:
-            withoutMentionScore = 1000
-            ABMentionScore = 1200
-            BMentionScore = 1400
-            TBMentionScore = 1600
-        }
-    }
-}
-
 public enum GradeType {
     case worst
     case better
@@ -100,14 +43,7 @@ public enum GradeType {
 public class Calculator {
     // MARK: - Properties
 
-    public private(set) var withoutMentionScore: Float = 0
-    public private(set) var ABMentionScore: Float = 0
-    public private(set) var BMentionScore: Float = 0
-    public private(set) var TBMentionScore: Float = 0
-
     public let simulation: Simulation
-
-    public private(set) var mention: Mention?
 
     public private(set) var finalGrade: Float = 0
     public private(set) var totalGrade: Float = 0
@@ -130,10 +66,6 @@ public class Calculator {
 
     // MARK: - Methods
 
-    public func hasSucceed() -> Bool {
-        mention != nil
-    }
-
     public func calculate() {
         if simulation.number(of: .trial) > 0 {
             let (grade, outOf, coefficient) = calculateGrade(for: .trial)
@@ -155,9 +87,6 @@ public class Calculator {
             totalOutOf += outOf
             totalCoefficient += coefficient
         }
-
-        setMentionScores()
-        setMention()
 
         let finalGradeOutOfTwenty = gradeOufOfTwenty(totalGrade / totalOutOf)
         catchUpIfNeeded(grade: finalGradeOutOfTwenty)
@@ -191,41 +120,6 @@ public class Calculator {
 
     private func gradeOufOfTwenty(_ value: Float) -> Float {
         value * 20
-    }
-
-    private func setMention() {
-        switch totalGrade {
-        case withoutMentionScore ..< ABMentionScore: mention = .without
-        case ABMentionScore ..< BMentionScore: mention = .AB
-        case BMentionScore ..< TBMentionScore: mention = .B
-        case TBMentionScore...: mention = .TB
-        default: mention = nil
-        }
-    }
-
-    private func setMentionScores() {
-        switch simulation.type {
-        case .custom:
-            withoutMentionScore = (50 * totalOutOf) / 100
-            ABMentionScore = (60 * totalOutOf) / 100
-            BMentionScore = (70 * totalOutOf) / 100
-            TBMentionScore = (80 * totalOutOf) / 100
-        case .brevet:
-            withoutMentionScore = 400
-            ABMentionScore = 480
-            BMentionScore = 560
-            TBMentionScore = 640
-        case .generalBAC:
-            withoutMentionScore = 1000
-            ABMentionScore = 1200
-            BMentionScore = 1400
-            TBMentionScore = 1600
-        case .technologicalBAC:
-            withoutMentionScore = 1000
-            ABMentionScore = 1200
-            BMentionScore = 1400
-            TBMentionScore = 1600
-        }
     }
 
     func getExamWhereGrade(is type: GradeType) -> Exam? {

@@ -166,12 +166,14 @@ public class Simulation: NSObject, NSCopying, Codable {
             totalGrade += $0.lhs * $0.coeff
             totalOn += $0.rhs * $0.coeff
         }
-
-        let mentionCalculator = MentionCalculator(simulationType: type,
-                                                  totalGrade: totalGrade,
-                                                  totalOutOf: totalOn)
-
-        return mentionCalculator.mention()
+        
+        switch totalGrade {
+        case ((50 * totalOn) / 100) ..< ((60 * totalOn) / 100): return .without
+        case ((60 * totalOn) / 100) ..< ((70 * totalOn) / 100): return .AB
+        case ((70 * totalOn) / 100) ..< ((80 * totalOn) / 100): return .B
+        case ((80 * totalOn) / 100)...: return .TB
+        default: return .without
+        }
     }
 
     public func mergeAndConvertExams(in context: NSManagedObjectContext, for cdSimulation: CDSimulation) -> Set<CDExam> {

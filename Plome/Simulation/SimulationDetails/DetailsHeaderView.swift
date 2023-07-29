@@ -74,8 +74,7 @@ final class DetailsHeaderView: UIView {
             $0.alignment = .leading
             $0.addArrangedSubviews([dateLabel, admissionLabel])
 
-            guard let mention = shaper.mention() else { return }
-            $0.addArrangedSubview(MentionView(frame: .zero, mention: mention))
+            $0.addArrangedSubview(MentionView(frame: .zero, mention: shaper.mention()))
         }
 
         imageView.image = shaper.hasSucceedExam() ? Self.succeessImage : Self.failureImage
