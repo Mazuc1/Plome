@@ -41,13 +41,55 @@ final class SimulationTests: XCTestCase {
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
+    
+    func testThatMentionOfSimulationReturnedTBMention() {
+        // Arrange
+        let expectedMention: Mention = .TB
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 18, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 16, ratio: 20, type: .continuousControl))
 
-    func testThatMentionOfSimulationReturnedCorrectValue() {
+        // Act
+        let mention = simulation.mention()
+
+        // Assert
+        XCTAssertEqual(mention, expectedMention)
+    }
+    
+    func testThatMentionOfSimulationReturnedBMention() {
+        // Arrange
+        let expectedMention: Mention = .B
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 16, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 14, ratio: 20, type: .continuousControl))
+
+        // Act
+        let mention = simulation.mention()
+
+        // Assert
+        XCTAssertEqual(mention, expectedMention)
+    }
+
+    func testThatMentionOfSimulationReturnedABMention() {
         // Arrange
         let expectedMention: Mention = .AB
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 14, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .continuousControl))
+
+        // Act
+        let mention = simulation.mention()
+
+        // Assert
+        XCTAssertEqual(mention, expectedMention)
+    }
+    
+    func testThatMentionOfSimulationReturnedWithoutMention() {
+        // Arrange
+        let expectedMention: Mention = .without
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 10, ratio: 20, type: .continuousControl))
 
         // Act
         let mention = simulation.mention()
