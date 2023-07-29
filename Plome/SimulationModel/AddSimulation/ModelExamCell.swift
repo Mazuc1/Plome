@@ -72,7 +72,7 @@ final class ModelExamCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textFieldCoeff.delegate = self
         textFieldRatio.delegate = self
-        
+
         textFieldCoeff.inputView = NumericKeyboard(target: textFieldCoeff)
         textFieldRatio.inputView = NumericKeyboard(target: textFieldRatio)
     }

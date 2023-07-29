@@ -92,6 +92,7 @@
 		CFC03102296782E100C7F1B0 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030FD296782E100C7F1B0 /* Icons.swift */; };
 		CFC03103296782E100C7F1B0 /* PlomeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030FE296782E100C7F1B0 /* PlomeColor.swift */; };
 		CFC03104296782E100C7F1B0 /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030FF296782E100C7F1B0 /* AppStyles.swift */; };
+		CFCC56A12A75502300EC127D /* Mention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC56A02A75502300EC127D /* Mention.swift */; };
 		CFD055A62941FC7B000D43BB /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
 		CFD067AD292FBD980034EE02 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD067AC292FBD980034EE02 /* UIImage+extension.swift */; };
 		CFDA810629413741006C0D16 /* PlomeCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF59EAC928ECD6B30041B33B /* PlomeCoreKit.framework */; };
@@ -196,6 +197,7 @@
 		CFC030FD296782E100C7F1B0 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		CFC030FE296782E100C7F1B0 /* PlomeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlomeColor.swift; sourceTree = "<group>"; };
 		CFC030FF296782E100C7F1B0 /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
+		CFCC56A02A75502300EC127D /* Mention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mention.swift; sourceTree = "<group>"; };
 		CFD055A22941FC7B000D43BB /* PlomeCoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlomeCoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD067AC292FBD980034EE02 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
 		CFE7700E299061560079ABC2 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				CF2CCBC729027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift */,
 				CF208F5B28F96EB9001F83B1 /* Exam.swift */,
 				CF2CCBC929027F3600FA14C4 /* Simulation.swift */,
+				CFCC56A02A75502300EC127D /* Mention.swift */,
 			);
 			path = DefaultsSimulationModel;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFE7700F299061560079ABC2 /* Dependencies.swift in Sources */,
+				CFCC56A12A75502300EC127D /* Mention.swift in Sources */,
 				CF33531F293A35DE00C40C99 /* CDExam.swift in Sources */,
 				CF52B49E2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift in Sources */,
 				CFC030F7296782D300C7F1B0 /* ConfettiView.swift in Sources */,

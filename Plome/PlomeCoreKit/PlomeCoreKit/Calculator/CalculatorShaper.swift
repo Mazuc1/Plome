@@ -44,7 +44,7 @@ public final class CalculatorShaper {
     /// Returns if the exam succeed or failed
     /// - Returns: Bool
     public func hasSucceedExam() -> Bool {
-        calculator.hasSucceed()
+        calculator.simulation.average() >= 10
     }
 
     /// Returns if the exam need to be catchUp
@@ -77,8 +77,7 @@ public final class CalculatorShaper {
     /// Get the mention sentence depends of Mention. If there are no mention, returns "Sans mention"
     /// - Returns: Eg: "Mention très bien"
     public func mentionSentence() -> String {
-        guard let mention = calculator.mention else { return L10n.disableMention }
-        return mention.name
+        calculator.simulation.average() >= 10 ? calculator.simulation.mention().name : L10n.disableMention
     }
 
     /// Get trials grade out of twenty, truncated by two places
@@ -151,8 +150,8 @@ public final class CalculatorShaper {
 
     /// Returns the mention is there is any one
     /// - Returns: Optional mention
-    public func mention() -> Mention? {
-        calculator.mention
+    public func mention() -> Mention {
+        calculator.simulation.mention()
     }
 
     /// Get exam depends of paramters

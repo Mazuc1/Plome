@@ -42,12 +42,54 @@ final class SimulationTests: XCTestCase {
         XCTAssertEqual(mention, expectedMention)
     }
 
-    func testThatMentionOfSimulationReturnedCorrectValue() {
+    func testThatMentionOfSimulationReturnedTBMention() {
+        // Arrange
+        let expectedMention: Mention = .TB
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 18, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 16, ratio: 20, type: .continuousControl))
+
+        // Act
+        let mention = simulation.mention()
+
+        // Assert
+        XCTAssertEqual(mention, expectedMention)
+    }
+
+    func testThatMentionOfSimulationReturnedBMention() {
+        // Arrange
+        let expectedMention: Mention = .B
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 16, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 14, ratio: 20, type: .continuousControl))
+
+        // Act
+        let mention = simulation.mention()
+
+        // Assert
+        XCTAssertEqual(mention, expectedMention)
+    }
+
+    func testThatMentionOfSimulationReturnedABMention() {
         // Arrange
         let expectedMention: Mention = .AB
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 14, ratio: 20, type: .trial))
         simulation.add(exam: .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .continuousControl))
+
+        // Act
+        let mention = simulation.mention()
+
+        // Assert
+        XCTAssertEqual(mention, expectedMention)
+    }
+
+    func testThatMentionOfSimulationReturnedWithoutMention() {
+        // Arrange
+        let expectedMention: Mention = .without
+        let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 12, ratio: 20, type: .trial))
+        simulation.add(exam: .init(name: "", coefficient: 1, grade: 10, ratio: 20, type: .continuousControl))
 
         // Act
         let mention = simulation.mention()
@@ -453,18 +495,18 @@ final class SimulationTests: XCTestCase {
         XCTAssertEqual(simulation.exams, [])
         XCTAssertEqual(simulation.type, .brevet)
     }
-        
+
     // MARK: - replaceDefaultGradesValue
-    
+
     func testWhenReplacingDefaultGradeValuesThenDefaultValuesAreReplaced() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         let exam: Exam = .init(name: "", coefficient: nil, grade: Exam.defaultGradeValue, ratio: 20, type: .option)
         simulation.add(exam: exam)
-        
+
         // Act
         simulation.replaceDefaultGradesValue()
-        
+
         // Assert
         XCTAssertNil(simulation.exams?.first?.grade)
     }

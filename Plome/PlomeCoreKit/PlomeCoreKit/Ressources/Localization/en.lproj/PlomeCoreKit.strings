@@ -3,6 +3,7 @@
 "great_mention" = "Great mention";
 "very_great_mention" = "Very great mention";
 "disable_mention" = "You cannot have a mention below the average";
+"cannot_calculated_mention" = "Cannot be calculated";
 
 "success_admission" = "You are admitted! 🥳";
 "failure_admission" = "You are not admitted 😕";

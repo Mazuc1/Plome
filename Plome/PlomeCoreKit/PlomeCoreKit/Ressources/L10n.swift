@@ -28,6 +28,8 @@ public enum L10n {
     public static let artLanguage = L10n.tr("PlomeCoreKit", "art_language", fallback: "Arts language")
     /// Brevet
     public static let brevet = L10n.tr("PlomeCoreKit", "brevet", fallback: "Brevet")
+    /// Cannot be calculated
+    public static let cannotCalculatedMention = L10n.tr("PlomeCoreKit", "cannot_calculated_mention", fallback: "Cannot be calculated")
     /// Citizen formation
     public static let citizenFormation = L10n.tr("PlomeCoreKit", "citizen_formation", fallback: "Citizen formation")
     /// Continuous controls
