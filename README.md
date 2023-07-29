@@ -1,7 +1,7 @@
 # Plome
 ## _Pour les étudiants !_
 
-Plôme est une application qui permet de simuler l'obtention (ou non) de son ou ces examens.
+Plôme est une application qui permet de simuler l'obtention (ou non) de son diplôme.
 
 ## Features
 
