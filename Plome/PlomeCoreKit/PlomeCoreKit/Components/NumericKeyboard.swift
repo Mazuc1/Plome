@@ -13,14 +13,14 @@ private class DigitButton: UIButton {
 
 public class NumericKeyboard: UIView {
     weak var target: (UIKeyInput & UITextInput)?
-    
-    public override var intrinsicContentSize: CGSize {
+
+    override public var intrinsicContentSize: CGSize {
         CGSize(width: UIView.noIntrinsicMetric, height: Self.keyboardHeight)
     }
-    
+
     private static let keyboardHeight: CGFloat = 275
 
-    private var numericButtons: [DigitButton] = (0...9).map {
+    private var numericButtons: [DigitButton] = (0 ... 9).map {
         let button = DigitButton(type: .system)
         button.digit = $0
         button.setTitle("\($0)", for: .normal)
@@ -57,7 +57,8 @@ public class NumericKeyboard: UIView {
         configure()
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -69,11 +70,11 @@ private extension NumericKeyboard {
         insertText("\(sender.digit)")
     }
 
-    @objc func didTapDecimalButton(_ sender: DigitButton) {
+    @objc func didTapDecimalButton(_: DigitButton) {
         insertText(".")
     }
 
-    @objc func didTapDeleteButton(_ sender: DigitButton) {
+    @objc func didTapDeleteButton(_: DigitButton) {
         playKeySound()
         target?.deleteBackward()
     }
@@ -86,9 +87,10 @@ private extension NumericKeyboard {
         numericButtons.forEach {
             $0.addTarget(self, action: #selector(didTapDigitButton(_:)), for: .touchUpInside)
         }
-        
+
         deleteButton.addTarget(
-            self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
+            self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside
+        )
         decimalButton.addTarget(self, action: #selector(didTapDecimalButton(_:)), for: .touchUpInside)
 
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -101,11 +103,11 @@ private extension NumericKeyboard {
             $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             $0.isLayoutMarginsRelativeArrangement = true
             $0.layoutMargins = .init(top: AppStyles.defaultSpacing,
-                                            left: AppStyles.defaultSpacing,
-                                            bottom: AppStyles.defaultSpacing,
-                                            right: AppStyles.defaultSpacing)
+                                     left: AppStyles.defaultSpacing,
+                                     bottom: AppStyles.defaultSpacing,
+                                     right: AppStyles.defaultSpacing)
         }
-        
+
         addSubview(stackView)
 
         for row in 0 ..< 3 {
@@ -148,7 +150,7 @@ private extension NumericKeyboard {
         playKeySound()
         target?.insertText(string)
     }
-    
+
     func playKeySound() {
         UIDevice.current.playInputClick()
     }

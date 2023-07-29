@@ -33,13 +33,13 @@ final class OnboardingFlowController {
     }
 
     func shouldPresentOnboarding() -> Bool {
-       // userDefault.setData(value: false, key: .hasOnboardingBeenSeen)
+        // userDefault.setData(value: false, key: .hasOnboardingBeenSeen)
         return userDefault.getData(type: Bool.self, forKey: .hasOnboardingBeenSeen) ?? false
     }
 }
 
 extension OnboardingFlowController: UIOnboardingViewControllerDelegate {
-    func didFinishOnboarding(onboardingViewController: UIOnboarding.UIOnboardingViewController) {
+    func didFinishOnboarding(onboardingViewController _: UIOnboarding.UIOnboardingViewController) {
         onFinished?()
     }
 }

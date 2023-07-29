@@ -49,7 +49,7 @@ final class SimulationListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
     }
-    
+
     func testWhenUpdatingSnapshotWithDraftSimulationThenSnapshotContainedDraftSection() {
         // Arrange
         addDraftSimulation()
@@ -65,7 +65,7 @@ final class SimulationListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
     }
-    
+
     func testWhenUpdatingSnapshotWithDraftAndDefaultSimulationThenSnapshotContainedBothSection() {
         // Arrange
         addDraftSimulation()
@@ -108,7 +108,7 @@ final class SimulationListViewModelTests: XCTestCase {
     func testWhenDeleteSimulationThenSimulationIsDeleted() {
         // Arrange
         let date = Date()
-        
+
         try! simulationRepository.add { simulation, _ in
             simulation.name = "Test"
             simulation.date = date
@@ -145,7 +145,7 @@ extension SimulationListViewModelTests {
             simulation.exams?.insert(exam)
         }
     }
-    
+
     func addDraftSimulation() {
         try! simulationRepository.add { simulation, context in
             simulation.name = "Test"

@@ -41,7 +41,7 @@ final class SimulationTests: XCTestCase {
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
-    
+
     func testThatMentionOfSimulationReturnedTBMention() {
         // Arrange
         let expectedMention: Mention = .TB
@@ -55,7 +55,7 @@ final class SimulationTests: XCTestCase {
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
-    
+
     func testThatMentionOfSimulationReturnedBMention() {
         // Arrange
         let expectedMention: Mention = .B
@@ -83,7 +83,7 @@ final class SimulationTests: XCTestCase {
         // Assert
         XCTAssertEqual(mention, expectedMention)
     }
-    
+
     func testThatMentionOfSimulationReturnedWithoutMention() {
         // Arrange
         let expectedMention: Mention = .without
@@ -495,18 +495,18 @@ final class SimulationTests: XCTestCase {
         XCTAssertEqual(simulation.exams, [])
         XCTAssertEqual(simulation.type, .brevet)
     }
-        
+
     // MARK: - replaceDefaultGradesValue
-    
+
     func testWhenReplacingDefaultGradeValuesThenDefaultValuesAreReplaced() {
         // Arrange
         let simulation = Simulation(name: "Test", date: nil, exams: .init(), type: .custom)
         let exam: Exam = .init(name: "", coefficient: nil, grade: Exam.defaultGradeValue, ratio: 20, type: .option)
         simulation.add(exam: exam)
-        
+
         // Act
         simulation.replaceDefaultGradesValue()
-        
+
         // Assert
         XCTAssertNil(simulation.exams?.first?.grade)
     }

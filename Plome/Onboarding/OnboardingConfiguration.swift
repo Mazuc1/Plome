@@ -7,8 +7,8 @@
 
 import Foundation
 import PlomeCoreKit
-import UIOnboarding
 import UIKit
+import UIOnboarding
 
 struct UIOnboardingHelper {
     static func setUpIcon() -> UIImage {
@@ -21,11 +21,11 @@ struct UIOnboardingHelper {
 
     static func setUpSecondTitleLine() -> NSMutableAttributedString {
         .init(string: Bundle.main.displayName ?? "Plôme", attributes: [
-            .foregroundColor: PlomeColor.lightGreen.color
+            .foregroundColor: PlomeColor.lightGreen.color,
         ])
     }
 
-    static func setUpFeatures() -> Array<UIOnboardingFeature> {
+    static func setUpFeatures() -> [UIOnboardingFeature] {
         return .init([
             .init(icon: OnboardingPage.presentation.image,
                   title: OnboardingPage.presentation.title,
@@ -38,7 +38,7 @@ struct UIOnboardingHelper {
                   description: OnboardingPage.simulation.text),
         ])
     }
-    
+
     static func setUpButton() -> UIOnboardingButtonConfiguration {
         return .init(title: L10n.Onboarding.continue,
                      backgroundColor: PlomeColor.lightGreen.color)

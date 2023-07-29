@@ -166,7 +166,7 @@ public class Simulation: NSObject, NSCopying, Codable {
             totalGrade += $0.lhs * $0.coeff
             totalOn += $0.rhs * $0.coeff
         }
-        
+
         switch totalGrade {
         case ((50 * totalOn) / 100) ..< ((60 * totalOn) / 100): return .without
         case ((60 * totalOn) / 100) ..< ((70 * totalOn) / 100): return .AB
