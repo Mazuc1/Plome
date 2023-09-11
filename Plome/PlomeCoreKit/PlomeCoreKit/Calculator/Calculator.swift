@@ -20,7 +20,6 @@ public class Calculator {
     public private(set) var finalGrade: Float = 0
     public private(set) var totalGrade: Float = 0
     public private(set) var totalOutOf: Float = 0
-    public private(set) var totalCoefficient: Float = 0
 
     public private(set) var trialsGrade: Float?
     public private(set) var continousControlGrade: Float?
@@ -40,24 +39,21 @@ public class Calculator {
 
     public func calculate() {
         if simulation.number(of: .trial) > 0 {
-            let (grade, outOf, coefficient) = calculateGrade(for: .trial)
+            let (grade, outOf) = calculateGrade(for: .trial)
             totalGrade += grade
             totalOutOf += outOf
-            totalCoefficient += coefficient
         }
 
         if simulation.number(of: .continuousControl) > 0 {
-            let (grade, outOf, coefficient) = calculateGrade(for: .continuousControl)
+            let (grade, outOf) = calculateGrade(for: .continuousControl)
             totalGrade += grade
             totalOutOf += outOf
-            totalCoefficient += coefficient
         }
 
         if simulation.number(of: .option) > 0 {
-            let (grade, outOf, coefficient) = calculateGrade(for: .option)
+            let (grade, outOf) = calculateGrade(for: .option)
             totalGrade += grade
             totalOutOf += outOf
-            totalCoefficient += coefficient
         }
 
         let finalGradeOutOfTwenty = gradeOufOfTwenty(totalGrade / totalOutOf)
@@ -66,19 +62,17 @@ public class Calculator {
         finalGrade = finalGradeOutOfTwenty
     }
 
-    private func calculateGrade(for type: ExamType) -> (Float, Float, Float) {
+    private func calculateGrade(for type: ExamType) -> (Float, Float) {
         let exams = simulation.exams(of: type)
 
         var totalGrade: Float = 0
         var totalOn: Float = 0
-        var totalCoefficient: Float = 0
 
         _ = exams
             .map { $0.getGradeInformation() }
             .map {
                 totalGrade += $0 * $2
                 totalOn += $1 * $2
-                totalCoefficient += $2
             }
 
         switch type {
@@ -87,7 +81,7 @@ public class Calculator {
         case .continuousControl: continousControlGrade = gradeOufOfTwenty(totalGrade / totalOn)
         }
 
-        return (totalGrade, totalOn, totalCoefficient)
+        return (totalGrade, totalOn)
     }
 
     private func gradeOufOfTwenty(_ value: Float) -> Float {
