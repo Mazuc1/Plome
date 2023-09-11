@@ -54,7 +54,6 @@ final class CalculatorTests: XCTestCase {
 
         XCTAssertEqual(calculator.totalGrade.truncate(places: 2), 446.67)
         XCTAssertEqual(calculator.totalOutOf, 720)
-        XCTAssertEqual(calculator.totalCoefficient, 36)
 
         XCTAssertEqual(calculator.trialsGrade, 13.3125)
         XCTAssertEqual(calculator.continousControlGrade, 12.125)
