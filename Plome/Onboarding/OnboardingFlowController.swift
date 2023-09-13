@@ -10,10 +10,6 @@ import PlomeCoreKit
 import UIKit
 import UIOnboarding
 
-protocol MainRouterDelegate: AnyObject {
-    func didFinishPresentOnboarding()
-}
-
 final class OnboardingFlowController {
     // MARK: - Properties
 

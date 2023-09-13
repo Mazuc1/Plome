@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         /// UI of application
         AppAppearance.setAppearance()
 
-        /// Creation of Context, Screens and AppRouter
+        /// Creation of Screens and AppRouter
         let screens = Screens()
         appRouter = AppRouter(window: window!, screens: screens)
 

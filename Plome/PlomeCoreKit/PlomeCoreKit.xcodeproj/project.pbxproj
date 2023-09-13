@@ -57,9 +57,7 @@
 		CF59EACE28ECD6B30041B33B /* PlomeCoreKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = CF59EACD28ECD6B30041B33B /* PlomeCoreKit.docc */; };
 		CF59EADA28ECD6B30041B33B /* PlomeCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EACC28ECD6B30041B33B /* PlomeCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF5B5F332921BD8C002EF9BD /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5B5F322921BD8C002EF9BD /* confetti.png */; };
-		CF744C122978912500275447 /* ExamTests_testThatExamCreateFromJSON().json in Resources */ = {isa = PBXBuildFile; fileRef = CF744C112978912400275447 /* ExamTests_testThatExamCreateFromJSON().json */; };
 		CF744C152978936700275447 /* Decodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF744C0F2978910D00275447 /* Decodable+extension.swift */; };
-		CF744C192978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json in Resources */ = {isa = PBXBuildFile; fileRef = CF744C182978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json */; };
 		CF77E106296B36090028E4C9 /* NSMutableData+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77E105296B36090028E4C9 /* NSMutableData+extensions.swift */; };
 		CF7DED0329420CA7009DC817 /* ExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFD29420CA7009DC817 /* ExamTests.swift */; };
 		CF7DED0429420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DECFE29420CA7009DC817 /* DefaultSimulationModelStorageServiceTests.swift */; };
@@ -71,19 +69,19 @@
 		CF832EBC2A20D2BE006F7804 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = CF832EBB2A20D2BE006F7804 /* Factory */; };
 		CF8A3D87290C0C9700694C3D /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */; };
 		CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F96E3291EAB88000815F8 /* Calculator.swift */; };
+		CF95B62F2AB2017F00242D47 /* ExamTests_testThatExamCreateFromJSON().json in Resources */ = {isa = PBXBuildFile; fileRef = CF95B62D2AB2017F00242D47 /* ExamTests_testThatExamCreateFromJSON().json */; };
+		CF95B6302AB2017F00242D47 /* SimulationTests_testThatSimulationCreateFromJSON().json in Resources */ = {isa = PBXBuildFile; fileRef = CF95B62E2AB2017F00242D47 /* SimulationTests_testThatSimulationCreateFromJSON().json */; };
 		CFA7CAAE29185EE400F941F4 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7CAAD29185EE400F941F4 /* String+extension.swift */; };
 		CFB0D5722A312AF000CDFF1F /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = CFB0D5712A312AF000CDFF1F /* UIOnboarding */; };
 		CFBFA092292E69B700F36790 /* PlomeCoreKitTestsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFBFA09B292E69D400F36790 /* TestSimulationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6473292526CA0051A7C3 /* TestSimulationsProvider.swift */; };
 		CFC030E4296782A000C7F1B0 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030E3296782A000C7F1B0 /* AppViewController.swift */; };
 		CFC030E8296782BD00C7F1B0 /* ALProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030E5296782BC00C7F1B0 /* ALProgressRing.swift */; };
-		CFC030E9296782BD00C7F1B0 /* ALProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030E6296782BD00C7F1B0 /* ALProgressBar.swift */; };
 		CFC030EA296782BD00C7F1B0 /* ALTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030E7296782BD00C7F1B0 /* ALTimingFunction.swift */; };
 		CFC030EE296782C700C7F1B0 /* PrimaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030EB296782C700C7F1B0 /* PrimaryCTA.swift */; };
 		CFC030EF296782C700C7F1B0 /* SecondaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030EC296782C700C7F1B0 /* SecondaryCTA.swift */; };
 		CFC030F0296782C700C7F1B0 /* TertiaryCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030ED296782C700C7F1B0 /* TertiaryCTA.swift */; };
 		CFC030F6296782D300C7F1B0 /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030F1296782D300C7F1B0 /* AppLabel.swift */; };
-		CFC030F7296782D300C7F1B0 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030F2296782D300C7F1B0 /* ConfettiView.swift */; };
 		CFC030F8296782D300C7F1B0 /* AppContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030F3296782D300C7F1B0 /* AppContextualAction.swift */; };
 		CFC030F9296782D300C7F1B0 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030F4296782D300C7F1B0 /* PlaceholderView.swift */; };
 		CFC030FA296782D300C7F1B0 /* ExamTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC030F5296782D300C7F1B0 /* ExamTypeHeaderView.swift */; };
@@ -165,8 +163,6 @@
 		CF5B5F322921BD8C002EF9BD /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		CF744C0D29787C0600275447 /* Plome_ 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Plome_ 3.xcdatamodel"; sourceTree = "<group>"; };
 		CF744C0F2978910D00275447 /* Decodable+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decodable+extension.swift"; sourceTree = "<group>"; };
-		CF744C112978912400275447 /* ExamTests_testThatExamCreateFromJSON().json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ExamTests_testThatExamCreateFromJSON().json"; sourceTree = "<group>"; };
-		CF744C182978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "SimulationTests_testThatSimulationCreateFromJSON().json"; sourceTree = "<group>"; };
 		CF77E105296B36090028E4C9 /* NSMutableData+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableData+extensions.swift"; sourceTree = "<group>"; };
 		CF7DECFC29420CA6009DC817 /* PlomeCoreKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlomeCoreKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF7DECFD29420CA7009DC817 /* ExamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamTests.swift; sourceTree = "<group>"; };
@@ -177,18 +173,18 @@
 		CF7DED0229420CA7009DC817 /* UserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
 		CF8A3D86290C0C9700694C3D /* ModuleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleProtocol.swift; sourceTree = "<group>"; };
 		CF8F96E3291EAB88000815F8 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		CF95B62D2AB2017F00242D47 /* ExamTests_testThatExamCreateFromJSON().json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ExamTests_testThatExamCreateFromJSON().json"; sourceTree = "<group>"; };
+		CF95B62E2AB2017F00242D47 /* SimulationTests_testThatSimulationCreateFromJSON().json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "SimulationTests_testThatSimulationCreateFromJSON().json"; sourceTree = "<group>"; };
 		CFA7CAAD29185EE400F941F4 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		CFBFA08F292E69B700F36790 /* PlomeCoreKitTestsHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlomeCoreKitTestsHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBFA091292E69B700F36790 /* PlomeCoreKitTestsHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlomeCoreKitTestsHelpers.h; sourceTree = "<group>"; };
 		CFC030E3296782A000C7F1B0 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		CFC030E5296782BC00C7F1B0 /* ALProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressRing.swift; sourceTree = "<group>"; };
-		CFC030E6296782BD00C7F1B0 /* ALProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProgressBar.swift; sourceTree = "<group>"; };
 		CFC030E7296782BD00C7F1B0 /* ALTimingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTimingFunction.swift; sourceTree = "<group>"; };
 		CFC030EB296782C700C7F1B0 /* PrimaryCTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryCTA.swift; sourceTree = "<group>"; };
 		CFC030EC296782C700C7F1B0 /* SecondaryCTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryCTA.swift; sourceTree = "<group>"; };
 		CFC030ED296782C700C7F1B0 /* TertiaryCTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TertiaryCTA.swift; sourceTree = "<group>"; };
 		CFC030F1296782D300C7F1B0 /* AppLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
-		CFC030F2296782D300C7F1B0 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		CFC030F3296782D300C7F1B0 /* AppContextualAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContextualAction.swift; sourceTree = "<group>"; };
 		CFC030F4296782D300C7F1B0 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		CFC030F5296782D300C7F1B0 /* ExamTypeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamTypeHeaderView.swift; sourceTree = "<group>"; };
@@ -401,7 +397,6 @@
 				CFC030E3296782A000C7F1B0 /* AppViewController.swift */,
 				CFC030F3296782D300C7F1B0 /* AppContextualAction.swift */,
 				CFC030F1296782D300C7F1B0 /* AppLabel.swift */,
-				CFC030F2296782D300C7F1B0 /* ConfettiView.swift */,
 				CFC030F5296782D300C7F1B0 /* ExamTypeHeaderView.swift */,
 				CFC030F4296782D300C7F1B0 /* PlaceholderView.swift */,
 				CF0869EB2A3313400035FA07 /* NumericKeyboard.swift */,
@@ -483,8 +478,8 @@
 		CF744C0E297890D400275447 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
-				CF744C112978912400275447 /* ExamTests_testThatExamCreateFromJSON().json */,
-				CF744C182978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json */,
+				CF95B62D2AB2017F00242D47 /* ExamTests_testThatExamCreateFromJSON().json */,
+				CF95B62E2AB2017F00242D47 /* SimulationTests_testThatSimulationCreateFromJSON().json */,
 			);
 			path = JSONModel;
 			sourceTree = "<group>";
@@ -492,7 +487,6 @@
 		CF8E3D212923BF83001B1AC8 /* ALProgress */ = {
 			isa = PBXGroup;
 			children = (
-				CFC030E6296782BD00C7F1B0 /* ALProgressBar.swift */,
 				CFC030E5296782BC00C7F1B0 /* ALProgressRing.swift */,
 				CFC030E7296782BD00C7F1B0 /* ALTimingFunction.swift */,
 			);
@@ -740,8 +734,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF744C122978912500275447 /* ExamTests_testThatExamCreateFromJSON().json in Resources */,
-				CF744C192978948100275447 /* SimulationTests_testThatSimulationCreateFromJSON().json in Resources */,
+				CF95B62F2AB2017F00242D47 /* ExamTests_testThatExamCreateFromJSON().json in Resources */,
+				CF95B6302AB2017F00242D47 /* SimulationTests_testThatSimulationCreateFromJSON().json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +784,6 @@
 				CFCC56A12A75502300EC127D /* Mention.swift in Sources */,
 				CF33531F293A35DE00C40C99 /* CDExam.swift in Sources */,
 				CF52B49E2939F6EE00AB6C9E /* DefaultSimulationModelStorageService.swift in Sources */,
-				CFC030F7296782D300C7F1B0 /* ConfettiView.swift in Sources */,
 				CFC030E8296782BD00C7F1B0 /* ALProgressRing.swift in Sources */,
 				CF3B9A9628F1E5E700457A44 /* UIView+extension.swift in Sources */,
 				CF208F5C28F96EB9001F83B1 /* Exam.swift in Sources */,
@@ -802,7 +795,6 @@
 				CF8F96E4291EAB88000815F8 /* Calculator.swift in Sources */,
 				CF3870542942B61C00593400 /* L10n.swift in Sources */,
 				CF3B9A8528F1DCBA00457A44 /* Transition.swift in Sources */,
-				CFC030E9296782BD00C7F1B0 /* ALProgressBar.swift in Sources */,
 				CF2CCBCA29027F3600FA14C4 /* Simulation.swift in Sources */,
 				CF2CCBC829027C9E00FA14C4 /* TechnologicalBACExamsProvider.swift in Sources */,
 				CFC03104296782E100C7F1B0 /* AppStyles.swift in Sources */,
